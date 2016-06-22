@@ -1,0 +1,17 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+ext {
+    commonsNetVersion = '3.3'
+    junitVersion = '4.12'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile "commons-net:commons-net:${commonsNetVersion}"
+    compile 'org.slf4j:slf4j-api:1.7.12'
+    testCompile "junit:junit:${junitVersion}"
+}

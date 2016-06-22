@@ -1,0 +1,10 @@
+dependencies {
+    testCompile( "org.spockframework:spock-core:${spockVersion}" ) {
+        exclude module: 'groovy-all'
+        exclude module: 'junit-dep'
+    }
+    testCompile( "org.spockframework:spock-spring:${spockVersion}" ) {
+        exclude module: 'groovy-all'
+        exclude module: 'junit-dep'
+    }
+}

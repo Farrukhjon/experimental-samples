@@ -1,0 +1,32 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+defaultTasks 'clean', 'build', 'uploadArchives'
+
+project.group = 'org.examples.gradle.maven'
+
+repositories {
+    jcenter()
+}
+
+ext {
+	project.stage = properties.get('stage').equalsIgnoreCase('true')
+}
+
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.7'
+    testCompile "junit:junit:4.11"
+}
+
+if(project.branchName.equals('master') && project.stage){
+	uploadArchives {
+   	 repositories {
+       	 mavenDeployer {
+        	    repository(url: "file://localhost/tmp/myRepo/")
+	    	pom.version = project.projectVersion +'-'+branchName
+       	 	}
+   	 }
+	}
+}
+

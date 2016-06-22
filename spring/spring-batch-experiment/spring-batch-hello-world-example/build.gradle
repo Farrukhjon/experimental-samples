@@ -1,0 +1,31 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+defaultTasks 'clean', 'build', 'check'/*, 'deleteDockerImage', 'deployWithAnsiblePlaybookToDockerContainer'*/
+
+apply from: "$rootDir/gradle/idea.gradle"
+apply from: "$rootDir/gradle/boot.gradle"
+apply from: "$rootDir/gradle/groovy.gradle"
+apply from: "$rootDir/gradle/jacoco.gradle"
+apply from: "$rootDir/gradle/spock.gradle"
+apply from: "$rootDir/gradle/cucumber-jvm.gradle"
+apply from: "$rootDir/gradle/checkstyle.gradle"
+apply from: "$rootDir/gradle/codenarc.gradle"
+apply from: "$rootDir/gradle/version.gradle"
+apply from: "$rootDir/gradle/testing.gradle"
+apply from: "$rootDir/gradle/maven-publish.gradle"
+apply from: "$rootDir/gradle/build-dashboard.gradle"
+
+repositories {
+    jcenter()
+}
+
+
+
+

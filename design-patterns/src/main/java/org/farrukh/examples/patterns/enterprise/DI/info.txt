@@ -1,0 +1,9 @@
+Dependency Injection (DI) - is a software design pattern and part of SOLID priciple 
+	separation Data and Behavior ob Object; Depend upon Abstraction but Do not depend 
+	upon Concretion. 
+
+DI involves four elements:
+ 1) Implementation of the Service object (AImpl, BImpl and CImpl);
+ 2) The client object depending of the service (ClientClass);
+ 3) The interface that Client (Demo) use to communicate with the Service
+ 4) The injector object which responsible for injectiong(in our case Factory object).

@@ -1,0 +1,26 @@
+apply plugin: 'java'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.7'
+    testCompile "junit:junit:4.11"
+}
+
+project.version = '1.0.0'
+project.description = "Example project"
+project.group = "org.example.gradle"
+
+
+task printProject << {
+	println "The projct name is: ${project.name}"
+	println "The project group is: ${project.group}"
+	println "The project version is: ${project.version}"
+	println "The project path is: ${project.path}"
+	println "The project description is: ${project.description}"
+	println "The project directory is: ${project.projectDir}"
+	println "The project build dir is: ${project.buildDir}"
+}
+defaultTasks 'printProject'

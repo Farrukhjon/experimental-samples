@@ -1,0 +1,76 @@
+import groovy.json.JsonBuilder
+
+version = '1.0.1'
+
+def dockerDirectory = 'docker'
+def containerName = project.name
+def fullImageName = "${project.name}:${version.toString()}"
+def ansiblePlaybookPath = 'ansible-playbook'
+
+task copyBuildArtifact(type: Copy, dependsOn: build) {
+    def buildArtifactName = "${project.name}-${version.toString()}.jar"
+    from('build/libs/') {
+        include buildArtifactName
+        rename buildArtifactName, "${project.name}.jar"
+    }
+    into "$dockerDirectory/artifacts"
+    doFirst {
+        logger.quiet "Copying the project artifact $buildArtifactName located on $buildDir"
+    }
+}
+
+task buildDockerImage(type: Exec, dependsOn: copyBuildArtifact) {
+    workingDir dockerDirectory
+    commandLine 'sudo', 'docker', 'build', '--tag', fullImageName, '.'
+    doFirst {
+        logger.quiet "Building docker image $fullImageName based on the Dockerfile in $dockerDirectory/"
+    }
+}
+
+task deployWithAnsiblePlaybookToDockerContainer(type: Exec, dependsOn: buildDockerImage) {
+    def extraVars = new JsonBuilder( [container_name: containerName, host_name: containerName, image_name: fullImageName] ).toString()
+    commandLine ansiblePlaybookPath, "$projectDir/ansible/deployment-playbook.yml", '--extra-vars', extraVars
+    doFirst {
+        logger.quiet "Deploying the Application to the docker container ${containerName} with port ${containerPort}"
+    }
+}
+
+/*task deployToDockerContainer(type: Exec, dependsOn: buildDockerImage) {
+    def hostPort = '2020'
+    def containerPort = '2020'
+    commandLine 'docker', 'run', '--detach=true', '--restart=always', "--publish=${hostPort}:${containerPort}", "--hostname=${containerName}", "--name=${containerName}", fullImageName
+
+    doFirst {
+        logger.quiet "Deploying the Application to the docker container ${containerName} with port ${containerPort}"
+    }
+}*/
+
+/*task publishDockerImage(type: Exec, dependsOn: buildDockerImage) {
+    group 'Docker'
+    description = 'Publishes a previously built docker image to the public docker registry'
+    workingDir dockerDirectory
+    commandLine 'sudo', 'docker', 'push', fullImageName
+    doFirst {
+        logger.quiet "Publishing docker image $fullImageName to the docker hub"
+    }
+}*/
+
+task deleteDockerContainer(type: Exec) {
+    group 'Docker'
+    description = 'Deletes a docker container, even if it is running'
+    commandLine 'sudo', 'docker', 'rm', '-f', containerName
+    doFirst {
+        logger.quiet "Deleting docker container $containerName from the host"
+    }
+}
+
+task deleteDockerImage(type: Exec, dependsOn: [deleteDockerContainer]) {
+    group 'Docker'
+    description = 'Deletes a docker image'
+    commandLine 'sudo', 'docker', 'rmi', fullImageName
+    doFirst {
+        logger.quiet "Deleting docker image $fullImageName from the host"
+    }
+}
+
+test.dependsOn 'deployWithAnsiblePlaybookToDockerContainer'

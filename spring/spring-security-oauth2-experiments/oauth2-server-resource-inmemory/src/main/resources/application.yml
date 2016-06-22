@@ -1,0 +1,12 @@
+management:
+  context_path: /admin
+security:
+  user:
+    password: password
+
+debug: true
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG

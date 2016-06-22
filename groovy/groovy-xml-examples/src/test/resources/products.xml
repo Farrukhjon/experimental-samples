@@ -1,0 +1,17 @@
+<products>
+    <product>
+        <id>1</id>>
+        <name>Computer</name>
+        <sold>yes</sold>>
+    </product>
+    <product>
+        <id>2</id>>
+        <name>Printer</name>
+        <sold>yes</sold>>
+    </product>
+    <product>
+        <id>3</id>>
+        <name>Router</name>
+        <sold>yes</sold>>
+    </product>
+</products>

@@ -1,0 +1,12 @@
+BlockingQueue info
+ - defines a FIFO data structure that BLOCKS or times out when you attempt to add to a FULL queue, or retrieve from an EMPTY queue
+BlockingQueue Implementations:
+
+ - ArrayBlockingQueue
+ - DelayQueue
+ - LinkedBlockingQueue
+ - LinkedBlockingDeque
+ - PriorityBlockingQueue
+ - SynchronousQueue
+
+BlockingQueue is best used in a producer consumer scenario.

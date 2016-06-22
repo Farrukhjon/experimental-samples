@@ -1,0 +1,14 @@
+apply plugin: 'jacoco'
+
+jacoco {
+    toolVersion = "${jacocoVersion}"
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.enabled true
+        //html.destination "${buildDir}/jacocoHtml"
+    }
+}

@@ -1,0 +1,2 @@
+This is contect file2.txt.
+This message from file2.txt

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<users>
+	<user id="100">
+		<firstname>Tom</firstname>
+		<lastname>Hanks</lastname>
+	</user>
+	<user id="101">
+		<firstname>Lokesh</firstname>
+		<lastname>Gupta</lastname>
+	</user>
+	<user id="102">
+		<firstname>HowToDo</firstname>
+		<lastname>InJava</lastname>
+	</user>
+</users>

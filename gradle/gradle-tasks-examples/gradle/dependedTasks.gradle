@@ -1,0 +1,16 @@
+task depender {
+	println 'I am depender task'
+}
+
+task dependedTask(dependsOn: depender) {
+	println 'I am dependedTask and I depend on depender task'
+}
+
+task thirdTask {
+	println 'I am third task and I depend on dependedTask'
+}
+
+thirdTask.dependsOn(dependedTask)
+
+
+

@@ -1,0 +1,15 @@
+spring:
+   rabbitmq:
+      host: rabbitmq
+      virtual-host: /
+      port: 5672
+      username: guest
+      password: guest
+
+---
+# Application specific properties.
+app:
+  queueName: examples-queue-name
+  exchangeName: examples-exchange-name
+  rabbitExchangeDurable: true
+

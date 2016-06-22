@@ -1,0 +1,20 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+ext {
+    junitVersion = '4.12'
+    groovyVersion = '2.4.5'
+    spockVersion = '1.0-groovy-2.4'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    testCompile("junit:junit:${junitVersion}")
+    testCompile("org.codehaus.groovy:groovy:${groovyVersion}")
+    testCompile("org.spockframework:spock-core:${spockVersion}") {
+        exclude module: 'groovy-all'
+    }
+}

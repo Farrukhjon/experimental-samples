@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+    <contextName>TESTING</contextName>
+    <property name="MESSAGE_FORMAT"
+              value="%contextName %1(%.-1level) %10.10mdc{realm} %5.5mdc{service-code} %5.5mdc{service-instance} %10.10mdc{correlation-id} %4.4mdc{message-code} %35.35logger{0} %message %throwable{short}%n"/>
+    
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${MESSAGE_FORMAT}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+    </appender>
+
+    <logger name="org.farrukh" level="ALL"/>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>

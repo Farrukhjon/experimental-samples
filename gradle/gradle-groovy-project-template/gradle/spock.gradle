@@ -1,0 +1,8 @@
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    testCompile("org.spockframework:spock-core:${spockVersion}") { exclude module: 'groovy-all' }
+}

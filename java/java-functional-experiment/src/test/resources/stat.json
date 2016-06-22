@@ -1,0 +1,25 @@
+{
+  "accounts": {
+    "count": 30,
+    "protocol": {
+      "count": 3,
+      "types": ["ssh", "ftp", "http"]
+      "ssh": {
+        "count": 10,
+        "status": {
+          "AUTH_FAILED": 3,
+          "TIME_OUT": 2,
+          "NO_SOCKS": 2,
+          "CREATED": 3,
+          "IN_USE": 3
+        }
+      },
+      "ftp": {
+        "count": 10
+      },
+      "http": {
+        "count": 10
+      }
+    }
+  }
+}

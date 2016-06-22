@@ -1,0 +1,13 @@
+apply plugin: 'checkstyle'
+
+checkstyle {
+    toolVersion = checkstyleVersion
+}
+
+checkstyleMain {
+    enabled = true
+}
+
+checkstyleTest {
+    enabled = false
+}

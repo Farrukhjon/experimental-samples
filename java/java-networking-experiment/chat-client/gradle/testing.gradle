@@ -1,0 +1,69 @@
+test {
+    useJUnit {
+        includeCategories 'org.farrukh.examples.category.UnitTestCategory'
+    }
+    testLogging {
+        showStandardStreams = false
+        exceptionFormat = 'full'
+    }
+    reports.html.destination =  "$buildDir/reports/unitTests"
+}
+
+task outboundIntegrationTests( type: Test, dependsOn: build ) {
+    group 'Verification'
+    description = 'Runs the outbound integration tests.'
+    useJUnit {
+        includeCategories 'org.farrukh.examples.rest.category.OutboundIntegrationTestCategory'
+    }
+    testLogging {
+        showStandardStreams = false
+        exceptionFormat = 'full'
+    }
+    reports.html.destination =  "$buildDir/reports/componentTests"
+    // if the profile system property is set, copy into forked child process
+    def springProfilesActive = System.properties['spring.profiles.active']
+    if ( springProfilesActive ) { systemProperties['spring.profiles.active'] = springProfilesActive }
+}
+
+task inboundIntegrationTests( type: Test, dependsOn: build ) {
+    group 'Verification'
+    description = 'Runs the inbound integration tests.'
+    useJUnit {
+        includeCategories 'org.farrukh.examples.rest.category.InboundIntegrationTestCategory'
+    }
+    testLogging {
+        showStandardStreams = false
+        exceptionFormat = 'full'
+    }
+    reports.html.destination =  "$buildDir/reports/integrationTests"
+    // if the profile system property is set, copy into forked child process
+    def springProfilesActive = System.properties['spring.profiles.active']
+    if ( springProfilesActive ) { systemProperties['spring.profiles.active'] = springProfilesActive }
+
+    doFirst {
+        // copy the integration test port that was set after the docker container was deployed
+        systemProperties['integration.test.port'] = System.properties['integration.test.port']
+    }
+}
+
+task acceptanceTests( type: Test, dependsOn: build ) {
+    group 'Verification'
+    description = 'Runs the acceptance tests.'
+    // categories and cucumber tests don't play nicely -- no tests are detected and run
+    includes << '**/AcceptanceTests.class'
+    // cucumber dictates where to place the report -- note that this will still generate an empty report at build/reports/tests
+    testLogging {
+        showStandardStreams = false
+        exceptionFormat = 'full'
+    }
+    // if the profile system property is set, copy into forked child process
+    def springProfilesActive = System.properties['spring.profiles.active']
+    if ( springProfilesActive ) { systemProperties['spring.profiles.active'] = springProfilesActive }
+
+    doFirst {
+        // copy the integration test port that was set after the docker container was deployed
+        systemProperties['integration.test.port'] = System.properties['integration.test.port']
+    }
+}
+
+

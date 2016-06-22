@@ -1,0 +1,15 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+ext {
+   junitVersion = '4.12'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+   testCompile("junit:junit:${junitVersion}")
+}
+

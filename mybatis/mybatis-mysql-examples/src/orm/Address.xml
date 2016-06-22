@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="orm.Address">
+
+	<insert id="insertAddress" parameterType="Address" useGeneratedKeys="true" keyProperty="idAddress">
+		insert into address(region, city, street)
+		values(#{region}, #{city}, #{street})
+	</insert>
+	
+	<select id="selectAllAddress" resultType="Address">
+		select * from address;
+	</select>
+	
+	<select id="selectAllAddressBy" parameterType="String" resultType="String">
+		select ${value} from address;
+	</select>
+	
+	<resultMap type="Person" id="resultPerson">
+		<!-- propertis omited -->
+		<association property="address" column="address" javaType="Address"/>
+	</resultMap>
+	
+	<insert id="insertPerson" parameterType="Person" useGeneratedKeys="true" keyProperty="address.idAddress">
+		begin
+			insert into address(city, street) values(#{address.city}, #{address.street})
+			insert into person(surname, name, patronymic, address) values(#{surname}, #{name}, #{patronymic},
+				<choose>
+					<when test="address != null || address.idAddress !=0">
+						#{address.idAddress}
+					</when>
+				</choose>)
+		commit; 
+	</insert>
+
+</mapper>

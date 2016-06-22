@@ -1,0 +1,1 @@
+//# sourceMappingURL=IAnimal.js.map

@@ -1,0 +1,4 @@
+logging:
+  level:
+    org.springframework.boot.autoconfigure: DEBUG
+    #org.springframework.web: DEBUG

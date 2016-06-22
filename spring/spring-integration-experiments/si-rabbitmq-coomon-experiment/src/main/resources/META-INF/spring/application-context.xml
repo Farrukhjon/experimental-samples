@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:int="http://www.springframework.org/schema/integration"
+       xmlns:int-amqp="http://www.springframework.org/schema/integration/amqp"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd
+       http://www.springframework.org/schema/integration/amqp http://www.springframework.org/schema/integration/amqp/spring-integration-amqp.xsd">
+
+
+    <int:channel id="example-receive-channel">
+        <int:queue/>
+    </int:channel>
+
+    <!-- from RabbitMQ broker -->
+    <int-amqp:inbound-channel-adapter id="rabbit-inbound-endpoint"
+                                      channel="example-receive-channel"
+                                      listener-container="exampleListenerContainer"/>
+
+    <!-- to RabbitMQ broker -->
+    <int:channel id="example-output-channel"/>
+    <int-amqp:outbound-channel-adapter id="rabbit-outbound-endpoint"
+                                       channel="example-output-channel"
+                                       amqp-template="rabbitTemplate"
+                                       exchange-name="example-exchange"
+                                       routing-key="example-queue"/>
+
+    <!-- use message handler -->
+    <int:channel id="example-input-channel"/>
+    <int:chain input-channel="example-input-channel" output-channel="example-output-channel">
+        <int:transformer id="messageTransformer">
+            <bean class="org.farrukh.examples.spring.integration.rabbitmq.handler.HelloTransformer"/>
+        </int:transformer>
+        <int:service-activator id="helloMessageHandler">
+            <bean class="org.farrukh.examples.spring.integration.rabbitmq.handler.HelloServiceActivator"/>
+        </int:service-activator>
+    </int:chain>
+
+</beans>

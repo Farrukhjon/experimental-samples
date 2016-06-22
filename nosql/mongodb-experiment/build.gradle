@@ -1,0 +1,22 @@
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'idea'
+
+ext {
+    mongodbVersion = '3.2.1'
+    morphiaVersion = '1.1.1'
+    groovyVersion = '2.4.5'
+    spockVersion = '1.0-groovy-2.4'
+}
+repositories {
+    jcenter()
+}
+
+dependencies {
+   compile "org.mongodb:mongo-java-driver:${mongodbVersion}"
+   /*compile "org.mongodb:bson:${mongodbVersion}"*/
+   compile "org.mongodb.morphia:morphia:${morphiaVersion}"
+
+   testCompile "org.codehaus.groovy:groovy:${groovyVersion}"
+   testCompile ("org.spockframework:spock-core:${spockVersion}") { exclude module: 'groovy-all'}
+}

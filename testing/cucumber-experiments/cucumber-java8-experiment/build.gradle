@@ -1,0 +1,14 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+ext {
+   cucumberVersion = '1.2.4'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+  compile ("info.cukes:cucumber-java8:${cucumberVersion}")
+}

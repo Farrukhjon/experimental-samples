@@ -1,0 +1,13 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'jetty'
+apply plugin: 'idea'
+
+repositories {
+    jcenter()
+    maven { url "http://repo1.maven.org/maven2/" }
+}
+
+dependencies {
+  compile("javax.servlet:javax.servlet-api:3.0.1")
+}

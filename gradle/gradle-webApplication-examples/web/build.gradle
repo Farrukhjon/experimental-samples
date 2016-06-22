@@ -1,0 +1,11 @@
+/*
+*
+*/
+apply plugin: "war"
+apply plugin: "jetty"
+
+dependencies {
+     compile project(":util")
+     compile "javax.servlet:servlet-api:2.5"
+}
+httpPort=8080

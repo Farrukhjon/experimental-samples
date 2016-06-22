@@ -1,0 +1,17 @@
+apply plugin: 'groovy'
+apply plugin: 'idea'
+
+defaultTasks 'clean', 'build', 'check'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile "org.codehaus.groovy:groovy:${groovyVersion}"
+
+    testCompile ("org.spockframework:spock-core:${spockVersion}") {
+      exclude module: 'groovy-all'
+    }
+    testCompile "junit:junit:${junitVersion}"
+}

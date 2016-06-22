@@ -1,0 +1,14 @@
+group 'org.farrukh.examples'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'war'
+apply plugin: 'jetty'
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    compile("javax.servlet:servlet-api:2.5")
+}

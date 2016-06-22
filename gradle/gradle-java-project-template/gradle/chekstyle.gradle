@@ -1,0 +1,8 @@
+apply plugin: 'checkstyle'
+
+checkstyle {
+   
+   configFile = file("$rootDir/config/checkstyle/checkstyle.xml")
+
+}
+

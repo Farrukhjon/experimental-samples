@@ -1,0 +1,51 @@
+class ProjectVersion {
+    Integer major
+    Integer minor
+    Integer patch
+    String branch
+
+    ProjectVersion(Integer major, Integer minor, Integer patch, String branch) {
+        this.major = major
+        this.minor = minor
+        this.patch = patch
+        this.branch = branch
+    }
+
+    @Override
+    String toString() {
+        String release = '-SNAPSHOT'
+        if (branch == 'master') {
+            release = '.RELEASE'
+        } else if (branch == 'development') {
+            release = '.MILESTONE'
+        }
+        "${major}.${minor}.${patch}${release}"
+    }
+}
+
+version = new ProjectVersion(major.toInteger(), minor.toInteger(), patch.toInteger(), branch.toString())
+description = projectDescription
+
+task printVersion() {
+    group = 'org.farrukh.examples'
+    description = 'Prints project version'
+    doLast {
+        logger.quiet "Version: ${version}"
+    }
+}
+
+task createBuildInformationFile() {
+    group = 'Help'
+    description = 'Creates a properties file that contains details about the build'
+    doLast {
+        def infoFile = file("${buildDir}/build-info.properties")
+        def properties = new Properties()
+        properties.setProperty('version', version.toString())
+        properties.setProperty('java.version', System.properties['java.version'])
+        properties.setProperty('java.vendor', System.properties['java.vendor'])
+        properties.setProperty('os.name', System.properties['os.name'])
+        properties.setProperty('os.arch', System.properties['os.arch'])
+        properties.setProperty('os.version', System.properties['os.version'])
+        properties.store(infoFile.newWriter(), 'Build Information')
+    }
+}

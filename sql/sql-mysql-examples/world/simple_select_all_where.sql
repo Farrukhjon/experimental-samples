@@ -1,0 +1,1 @@
+select * from country c where c.name = 'Tajikistan'

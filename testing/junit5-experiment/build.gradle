@@ -1,0 +1,33 @@
+buildscript {
+    repositories {
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    }
+    dependencies {
+        classpath('org.junit:junit-gradle:5.0.0-SNAPSHOT')
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.junit.gen5.gradle'
+
+repositories {
+    jcenter()
+    maven {
+        url = 'https://oss.sonatype.org/content/repositories/snapshots/'
+    }
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.21'
+    testCompile('junit:junit:4.12')
+    testCompile('org.junit:junit-commons:5.0.0-SNAPSHOT')
+    testCompile('org.junit:junit-console:5.0.0-SNAPSHOT')
+    testCompile('org.junit:junit-engine-api:5.0.0-SNAPSHOT')
+    testCompile('org.junit:junit-launcher:5.0.0-SNAPSHOT')
+    testCompile('org.junit:junit4-engine:5.0.0-SNAPSHOT')
+    testCompile('org.junit:junit4-runner:5.0.0-SNAPSHOT')
+    testCompile('org.junit:junit5-api:5.0.0-SNAPSHOT')
+    testCompile('org.junit:junit5-engine:5.0.0-SNAPSHOT')
+    testCompile('org.junit:surefire-junit5:5.0.0-SNAPSHOT')
+}

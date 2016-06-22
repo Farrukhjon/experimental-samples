@@ -1,0 +1,58 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'application'
+apply plugin: 'jacoco'
+
+defaultTasks 'clean', 'build', 'jacocoTestReport'
+
+mainClassName = "org.examples.jacoco.Application"
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+
+dependencies {
+	compile 'org.slf4j:slf4j-api:1.7.7'
+	testCompile "junit:junit:4.11"
+}
+
+jacocoTestReport {
+	reports {
+		xml.enabled true
+		csv.enabled false
+		html.enabled true
+	}
+}
+
+task verifyCodeCoverage( dependsOn: 'jacocoTestReport' ) {
+	description = 'Parses the generated Jacoco xml report, and determines if sufficient coverage is present.'
+	group = 'Build'
+
+	doFirst {
+		def jacocoReportPath = "${jacoco.reportsDir}/test/jacocoTestReport.xml"
+		logger.quiet "checking for generated Jacoco xml report at $jacocoReportPath"
+		def jacocoReportFile = new File( jacocoReportPath )
+		if ( jacocoReportFile.exists() ) {
+			String xmlStr = jacocoReportFile.text.replace( '<!DOCTYPE report PUBLIC "-//JACOCO//DTD Report 1.0//EN" "report.dtd">', '' )
+			def xml = new XmlParser( false, false ).parse( new ByteArrayInputStream( xmlStr.bytes ) )
+
+			List jacocoExclude = project.properties.containsKey( 'coverageExcludes' ) ? project.ext.coverageExcludes : []
+			def filtered = xml.package.class.findAll { clazz -> !jacocoExclude.any { clazz.@name.contains( it )
+				} }
+			def instructions = filtered.collect{ it.counter }.flatten().findAll{ it.@type == 'INSTRUCTION' }.flatten()
+			def offenders = instructions.findAll { (it.@missed as int) >= (it.@covered as int) }.collect { it.parent().attributes().name }
+			if ( offenders ) {
+				offenders.each { logger.quiet "Insufficient code coverage: $it" }
+				throw new IllegalStateException( "Not enough code coverage! Consult ${jacoco.reportsDir}/test/html/index.html for details." )
+			}
+			else {
+				logger.quiet 'Adequate code coverage detected.'
+			}
+		} else {
+			logger.quiet 'No Jacoco report was generated.'
+		}
+	}
+}
+check.dependsOn 'verifyCodeCoverage'
+

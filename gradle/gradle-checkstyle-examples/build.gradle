@@ -1,0 +1,19 @@
+
+defaultTasks 'clean', 'build', 'check'
+
+allprojects{
+	apply plugin: 'java'
+	apply plugin: 'eclipse'
+	apply plugin: 'checkstyle'
+
+	repositories {
+		mavenLocal()
+		mavenCentral()
+	}
+	dependencies { compile 'org.slf4j:slf4j-api:1.7.7' }
+
+	checkstyle {
+		configFile = new File("${rootDir}/config/checkstyle/checkstyle.xml")
+	}
+}
+

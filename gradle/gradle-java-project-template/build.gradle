@@ -1,0 +1,18 @@
+apply plugin: 'idea'
+
+apply from: "$rootDir/gradle/groovy.gradle"
+apply from: "$rootDir/gradle/checkstyle.gradle"
+apply from: "$rootDir/gradle/jacoco.gradle"
+apply from: "$rootDir/gradle/spock.gradle"
+apply from: "$rootDir/gradle/build-dashboard.gradle"
+apply from: "$rootDir/gradle/project-report.gradle"
+apply from: "$rootDir/gradle/maven.gradle"
+
+defaultTasks 'clean', 'build', 'jacocoTestReport', 'check'
+
+repositories {
+    jcenter()
+}
+
+
+

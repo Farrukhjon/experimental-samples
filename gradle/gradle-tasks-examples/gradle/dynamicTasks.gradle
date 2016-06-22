@@ -1,0 +1,7 @@
+3.times {counter ->
+	task "dynamicTask$counter" << {
+		println "I am dynamic task $counter"
+	}
+}
+
+dynamicTask0.dependsOn dynamicTask1, dynamicTask2

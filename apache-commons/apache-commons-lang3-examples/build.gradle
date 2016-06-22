@@ -1,0 +1,14 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+ext {
+  commonsLangVersion = '3.4'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+      compile ("org.apache.commons:commons-lang3:${commonsLangVersion}")
+}

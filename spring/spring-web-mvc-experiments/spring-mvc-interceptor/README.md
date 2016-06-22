@@ -1,0 +1,1 @@
+Example project to see how spring MVC Interceptor Handler works.

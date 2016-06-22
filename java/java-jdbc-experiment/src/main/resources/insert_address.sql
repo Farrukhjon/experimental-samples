@@ -1,0 +1,5 @@
+insert into address() values
+			(),
+			(),
+			(),
+			();

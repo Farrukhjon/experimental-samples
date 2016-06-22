@@ -1,0 +1,14 @@
+-host: 127.0.0.1
+task:
+     -vars:
+           host_port: 2020
+           container_port: 2020
+           ports: "{{host_port}}:{{container_port}}"
+     -name: Running the gradle-docker-exaples container
+     -command: "docker run --detach=true
+                           --restart=always
+                           --publish={{ports}}
+                           --name={{container_name}}
+                           --hostname={{host_name}}
+                           {{image}}
+                           "

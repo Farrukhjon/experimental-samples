@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+	Implementations are the data objects used to store collections,
+	which implement the interfaces described in . This lesson
+	describes the following kinds of implementations:
+	<ul>
+		<li><b>General-purpose implementations</b> are the most
+			commonly used implementations, designed for everyday use.They
+			are summarized in the table below.</li>
+		<li><b>Special-purpose implementations</b> are designed for
+			use in special situations and display nonstandard performance
+			characteristics, usage restrictions, or behavior.</li>
+		<li><b>Concurrent implementations</b> are designed to
+			support high concurrency, typically at the expense of
+			single-threaded performance. These implementations are part of
+			the <code>java.util.concurrent</code> package.</li>
+		<li><b>Wrapper implementations</b> are used in combination
+			with other types of implementations, often the general-purpose
+			ones, to provide added or restricted functionality.</li>
+		<li><b>Convenience implementations</b> are
+			mini-implementations, typically made available via static
+			factory methods, that provide convenient, efficient
+			alternatives to general-purpose implementations for special
+			collections (for example, singleton sets).</li>
+		<li><b>Abstract implementations</b> are skeletal
+			implementations that facilitate the construction of custom
+			implementations — described later in the <a
+			class="TutorialLink" target="_top"
+			href="../custom-implementations/index.html">Custom
+				Collection Implementations</a> section. An advanced topic, it's
+			not particularly difficult, but relatively few people will need
+			to do it.</li>
+	</ul>
+	<table border="2">
+		<caption id="General-purpose-implementations">
+			<strong>General-purpose Implementations</strong>
+		</caption>
+		<tbody>
+			<tr>
+				<th width="15%">Interfaces</th>
+				<th colspan="5">Implementations</th>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td><b>Hash table</b></td>
+				<td><b>Resizable array</b></td>
+				<td><b>Tree</b></td>
+				<td><b>Linked list</b></td>
+				<td><b>Hash table + Linked list</b></td>
+			</tr>
+			<tr>
+				<td><code>Set</code></td>
+				<td><code>HashSet</code></td>
+				<td>&nbsp;</td>
+				<td><code>TreeSet</code></td>
+				<td>&nbsp;</td>
+				<td><code>LinkedHashSet</code></td>
+			</tr>
+			<tr>
+				<td><code>List</code></td>
+				<td>&nbsp;</td>
+				<td><code>ArrayList</code></td>
+				<td>&nbsp;</td>
+				<td><code>LinkedList</code></td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td><code>Queue</code></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td><code>Map</code></td>
+				<td><code>HashMap</code></td>
+				<td>&nbsp;</td>
+				<td><code>TreeMap</code></td>
+				<td>&nbsp;</td>
+				<td><code>LinkedHashMap</code></td>
+			</tr>
+		</tbody>
+	</table>
+	<br/>
+	<table border="2">
+		<caption>
+			<strong>Comparing the General-Purpose Storage Structures</strong> 
+		</caption>
+		<thead>
+			<tr>
+				<th>Data Structure</th>
+				<th>Search</th>
+				<th>Insertion</th>
+				<th>Deletion</th>
+				<th>Traversal</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Array</td>
+				<td>O(N)</td>
+				<td>O(1)</td>
+				<td>O(N)</td>
+				<td>-</td>
+			</tr>
+			<tr>
+				<td>Ordered array</td>
+				<td>O(Log(N))</td>
+				<td>O(N)</td>
+				<td>O(N)</td>
+				<td>O(N)</td>
+			</tr>
+			<tr>
+				<td>Linked list</td>
+				<td>O(N)</td>
+				<td>O(1)</td>
+				<td>O(N)</td>
+				<td>-</td>
+			</tr>
+			<tr>
+				<td>Ordered linked list</td>
+				<td>O(N)</td>
+				<td>O(N)</td>
+				<td>O(N)</td>
+				<td>O(N)</td>
+			</tr>
+			<tr>
+				<td>Binary tree (average)</td>
+				<td>O(Log(N))</td>
+				<td>O(Log(N))</td>
+				<td>O(Log(N))</td>
+				<td>O(N)</td>
+			</tr>
+			<tr>
+				<td>Binary tree (worst case)</td>
+				<td>O(N)</td>
+				<td>O(N)</td>
+				<td>O(N)</td>
+				<td>O(N)</td>
+			</tr>
+			<tr>
+				<td>Balanced tree (average and worst case)</td>
+				<td>O(Log(N))</td>
+				<td>O(Log(N))</td>
+				<td>O(Log(N))</td>
+				<td>O(N)</td>
+			</tr>
+			<tr>
+				<td>Hash table</td>
+				<td>O(1)</td>
+				<td>O(1)</td>
+				<td>O(1)</td>
+				<td>-</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

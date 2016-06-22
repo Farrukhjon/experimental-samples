@@ -1,0 +1,42 @@
+buildscript {
+	repositories {
+		mavenLocal()
+	}
+	dependencies { classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") }
+}
+
+defaultTasks 'clean', 'build'
+
+apply plugin: 'eclipse'
+
+subprojects {
+
+	apply plugin: 'java'
+	apply plugin: 'groovy'
+	apply plugin: 'eclipse'
+	apply plugin: 'spring-boot'
+
+	repositories {
+		mavenLocal()
+	}
+
+	dependencies {
+		compile("org.springframework.boot:spring-boot-starter")
+		compile("org.springframework.boot:spring-boot-starter-web")
+		compile("org.codehaus.groovy:groovy:${groovyVersion}")
+		testCompile("org.springframework.boot:spring-boot-starter-test")
+		testCompile("org.spockframework:spock-spring:${spockVersion}"){
+			exclude module: 'junit-dep'
+			exclude module: 'groovy-all'
+		}
+		testCompile("org.spockframework:spock-core:${spockVersion}")
+	}
+}
+
+eclipse {
+	classpath {
+		downloadSources = true
+	}
+}
+
+

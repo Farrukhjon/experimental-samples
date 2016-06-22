@@ -1,0 +1,6 @@
+ - Also known as Wrapper.
+ - Adds new behavior.
+ - Декоратор - динамически наделяет объект нвыми возможностями и являетмся гибкой альтернативой наследованию в области расширения функциональности.
+ - A Decorator is one of the best ways ADD FEATURES to an object without changing its INTERFACE.
+ - Makes code composable.
+

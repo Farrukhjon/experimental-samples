@@ -1,0 +1,19 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin:'application'
+
+defaultTasks 'clean', 'build', 'run'
+
+mainClassName = "org.examples.logback.Application"
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+
+dependencies {
+	compile 'org.slf4j:slf4j-api:1.7.7'
+	runtime 'ch.qos.logback:logback-classic:1.1.2'
+	testCompile "junit:junit:4.11"
+}
+

@@ -1,0 +1,20 @@
+logging:
+  level:
+    org.springframework.mail: DEBUG
+
+spring:
+  mail:
+    host: smtp.some-mail-server-provider.com
+    port: 587
+    username: some-account@some-mail-server-provider.com
+    password: some-password
+    properties:
+      mail:
+        debug: true
+        smtp:
+          auth: true
+          socketFactory:
+            port: 465
+            class: javax.net.ssl.SSLSocketFactory
+            fallback: false
+          ssl.enable: true

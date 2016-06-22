@@ -1,0 +1,31 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+apply from: "$rootDir/gradle/dependedTasks.gradle"
+apply from: "$rootDir/gradle/dynamicTasks.gradle"
+
+repositories {
+    jcenter()
+}
+
+task hello {
+	doLast{
+		println 'hello, I am hello task'
+	}
+}
+
+task shortHello << {
+	println 'I am from shortHello task'
+}
+
+task upper << {
+	String str = 'some string'
+	println 'Original: ' + str
+	println 'Upper: ' + str.toUpperCase()
+}
+
+task count << {
+	3.times {
+		print "$it "
+	}
+}

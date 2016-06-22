@@ -1,0 +1,40 @@
+apply plugin: 'java'
+
+allprojects {
+	
+	task printRootProjectName {
+		println "The root dir name is ${rootDir}"
+	}
+
+	task hello << { task ->
+		println "I'm $task.project.name"
+	}
+}
+subprojects{
+	//specification to all subprojects
+	apply plugin: 'java'
+	repositories {
+		mavenCentral()
+	}
+	
+}
+project(':common'){
+	dependencies {
+   		 compile 'org.apache.commons:commons-lang3:3.3.2'
+  }
+}
+
+project(':api'){
+	dependencies {
+	compile project(':common')
+	compile 'org.apache.commons:commons-lang3:3.3.2'
+	compile 'log4j:log4j:1.2.17'
+   }
+}
+
+project(':app'){
+	dependencies {
+		compile project(':common'), project(':api')
+		compile 'log4j:log4j:1.2.17'
+	}
+}

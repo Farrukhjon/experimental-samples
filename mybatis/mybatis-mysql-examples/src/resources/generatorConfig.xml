@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<classPathEntry location="C:/Users/Farrukhjon/.m2/repository/mysql/mysql-connector-java/5.1.23/mysql-connector-java-5.1.23.jar" />
+	<context id="context1" targetRuntime="MyBatis3">
+		
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/tutorialsdb" userId="root" password="myroot007" />
+		
+		<javaModelGenerator targetPackage="model" targetProject="TutorialsMyBatis\src" />
+		
+		<sqlMapGenerator targetPackage="model" targetProject="TutorialsMyBatis\src" />
+		
+		<javaClientGenerator targetPackage="dao" targetProject="TutorialsMyBatis\src" type="XMLMAPPER" />
+		
+		<table schema="tutorialsdb" tableName="ALLTYPES">
+			<columnOverride column="UNSIGNED_BIGINT_FIELD" javaType="java.lang.Object" jdbcType="LONG" />
+		</table>
+	
+	</context>
+</generatorConfiguration>

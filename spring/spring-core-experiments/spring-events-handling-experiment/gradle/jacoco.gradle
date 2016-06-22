@@ -1,0 +1,13 @@
+apply plugin: 'jacoco'
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled true
+        html.enabled true
+    }
+}
+
+jacoco {
+    toolVersion = jacocoVersion
+}

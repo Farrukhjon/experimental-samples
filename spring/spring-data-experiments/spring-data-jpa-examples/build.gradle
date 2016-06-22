@@ -1,0 +1,31 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    runtime("org.hsqldb:hsqldb")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile("org.codehaus.groovy:groovy:${groovyVersion}")
+    testCompile("org.spockframework:spock-core:${spockVersion}") {
+        exclude module: 'groovy-all'
+    }
+    testCompile("org.spockframework:spock-spring:${spockVersion}") {
+        exclude module: 'groovy-all'
+    }
+}

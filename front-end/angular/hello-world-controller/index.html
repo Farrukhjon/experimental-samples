@@ -1,0 +1,19 @@
+<!DOCKTYPE html>
+<html>
+  <head>
+    <title>Hello world!</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
+  </head>
+  <body ng-app="my-app">
+    <div ng-controller="MyController">
+      <input type="text" ng-model="name">
+      <h1>Hello {{ name }}</h1>  
+    </div>
+    <script type="text/javascript">
+      angular.module('my-app', [])
+             .controller('MyController', function($scope) { 
+		    $scope.name = 'Enter your text!';
+      });
+    </script>
+  </body>
+</html>

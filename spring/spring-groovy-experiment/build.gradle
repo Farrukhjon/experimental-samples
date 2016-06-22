@@ -1,0 +1,22 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+
+dependencies {
+	compile "org.springframework:spring-core:${springVersion}"
+	compile "org.springframework:spring-contest:${springVersion}"
+	compile "org.springframework:spring-beans:${springVersion}"
+    compile 'org.slf4j:slf4j-api:1.7.7'
+    testCompile "junit:junit:4.11"
+}
+eclipse {
+	classpath{
+		downloadJavadoc = true
+	}
+}
+

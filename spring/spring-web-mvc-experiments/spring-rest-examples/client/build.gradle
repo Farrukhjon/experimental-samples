@@ -1,0 +1,3 @@
+jar {
+	baseName = 'spring-examples-rest-client'
+}

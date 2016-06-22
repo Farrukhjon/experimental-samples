@@ -1,0 +1,7 @@
+camel:
+  springboot:
+    name: my-camel-context-experiment
+    auto-startup: true
+    allow-use-original-message: true
+
+logging.level.org.apache.camel: DEBUG

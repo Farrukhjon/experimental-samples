@@ -1,0 +1,26 @@
+The Java API for XML Processing (JAXP) is for processing XML data using applications written in the Java programming language.
+JAXP leverages the parser standards Simple API for XML Parsing (SAX) and Document Object Model (DOM) so that you can choose
+to parse your data as a stream of events or to build an object representation of it.
+JAXP also supports the Extensible Stylesheet Language Transformations (XSLT) standard,
+giving you control over the presentation of the data and enabling you to convert the data to other XML documents or to other formats,
+such as HTML. JAXP also provides namespace support, allowing you to work with DTDs that might otherwise have naming conflicts.
+Finally, as of version 1.4, JAXP implements the Streaming API for XML (StAX) standard.
+
+							-=Overview of the Packages=-
+ The SAX and DOM APIs are defined by the XML-DEV group and by the W3C, respectively.
+ The libraries that define those APIs are as follows:
+ - javax.xml.parsers: The JAXP APIs, which provide a common interface for different vendors' SAX and DOM parsers.
+ - org.w3c.dom: Defines the Document class (a DOM) as well as classes for all the components of a DOM.
+ - org.xml.sax: Defines the basic SAX APIs.
+ - javax.xml.transform: Defines the XSLT APIs that let you transform XML into other forms.
+ - javax.xml.stream: Provides StAX-specific transformation APIs.
+							
+							-=SAX Packages=-
+			Packages				Description
+
+	- org.xml.sax			Defines the SAX interfaces. The name org.xml is the package prefix that was settled on by the group that defined the SAX API.
+	- org.xml.sax.ext		Defines SAX extensions that are used for doing more sophisticated SAX processing-for example, to process a document type definition (DTD) or to see the detailed syntax for a file.
+	- org.xml.sax.helpers	Contains helper classes that make it easier to use SAX-for example, by defining a default handler that has null methods for all the interfaces, so that you only need to override the ones you actually want to implement.
+	- javax.xml.parsers		Defines the SAXParserFactory class, which returns the SAXParser. Also defines exception classes for reporting errors.
+ 
+ 

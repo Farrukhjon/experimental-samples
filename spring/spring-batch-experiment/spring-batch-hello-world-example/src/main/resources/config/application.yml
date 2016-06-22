@@ -1,0 +1,4 @@
+spring:
+      batch:
+           initializer:
+                       enabled: false

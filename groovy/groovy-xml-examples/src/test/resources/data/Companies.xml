@@ -1,0 +1,44 @@
+<companies>
+    <company>
+        <name>Coca cola</name>
+        <employees>10000</employees>
+        <departments>
+            <department>
+                <name>IT</name>
+                <employees>100</employees>
+            </department>
+            <department>
+                <name>Bookkeepers</name>
+                <employees>10</employees>
+            </department>
+        </departments>
+    </company>
+    <company>
+        <name>AlphaNet</name>
+        <employees>1000</employees>
+        <departments>
+            <department>
+                <name>IT</name>
+                <employees>100</employees>
+            </department>
+            <department>
+                <name>Bookkeepers</name>
+                <employees>5</employees>
+            </department>
+        </departments>
+    </company>
+    <company>
+        <name>BetaNet</name>
+        <employees>3000</employees>
+        <departments>
+            <department>
+                <name>IT</name>
+                <employees>200</employees>
+            </department>
+            <department>
+                <name>Bookkeepers</name>
+                <employees>15</employees>
+            </department>
+        </departments>
+    </company>
+</companies>

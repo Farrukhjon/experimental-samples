@@ -1,0 +1,24 @@
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+
+dependencies {
+	compile "org.springframework:spring-beans:${springVersion}"
+	compile "org.springframework:spring-core:${springVersion}"
+	compile "org.springframework:spring-context:${springVersion}"
+	compile "org.springframework.data:spring-data-commons:1.9.1.RELEASE"
+	compile "org.springframework:spring-jdbc:${springVersion}"
+	compile "org.springframework:spring-orm:${springVersion}"
+	compile "org.springframework:spring-tx:${springVersion}"
+	compile "org.mybatis:mybatis:${mybatisVersion}"
+	compile "org.mybatis:mybatis-spring:${mybatisSpringVersion}"
+	compile "org.hsqldb:hsqldb:${hsqldbVersion}"
+
+	testCompile "junit:junit:4.11"
+}
+
