@@ -21,9 +21,9 @@ public class JschExecutor2 {
 
         String host = "localhost"; // First level target
         String user = "vagrant";
-        String password = "vagrant";
+        String password = "somepassword";
         String tunnelRemoteHost = "74.122.199.115"; // The host of the second target
-        String secondPassword = "8FvGgC6AQY";
+        String secondPassword = "some-remote-password";
         int port = 22;
 
 
