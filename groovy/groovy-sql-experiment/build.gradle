@@ -1,0 +1,18 @@
+ext {
+    groovyVersion = '2.4.7'
+    hsqldbVersion = '2.3.4'
+}
+
+apply plugin: 'groovy'
+apply plugin: 'idea'
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.codehaus.groovy:groovy-all:${groovyVersion}"
+    compile "org.hsqldb:hsqldb:${hsqldbVersion}"
+}
+
