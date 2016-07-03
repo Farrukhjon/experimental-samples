@@ -1,8 +1,4 @@
 {
-  "files": [
-    "app.ts",
-    "typings/index.d.ts"
-  ],
   "compilerOptions": {
     "module": "commonjs",
     "target": "es5",

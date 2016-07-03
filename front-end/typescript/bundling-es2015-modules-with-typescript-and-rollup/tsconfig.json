@@ -1,10 +1,6 @@
 {
-  "files": [
-    "app.ts",
-    "typings/index.d.ts"
-  ],
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "es2015",
     "target": "es5",
     "sourceMap": true
   },

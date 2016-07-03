@@ -1,5 +1,15 @@
 import * as _ from "lodash";
 
+import $ from "jquery";
+
+function f() {
+    $.each([1, 2, 3], function (indexInArray) {
+        console.log(indexInArray);
+    });
+}
+
+f();
+
 function changeToSnakeCase(param:string) {
     let snakeCase = _.snakeCase(param);
     console.log(snakeCase);
