@@ -11,9 +11,21 @@ import org.farrukh.example.spring.jersey.domain.Post;
 
 import java.util.List;
 
+/**
+ * Responsible for interacting with 3d party post service.
+ */
 public interface PostProvider {
 
+    /**
+     * Retrieves all posts from remote post service.
+     * @return List of posts.
+     */
     List<Post> retrievePosts();
 
+    /**
+     * Retrieves a post by given id.
+     * @param id a post id.
+     * @return post.
+     */
     Post retrievePost(long id);
 }
