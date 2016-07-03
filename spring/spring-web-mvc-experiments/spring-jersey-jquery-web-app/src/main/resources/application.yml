@@ -1,0 +1,9 @@
+spring:
+  jersey:
+    application-path: /
+    type: filter
+logging:
+  level:
+   org.springframework.web: DEBUG
+
+

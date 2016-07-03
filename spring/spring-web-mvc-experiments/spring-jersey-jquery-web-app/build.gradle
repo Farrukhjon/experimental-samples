@@ -1,0 +1,41 @@
+buildscript {
+    ext {
+        springBootVersion = '1.3.5.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+ext {
+    restAssuredVersion = '3.0.0'
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-web',
+            'org.springframework.boot:spring-boot-starter-jersey',
+            'org.springframework.boot:spring-boot-devtools',
+            'org.springframework.boot:spring-boot-starter-data-jpa',
+            'org.springframework.boot:spring-boot-starter-actuator'
+
+    runtime 'org.hsqldb:hsqldb'
+
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+    testCompile "io.rest-assured:rest-assured:${restAssuredVersion}"
+}
+
