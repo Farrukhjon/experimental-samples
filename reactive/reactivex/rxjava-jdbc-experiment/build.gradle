@@ -1,0 +1,21 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    rxjavaVersion = '1.1.6'
+    rxjavaJdbcVersion = '0.7.2'
+    junitVersion = '4.12'
+    slf4jVersion = '1.7.21'
+}
+
+dependencies {
+    compile "io.reactivex:rxjava:${rxjavaVersion}"
+    compile "com.github.davidmoten:rxjava-jdbc:${rxjavaJdbcVersion}"
+
+    compile "org.slf4j:slf4j-api:${slf4jVersion}"
+    testCompile "junit:junit:${junitVersion}"
+}

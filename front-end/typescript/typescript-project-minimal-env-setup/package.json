@@ -1,0 +1,22 @@
+{
+  "name": "typescript-project-minimal-env-setup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "tsc",
+    "tsc:version": "tsc --version",
+    "tsc:init": "tsc --init",
+    "tsc:watch": "tsc -w",
+    "typings": "typings",
+    "typings:install": "typings install",
+    "postinstall": "typings install"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^2.0.0-dev.20160628",
+    "typings": "^1.3.1"
+  }
+}

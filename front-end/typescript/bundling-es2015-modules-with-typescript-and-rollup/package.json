@@ -1,0 +1,17 @@
+{
+  "name": "bundling-es2015-modules-with-typescript-and-rollup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "rollup": "^0.33.0",
+    "rollup-plugin-typescript": "^0.7.6",
+    "typescript": "^1.9.0-dev.20160627-1.0"
+  }
+}
