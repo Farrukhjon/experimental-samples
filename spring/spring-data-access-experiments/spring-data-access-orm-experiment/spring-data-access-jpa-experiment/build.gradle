@@ -1,0 +1,35 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+jar {
+    baseName = 'spring-data-access-jpa-experiment'
+    version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    springVersion = '4.2.7.RELEASE'
+    hibernateVersion = '5.2.1.Final'
+    h2Version = '1.4.192'
+    junitVersion = '4.12'
+}
+
+dependencies {
+    compile "org.springframework:spring-aop:${springVersion}",
+            "org.springframework:spring-beans:${springVersion}",
+            "org.springframework:spring-context:${springVersion}",
+            "org.springframework:spring-expression:${springVersion}",
+            "org.springframework:spring-jdbc:${springVersion}",
+            "org.springframework:spring-orm:${springVersion}",
+            "org.springframework:spring-tx:${springVersion}",
+            "org.hibernate:hibernate-entitymanager:${hibernateVersion}"
+    runtime "com.h2database:h2:${h2Version}"
+    testCompile "junit:junit:${junitVersion}",
+                "org.springframework:spring-test:${springVersion}"
+}
+
