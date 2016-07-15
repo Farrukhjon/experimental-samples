@@ -5,7 +5,12 @@ repositories {
     jcenter()
 }
 
+ext {
+    junitVersion = '4.12'
+    assertJVersion = '3.5.1'
+}
+
 dependencies {
-	testCompile 'junit:junit:4.12'
-	testCompile 'org.assertj:assertj-core:3.5.1'
+    testCompile "junit:junit:${junitVersion}",
+                "org.assertj:assertj-core:${assertJVersion}"
 }
