@@ -1,0 +1,11 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    testCompile 'junit:junit:4.12',
+                'org.assertj:assertj-core:3.5.2'
+}
