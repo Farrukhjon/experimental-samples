@@ -18,9 +18,13 @@ public class CollectionsDemoTests {
 
     @Test
     public void shouldThrownUnsupportedOperationExceptionWhenAddAnItem() {
-        Set<Integer> integers = Collections.singleton(1);
+        int item = 1;
+        int extraItem = 2;
+        Set<Integer> integers = Collections.singleton(item);
+        assertThat(integers)
+                .containsOnly(item);
         try {
-            integers.add(2);
+            integers.add(extraItem);
         } catch (Exception e) {
             assertThatExceptionOfType(UnsupportedOperationException.class)
                     .isThrownBy(() -> {
