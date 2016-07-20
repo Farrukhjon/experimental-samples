@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class SolvingCommonTasks {
 
@@ -26,7 +27,7 @@ public class SolvingCommonTasks {
     }
 
     public <T> List<T> withoutDuplicate(final List<T> list) {
-        HashSet<T> hashSet = new HashSet<>(list);
+        Set<T> hashSet = new HashSet<>(list);
         return new ArrayList<>(hashSet);
     }
 
