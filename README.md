@@ -7,7 +7,7 @@ Set of experimental samples
 - sql
 - typescript
 
-In this repository I have pushed some experiments and top projects in my learning curve.
+In this repository I have pushed some experiments and toy projects in my learning curve.
 You can find some solutions arranged by laguages, frameworks and techologies.
 
 
