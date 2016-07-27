@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+  ~ Copyright (C) F.D. Sattorov Systems, Inc - All Rights Reserved
+  ~ Unauthorized copying of this file, via any medium is strictly prohibited
+  ~ Proprietary and confidential
+  ~ Written by F.D. Sattorov <farrukhjon.sattorov@gmail.com>, May 2016.
+  -->
+
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.url">jdbc:h2:~/test</property>
+    <property name="connection.driver_class">org.h2.Driver</property>
+    <property name="connection.username">sa</property>
+    <property name="connection.password"/>
+    <!-- DB schema will be updated if needed -->
+    <!-- <property name="hbm2ddl.auto">update</property> -->
+  </session-factory>
+</hibernate-configuration>

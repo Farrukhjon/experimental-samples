@@ -1,0 +1,23 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+repositories {
+    jcenter()
+    maven {
+        url = 'https://repository.jboss.org/nexus/content/repositories/'
+    }
+}
+
+ext {
+    hibernateVersion = '5.2.1.Final'
+}
+
+dependencies {
+    compile "org.hibernate:hibernate-core:${hibernateVersion}",
+            "org.hibernate:hibernate-java8:${hibernateVersion}"
+    compile 'org.slf4j:slf4j-api:1.7.21'
+
+    compile 'com.h2database:h2:1.4.192'
+
+    testCompile 'junit:junit:4.12'
+}
