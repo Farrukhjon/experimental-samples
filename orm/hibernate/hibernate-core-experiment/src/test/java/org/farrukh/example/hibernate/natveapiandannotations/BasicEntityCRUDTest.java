@@ -49,7 +49,7 @@ public class BasicEntityCRUDTest {
     }
 
     @Test
-    public void testSomeLibraryMethod() {
+    public void shouldSaveOrder() {
         Session session = sessionFactory.openSession();
 
         session.beginTransaction();
@@ -71,5 +71,14 @@ public class BasicEntityCRUDTest {
         session.close();
         sessionFactory.close();
 
+    }
+
+    @Test
+    public void shouldReadOrder() throws Exception {
+        Session session = sessionFactory.openSession();
+        Order order = session.load(Order.class, 3);
+        int id = order.getId();
+        int customerId = order.getCustomer().getId();
+        int productId = order.getProduct().getId();
     }
 }
