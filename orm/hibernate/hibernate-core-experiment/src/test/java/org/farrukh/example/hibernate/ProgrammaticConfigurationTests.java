@@ -5,7 +5,7 @@
  * Written by F.D. Sattorov <farrukhjon.sattorov@gmail.com>, May 2016.
  */
 
-package org.farrukh.example.hibernate.natveapiandannotations;
+package org.farrukh.example.hibernate;
 
 import org.hamcrest.core.Is;
 import org.hibernate.CacheMode;
