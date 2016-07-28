@@ -5,7 +5,8 @@
  * Written by F.D. Sattorov <farrukhjon.sattorov@gmail.com>, May 2016.
  */
 
-package org.farrukh.example.hibernate;
+package org.farrukh.example.hibernate.model;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,12 +14,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "orders")
-public class Order {
+@Table(name = "products")
+public class Product {
 
     @Id
     @GeneratedValue
     private int id;
+
+    private String name;
 
     public int getId() {
         return id;
@@ -28,4 +31,11 @@ public class Order {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(final String name) {
+        this.name = name;
+    }
 }

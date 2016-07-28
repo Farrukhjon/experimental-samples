@@ -7,17 +7,20 @@
 
 package org.farrukh.example.hibernate.natveapiandannotations;
 
-import org.farrukh.example.hibernate.Order;
+import org.farrukh.example.hibernate.model.Customer;
+import org.farrukh.example.hibernate.model.Order;
+import org.farrukh.example.hibernate.model.Product;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.Serializable;
+
+import static org.junit.Assert.assertNotNull;
 
 public class BasicEntityCRUDTest {
 
@@ -30,25 +33,43 @@ public class BasicEntityCRUDTest {
                                                                                       .build();
         try {
             MetadataSources sources = new MetadataSources(serviceRegistry);
-            sources.addAnnotatedClass(Order.class);
+            sources.addAnnotatedClass(Order.class)
+                   .addAnnotatedClass(Customer.class)
+                   .addAnnotatedClass(Product.class);
             sessionFactory = sources.buildMetadata()
-                                                                 .buildSessionFactory();
+                                    .buildSessionFactory();
         } catch (Exception e) {
             StandardServiceRegistryBuilder.destroy(serviceRegistry);
         }
     }
 
     @Test
+    public void successCreationOfSessionFactory() throws Exception {
+        assertNotNull(sessionFactory);
+    }
+
+    @Test
     public void testSomeLibraryMethod() {
-        Assert.assertNotNull(sessionFactory);
         Session session = sessionFactory.openSession();
 
         session.beginTransaction();
 
-        Serializable saved = session.save(new Order());
+        Customer customer = new Customer();
+        customer.setName("Ali");
+        session.save(customer);
+
+        Product printer = new Product();
+        printer.setName("3D Printer");
+        session.save(printer);
+
+        Order order = new Order();
+        order.setCustomer(customer);
+        order.setProduct(printer);
+        Serializable saved = session.save(order);
 
         session.getTransaction().commit();
-        Assert.assertNotNull(saved);
+
+        assertNotNull(saved);
         session.close();
         sessionFactory.close();
 
