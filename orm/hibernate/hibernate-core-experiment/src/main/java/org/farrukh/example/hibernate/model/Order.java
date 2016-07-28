@@ -8,6 +8,8 @@
 package org.farrukh.example.hibernate.model;
 
 import com.sun.istack.internal.NotNull;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -27,11 +29,13 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "customer_id", foreignKey = @ForeignKey(name = "CUSTOMER_ID_FK"))
+    @Cascade(CascadeType.SAVE_UPDATE)
     @NotNull
     private Customer customer;
 
     @ManyToOne
     @JoinColumn(name = "product_id", foreignKey = @ForeignKey(name = "PRODUCT_ID_KF"))
+    @Cascade(CascadeType.SAVE_UPDATE)
     @NotNull
     private Product product;
 

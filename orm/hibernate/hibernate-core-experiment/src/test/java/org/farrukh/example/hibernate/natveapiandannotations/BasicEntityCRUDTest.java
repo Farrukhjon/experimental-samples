@@ -56,11 +56,9 @@ public class BasicEntityCRUDTest {
 
         Customer customer = new Customer();
         customer.setName("Ali");
-        session.save(customer);
 
         Product printer = new Product();
         printer.setName("3D Printer");
-        session.save(printer);
 
         Order order = new Order();
         order.setCustomer(customer);
