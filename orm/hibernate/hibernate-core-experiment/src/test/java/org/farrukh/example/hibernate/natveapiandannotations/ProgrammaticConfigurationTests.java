@@ -33,6 +33,7 @@ public class ProgrammaticConfigurationTests {
     private static final String MYSQL5_DIALECT = "org.hibernate.dialect.MySQL5Dialect";
     private static final String MYSQL_DRIVER = "com.mysql.jdbc.Driver";
     private static final String MYSQL_URL = "jdbc:mysql://localhost:3306/testdb";
+    private static final boolean IS_LOGGED = true;
 
     private SessionFactory sessionFactory;
 
@@ -44,6 +45,7 @@ public class ProgrammaticConfigurationTests {
         settings.put("hibernate.connection.url", MYSQL_URL);
         settings.put("hibernate.connection.username", USER_NAME);
         settings.put("hibernate.connection.password", PASSWORD);
+        settings.put("hibernate.show_sql", IS_LOGGED);
         StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(settings)
                                                                                       .build();
         MetadataSources sources = new MetadataSources(serviceRegistry);
