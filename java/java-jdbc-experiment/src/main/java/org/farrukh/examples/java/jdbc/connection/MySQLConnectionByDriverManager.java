@@ -9,7 +9,7 @@ import java.sql.SQLException;
  */
 public class MySQLConnectionByDriverManager extends BaseMySQLConnection {
 
-    private static final String MYSQL_Full_URL = "jdbc:mysql://localhost:3306/test?user=root&password=mysql";
+    private static final String MYSQL_FULL_URL = "jdbc:mysql://localhost:3306/testdb?user=root&password=sa";
 
     private MySQLConnectionByDriverManager() {
     }
@@ -17,7 +17,7 @@ public class MySQLConnectionByDriverManager extends BaseMySQLConnection {
     public Connection getConnectionUsingDriverManager() {
         Connection connection = null;
         try {
-            connection = DriverManager.getConnection(MYSQL_Full_URL);
+            connection = DriverManager.getConnection(MYSQL_FULL_URL);
         } catch (SQLException e) {
             e.printStackTrace();
         }
