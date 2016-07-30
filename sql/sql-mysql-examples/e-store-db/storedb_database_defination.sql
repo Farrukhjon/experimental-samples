@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS products (
     id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     number INT,
     price DOUBLE,
-    category_id INT UNSIGNED NOT NULL,
+    category_id INT UNSIGNED NOT NULL,orders
     FOREIGN KEY (category_id)
         REFERENCES categories (id)
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8 AUTO_INCREMENT=1;
