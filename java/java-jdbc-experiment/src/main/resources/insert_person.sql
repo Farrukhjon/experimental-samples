@@ -1,5 +1,5 @@
-insert into person(surname, name, patronymic, id_address) values
-			("", "", "", 1),
-			("", "", "", 2),
-			("", "", "", 3),
-			("", "", "", 4);
+INSERT INTO person (surname, name, patronymic, id_address) VALUES
+  ("", "", "", 1),
+  ("", "", "", 2),
+  ("", "", "", 3),
+  ("", "", "", 4);

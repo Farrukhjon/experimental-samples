@@ -1,7 +1,7 @@
-create schema if not exists tutorialsdb;
-use tutorialsdb;
-show keys from person;
+CREATE SCHEMA IF NOT EXISTS tutorialsdb;
+USE tutorialsdb;
+SHOW KEYS FROM person;
 
-show tables;
+SHOW TABLES;
 
-desc person;
+DESC person;

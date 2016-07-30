@@ -1,5 +1,5 @@
-insert into address() values
-			(),
-			(),
-			(),
-			();
+INSERT INTO address () VALUES
+  (),
+  (),
+  (),
+  ();

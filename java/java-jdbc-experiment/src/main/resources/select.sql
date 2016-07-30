@@ -1,3 +1,6 @@
-select * from savol;
-select * from muallim;
-select * from pursishnoma;
+SELECT *
+FROM savol;
+SELECT *
+FROM muallim;
+SELECT *
+FROM pursishnoma;
