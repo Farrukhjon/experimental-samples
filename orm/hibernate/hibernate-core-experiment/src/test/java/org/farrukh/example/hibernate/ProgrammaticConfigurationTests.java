@@ -7,7 +7,6 @@
 
 package org.farrukh.example.hibernate;
 
-import org.hamcrest.core.Is;
 import org.hibernate.CacheMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,7 +14,7 @@ import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.junit.Assert;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -33,6 +32,7 @@ public class ProgrammaticConfigurationTests {
     private static final String MYSQL5_DIALECT = "org.hibernate.dialect.MySQL5Dialect";
     private static final String MYSQL_DRIVER = "com.mysql.jdbc.Driver";
     private static final String MYSQL_URL = "jdbc:mysql://localhost:3306/testdb";
+    private static final String CREATE = "create";
     private static final boolean IS_LOGGED = true;
 
     private SessionFactory sessionFactory;
@@ -45,6 +45,7 @@ public class ProgrammaticConfigurationTests {
         settings.put("hibernate.connection.url", MYSQL_URL);
         settings.put("hibernate.connection.username", USER_NAME);
         settings.put("hibernate.connection.password", PASSWORD);
+        settings.put("hibernate.hbm2ddl.auto", CREATE);
         settings.put("hibernate.show_sql", IS_LOGGED);
         StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(settings)
                                                                                       .build();
@@ -70,4 +71,10 @@ public class ProgrammaticConfigurationTests {
         }
 
     }
+
+    @After
+    public void tearDown() throws Exception {
+        sessionFactory.close();
+    }
+
 }

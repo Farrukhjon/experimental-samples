@@ -12,6 +12,7 @@ ext {
     hibernateVersion = '5.2.1.Final'
     h2Version = '1.4.192'
     mysqlVersion = '5.1.39'
+    lombokVersion = '1.16.10'
     slf4JVersion = '1.7.21'
     logbackVersion = '1.1.7'
 }
@@ -20,6 +21,7 @@ dependencies {
     compile "org.hibernate:hibernate-core:${hibernateVersion}",
             "com.h2database:h2:${h2Version}",
             "mysql:mysql-connector-java:${mysqlVersion}",
+            "org.projectlombok:lombok:${lombokVersion}",
             "org.slf4j:slf4j-api:${slf4JVersion}",
             "ch.qos.logback:logback-classic:${logbackVersion}"
     testCompile 'junit:junit:4.12'
