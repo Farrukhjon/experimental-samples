@@ -1,0 +1,14 @@
+app:
+  datasource:
+    mysql:
+      url: jdbc:mysql://localhost:3306/testdb
+      username: root
+      password: sa
+      driverClassName: com.mysql.jdbc.Driver
+    postgres:
+      url: jdbc:postgresql://localhost:5432/testdb
+      username: postgres
+      password: sa
+      driverClassName: org.postgresql.Driver
+logging:
+  level: debug
