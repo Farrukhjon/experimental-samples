@@ -27,9 +27,7 @@ repositories {
 
 
 dependencies {
-    compile 'org.springframework.boot:spring-boot-starter-jdbc',
-            'org.springframework.boot:spring-boot-starter-web',
-            'org.projectlombok:lombok'
+    compile 'org.springframework.boot:spring-boot-starter-jdbc'
 
     runtime 'mysql:mysql-connector-java',
             'org.postgresql:postgresql'
