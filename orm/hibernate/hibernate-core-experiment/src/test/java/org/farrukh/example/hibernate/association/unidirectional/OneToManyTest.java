@@ -8,7 +8,6 @@
 package org.farrukh.example.hibernate.association.unidirectional;
 
 import com.sun.istack.internal.NotNull;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -18,7 +17,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
-import org.junit.Before;
 import org.junit.Test;
 
 import javax.persistence.Column;
@@ -41,20 +39,17 @@ public class OneToManyTest extends AbstractBaseTest {
     private SessionFactory sessionFactory;
 
     @Override
-    @Before
-    public void setUp() throws Exception {
-        super.setUp();
-        sessionFactory = getMetadataSources()
-                .addAnnotatedClass(Person.class)
-                .addAnnotatedClass(Phone.class)
-                .buildMetadata()
-                .buildSessionFactory();
+    protected Class<?>[] getAnnotatedClasses() {
+        return new Class<?>[]{
+                Person.class,
+                Phone.class
+        };
     }
 
     @Test
     public void test() throws Exception {
         Transaction tx;
-        try (Session session = sessionFactory.openSession()) {
+        try (Session session = getSessionFactory().openSession()) {
             tx = session.getTransaction();
             tx.begin();
             Person sami = new Person("Sami");

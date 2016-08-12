@@ -11,11 +11,9 @@ import lombok.Getter;
 import lombok.Setter;
 import org.farrukh.example.hibernate.AbstractBaseTest;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
-import org.junit.Before;
 import org.junit.Test;
 
 import javax.persistence.Column;
@@ -36,23 +34,18 @@ import javax.persistence.Table;
  */
 public class ManyToOneTest extends AbstractBaseTest {
 
-    private SessionFactory sessionFactory;
-
     @Override
-    @Before
-    public void setUp() throws Exception {
-        super.setUp();
-        sessionFactory = getMetadataSources()
-                .addAnnotatedClass(Person.class)
-                .addAnnotatedClass(Phone.class)
-                .buildMetadata()
-                .buildSessionFactory();
+    protected Class<?>[] getAnnotatedClasses() {
+        return new Class<?>[]{
+                Person.class,
+                Phone.class
+        };
     }
 
     @Test
     public void test() throws Exception {
         Transaction tx;
-        try (Session session = sessionFactory.openSession()) {
+        try (Session session = getSessionFactory().openSession()) {
             tx = session.getTransaction();
             tx.begin();
             Person vali = new Person();

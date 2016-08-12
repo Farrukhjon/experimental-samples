@@ -29,41 +29,46 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import static java.util.Arrays.asList;
+
 /**
  * Represents Unidirectional Many-To-Many association between.
  */
 public class ManyToManyTest extends AbstractBaseTest {
 
-    private SessionFactory sessionFactory;
-
     @Override
-    @Before
-    public void setUp() throws Exception {
-        super.setUp();
-        sessionFactory = getMetadataSources()
-                .addAnnotatedClass(Employee.class)
-                .addAnnotatedClass(Skill.class)
-                .buildMetadata()
-                .buildSessionFactory();
+    protected Class<?>[] getAnnotatedClasses() {
+        return new Class<?>[]{
+                Employee.class,
+                Skill.class
+        };
     }
 
     @Test
     public void testEmployeeHasManySkillsAndManySkillsReusedBetweenManyEmployee() throws Exception {
-        try (Session session = sessionFactory.openSession()) {
+        try (Session session = getSessionFactory().openSession()) {
             Transaction tx = session.getTransaction();
 
             tx.begin();
             Employee jomi = new Employee("Jomi");
             Employee gani = new Employee("Gani");
+            Employee sami = new Employee("Sami");
+            Employee ali = new Employee("Ali");
 
             Skill java = new Skill("Java");
             Skill web = new Skill("Web");
+            Skill sql = new Skill("SQL");
+            Skill php = new Skill("PHP");
 
-            jomi.setSkills(new HashSet<>(Arrays.asList(java, new Skill("SQL"), web)));
-            gani.setSkills(new HashSet<>(Arrays.asList(java, web)));
+            jomi.setSkills(new HashSet<>(asList(java, sql, web)));
+            gani.setSkills(new HashSet<>(asList(java, web)));
+            sami.setSkills(new HashSet<>(asList(sql)));
+            ali.setSkills(new HashSet<>(asList(php, sql)));
 
             session.save(jomi);
             session.save(gani);
+            session.save(sami);
+            session.save(ali);
 
             tx.commit();
         }

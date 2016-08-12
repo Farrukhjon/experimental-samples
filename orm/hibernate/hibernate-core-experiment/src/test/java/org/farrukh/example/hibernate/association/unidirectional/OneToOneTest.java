@@ -15,7 +15,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
-import org.junit.Before;
 import org.junit.Test;
 
 import javax.persistence.Entity;
@@ -33,22 +32,17 @@ import javax.persistence.Table;
  */
 public class OneToOneTest extends AbstractBaseTest {
 
-    private SessionFactory sessionFactory = null;
-
     @Override
-    @Before
-    public void setUp() throws Exception {
-        super.setUp();
-        sessionFactory = getMetadataSources()
-                .addAnnotatedClass(Person.class)
-                .addAnnotatedClass(Address.class)
-                .buildMetadata()
-                .buildSessionFactory();
+    protected Class<?>[] getAnnotatedClasses() {
+        return new Class<?>[]{
+                Person.class,
+                Address.class
+        };
     }
 
     @Test
     public void testOneToOneUnidirectionalAssociationBetweenCustomerAndOrder() {
-        try (Session session = sessionFactory.openSession()) {
+        try (Session session = getSessionFactory().openSession()) {
             Transaction tx = session.getTransaction();
 
             tx.begin();
