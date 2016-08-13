@@ -5,7 +5,9 @@ apply plugin: 'idea'
 ext {
     groovyVersion = '2.4.7'
     spockVersion = '1.0-groovy-2.4'
-    mysqlJdbcVersion = '5.1.39'
+    h2Version = '1.4.192'
+    mysqlVersion = '5.1.39'
+    postgresqlVersion = '9.4.1209'
 }
 
 repositories {
@@ -17,7 +19,9 @@ configurations {
 }
 
 dependencies {
-    compile "mysql:mysql-connector-java:${mysqlJdbcVersion}"
+    compile "com.h2database:h2:${h2Version}",
+            "mysql:mysql-connector-java:${mysqlVersion}",
+            "org.postgresql:postgresql:${postgresqlVersion}"
 
     testCompile "org.codehaus.groovy:groovy:${groovyVersion}",
                 "org.codehaus.groovy:groovy-sql:${groovyVersion}",

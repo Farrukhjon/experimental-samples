@@ -53,7 +53,7 @@ class JdbcRowSetTest extends BaseTest {
 
         when:
         jdbcRowSet.setCommand(sql)
-        jdbcRowSet.setUrl('jdbc:mysql://localhost:3306/test')
+        jdbcRowSet.setUrl('jdbc:mysql://localhost:3306/shouldQueryVersionOfH2Database')
         jdbcRowSet.setUsername('root')
         jdbcRowSet.setPassword('mysql')
         jdbcRowSet.execute()
