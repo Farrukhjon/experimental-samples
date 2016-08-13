@@ -7,17 +7,16 @@
 
 package org.farrukh.example.hibernate.association.unidirectional;
 
-import com.sun.istack.internal.NotNull;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.farrukh.example.hibernate.AbstractBaseTest;
+import org.farrukh.example.hibernate.datasource.DataSourceProvider;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
-import org.junit.Before;
 import org.junit.Test;
 
 import javax.persistence.Entity;
@@ -25,7 +24,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -42,6 +40,11 @@ public class ManyToManyTest extends AbstractBaseTest {
                 Employee.class,
                 Skill.class
         };
+    }
+
+    @Override
+    protected DataSourceProvider dataSourceProvider() {
+        return null;
     }
 
     @Test
@@ -86,7 +89,7 @@ public class ManyToManyTest extends AbstractBaseTest {
         @GeneratedValue
         private long id;
 
-        @NotNull
+        @NonNull
         private final String name;
 
         @ManyToMany
@@ -105,7 +108,7 @@ public class ManyToManyTest extends AbstractBaseTest {
         @GeneratedValue
         private long id;
 
-        @NotNull
+        @NonNull
         private final String skillName;
     }
 

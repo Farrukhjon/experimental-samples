@@ -10,6 +10,9 @@ package org.farrukh.example.hibernate.identifier;
 import lombok.Getter;
 import lombok.Setter;
 import org.farrukh.example.hibernate.AbstractBaseTest;
+import org.farrukh.example.hibernate.datasource.DataSourceProvider;
+import org.farrukh.example.hibernate.datasource.H2DataSourceProvider;
+import org.farrukh.example.hibernate.datasource.PostgresDataSourceProvider;
 import org.junit.Test;
 
 import javax.persistence.Column;
@@ -30,6 +33,11 @@ import static org.junit.Assert.assertNotNull;
 public class CompositeIdTests extends AbstractBaseTest {
 
     @Override
+    protected DataSourceProvider dataSourceProvider() {
+        return new H2DataSourceProvider();
+    }
+
+    @Override
     protected Class<?>[] getAnnotatedClasses() {
         return new Class<?>[]{
                 Company.class,
@@ -37,6 +45,7 @@ public class CompositeIdTests extends AbstractBaseTest {
                 Phone.class
         };
     }
+
 
     @Test
     public void test() throws Exception {
@@ -66,7 +75,6 @@ public class CompositeIdTests extends AbstractBaseTest {
             assertNotNull(phone);
             assertEquals(new EmployeeId(1L, 100L), phone.getEmployee().getId());
         });
-
 
     }
 

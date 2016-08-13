@@ -10,6 +10,7 @@ package org.farrukh.example.hibernate.association.unidirectional;
 import lombok.Getter;
 import lombok.Setter;
 import org.farrukh.example.hibernate.AbstractBaseTest;
+import org.farrukh.example.hibernate.datasource.DataSourceProvider;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -38,6 +39,11 @@ public class OneToOneTest extends AbstractBaseTest {
                 Person.class,
                 Address.class
         };
+    }
+
+    @Override
+    protected DataSourceProvider dataSourceProvider() {
+        return null;
     }
 
     @Test

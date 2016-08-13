@@ -7,7 +7,7 @@
 
 package org.farrukh.example.hibernate.model;
 
-import com.sun.istack.internal.NotNull;
+import lombok.NonNull;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
@@ -30,13 +30,13 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "customer_id", foreignKey = @ForeignKey(name = "CUSTOMER_ID_FK"))
     @Cascade(CascadeType.SAVE_UPDATE)
-    @NotNull
+    @NonNull
     private Customer customer;
 
     @ManyToOne
     @JoinColumn(name = "product_id", foreignKey = @ForeignKey(name = "PRODUCT_ID_KF"))
     @Cascade(CascadeType.SAVE_UPDATE)
-    @NotNull
+    @NonNull
     private Product product;
 
     public int getId() {

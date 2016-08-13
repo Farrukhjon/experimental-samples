@@ -7,28 +7,37 @@
 
 package org.farrukh.example.hibernate;
 
+import org.farrukh.example.hibernate.datasource.DataSourceProvider;
+import org.farrukh.example.hibernate.datasource.H2DataSourceProvider;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.junit.Before;
 
+import java.util.Map;
+import java.util.Properties;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
 public abstract class AbstractBaseTest {
 
+    private static final String HIBERNATE_SHOW_SQL = "hibernate.show_sql";
+    private static final String HIBERNATE_FORMAT_SQL = "hibernate.format_sql";
+    private static final String HIBERNATE_HBM2DDL_AUTO = "hibernate.hbm2ddl.auto";
+
+    private static final String DIALECT = "hibernate.dialect";
+    private static final String HIBERNATE_DATA_SOURCE = "hibernate.connection.datasource";
+
+    private DataSourceProvider dataSourceProvider;
     private MetadataSources metadataSources;
     private SessionFactory sessionFactory;
 
-    protected abstract Class<?>[] getAnnotatedClasses();
-
-    @Before
-    public void setUp() throws Exception {
-        String url = "hibernate.cfg.xml";
-        StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().configure(url)
+    protected AbstractBaseTest() {
+        dataSourceProvider = dataSourceProvider();
+        StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(dataSourceSettings())
+                                                                                      .applySettings(hibernateSettings())
                                                                                       .build();
         try {
             metadataSources = new MetadataSources(serviceRegistry);
@@ -43,7 +52,34 @@ public abstract class AbstractBaseTest {
                                         .buildSessionFactory();
     }
 
-    protected SessionFactory getSessionFactory() {
+    protected abstract Class<?>[] getAnnotatedClasses();
+
+    protected abstract DataSourceProvider dataSourceProvider();
+
+    private Map hibernateSettings() {
+        Properties properties = new Properties();
+        properties.put(HIBERNATE_SHOW_SQL, true);
+        properties.put(HIBERNATE_FORMAT_SQL, true);
+        properties.put(HIBERNATE_HBM2DDL_AUTO, "create");
+        return properties;
+    }
+
+    private Map dataSourceSettings() {
+        Properties settings = new Properties();
+        if (dataSourceProvider == null) {
+            dataSourceProvider = defaultDataSourceProvider();
+        }
+        settings.put(DIALECT, dataSourceProvider.dialect());
+        settings.put(HIBERNATE_DATA_SOURCE, dataSourceProvider.dataSource());
+        return settings;
+    }
+
+
+    private DataSourceProvider defaultDataSourceProvider() {
+        return new H2DataSourceProvider();
+    }
+
+    protected final SessionFactory getSessionFactory() {
         return sessionFactory;
     }
 

@@ -7,11 +7,12 @@
 
 package org.farrukh.example.hibernate.association.unidirectional;
 
-import com.sun.istack.internal.NotNull;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.farrukh.example.hibernate.AbstractBaseTest;
+import org.farrukh.example.hibernate.datasource.DataSourceProvider;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -46,6 +47,11 @@ public class OneToManyTest extends AbstractBaseTest {
         };
     }
 
+    @Override
+    protected DataSourceProvider dataSourceProvider() {
+        return null;
+    }
+
     @Test
     public void test() throws Exception {
         Transaction tx;
@@ -76,7 +82,7 @@ public class OneToManyTest extends AbstractBaseTest {
         @GeneratedValue
         private long id;
 
-        @NotNull
+        @NonNull
         @Column(nullable = false)
         private final String name;
 
@@ -98,7 +104,7 @@ public class OneToManyTest extends AbstractBaseTest {
         @GeneratedValue
         private long id;
 
-        @NotNull
+        @NonNull
         @Column(nullable = false)
         private final String number;
 

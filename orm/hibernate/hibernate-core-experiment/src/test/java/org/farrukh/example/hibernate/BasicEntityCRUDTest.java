@@ -7,6 +7,7 @@
 
 package org.farrukh.example.hibernate;
 
+import org.farrukh.example.hibernate.datasource.DataSourceProvider;
 import org.farrukh.example.hibernate.model.Customer;
 import org.farrukh.example.hibernate.model.Order;
 import org.farrukh.example.hibernate.model.Product;
@@ -16,31 +17,19 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.Serializable;
 
 import static org.junit.Assert.assertNotNull;
 
-public class BasicEntityCRUDTest {
+public class BasicEntityCRUDTest extends AbstractBaseTest {
 
     private SessionFactory sessionFactory;
 
-    @Before
-    public void setUp() throws Exception {
-        String url = "hibernate.cfg.xml";
-        StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().configure(url)
-                                                                                      .build();
-        try {
-            MetadataSources sources = new MetadataSources(serviceRegistry);
-            sources.addAnnotatedClass(Order.class)
-                   .addAnnotatedClass(Customer.class)
-                   .addAnnotatedClass(Product.class);
-            sessionFactory = sources.buildMetadata()
-                                    .buildSessionFactory();
-        } catch (Exception e) {
-            StandardServiceRegistryBuilder.destroy(serviceRegistry);
-        }
+    public BasicEntityCRUDTest() {
+        sessionFactory = getSessionFactory();
     }
 
     @Test
@@ -74,6 +63,7 @@ public class BasicEntityCRUDTest {
     }
 
     @Test
+    @Ignore
     public void shouldReadOrder() throws Exception {
         Session session = sessionFactory.openSession();
         Order order = session.load(Order.class, 3);
@@ -81,4 +71,19 @@ public class BasicEntityCRUDTest {
         int customerId = order.getCustomer().getId();
         int productId = order.getProduct().getId();
     }
+
+    @Override
+    protected Class<?>[] getAnnotatedClasses() {
+        return new Class<?>[]{
+                Order.class,
+                Customer.class,
+                Product.class
+        };
+    }
+
+    @Override
+    protected DataSourceProvider dataSourceProvider() {
+        return null;
+    }
+
 }
