@@ -1,0 +1,7 @@
+spring:
+  activemq:
+    in-memory: true
+    pool:
+      enabled: false
+app:
+  queue_name: sample.queue
