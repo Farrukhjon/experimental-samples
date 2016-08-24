@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (C) F.D. Sattorov Systems, Inc - All Rights Reserved
+  ~ Unauthorized copying of this file, via any medium is strictly prohibited
+  ~ Proprietary and confidential
+  ~ Written by F.D. Sattorov <farrukhjon.sattorov@gmail.com>, May 2016.
+  -->
+
+<configuration debug="false">
+
+    <contextName>Development</contextName>
+
+    <property name="MESSAGE_FORMAT" value="%contextName %1(%.-1level) %35.35logger{0} %message %throwable{short}%n"/>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${MESSAGE_FORMAT}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.farrukh" level="ALL"/>
+    <logger name="org.jooq" level="ALL"/>
+
+    <root level="DEBUG">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+</configuration>

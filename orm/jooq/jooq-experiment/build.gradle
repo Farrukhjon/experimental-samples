@@ -28,7 +28,8 @@ dependencies {
     compile "org.jooq:jooq:${jooqVersion}",
             "org.jooq:jooq-meta:${jooqVersion}",
             "org.jooq:jooq-codegen:${jooqVersion}",
-            "mysql:mysql-connector-java:${mysqlVersion}"
+            "mysql:mysql-connector-java:${mysqlVersion}",
+            "ch.qos.logback:logback-classic:${logbackVersion}"
 
     testCompile "junit:junit:${junitVersion}"
 }
