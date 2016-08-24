@@ -1,0 +1,6 @@
+spring:
+  datasource:
+     username: root
+     password: sa
+     url: jdbc:mysql://localhost:3306/testdb
+  jooq.sql-dialect: mysql

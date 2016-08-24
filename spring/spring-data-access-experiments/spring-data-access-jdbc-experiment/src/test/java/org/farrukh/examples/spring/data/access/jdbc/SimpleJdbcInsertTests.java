@@ -18,7 +18,7 @@ public class SimpleJdbcInsertTests extends BaseTest{
         city.setCountryCode("NL");
         city.setPopulation(1234567);
         city.setDistrict("Amsterdam DC");
-        Number key = simpleJdbcInsert.withTableName("city")
+        Number key = simpleJdbcInsert.withTableName("cities")
                                      .usingGeneratedKeyColumns("id")
                                      .executeAndReturnKey(new BeanPropertySqlParameterSource(city));
         System.out.println(key);

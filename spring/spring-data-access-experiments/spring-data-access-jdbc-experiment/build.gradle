@@ -1,24 +1,31 @@
-apply plugin: 'java'
-apply plugin: 'idea'
-
-ext {
-    springVersion = '4.2.5.RELEASE'
-    junitVersion = '4.12'
-    mysqlDriverVersion = '5.1.38'
-    h2Version = '1.4.191'
+buildscript {
+    ext {
+        springBootVersion = '1.4.0.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
-    compile("org.springframework:spring-jdbc:${springVersion}")
-    compile("org.springframework:spring-context:${springVersion}")
-    compile("mysql:mysql-connector-java:${mysqlDriverVersion}")
+    compile 'org.springframework.boot:spring-boot-starter-jdbc'
 
-    runtime("com.h2database:h2:${h2Version}")
+    runtime 'mysql:mysql-connector-java'
 
-    testCompile("org.springframework:spring-test:${springVersion}")
-    testCompile "junit:junit:${junitVersion}"
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
+

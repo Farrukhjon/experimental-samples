@@ -1,0 +1,74 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "nu.studer:gradle-jooq-plugin:${jooqGradlePluginVersion}"
+        classpath "mysql:mysql-connector-java:${mysqlVersion}"
+    }
+    configurations.classpath {
+        resolutionStrategy {                            // enforce a specific jOOQ version
+            forcedModules = [
+                    "org.jooq:jooq:${jooqVersion}",
+                    "org.jooq:jooq-meta:${jooqVersion}",
+                    "org.jooq:jooq-codegen:${jooqVersion}"
+            ]
+        }
+    }
+}
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'nu.studer.jooq'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile "org.jooq:jooq:${jooqVersion}",
+            "org.jooq:jooq-meta:${jooqVersion}",
+            "org.jooq:jooq-codegen:${jooqVersion}",
+            "mysql:mysql-connector-java:${mysqlVersion}"
+
+    testCompile "junit:junit:${junitVersion}"
+}
+
+jooq {
+    sample(sourceSets.main) {
+        jdbc {
+            driver = 'com.mysql.jdbc.Driver'
+            url = 'jdbc:mysql://localhost:3306/testdb'
+            user = 'root'
+            password = 'sa'
+            schema = 'testdb'
+            properties {
+                property {
+                    key = 'useSSL'
+                    value = 'false'
+                }
+            }
+        }
+        generator {
+            name = 'org.jooq.util.DefaultGenerator'
+            strategy {
+                name = 'org.jooq.util.DefaultGeneratorStrategy'
+            }
+            database {
+                name = 'org.jooq.util.mysql.MySQLDatabase'
+                inputSchema = 'testdb'
+                includes  = '.*'
+            }
+            generate {
+                relations = true
+                deprecated = false
+                records = true
+                immutablePojos = true
+                fluentSetters = true
+            }
+            target {
+                packageName = 'org.farrukh.examples.jooq'
+                //directory = 'src/main/java'
+            }
+        }
+    }
+}

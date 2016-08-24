@@ -14,10 +14,9 @@ ext {
 
 dependencies {
     compile "org.hibernate:hibernate-core:${hibernateVersion}",
-            "org.hibernate:hibernate-java8:${hibernateVersion}"
-    compile 'org.slf4j:slf4j-api:1.7.21'
-
-    compile 'com.h2database:h2:1.4.192'
+            "org.hibernate:hibernate-java8:${hibernateVersion}",
+            'org.slf4j:slf4j-api:1.7.21',
+            'com.h2database:h2:1.4.192'
 
     testCompile 'junit:junit:4.12'
 }

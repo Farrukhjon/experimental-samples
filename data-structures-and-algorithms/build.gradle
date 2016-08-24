@@ -12,3 +12,4 @@ repositories {
 dependencies {
     testCompile "junit:junit:${junitVersion}"
 }
+

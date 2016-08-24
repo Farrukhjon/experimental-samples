@@ -9,9 +9,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -25,7 +23,6 @@ public class JdbcTemplateTests extends BaseTest {
 
     @Autowired
     NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-
 
     @Test
     public void testJdbcTemplate() {

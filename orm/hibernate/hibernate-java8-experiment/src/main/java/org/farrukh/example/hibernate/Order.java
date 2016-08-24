@@ -7,12 +7,29 @@
 
 package org.farrukh.example.hibernate;
 
-import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-public class Order implements Serializable {
+@Entity
+@Table
+public class Order {
 
+    @Id
+    @GeneratedValue
     private long id;
+
+    @Column
     private int number;
+
+    public Order() {
+    }
+
+    public Order(final int number) {
+        this.number = number;
+    }
 
     public long getId() {
         return id;

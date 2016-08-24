@@ -1,14 +1,32 @@
-CREATE TABLE country (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  name VARCHAR,
-  popilation INT
-);
+CREATE DATABASE IF NOT EXISTS world;
+USE world;
 
-CREATE TABLE city(
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  name VARCHAR,
-  countryCode VARCHAR,
-  district VARCHAR,
-  population INT
-);
 
+SET FOREIGN_KEY_CHECKS = 0;
+
+DROP TABLE IF EXISTS cities;
+CREATE TABLE IF NOT EXISTS cities (
+  id          INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  name        VARCHAR(100),
+  countryCode VARCHAR(100),
+  district    VARCHAR(100),
+  population  INT,
+  countryId   INT UNSIGNED NOT NULL,
+  CONSTRAINT city_country_fk FOREIGN KEY (countryId) REFERENCES countries (id)
+)
+  ENGINE = innodb
+  CHARSET = utf8
+  AUTO_INCREMENT = 1;
+
+DROP TABLE IF EXISTS countries;
+CREATE TABLE IF NOT EXISTS countries (
+  id        INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  code      VARCHAR(100),
+  name      VARCHAR(100),
+  continent ENUM ('ASIA', 'EUROPA', 'AFRICA', 'AMERICA')
+)
+  ENGINE = innodb
+  CHARSET = utf8
+  AUTO_INCREMENT = 1;
+
+SET FOREIGN_KEY_CHECKS = 1;

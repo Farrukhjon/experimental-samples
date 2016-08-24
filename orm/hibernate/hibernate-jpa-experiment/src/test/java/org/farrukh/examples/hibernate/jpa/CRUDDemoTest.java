@@ -10,11 +10,12 @@ package org.farrukh.examples.hibernate.jpa;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Properties;
+
+import static org.junit.Assert.assertEquals;
 
 public class CRUDDemoTest {
 
@@ -34,12 +35,17 @@ public class CRUDDemoTest {
 
     @Test
     public void shouldConnectToTheH2DataBase() {
+        String expectedUserName = "ali@example.com";
+        String expectedUserPassword = "ali_pwd";
+
         SessionFactory sessionFactory = sessionFactory(properties);
         Session session = sessionFactory.openSession();
 
         session.beginTransaction();
         User ali = new User();
-        ali.setLogin("ali@example.com");
+
+        ali.setLogin(expectedUserName);
+        ali.setPassword(expectedUserPassword);
 
         session.save(ali);
         session.getTransaction().commit();
@@ -47,7 +53,8 @@ public class CRUDDemoTest {
         session.beginTransaction();
         User user = session.get(User.class, 1L);
 
-        Assert.assertEquals("ali@example.com", user.getLogin());
+        assertEquals(expectedUserName, user.getLogin());
+        assertEquals(expectedUserPassword, user.getPassword());
         session.getTransaction().commit();
 
         session.close();
