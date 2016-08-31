@@ -1,0 +1,25 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+ext {
+    groovyVersion = '2.4.4'
+    spockVersion = '1.0-groovy-2.4'
+    mysqlJdbcVersion = '5.1.36'
+    mybatisVersion = '3.3.0'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile("mysql:mysql-connector-java:${mysqlJdbcVersion}")
+    compile("org.mybatis:mybatis:${mybatisVersion}")
+    compile("org.codehaus.groovy:groovy-sql:${groovyVersion}")
+
+    compile 'javax.servlet:javax.servlet-api:3.1.0'
+
+    testCompile("org.codehaus.groovy:groovy:${groovyVersion}")
+    testCompile("org.spockframework:spock-core:${spockVersion}") { exclude module: 'groovy-all' }
+}
+

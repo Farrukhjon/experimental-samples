@@ -1,0 +1,22 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'application'
+
+defaultTasks 'clean', 'build'
+
+mainClassName = "org.examples.mybatis.hsqldb.Application"
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+
+dependencies {
+	compile "org.mybatis:mybatis:3.2.8"
+	compile "org.hsqldb:hsqldb:2.3.2"
+}
+
+eclipse {
+	classpath { downloadJavadoc = true }
+}
+

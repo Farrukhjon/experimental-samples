@@ -1,0 +1,13 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile "org.slf4j:slf4j-api:${slf4jVersion}",
+            "org.jsoup:jsoup:${jsoupVersion}",
+            "org.projectlombok:lombok:${lombokVersion}"
+    testCompile "junit:junit:${junitVersion}"
+}

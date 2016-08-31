@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+
+	<properties resource="resources/dataSource.properties"/>
+
+	<settings>
+		<setting name="cacheEnabled" value="true" />
+		<setting name="aggressiveLazyLoading" value="true" />
+		<setting name="multipleResultSetsEnabled" value="true" />
+		<setting name="useColumnLabel" value="true" />
+		<setting name="useGeneratedKeys" value="false" />
+		<setting name="autoMappingBehavior" value="PARTIAL" />
+		<setting name="defaultExecutorType" value="SIMPLE" />
+		<setting name="defaultStatementTimeout" value="25" />
+		<setting name="safeRowBoundsEnabled" value="false" />
+		<setting name="mapUnderscoreToCamelCase" value="false" />
+		<setting name="localCacheScope" value="SESSION" />
+		<setting name="jdbcTypeForNull" value="OTHER" />
+	</settings>
+
+	<typeAliases>
+		<typeAlias type="dto.User" alias="User" />
+		<typeAlias type="dto.Book" alias="Book" />
+		<typeAlias type="dto.Person" alias="Person" />
+		<typeAlias type="dto.Address" alias="Address"/>
+	</typeAliases>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${JDBC.Driver}" />
+				<property name="url" value="${JDBC.URL}" />
+				<property name="username" value="${JDBC.User}" />
+				<property name="password" value="${JDBC.Password}" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+		<mapper resource="orm/ResultMaps.xml"/>
+		<mapper resource="orm/User.xml" />
+		<mapper resource="orm/Address.xml" />
+	</mappers>
+
+</configuration>
