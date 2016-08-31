@@ -8,8 +8,11 @@
 package org.farrukh.examples.jooq.config;
 
 import org.farrukh.examples.jooq.datasource.DataSourceProvider;
+import org.jooq.Configuration;
 import org.jooq.DSLContext;
+import org.jooq.conf.Settings;
 import org.jooq.impl.DSL;
+import org.jooq.impl.DefaultConfiguration;
 
 public class DSLContextProvider {
 
@@ -20,7 +23,13 @@ public class DSLContextProvider {
     }
 
     public DSLContext dslContext() {
-        return DSL.using(dataSourceProvider.dataSource(), dataSourceProvider.dialect());
+        Settings settings = new Settings();
+        settings.setExecuteLogging(true);
+        Configuration config = new DefaultConfiguration();
+        config.set(dataSourceProvider.dataSource());
+        config.set(dataSourceProvider.dialect());
+        config.set(settings);
+        return DSL.using(config);
     }
 
 }

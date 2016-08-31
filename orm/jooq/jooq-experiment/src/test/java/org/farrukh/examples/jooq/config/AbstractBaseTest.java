@@ -8,19 +8,23 @@
 package org.farrukh.examples.jooq.config;
 
 import org.farrukh.examples.jooq.datasource.DataSourceProvider;
+import org.farrukh.examples.jooq.datasource.MySQLDataSourceProvider;
 import org.jooq.DSLContext;
-import org.jooq.impl.DSL;
 
 public abstract class AbstractBaseTest {
 
-    private final DataSourceProvider dataSourceProvider;
+    private DSLContextProvider contextProvider;
 
-    public AbstractBaseTest(final DataSourceProvider dataSourceProvider) {
-        this.dataSourceProvider = dataSourceProvider;
+    AbstractBaseTest() {
+        this(new MySQLDataSourceProvider());
+    }
+
+    AbstractBaseTest(DataSourceProvider dataSourceProvider) {
+        contextProvider = new DSLContextProvider(dataSourceProvider);
     }
 
     DSLContext create() {
-        return DSL.using(this.dataSourceProvider.dataSource(), dataSourceProvider.dialect());
+        return contextProvider.dslContext();
     }
 
 }
