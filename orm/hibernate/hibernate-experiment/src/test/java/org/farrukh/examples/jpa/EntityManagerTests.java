@@ -7,9 +7,7 @@
 
 package org.farrukh.examples.jpa;
 
-import org.farrukh.examples.hibernate.model.User;
-import org.junit.Assert;
-import org.junit.Before;
+import org.farrukh.examples.hibernate.jpa.xmlless.EntityManagerFactoryProvider;
 import org.junit.Test;
 
 import javax.persistence.EntityManager;
@@ -18,12 +16,22 @@ import javax.persistence.Persistence;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.junit.Assert.assertNotNull;
+
 public class EntityManagerTests {
 
     private EntityManager entityManager;
+    private EntityManager xmlLessEntityManager;
 
-    @Before
-    public void setUp() throws Exception {
+    public EntityManagerTests() {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("test-persistent-unit", createProperties());
+        entityManager = entityManagerFactory.createEntityManager();
+
+        EntityManagerFactoryProvider entityManagerFactoryProvider = new EntityManagerFactoryProvider();
+        xmlLessEntityManager = entityManagerFactoryProvider.getEntityManagerFactory().createEntityManager();
+    }
+
+    private Map<String, String> createProperties() {
         Map<String, String> properties = new HashMap<>();
         properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
         properties.put("hibernate.hbm2ddl.auto", "update");
@@ -33,24 +41,13 @@ public class EntityManagerTests {
         properties.put("javax.persistence.jdbc.url", "jdbc:h2:mem:test");
         properties.put("javax.persistence.jdbc.user", "sa");
         properties.put("javax.persistence.jdbc.password", "");
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("test-persistent-unit", properties);
-        entityManager = entityManagerFactory.createEntityManager();
+        return properties;
     }
 
     @Test
-    public void testCRUD() {
-        User user = new User();
-        user.setLogin("vali@example.com");
-        user.setPassword("password");
-
-        entityManager.getTransaction().begin();
-
-        entityManager.persist(user);
-
-        entityManager.getTransaction().commit();
-
-        User userFromDb = entityManager.find(User.class, 1L);
-
-        Assert.assertEquals(1, userFromDb.getId());
+    public void ensureEntityManager() {
+        assertNotNull(entityManager);
+        assertNotNull(xmlLessEntityManager);
     }
+
 }

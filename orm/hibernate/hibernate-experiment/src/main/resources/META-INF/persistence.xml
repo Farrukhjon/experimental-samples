@@ -10,7 +10,7 @@
 
     <persistence-unit name="test-persistent-unit">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>org.farrukh.examples.hibernate.jpa.User</class>
+        <class>org.farrukh.examples.hibernate.model.User</class>
     </persistence-unit>
 
 </persistence>

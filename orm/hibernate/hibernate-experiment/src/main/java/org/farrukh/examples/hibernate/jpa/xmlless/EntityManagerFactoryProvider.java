@@ -5,7 +5,7 @@
  * Written by F.D. Sattorov <farrukhjon.sattorov@gmail.com>, May 2016.
  */
 
-package org.farrukh.examples.hibernate.jpa;
+package org.farrukh.examples.hibernate.jpa.xmlless;
 
 import org.farrukh.examples.hibernate.model.User;
 import org.hibernate.EmptyInterceptor;
