@@ -5,7 +5,7 @@
  * Written by F.D. Sattorov <farrukhjon.sattorov@gmail.com>, May 2016.
  */
 
-package org.farrukh.examples.hibernate.jpa.xmlless;
+package org.farrukh.examples.hibernate.jpa;
 
 import org.farrukh.examples.hibernate.model.User;
 import org.hibernate.EmptyInterceptor;
@@ -13,6 +13,7 @@ import org.hibernate.Interceptor;
 import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl;
 import org.hibernate.jpa.boot.internal.PersistenceUnitInfoDescriptor;
+import org.hibernate.jpa.boot.spi.EntityManagerFactoryBuilder;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.spi.PersistenceUnitInfo;
@@ -44,7 +45,7 @@ public class EntityManagerFactoryProvider {
         Map<String, Interceptor> integrationSettings = new HashMap<>();
         integrationSettings.put(AvailableSettings.INTERCEPTOR, EmptyInterceptor.INSTANCE);
 
-        EntityManagerFactoryBuilderImpl factoryBuilder = new EntityManagerFactoryBuilderImpl(persistenceUnitInfoDescriptor, integrationSettings);
+        EntityManagerFactoryBuilder factoryBuilder = new EntityManagerFactoryBuilderImpl(persistenceUnitInfoDescriptor, integrationSettings);
 
         entityManagerFactory = factoryBuilder.build();
     }

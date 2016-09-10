@@ -5,9 +5,8 @@
  * Written by F.D. Sattorov <farrukhjon.sattorov@gmail.com>, May 2016.
  */
 
-package org.farrukh.examples.jpa;
+package org.farrukh.examples.hibernate.jpa;
 
-import org.farrukh.examples.hibernate.jpa.xmlless.EntityManagerFactoryProvider;
 import org.junit.Test;
 
 import javax.persistence.EntityManager;

@@ -5,7 +5,7 @@
  * Written by F.D. Sattorov <farrukhjon.sattorov@gmail.com>, May 2016.
  */
 
-package org.farrukh.examples.hibernate.jpa.xmlless;
+package org.farrukh.examples.hibernate.jpa;
 
 import org.hibernate.jpa.HibernatePersistenceProvider;
 

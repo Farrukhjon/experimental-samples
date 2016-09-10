@@ -15,5 +15,4 @@ public interface DataSourceProvider {
 
     String dialect();
 
-
 }
