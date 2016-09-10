@@ -12,7 +12,6 @@ import org.junit.Test;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,7 +27,7 @@ public class EntityManagerTests {
         entityManager = entityManagerFactory.createEntityManager();
 
         EntityManagerFactoryProvider entityManagerFactoryProvider = new EntityManagerFactoryProvider();
-        xmlLessEntityManager = entityManagerFactoryProvider.getEntityManagerFactory().createEntityManager();
+        xmlLessEntityManager = entityManagerFactoryProvider.buildEntityManagerFactory().createEntityManager();
     }
 
     private Map<String, String> createProperties() {

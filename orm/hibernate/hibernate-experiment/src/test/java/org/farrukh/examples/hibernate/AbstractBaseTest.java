@@ -9,6 +9,7 @@ package org.farrukh.examples.hibernate;
 
 import org.farrukh.examples.hibernate.datasource.DataSourceProvider;
 import org.farrukh.examples.hibernate.datasource.H2DataSourceProvider;
+import org.farrukh.examples.hibernate.jpa.EntityManagerFactoryProvider;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -19,10 +20,12 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import java.util.Map;
+import java.util.List;
 import java.util.Properties;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public abstract class AbstractBaseTest {
 
@@ -31,7 +34,8 @@ public abstract class AbstractBaseTest {
     private static final String HIBERNATE_HBM2DDL_AUTO = "hibernate.hbm2ddl.auto";
 
     private static final String DIALECT = "hibernate.dialect";
-    private static final String HIBERNATE_DATA_SOURCE = "hibernate.connection.datasource";
+    private static final String HIBERNATE_CONNECTION_DATASOURCE = "hibernate.connection.datasource";
+    private static final String HIBERNATE_GENERATE_STATISTICS = "hibernate.generate_statistics";
 
     private final DataSourceProvider dataSourceProvider;
     private MetadataSources metadataSources;
@@ -41,22 +45,33 @@ public abstract class AbstractBaseTest {
 
 
     protected AbstractBaseTest(final DataSourceProvider dataSourceProvider) {
-        this.dataSourceProvider = dataSourceProvider;
-        //dataSourceProvider = dataSourceProvider();
-        StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(dataSourceSettings())
-                                                                                      .applySettings(hibernateSettings())
-                                                                                      .build();
-        try {
-            metadataSources = new MetadataSources(serviceRegistry);
-        } catch (Exception e) {
-            StandardServiceRegistryBuilder.destroy(serviceRegistry);
-        }
         Class<?>[] annotatedClasses = getAnnotatedClasses();
-        for (Class<?> annotatedClass : annotatedClasses) {
-            metadataSources.addAnnotatedClass(annotatedClass);
+        this.dataSourceProvider = dataSourceProvider;
+        if (nativeHibernateSessionFactory()) {
+            StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(properties())
+                                                                                          .build();
+            try {
+                metadataSources = new MetadataSources(serviceRegistry);
+            } catch (Exception e) {
+                StandardServiceRegistryBuilder.destroy(serviceRegistry);
+            }
+            for (Class<?> annotatedClass : annotatedClasses) {
+                metadataSources.addAnnotatedClass(annotatedClass);
+            }
+            sessionFactory = metadataSources.buildMetadata()
+                                            .buildSessionFactory();
+
+        } else {
+            List<String> managedClassNames = Stream.of(annotatedClasses)
+                                                   .map(Class::getName)
+                                                   .collect(Collectors.toList());
+            EntityManagerFactoryProvider emfp = new EntityManagerFactoryProvider(properties(), managedClassNames);
+            emFactory = emfp.buildEntityManagerFactory();
         }
-        sessionFactory = metadataSources.buildMetadata()
-                                        .buildSessionFactory();
+    }
+
+    protected boolean nativeHibernateSessionFactory() {
+        return true;
     }
 
     protected AbstractBaseTest() {
@@ -65,20 +80,15 @@ public abstract class AbstractBaseTest {
 
     protected abstract Class<?>[] getAnnotatedClasses();
 
-    private Map hibernateSettings() {
+    private Properties properties() {
         Properties properties = new Properties();
         properties.put(HIBERNATE_SHOW_SQL, true);
         properties.put(HIBERNATE_FORMAT_SQL, true);
         properties.put(HIBERNATE_HBM2DDL_AUTO, "create");
+        properties.put(HIBERNATE_GENERATE_STATISTICS, Boolean.TRUE.toString());
+        properties.put(DIALECT, dataSourceProvider.dialect());
+        properties.put(HIBERNATE_CONNECTION_DATASOURCE, dataSourceProvider.dataSource());
         return properties;
-    }
-
-    private Map dataSourceSettings() {
-        Properties settings = new Properties();
-
-        settings.put(DIALECT, dataSourceProvider.dialect());
-        settings.put(HIBERNATE_DATA_SOURCE, dataSourceProvider.dataSource());
-        return settings;
     }
 
     protected final SessionFactory getSessionFactory() {
@@ -144,6 +154,5 @@ public abstract class AbstractBaseTest {
                 em.close();
         }
     }
-
 
 }
