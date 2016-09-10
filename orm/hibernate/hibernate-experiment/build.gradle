@@ -21,6 +21,7 @@ ext {
 dependencies {
     compile "org.hibernate:hibernate-core:${hibernateVersion}",
             "org.hibernate:hibernate-entitymanager:${hibernateVersion}",
+            "org.hibernate:hibernate-jpamodelgen:${hibernateVersion}",
             "org.hibernate:hibernate-java8:${hibernateVersion}",
             "org.projectlombok:lombok:${lombokVersion}",
             "org.slf4j:slf4j-api:${slf4JVersion}",

@@ -16,6 +16,9 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import java.util.Map;
 import java.util.Properties;
 import java.util.function.Consumer;
@@ -32,7 +35,9 @@ public abstract class AbstractBaseTest {
 
     private final DataSourceProvider dataSourceProvider;
     private MetadataSources metadataSources;
+
     private SessionFactory sessionFactory;
+    private EntityManagerFactory emFactory;
 
 
     protected AbstractBaseTest(final DataSourceProvider dataSourceProvider) {
@@ -118,6 +123,25 @@ public abstract class AbstractBaseTest {
             if (session != null) {
                 session.close();
             }
+        }
+    }
+
+    protected void executeUsingJPA(Consumer<EntityManager> consumer) {
+        EntityManager em = null;
+        EntityTransaction tx = null;
+        try {
+            em = emFactory.createEntityManager();
+            tx = em.getTransaction();
+            tx.begin();
+            consumer.accept(em);
+            tx.commit();
+        } catch (Throwable throwable) {
+            if (tx != null && tx.isActive())
+                tx.rollback();
+            throw throwable;
+        } finally {
+            if (em != null)
+                em.close();
         }
     }
 
