@@ -30,12 +30,14 @@ public abstract class AbstractBaseTest {
     private static final String DIALECT = "hibernate.dialect";
     private static final String HIBERNATE_DATA_SOURCE = "hibernate.connection.datasource";
 
-    private DataSourceProvider dataSourceProvider;
+    private final DataSourceProvider dataSourceProvider;
     private MetadataSources metadataSources;
     private SessionFactory sessionFactory;
 
-    protected AbstractBaseTest() {
-        dataSourceProvider = dataSourceProvider();
+
+    protected AbstractBaseTest(final DataSourceProvider dataSourceProvider) {
+        this.dataSourceProvider = dataSourceProvider;
+        //dataSourceProvider = dataSourceProvider();
         StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(dataSourceSettings())
                                                                                       .applySettings(hibernateSettings())
                                                                                       .build();
@@ -52,9 +54,11 @@ public abstract class AbstractBaseTest {
                                         .buildSessionFactory();
     }
 
-    protected abstract Class<?>[] getAnnotatedClasses();
+    protected AbstractBaseTest() {
+        this(new H2DataSourceProvider());
+    }
 
-    protected abstract DataSourceProvider dataSourceProvider();
+    protected abstract Class<?>[] getAnnotatedClasses();
 
     private Map hibernateSettings() {
         Properties properties = new Properties();
@@ -66,17 +70,10 @@ public abstract class AbstractBaseTest {
 
     private Map dataSourceSettings() {
         Properties settings = new Properties();
-        if (dataSourceProvider == null) {
-            dataSourceProvider = defaultDataSourceProvider();
-        }
+
         settings.put(DIALECT, dataSourceProvider.dialect());
         settings.put(HIBERNATE_DATA_SOURCE, dataSourceProvider.dataSource());
         return settings;
-    }
-
-
-    private DataSourceProvider defaultDataSourceProvider() {
-        return new H2DataSourceProvider();
     }
 
     protected final SessionFactory getSessionFactory() {

@@ -7,16 +7,11 @@
 
 package org.farrukh.example.hibernate;
 
-import org.farrukh.example.hibernate.datasource.DataSourceProvider;
 import org.farrukh.example.hibernate.model.Customer;
 import org.farrukh.example.hibernate.model.Order;
 import org.farrukh.example.hibernate.model.Product;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -79,11 +74,6 @@ public class BasicEntityCRUDTest extends AbstractBaseTest {
                 Customer.class,
                 Product.class
         };
-    }
-
-    @Override
-    protected DataSourceProvider dataSourceProvider() {
-        return null;
     }
 
 }

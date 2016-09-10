@@ -10,9 +10,6 @@ package org.farrukh.example.hibernate.identifier;
 import lombok.Getter;
 import lombok.Setter;
 import org.farrukh.example.hibernate.AbstractBaseTest;
-import org.farrukh.example.hibernate.datasource.DataSourceProvider;
-import org.farrukh.example.hibernate.datasource.H2DataSourceProvider;
-import org.farrukh.example.hibernate.datasource.PostgresDataSourceProvider;
 import org.junit.Test;
 
 import javax.persistence.Column;
@@ -31,11 +28,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class CompositeIdTests extends AbstractBaseTest {
-
-    @Override
-    protected DataSourceProvider dataSourceProvider() {
-        return new H2DataSourceProvider();
-    }
 
     @Override
     protected Class<?>[] getAnnotatedClasses() {

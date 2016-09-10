@@ -12,7 +12,6 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.farrukh.example.hibernate.AbstractBaseTest;
-import org.farrukh.example.hibernate.datasource.DataSourceProvider;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.annotations.Cascade;
@@ -40,11 +39,6 @@ public class ManyToManyTest extends AbstractBaseTest {
                 Employee.class,
                 Skill.class
         };
-    }
-
-    @Override
-    protected DataSourceProvider dataSourceProvider() {
-        return null;
     }
 
     @Test
