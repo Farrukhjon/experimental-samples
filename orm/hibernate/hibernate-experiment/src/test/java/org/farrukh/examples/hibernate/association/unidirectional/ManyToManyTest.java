@@ -12,8 +12,6 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.farrukh.examples.hibernate.AbstractBaseTest;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.junit.Test;
@@ -43,10 +41,7 @@ public class ManyToManyTest extends AbstractBaseTest {
 
     @Test
     public void testEmployeeHasManySkillsAndManySkillsReusedBetweenManyEmployee() throws Exception {
-        try (Session session = getSessionFactory().openSession()) {
-            Transaction tx = session.getTransaction();
-
-            tx.begin();
+        executeUsingNativeHibernate(session -> {
             Employee jomi = new Employee("Jomi");
             Employee gani = new Employee("Gani");
             Employee sami = new Employee("Sami");
@@ -67,9 +62,7 @@ public class ManyToManyTest extends AbstractBaseTest {
             session.save(sami);
             session.save(ali);
 
-            tx.commit();
-        }
-
+        });
     }
 
     @Entity

@@ -20,7 +20,7 @@ public class BasicEntityCRUDTest extends AbstractBaseTest {
 
     @Test
     public void shouldSaveOrder() {
-        executeInTransaction(session -> {
+        executeUsingNativeHibernate(session -> {
             Customer customer = new Customer();
             customer.setName("Ali");
 

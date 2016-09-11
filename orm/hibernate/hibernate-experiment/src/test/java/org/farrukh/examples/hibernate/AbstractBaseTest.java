@@ -115,7 +115,7 @@ public abstract class AbstractBaseTest {
         }
     }
 
-    protected void executeInTransaction(HibernateTransactionConsumer consumer) {
+    protected final void executeUsingNativeHibernate(HibernateTransactionConsumer consumer) {
         Session session = null;
         Transaction tx = null;
         try {
@@ -136,7 +136,7 @@ public abstract class AbstractBaseTest {
         }
     }
 
-    protected void executeUsingJPA(Consumer<EntityManager> consumer) {
+    protected final void executeUsingJPA(Consumer<EntityManager> consumer) {
         EntityManager em = null;
         EntityTransaction tx = null;
         try {
@@ -145,6 +145,26 @@ public abstract class AbstractBaseTest {
             tx.begin();
             consumer.accept(em);
             tx.commit();
+        } catch (Throwable throwable) {
+            if (tx != null && tx.isActive())
+                tx.rollback();
+            throw throwable;
+        } finally {
+            if (em != null)
+                em.close();
+        }
+    }
+
+    protected final <T> T executeUsingJPA(Function<EntityManager, T> function) {
+        EntityManager em = null;
+        EntityTransaction tx = null;
+        try {
+            em = emFactory.createEntityManager();
+            tx = em.getTransaction();
+            tx.begin();
+            T result = function.apply(em);
+            tx.commit();
+            return result;
         } catch (Throwable throwable) {
             if (tx != null && tx.isActive())
                 tx.rollback();

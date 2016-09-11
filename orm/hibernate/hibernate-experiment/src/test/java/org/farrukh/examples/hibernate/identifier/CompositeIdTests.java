@@ -42,7 +42,7 @@ public class CompositeIdTests extends AbstractBaseTest {
     @Test
     public void test() throws Exception {
 
-        executeInTransaction(session -> {
+        executeUsingNativeHibernate(session -> {
             Company company = new Company();
             company.setId(1L);
             company.setName("ali_vali.com");
@@ -54,7 +54,7 @@ public class CompositeIdTests extends AbstractBaseTest {
             session.save(employee);
         });
 
-        executeInTransaction(session -> {
+        executeUsingNativeHibernate(session -> {
             Employee employee = session.find(Employee.class, new EmployeeId(1L, 100L));
             Phone phone = new Phone();
             phone.setEmployee(employee);
@@ -62,7 +62,7 @@ public class CompositeIdTests extends AbstractBaseTest {
             session.save(phone);
         });
 
-        executeInTransaction(session -> {
+        executeUsingNativeHibernate(session -> {
             Phone phone = session.find(Phone.class, "+992-92-888-58-46");
             assertNotNull(phone);
             assertEquals(new EmployeeId(1L, 100L), phone.getEmployee().getId());

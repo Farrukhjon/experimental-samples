@@ -7,21 +7,23 @@
 
 package org.farrukh.examples.hibernate.jpa;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.farrukh.examples.hibernate.AbstractBaseTest;
 import org.farrukh.examples.hibernate.datasource.MySQLDataSourceProvider;
+import org.farrukh.examples.hibernate.model.Company;
+import org.junit.Assert;
 import org.junit.Test;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Query;
-import javax.persistence.Table;
-import javax.persistence.TypedQuery;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+/**
+ * Java Persistence query language (JPQL), Criteria API, and native SQL select queries are executed using the
+ * getResultList() and getSingleResult() methods.
+ * Update and delete operations (update and delete “queries”) are executed using the executeUpdate() method.
+ */
 public class JPQLTests extends AbstractBaseTest {
 
     @Override
@@ -34,29 +36,44 @@ public class JPQLTests extends AbstractBaseTest {
     }
 
     @Test
-    public void test() throws Exception {
+    public void shouldUpdateACompanyUsingNamedParameterBinding() throws Exception {
         executeUsingJPA(em -> {
-            Query query = em.createQuery("select c from company c");
-            List resultList = query.getResultList();
+            em.createQuery("update Company as c set c.name = :name where c.id = :id")
+              .setParameter("name", "IBM")
+              .setParameter("id", 1L)
+              .executeUpdate();
+        });
+    }
+
+    @Test
+    public void shouldRetrieveACompanyUsingPositionalParameter() throws Exception {
+        Company company = executeUsingJPA(em -> {
+            return em.createQuery("SELECT c FROM Company c WHERE c.id = ?1 and c.name = ?2", Company.class)
+                     .setParameter(1, 1L)
+                     .setParameter(2, "IBM")
+                     .getSingleResult();
+        });
+        assertEquals(1L, company.getId());
+        assertEquals("IBM", company.getName());
+    }
+
+    @Test
+    public void shouldGetAllCompaniesFromCompanyTableUsingQuery() throws Exception {
+
+        List<Company> companies = executeUsingJPA(em -> {
+            Query query = em.createQuery("select c from Company c");
+            List<Company> resultList = query.getResultList();
+            return resultList;
         });
 
+        Company company = companies.get(0);
+        assertNotNull(company.getId());
+        assertNotNull(company.getName());
     }
 
     @Override
     protected Class<?>[] getAnnotatedClasses() {
         return new Class<?>[]{Company.class};
     }
-
-    @Entity
-    @Table(name = "company")
-    @Getter
-    @Setter
-    public static class Company {
-        @Id
-        @GeneratedValue
-        private long id;
-        private String name;
-    }
-
 
 }
