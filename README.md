@@ -1,5 +1,6 @@
 Set of experimental samples
 ---
+- algorithms
 - java
 - groovy
 - spring
