@@ -7,7 +7,7 @@ import junit.framework.TestSuite;
 /**
  * Unit test for simple App.
  */
-public class QuickfixjClientApplicationTest 
+public class MainClientAppTest 
     extends TestCase
 {
     /**
@@ -15,7 +15,7 @@ public class QuickfixjClientApplicationTest
      *
      * @param testName name of the test case
      */
-    public QuickfixjClientApplicationTest( String testName )
+    public MainClientAppTest( String testName )
     {
         super( testName );
     }
@@ -25,7 +25,7 @@ public class QuickfixjClientApplicationTest
      */
     public static Test suite()
     {
-        return new TestSuite( QuickfixjClientApplicationTest.class );
+        return new TestSuite( MainClientAppTest.class );
     }
 
     /**
