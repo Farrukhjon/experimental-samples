@@ -16,7 +16,6 @@
       <quickfixj.version>1.6.2</quickfixj.version>
    </properties>
 
-
    <dependencies>
       <dependency>
          <groupId>junit</groupId>

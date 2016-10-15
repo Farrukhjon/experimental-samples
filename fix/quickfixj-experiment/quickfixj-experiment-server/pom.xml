@@ -14,14 +14,4 @@
    
    <name>quickfixj-experiment-server</name>
   
-  <url>http://maven.apache.org</url>
-  
-  <dependencies>
-    <dependency>
-      <groupId>quickfixj-experiment</groupId>
-      <artifactId>quickfixj-experiment-shared</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
-    </dependency>
-    
-  </dependencies>
 </project>
