@@ -15,3 +15,6 @@
 **/.classpath
 
 **/node_modules
+
+**/target
+
