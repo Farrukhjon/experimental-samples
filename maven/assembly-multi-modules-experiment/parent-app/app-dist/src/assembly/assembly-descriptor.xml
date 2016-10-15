@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<assembly>
+
+   <id>distribution</id>
+
+   <formats>
+      <format>dir</format>
+   </formats>
+
+   <baseDirectory>${appName}</baseDirectory>
+
+   <dependencySets>
+      <!-- Unpack all dependencies of ZIP type and BUNDLE classifier, -->
+      <!-- and unpack them in the root folder. -->
+
+      <dependencySet>
+         <useProjectArtifact>false</useProjectArtifact>
+         <useTransitiveDependencies>false</useTransitiveDependencies>
+         <unpack>true</unpack>
+         <includes>
+            <include>*:zip:bundle</include>
+         </includes>
+      </dependencySet>
+      <!-- Get the main module and place it in the root dir. -->
+
+      <dependencySet>
+         <useProjectArtifact>false</useProjectArtifact>
+         <useTransitiveDependencies>false</useTransitiveDependencies>
+         <unpack>false</unpack>
+         <includes>
+            <include>*:*:jar</include>
+         </includes>
+      </dependencySet>
+   
+      <!-- Get all dependency tree libs and place them in \lib folder, -->
+      <!-- except those of ZIP type and BUNDLE classifier, and the -->
+      <!-- the main modue. -->
+
+      <dependencySet>
+         <useProjectArtifact>false</useProjectArtifact>
+         <useTransitiveDependencies>true</useTransitiveDependencies>
+         <unpack>false</unpack>
+         <outputDirectory>lib</outputDirectory>
+         <excludes>
+            <exclude>*:zip:bundle</exclude>
+            <exclude>${project.groupId}:gui:*</exclude>
+         </excludes>
+      </dependencySet>
+ 
+   </dependencySets>
+   
+</assembly>

@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<project
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+   xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+   <modelVersion>4.0.0</modelVersion>
+
+   <parent>
+      <groupId>org.farrukh.examples.maven</groupId>
+      <artifactId>parent-app</artifactId>
+      <version>1.0-SNAPSHOT</version>
+   </parent>
+
+   <artifactId>app-dist</artifactId>
+
+   <name>app-dist</name>
+
+   <url>http://maven.apache.org</url>
+
+   <build>
+      <plugins>
+         <!-- Plugin required to assembly the project for distribution -->
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <!-- Not attached to any execution phase; it can only be invoked with 'mvn assembly::assembly' command. -->
+            <configuration>
+               <descriptors>
+                  <descriptor>src/assembly/assembly-descriptor.xml</descriptor>
+               </descriptors>
+               <finalName>${appName}-${project.version}</finalName>
+            </configuration>
+            <!-- No need to run every time this module is compiled and packaged. -->
+            <executions>
+               <execution>
+                  <id>assemble</id>
+                  <phase>package</phase>
+                  <goals>
+                     <goal>single</goal>
+                  </goals>
+                  <configuration>
+                     <skipAssembly>true</skipAssembly>
+                  </configuration>
+               </execution>
+            </executions>
+         </plugin>
+      </plugins>
+   </build>
+
+   <dependencies>
+      <dependency>
+         <groupId>${project.groupId}</groupId>
+         <artifactId>app-gui</artifactId>
+         <version>${project.version}</version>
+      </dependency>
+      <dependency>
+         <groupId>${project.groupId}</groupId>
+         <artifactId>app-gui</artifactId>
+         <version>${project.version}</version>
+         <type>zip</type>
+         <classifier>bundle</classifier>
+      </dependency>
+      <dependency>
+         <groupId>${project.groupId}</groupId>
+         <artifactId>app-model</artifactId>
+         <version>${project.version}</version>
+         <type>zip</type>
+         <classifier>bundle</classifier>
+      </dependency>   
+   </dependencies>
+
+</project>
