@@ -11,17 +11,17 @@
 
    <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <junit.version>4.12</junit.version>
-      <logback.version>1.1.7</logback.version>
       <quickfixj.version>1.6.2</quickfixj.version>
+      <logback.version>1.1.7</logback.version>
+      <jmokit.version>1.28</jmokit.version>
+      <junit.version>4.12</junit.version>
    </properties>
 
    <dependencies>
       <dependency>
-         <groupId>junit</groupId>
-         <artifactId>junit</artifactId>
-         <version>${junit.version}</version>
-         <scope>test</scope>
+         <groupId>org.quickfixj</groupId>
+         <artifactId>quickfixj-core</artifactId>
+         <version>${quickfixj.version}</version>
       </dependency>
       <dependency>
          <groupId>ch.qos.logback</groupId>
@@ -29,9 +29,16 @@
          <version>${logback.version}</version>
       </dependency>
       <dependency>
-         <groupId>org.quickfixj</groupId>
-         <artifactId>quickfixj-core</artifactId>
-         <version>${quickfixj.version}</version>
+         <groupId>org.jmockit</groupId>
+         <artifactId>jmockit</artifactId>
+         <version>${jmokit.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>junit</groupId>
+         <artifactId>junit</artifactId>
+         <version>${junit.version}</version>
+         <scope>test</scope>
       </dependency>
    </dependencies>
 
