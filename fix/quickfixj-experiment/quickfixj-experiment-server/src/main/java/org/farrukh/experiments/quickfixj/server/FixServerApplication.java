@@ -1,4 +1,4 @@
-package org.quickfixj.experiment.server;
+package org.farrukh.experiments.quickfixj.server;
 
 import quickfix.Application;
 import quickfix.DoNotSend;

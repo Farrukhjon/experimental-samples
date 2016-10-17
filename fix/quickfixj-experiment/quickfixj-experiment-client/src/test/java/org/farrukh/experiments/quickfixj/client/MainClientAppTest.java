@@ -1,4 +1,4 @@
-package org.quickfixj.experiment.client;
+package org.farrukh.experiments.quickfixj.client;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

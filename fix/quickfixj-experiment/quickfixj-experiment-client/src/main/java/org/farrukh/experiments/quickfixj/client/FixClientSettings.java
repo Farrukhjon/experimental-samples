@@ -1,4 +1,4 @@
-package org.quickfixj.experiment.client;
+package org.farrukh.experiments.quickfixj.client;
 
 import java.io.InputStream;
 
