@@ -17,4 +17,5 @@
 **/node_modules
 
 **/target
-
+**/fileLog
+**/fileStore
