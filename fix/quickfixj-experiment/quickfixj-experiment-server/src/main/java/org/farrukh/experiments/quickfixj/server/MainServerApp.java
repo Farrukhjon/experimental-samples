@@ -1,5 +1,8 @@
 package org.farrukh.experiments.quickfixj.server;
 
+import org.farrukh.experiments.quickfixj.shared.FixSettingsProvider;
+import org.farrukh.experiments.quickfixj.shared.exception.FixException;
+
 import quickfix.Application;
 import quickfix.CompositeLogFactory;
 import quickfix.ConfigError;
@@ -15,7 +18,7 @@ import quickfix.SessionSettings;
 import quickfix.SocketAcceptor;
 
 /**
- * Hello world!
+ * Main Fix Server App class.
  *
  */
 public class MainServerApp {
@@ -27,26 +30,26 @@ public class MainServerApp {
     public MainServerApp() {
         try {
             Application application = new FixServerApplication();
-            SessionSettings settings = new SessionSettings(getClass().getClassLoader().getResourceAsStream(CONFIG_FILE_NAME));
+            SessionSettings settings = new FixSettingsProvider().loadSettings(CONFIG_FILE_NAME);
             MessageStoreFactory messageStoreFactory = new FileStoreFactory(settings);
             LogFactory logFactory = new CompositeLogFactory(new LogFactory[]{new SLF4JLogFactory(settings), new FileLogFactory(settings)});
             MessageFactory messageFactory = new DefaultMessageFactory();
             acceptor = new SocketAcceptor(application, messageStoreFactory, settings, logFactory, messageFactory);
         } catch (ConfigError e) {
-            throw new RuntimeException(e);
+            throw new FixException(e);
         }
-    }
-
-    public static void main(String[] args) {
-        new MainServerApp().start();
     }
 
     public void start() {
         try {
             acceptor.start();
         } catch (RuntimeError | ConfigError e) {
-            throw new RuntimeException(e);
+            throw new FixException(e);
         }
+    }
+    
+    public static void main(String[] args) {
+        new MainServerApp().start();
     }
 
 }

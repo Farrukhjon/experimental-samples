@@ -13,4 +13,12 @@
    <artifactId>quickfixj-experiment-client</artifactId>
    <name>quickfixj-experiment-client</name>
 
+   <dependencies>
+      <dependency>
+         <groupId>quickfixj-experiment</groupId>
+         <artifactId>quickfixj-experiment-shared</artifactId>
+         <version>0.0.1-SNAPSHOT</version>
+      </dependency>
+   </dependencies>
+
 </project>

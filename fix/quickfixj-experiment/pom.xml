@@ -60,6 +60,7 @@
    <modules>
       <module>quickfixj-experiment-server</module>
       <module>quickfixj-experiment-client</module>
+      <module>quickfixj-experiment-shared</module>
    </modules>
 
 </project>

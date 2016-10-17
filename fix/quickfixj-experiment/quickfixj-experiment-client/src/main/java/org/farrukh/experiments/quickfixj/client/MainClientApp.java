@@ -2,6 +2,9 @@ package org.farrukh.experiments.quickfixj.client;
 
 import java.util.concurrent.CountDownLatch;
 
+import org.farrukh.experiments.quickfixj.shared.FixSettingsProvider;
+import org.farrukh.experiments.quickfixj.shared.exception.FixException;
+
 import quickfix.CompositeLogFactory;
 import quickfix.ConfigError;
 import quickfix.DefaultMessageFactory;
@@ -19,17 +22,19 @@ import quickfix.SocketInitiator;
  */
 public class MainClientApp {
     
+    private static final String CONFIG_FILE_NAME = "config.properties";
+
     private static final CountDownLatch shutdown_latch = new CountDownLatch(1);
     
     private final SocketInitiator initiator;
 
     public MainClientApp() {
-        SessionSettings settings = new FixClientSettings().getSettings();
+        SessionSettings settings = new FixSettingsProvider().loadSettings(CONFIG_FILE_NAME);
         LogFactory logFactory = new CompositeLogFactory(new LogFactory[] { new FileLogFactory(settings), new SLF4JLogFactory(settings) });
         try {
             initiator = new SocketInitiator(new FixClientApplication(), new FileStoreFactory(settings), settings, logFactory, new DefaultMessageFactory());
         } catch (ConfigError e) {
-            throw new FixClientException(e);
+            throw new FixException(e);
         }
     }
 
@@ -37,7 +42,7 @@ public class MainClientApp {
         try {
             initiator.start();
         } catch (RuntimeError | ConfigError e) {
-            throw new FixClientException(e);
+            throw new FixException(e);
         }
     }
 

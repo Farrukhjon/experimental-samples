@@ -1,28 +1,28 @@
-package org.farrukh.experiments.quickfixj.client;
+package org.farrukh.experiments.quickfixj.shared.exception;
 
-public class FixClientException extends RuntimeException {
+public class FixException extends RuntimeException {
 
-    public FixClientException() {
+    public FixException() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-    public FixClientException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    public FixException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
         // TODO Auto-generated constructor stub
     }
 
-    public FixClientException(String message, Throwable cause) {
+    public FixException(String message, Throwable cause) {
         super(message, cause);
         // TODO Auto-generated constructor stub
     }
 
-    public FixClientException(String message) {
+    public FixException(String message) {
         super(message);
         // TODO Auto-generated constructor stub
     }
 
-    public FixClientException(Throwable cause) {
+    public FixException(Throwable cause) {
         super(cause);
         // TODO Auto-generated constructor stub
     }
