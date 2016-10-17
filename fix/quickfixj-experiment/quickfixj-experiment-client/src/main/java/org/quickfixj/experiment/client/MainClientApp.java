@@ -1,5 +1,7 @@
 package org.quickfixj.experiment.client;
 
+import java.util.concurrent.CountDownLatch;
+
 import quickfix.CompositeLogFactory;
 import quickfix.ConfigError;
 import quickfix.DefaultMessageFactory;
@@ -16,6 +18,8 @@ import quickfix.SocketInitiator;
  *
  */
 public class MainClientApp {
+    
+    private static final CountDownLatch shutdown_latch = new CountDownLatch(1);
     
     private final SocketInitiator initiator;
 
@@ -40,5 +44,10 @@ public class MainClientApp {
     public static void main(String[] args) {
         MainClientApp mainClientApp = new MainClientApp();
         mainClientApp.start();
+        try {
+            shutdown_latch.await();
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 }
