@@ -4,7 +4,7 @@ package org.farrukh.examples.jmokit;
  * Hello world!
  *
  */
-public class App {
+public class SystemUnderTests {
     
     private Collaborator1 collaborator1;
 
@@ -12,11 +12,11 @@ public class App {
     
     private int callCount = 0;
     
-    public App(Collaborator1 collaborator1) {
+    public SystemUnderTests(Collaborator1 collaborator1) {
         this.collaborator1 = collaborator1;
     }
     
-    public App(Collaborator2 collaborator2) {
+    public SystemUnderTests(Collaborator2 collaborator2) {
         super();
         this.collaborator2 = collaborator2;
     }

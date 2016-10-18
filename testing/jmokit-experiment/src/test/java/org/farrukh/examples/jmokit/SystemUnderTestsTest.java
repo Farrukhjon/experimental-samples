@@ -12,7 +12,13 @@ import mockit.Verifications;
 /**
  * Unit test for simple App.
  */
-public class AppTest {
+public class SystemUnderTestsTest {
+
+    @Tested
+    SystemUnderTests sut;
+    
+    @Injectable
+    Collaborator2 collaborator2;
 
     @Test
     public void testMethod1(@Mocked final Collaborator1 collaborator1) {
@@ -23,14 +29,10 @@ public class AppTest {
             }
         };
 
-        App appUnderTests = new App(collaborator1);
+        SystemUnderTests appUnderTests = new SystemUnderTests(collaborator1);
         appUnderTests.method1();
     }
 
-    @Tested
-    App appUnderTest;
-    @Injectable
-    Collaborator2 collaborator2;
 
     @Test
     public void test2() throws Exception {
@@ -41,7 +43,7 @@ public class AppTest {
             }
         };
 
-        int method2 = appUnderTest.multiplyByTwo();
+        int method2 = sut.multiplyByTwo();
 
         new Verifications() {
             {
