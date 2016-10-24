@@ -1,6 +1,7 @@
 package org.farrukh.examples.jmokit;
 
-import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 import mockit.Expectations;
@@ -48,7 +49,7 @@ public class SystemUnderTestsTest {
         new Verifications() {
             {
                 collaborator2.returnSomething(); times = 1;
-                Assert.assertEquals(12, method2);
+                assertEquals(12, method2);
 
             }
         };
