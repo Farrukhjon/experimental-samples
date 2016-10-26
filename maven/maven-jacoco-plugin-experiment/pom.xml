@@ -1,77 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright (c) 2009, 2016 Mountainminds GmbH & Co. KG and Contributors 
-   All rights reserved. This program and the accompanying materials are made 
-   available under the terms of the Eclipse Public License v1.0 which accompanies 
-   this distribution, and is available at http://www.eclipse.org/legal/epl-v10.html 
-   Contributors: Marc R. Hoffmann - initial API and implementation Kyle Lieber 
-   - implementation of CheckMojo -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   
    <modelVersion>4.0.0</modelVersion>
 
-   <groupId>org.jacoco</groupId>
-   <artifactId>org.jacoco.examples.maven</artifactId>
-   <version>0.7.8-SNAPSHOT</version>
+   <groupId>org.farrukh.examples</groupId>
+   <artifactId>maven-jacoco-plugin-experiment</artifactId>
+   <version>1</version>
    <packaging>jar</packaging>
 
    <name>JaCoCo Maven plug-in example</name>
-   <url>http://www.eclemma.org/jacoco</url>
+
+   <properties>
+      <maven.compiler.source>1.8</maven.compiler.source>
+      <maven.compiler.target>1.8</maven.compiler.target>
+      <junit.version>4.12</junit.version>
+      <jacoco.version>0.7.7.201606060606</jacoco.version>
+      <jacoco.ut.execution.data.file>${project.build.directory}/coverage-reports/jacoco-ut.exec</jacoco.ut.execution.data.file>
+   </properties>
 
    <dependencies>
       <dependency>
          <groupId>junit</groupId>
          <artifactId>junit</artifactId>
-         <version>4.12</version>
+         <version>${junit.version}</version>
          <scope>test</scope>
       </dependency>
    </dependencies>
 
-   <properties>
-      <maven.compiler.source>1.8</maven.compiler.source>
-      <maven.compiler.target>1.8</maven.compiler.target>
-   </properties>
-
    <build>
       <plugins>
          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.19.1</version>
+            <configuration>
+               <argLine>${surefire.argLine}</argLine>
+            </configuration>
+         </plugin>
+         <plugin>
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>
-            <version>0.7.7.201606060606</version>
+            <version>${jacoco.version}</version>
             <executions>
                <execution>
-                  <id>default-prepare-agent</id>
+                  <id>pre-unit-test</id>
                   <goals>
                      <goal>prepare-agent</goal>
                   </goals>
+                  <configuration>
+                     <destFile>${jacoco.ut.execution.data.file}</destFile>
+                     <propertyName>surefire.argLine</propertyName>
+                  </configuration>
                </execution>
                <execution>
-                  <id>default-report</id>
-                  <phase>prepare-package</phase>
+                  <id>post-unit-test</id>
+                  <phase>test</phase>
                   <goals>
                      <goal>report</goal>
                   </goals>
-               </execution>
-               <execution>
-                  <id>default-check</id>
-                  <goals>
-                     <goal>check</goal>
-                  </goals>
                   <configuration>
-                     <rules>
-                        <!-- implementation is needed only for Maven 2 -->
-                        <rule implementation="org.jacoco.maven.RuleConfiguration">
-                           <element>BUNDLE</element>
-                           <limits>
-                              <!-- implementation is needed only for Maven 
-                                 2 -->
-                              <limit implementation="org.jacoco.report.check.Limit">
-                                 <counter>COMPLEXITY</counter>
-                                 <value>COVEREDRATIO</value>
-                                 <minimum>0.60</minimum>
-                              </limit>
-                           </limits>
-                        </rule>
-                     </rules>
+                     <dataFile>${jacoco.ut.execution.data.file}</dataFile>
+                     <outputDirectory>${project.reporting.outputDirectory}/jacoco-ut</outputDirectory>
                   </configuration>
                </execution>
             </executions>
