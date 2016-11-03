@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+   <!-- Log level hierarchy: ALL < DEBUG < INFO < WARN < ERROR < FATAL < 
+      OFF. -->
+
+   <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="%d %-5p [%t] [%F:%L] - %m%n" />
+      </layout>
+   </appender>
+
+   <appender name="DEBUG_LEVE_FILE_APPENDER" class="org.apache.log4j.FileAppender">
+      <param name="File" value="debug.log" />
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="%m%n" />
+      </layout>
+      <filter class="org.apache.log4j.varia.LevelMatchFilter">
+         <param name="LevelToMatch" value="DEBUG" />
+         <param name="AcceptOnMatch" value="true" />
+      </filter>
+      <filter class="org.apache.log4j.varia.DenyAllFilter" />
+   </appender>
+
+   <appender name="INFO_LEVE_FILE_APPENDER" class="org.apache.log4j.FileAppender">
+      <param name="File" value="info.log" />
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="%m%n" />
+      </layout>
+      <filter class="org.apache.log4j.varia.LevelMatchFilter">
+         <param name="LevelToMatch" value="INFO" />
+         <param name="AcceptOnMatch" value="true" />
+      </filter>
+      <filter class="org.apache.log4j.varia.DenyAllFilter" />
+   </appender>
+
+   <appender name="RANGE_LEVE_FILE_APPENDER" class="org.apache.log4j.FileAppender">
+      <param name="File" value="warn_error_fatal.log" />
+      <param name="Append" value="false" />
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="%m%n" />
+      </layout>
+      <filter class="org.apache.log4j.varia.LevelRangeFilter">
+         <param name="LevelMin" value="WARN" />
+         <param name="LevelMax" value="FATAL" />
+         <param name="AcceptOnMatch" value="true" />
+      </filter>
+      <filter class="org.apache.log4j.varia.DenyAllFilter" />
+   </appender>
+
+   <root>
+      <level value="ALL" />
+      <appender-ref ref="CONSOLE" />
+      <appender-ref ref="DEBUG_LEVE_FILE_APPENDER" />
+      <appender-ref ref="INFO_LEVE_FILE_APPENDER" />
+      <appender-ref ref="RANGE_LEVE_FILE_APPENDER" />
+   </root>
+
+</log4j:configuration>
