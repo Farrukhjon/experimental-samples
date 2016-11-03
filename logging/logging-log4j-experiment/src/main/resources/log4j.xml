@@ -11,7 +11,7 @@
       </layout>
    </appender>
 
-   <appender name="DEBUG_LEVE_FILE_APPENDER" class="org.apache.log4j.FileAppender">
+   <appender name="DEBUG_LEVEL_FILE_APPENDER" class="org.apache.log4j.FileAppender">
       <param name="File" value="debug.log" />
       <layout class="org.apache.log4j.PatternLayout">
          <param name="ConversionPattern" value="%m%n" />
@@ -23,7 +23,7 @@
       <filter class="org.apache.log4j.varia.DenyAllFilter" />
    </appender>
 
-   <appender name="INFO_LEVE_FILE_APPENDER" class="org.apache.log4j.FileAppender">
+   <appender name="INFO_LEVEL_FILE_APPENDER" class="org.apache.log4j.FileAppender">
       <param name="File" value="info.log" />
       <layout class="org.apache.log4j.PatternLayout">
          <param name="ConversionPattern" value="%m%n" />
@@ -35,7 +35,7 @@
       <filter class="org.apache.log4j.varia.DenyAllFilter" />
    </appender>
 
-   <appender name="RANGE_LEVE_FILE_APPENDER" class="org.apache.log4j.FileAppender">
+   <appender name="RANGE_LEVELS_FILE_APPENDER" class="org.apache.log4j.FileAppender">
       <param name="File" value="warn_error_fatal.log" />
       <param name="Append" value="false" />
       <layout class="org.apache.log4j.PatternLayout">
@@ -52,9 +52,9 @@
    <root>
       <level value="ALL" />
       <appender-ref ref="CONSOLE" />
-      <appender-ref ref="DEBUG_LEVE_FILE_APPENDER" />
-      <appender-ref ref="INFO_LEVE_FILE_APPENDER" />
-      <appender-ref ref="RANGE_LEVE_FILE_APPENDER" />
+      <appender-ref ref="DEBUG_LEVEL_FILE_APPENDER" />
+      <appender-ref ref="INFO_LEVEL_FILE_APPENDER" />
+      <appender-ref ref="RANGE_LEVELS_FILE_APPENDER" />
    </root>
 
 </log4j:configuration>
