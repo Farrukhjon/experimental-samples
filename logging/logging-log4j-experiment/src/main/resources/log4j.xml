@@ -49,12 +49,37 @@
       <filter class="org.apache.log4j.varia.DenyAllFilter" />
    </appender>
 
+   <appender name="ROLLING_FILE_APPENDER" class="org.apache.log4j.RollingFileAppender">
+      <param name="File" value="rolling.log" />
+      <param name="MaxFileSize" value="2KB" />
+      <param name="MaxBackupIndex" value="2" />
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="%m%n" />
+      </layout>
+   </appender>
+
+   <appender name="ROLLING_POLICY_FILE_APPENDER" class="org.apache.log4j.rolling.RollingFileAppender">
+      <param name="File" value="rolling_policy.log" />
+      <rollingPolicy class="org.apache.log4j.rolling.FixedWindowRollingPolicy">
+         <param name="FileNamePattern" value="rolling_policy_%i.gz" />
+         <param name="MaxIndex" value="2" />
+      </rollingPolicy>
+      <triggeringPolicy class="org.apache.log4j.rolling.SizeBasedTriggeringPolicy">
+         <param name="MaxFileSize" value="1024" />
+      </triggeringPolicy>
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="%m%n" />
+      </layout>
+   </appender>
+
    <root>
       <level value="ALL" />
       <appender-ref ref="CONSOLE" />
       <appender-ref ref="DEBUG_LEVEL_FILE_APPENDER" />
       <appender-ref ref="INFO_LEVEL_FILE_APPENDER" />
       <appender-ref ref="RANGE_LEVELS_FILE_APPENDER" />
+      <appender-ref ref="ROLLING_FILE_APPENDER" />
+      <appender-ref ref="ROLLING_POLICY_FILE_APPENDER" />
    </root>
 
 </log4j:configuration>
