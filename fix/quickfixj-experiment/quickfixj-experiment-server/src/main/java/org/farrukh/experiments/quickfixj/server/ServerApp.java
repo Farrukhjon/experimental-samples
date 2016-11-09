@@ -2,26 +2,37 @@ package org.farrukh.experiments.quickfixj.server;
 
 import org.farrukh.experiments.quickfixj.shared.FixSettingsProvider;
 import org.farrukh.experiments.quickfixj.shared.exception.FixException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import quickfix.ApplicationAdapter;
 import quickfix.CompositeLogFactory;
 import quickfix.ConfigError;
 import quickfix.DefaultMessageFactory;
+import quickfix.FieldNotFound;
 import quickfix.FileLogFactory;
 import quickfix.FileStoreFactory;
+import quickfix.IncorrectDataFormat;
+import quickfix.IncorrectTagValue;
 import quickfix.LogFactory;
+import quickfix.Message;
 import quickfix.MessageFactory;
 import quickfix.MessageStoreFactory;
+import quickfix.RejectLogon;
 import quickfix.RuntimeError;
 import quickfix.SLF4JLogFactory;
+import quickfix.SessionID;
 import quickfix.SessionSettings;
 import quickfix.SocketAcceptor;
+import quickfix.fixt11.Logon;
 
 /**
  * Fix Engine Server App.
  *
  */
 public class ServerApp extends ApplicationAdapter {
+    
+    private static final Logger logger = LoggerFactory.getLogger(ServerApp.class);
 
     private static final String CONFIG_FILE = "server.cfg";
 
@@ -47,6 +58,15 @@ public class ServerApp extends ApplicationAdapter {
         }
     }
     
+    
+    
+    @Override
+    public void fromAdmin(Message message, SessionID sessionId) throws FieldNotFound, IncorrectDataFormat, IncorrectTagValue, RejectLogon {
+       if(message instanceof Logon) {
+           logger.info("This logon message has been received: {}", message.toString());
+       }
+    }
+
     public static void main(String[] args) {
         ServerApp app = new ServerApp();
         app.start();
