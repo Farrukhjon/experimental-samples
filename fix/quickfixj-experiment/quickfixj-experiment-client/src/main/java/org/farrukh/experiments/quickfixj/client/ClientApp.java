@@ -47,10 +47,8 @@ public class ClientApp extends ApplicationAdapter {
     
     @Override
     public void onCreate(SessionID sessionId) {
-        Session session = Session.lookupSession(sessionId);
-        String beginString = session.getSessionID().getBeginString();
-        if("FIXT.1.1".equals(beginString)) {
-            session.logon();
+        if ("FIXT.1.1".equals(sessionId.getBeginString())) {
+            Session.lookupSession(sessionId);
         }
     }
 
