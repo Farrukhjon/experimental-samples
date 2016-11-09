@@ -3,7 +3,7 @@ package org.farrukh.experiments.quickfixj.server;
 import org.farrukh.experiments.quickfixj.shared.FixSettingsProvider;
 import org.farrukh.experiments.quickfixj.shared.exception.FixException;
 
-import quickfix.Application;
+import quickfix.ApplicationAdapter;
 import quickfix.CompositeLogFactory;
 import quickfix.ConfigError;
 import quickfix.DefaultMessageFactory;
@@ -18,23 +18,22 @@ import quickfix.SessionSettings;
 import quickfix.SocketAcceptor;
 
 /**
- * Main Fix Server App class.
+ * Fix Engine Server App.
  *
  */
-public class MainServerApp {
+public class ServerApp extends ApplicationAdapter {
 
-    private static final String CONFIG_FILE_NAME = "config.properties";
+    private static final String CONFIG_FILE = "server.cfg";
 
-    private SocketAcceptor acceptor;
+    private final SocketAcceptor acceptor;
 
-    public MainServerApp() {
+    public ServerApp() {
         try {
-            Application application = new FixServerApplication();
-            SessionSettings settings = new FixSettingsProvider().loadSettings(CONFIG_FILE_NAME);
+            SessionSettings settings = new FixSettingsProvider().loadSettings(CONFIG_FILE);
             MessageStoreFactory messageStoreFactory = new FileStoreFactory(settings);
             LogFactory logFactory = new CompositeLogFactory(new LogFactory[]{new SLF4JLogFactory(settings), new FileLogFactory(settings)});
             MessageFactory messageFactory = new DefaultMessageFactory();
-            acceptor = new SocketAcceptor(application, messageStoreFactory, settings, logFactory, messageFactory);
+            acceptor = new SocketAcceptor(this, messageStoreFactory, settings, logFactory, messageFactory);
         } catch (ConfigError e) {
             throw new FixException(e);
         }
@@ -49,7 +48,8 @@ public class MainServerApp {
     }
     
     public static void main(String[] args) {
-        new MainServerApp().start();
+        ServerApp app = new ServerApp();
+        app.start();
     }
 
 }

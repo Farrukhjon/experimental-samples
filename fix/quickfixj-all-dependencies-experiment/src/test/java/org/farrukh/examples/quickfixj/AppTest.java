@@ -1,4 +1,4 @@
-package org.farrukh.experiments.quickfixj.server;
+package org.farrukh.examples.quickfixj;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -7,7 +7,7 @@ import junit.framework.TestSuite;
 /**
  * Unit test for simple App.
  */
-public class MainServerAppTest 
+public class AppTest 
     extends TestCase
 {
     /**
@@ -15,7 +15,7 @@ public class MainServerAppTest
      *
      * @param testName name of the test case
      */
-    public MainServerAppTest( String testName )
+    public AppTest( String testName )
     {
         super( testName );
     }
@@ -25,7 +25,7 @@ public class MainServerAppTest
      */
     public static Test suite()
     {
-        return new TestSuite( MainServerAppTest.class );
+        return new TestSuite( AppTest.class );
     }
 
     /**

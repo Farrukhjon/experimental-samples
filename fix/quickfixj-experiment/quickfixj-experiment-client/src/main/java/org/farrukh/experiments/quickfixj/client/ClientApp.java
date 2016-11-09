@@ -5,6 +5,7 @@ import java.util.concurrent.CountDownLatch;
 import org.farrukh.experiments.quickfixj.shared.FixSettingsProvider;
 import org.farrukh.experiments.quickfixj.shared.exception.FixException;
 
+import quickfix.ApplicationAdapter;
 import quickfix.CompositeLogFactory;
 import quickfix.ConfigError;
 import quickfix.DefaultMessageFactory;
@@ -17,22 +18,22 @@ import quickfix.SessionSettings;
 import quickfix.SocketInitiator;
 
 /**
- * Hello world!
+ * Fix Client Engine App.
  *
  */
-public class MainClientApp {
+public class ClientApp extends ApplicationAdapter {
     
-    private static final String CONFIG_FILE_NAME = "config.properties";
+    private static final String CONFIG_FILE = "client.cfg";
 
     private static final CountDownLatch shutdown_latch = new CountDownLatch(1);
     
     private final SocketInitiator initiator;
 
-    public MainClientApp() {
-        SessionSettings settings = new FixSettingsProvider().loadSettings(CONFIG_FILE_NAME);
+    public ClientApp() {
+        SessionSettings settings = new FixSettingsProvider().loadSettings(CONFIG_FILE);
         LogFactory logFactory = new CompositeLogFactory(new LogFactory[] { new FileLogFactory(settings), new SLF4JLogFactory(settings) });
         try {
-            initiator = new SocketInitiator(new FixClientApplication(), new FileStoreFactory(settings), settings, logFactory, new DefaultMessageFactory());
+            initiator = new SocketInitiator(this, new FileStoreFactory(settings), settings, logFactory, new DefaultMessageFactory());
         } catch (ConfigError e) {
             throw new FixException(e);
         }
@@ -47,8 +48,8 @@ public class MainClientApp {
     }
 
     public static void main(String[] args) {
-        MainClientApp mainClientApp = new MainClientApp();
-        mainClientApp.start();
+        ClientApp clientApp = new ClientApp();
+        clientApp.start();
         try {
             shutdown_latch.await();
         } catch (InterruptedException e) {

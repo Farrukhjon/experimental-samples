@@ -7,13 +7,13 @@ import quickfix.SessionSettings;
 
 public class FixSettingsProvider {
 
-    private String defaultCnfigFileName = "config.properties";
+    private static final String DEFAULT_CNFIG_FILE_NAME = "config.properties";
 
     public SessionSettings loadSettings(final String fileName) {
         String name = fileName;
         try {
             if (fileName == null || fileName.isEmpty()) {
-                name = this.defaultCnfigFileName;
+                name = DEFAULT_CNFIG_FILE_NAME;
             }
             return new SessionSettings(getClass().getClassLoader().getResourceAsStream(name));
         } catch (ConfigError e) {
