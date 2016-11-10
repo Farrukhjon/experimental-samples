@@ -59,14 +59,14 @@ public class ServerApp extends ApplicationAdapter {
         }
     }
     
-/*    @Override
+    @Override
     public void fromAdmin(Message message, SessionID sessionId) throws FieldNotFound, IncorrectDataFormat, IncorrectTagValue, RejectLogon {
     	String msgType = message.getHeader().getField(new MsgType()).getValue();
 		logger.debug(msgType);
         if (Logon.MSGTYPE.equals(msgType)) {
             logger.info("This logon message has been received via session: {} and message: {}", sessionId, message.toString());
         }
-    }*/
+    }
 
     public static void main(String[] args) {
         ServerApp app = new ServerApp();
