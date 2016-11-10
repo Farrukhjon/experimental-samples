@@ -5,6 +5,7 @@ import org.farrukh.experiments.quickfixj.shared.exception.FixException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import quickfix.Acceptor;
 import quickfix.ApplicationAdapter;
 import quickfix.CompositeLogFactory;
 import quickfix.ConfigError;
@@ -37,7 +38,7 @@ public class ServerApp extends ApplicationAdapter {
 
     private static final String CONFIG_FILE = "server.cfg";
 
-    private final SocketAcceptor acceptor;
+    private final Acceptor acceptor;
 
     public ServerApp() {
         try {

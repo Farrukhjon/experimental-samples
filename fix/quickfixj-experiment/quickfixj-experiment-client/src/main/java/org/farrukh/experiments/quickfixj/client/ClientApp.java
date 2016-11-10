@@ -16,6 +16,7 @@ import quickfix.DefaultMessageFactory;
 import quickfix.FieldNotFound;
 import quickfix.FileLogFactory;
 import quickfix.FileStoreFactory;
+import quickfix.Initiator;
 import quickfix.LogFactory;
 import quickfix.Message;
 import quickfix.RuntimeError;
@@ -36,13 +37,15 @@ import quickfix.fixt11.Logon;
  */
 public class ClientApp extends ApplicationAdapter {
 
+	private static final String USER_NAME = "super_user";
+
 	private static final Logger logger = LoggerFactory.getLogger(ClientApp.class);
 
 	private static final String CONFIG_FILE = "client.cfg";
 
 	private static final CountDownLatch shutdown_latch = new CountDownLatch(1);
 
-	private final SocketInitiator initiator;
+	private final Initiator initiator;
 
 	private final RefDataMessageHandler refDataMessageHandler;
 
@@ -74,7 +77,7 @@ public class ClientApp extends ApplicationAdapter {
 		try {
 			String msgType = message.getHeader().getField(new MsgType()).getValue();
 			if(Logon.MSGTYPE.equals(msgType)) {
-				message.setField(new Username("super_user"));
+				message.setField(new Username(USER_NAME));
 				message.setField(new Password("super_password"));
 				logger.debug(msgType);
 			}
@@ -87,12 +90,7 @@ public class ClientApp extends ApplicationAdapter {
 	public void fromAdmin(Message message, SessionID sessionId) throws FieldNotFound, IncorrectDataFormat, IncorrectTagValue, RejectLogon {
 		refDataMessageHandler.handle(message, sessionId);
 	}
-
-	@Override
-	public void toApp(Message message, SessionID sessionId) throws DoNotSend {
-		marketDataMessageHandler.handle(message, sessionId);
-	}*/
-	
+	*/
 
 	private void start() {
 		try {
