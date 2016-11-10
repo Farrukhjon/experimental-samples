@@ -25,7 +25,6 @@ import quickfix.Session;
 import quickfix.SessionID;
 import quickfix.SessionSettings;
 import quickfix.SocketInitiator;
-import quickfix.StringField;
 import quickfix.field.MsgType;
 import quickfix.field.Password;
 import quickfix.field.Username;
@@ -37,9 +36,9 @@ import quickfix.fixt11.Logon;
  */
 public class ClientApp extends ApplicationAdapter {
 
-	private static final String USER_NAME = "super_user";
-
 	private static final Logger logger = LoggerFactory.getLogger(ClientApp.class);
+
+	private static final String USER_NAME = "super_user";
 
 	private static final String CONFIG_FILE = "client.cfg";
 

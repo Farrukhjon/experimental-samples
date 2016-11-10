@@ -1,5 +1,6 @@
 package org.farrukh.experiments.quickfixj.server;
 
+import org.farrukh.experiments.quickfixj.server.hendler.LogonMsgHandler;
 import org.farrukh.experiments.quickfixj.shared.FixSettingsProvider;
 import org.farrukh.experiments.quickfixj.shared.exception.FixException;
 import org.slf4j.Logger;
@@ -66,6 +67,8 @@ public class ServerApp extends ApplicationAdapter {
 		logger.debug(msgType);
         if (Logon.MSGTYPE.equals(msgType)) {
             logger.info("This logon message has been received via session: {} and message: {}", sessionId, message.toString());
+            LogonMsgHandler logonMsgHandler = new LogonMsgHandler();
+            logonMsgHandler.handle((quickfix.fixt11.Message) message, sessionId);
         }
     }
 
