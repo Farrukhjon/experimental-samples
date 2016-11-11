@@ -1,34 +1,54 @@
 package org.farrukh.experiments.spring.tx;
 
+import static org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType.H2;
+
 import javax.sql.DataSource;
 
-import org.hibernate.SessionFactory;
-import org.springframework.context.ApplicationContext;
+import org.farrukh.experiments.spring.tx.dto.Order;
+import org.farrukh.experiments.spring.tx.service.OrderOuterServiceComponent;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.SimpleDriverDataSource;
-import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
-import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @ComponentScan
+@EnableTransactionManagement
 public class App {
 
     @Bean
     public DataSource dataSource() {
-        return new SimpleDriverDataSource();
+        // @formatter:off
+        return new EmbeddedDatabaseBuilder()
+                .generateUniqueName(true)
+                .setType(H2)
+                .setScriptEncoding("UTF-8")
+                .setName("testdb")
+                .addDefaultScripts()
+                .build();
+        // @formatter:on
     }
     
     @Bean
-    public SessionFactory sessionFactory(final DataSource dataSource) {
-        LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
-        return localSessionFactoryBean.getObject();
+    public DataSourceTransactionManager dataSourceTransactionManager(final DataSource dataSource) {
+        return new DataSourceTransactionManager(dataSource);
     }
 
+    @Bean
+    public JdbcTemplate jdbcTemplate(final DataSource dataSource) {
+        return new JdbcTemplate(dataSource);
+    }
+    
     public static void main(String[] args) {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(App.class);
+        AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext(App.class);
+        OrderOuterServiceComponent orderService = appContext.getBean(OrderOuterServiceComponent.class);
+        
+        //orderService.save(new Order());
+        orderService.saveNew(new Order());
     }
 
 }
