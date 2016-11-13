@@ -13,11 +13,17 @@
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <maven.compiler.source>1.8</maven.compiler.source>
       <maven.compiler.target>1.8</maven.compiler.target>
+      <logback.version>1.1.7</logback.version>
       <junit.version>4.12</junit.version>
-      <jmokit.version>1.28</jmokit.version>
+      <jmokit.version>1.29</jmokit.version>
    </properties>
 
    <dependencies>
+      <dependency>
+         <groupId>ch.qos.logback</groupId>
+         <artifactId>logback-classic</artifactId>
+         <version>${logback.version}</version>
+      </dependency>
       <dependency>
          <groupId>org.jmockit</groupId>
          <artifactId>jmockit</artifactId>
@@ -31,5 +37,23 @@
          <scope>test</scope>
       </dependency>
    </dependencies>
+
+   <build>
+      <plugins>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.19.1</version>
+            <configuration>
+               <systemPropertyVariables>
+                  <coverage-output>html</coverage-output>
+                  <coverage-metrics>all</coverage-metrics>
+                  <coverage-classes>loaded</coverage-classes>
+                  <coverage-check>80</coverage-check>
+               </systemPropertyVariables>
+            </configuration>
+         </plugin>
+      </plugins>
+   </build>
 
 </project>
