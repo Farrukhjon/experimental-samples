@@ -2,6 +2,7 @@ package org.farrukh.examples.jmokit;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import mockit.Tested;
@@ -15,6 +16,7 @@ public class FullyInitializedSUTTest {
     @Tested(fullyInitialized = true)
     SystemUnderTests sut;
 
+    @Ignore
     @Test
     public void test2() throws Exception {
 
