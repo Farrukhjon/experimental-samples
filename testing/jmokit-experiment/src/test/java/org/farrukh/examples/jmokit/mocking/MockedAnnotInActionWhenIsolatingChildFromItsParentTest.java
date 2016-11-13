@@ -35,7 +35,7 @@ public class MockedAnnotInActionWhenIsolatingChildFromItsParentTest {
 
     /**
      * 
-     * Something internal mocking up?
+     * Something internal mocking up? (Faking approach)
      */
     @Test
     public void testingChildInstanceWithIsolatingFromItsParentInstanceUsinMockUp() throws Exception {
