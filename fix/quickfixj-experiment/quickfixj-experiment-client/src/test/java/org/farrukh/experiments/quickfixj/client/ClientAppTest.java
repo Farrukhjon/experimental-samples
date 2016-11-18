@@ -1,34 +1,39 @@
 package org.farrukh.experiments.quickfixj.client;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.farrukh.experiments.quickfixj.server.ServerAppSub;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Unit test for simple App.
  */
-public class ClientAppTest extends TestCase {
-    /**
-     * Create the test case
-     *
-     * @param testName
-     *            name of the test case
-     */
-    public ClientAppTest(String testName) {
-        super(testName);
+public class ClientAppTest {
+    
+    private ServerAppSub serverSub;
+    
+    private ClientApp sut;
+    
+    public ClientAppTest() {
+        serverSub = new ServerAppSub();
+        sut = new ClientApp();
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite() {
-        return new TestSuite(ClientAppTest.class);
+    @Before
+    public void setup() {
+        serverSub.start();
     }
 
-    /**
-     * Rigourous Test :-)
-     */
+    @Test
     public void testApp() {
-        assertTrue(true);
+        sut.start();
+        Assert.assertTrue(true);
+    }
+    
+    @After
+    public void tearDown() {
+        serverSub.stop();
+        sut.stop();
     }
 }

@@ -43,7 +43,7 @@ public class ClientApp extends ApplicationAdapter {
 
 	private static final String CONFIG_FILE = "client.cfg";
 
-	private static final CountDownLatch shutdown_latch = new CountDownLatch(1);
+	private final CountDownLatch shutdown_latch = new CountDownLatch(1);
 
 	private final Initiator initiator;
 
@@ -92,21 +92,27 @@ public class ClientApp extends ApplicationAdapter {
 	}
 	*/
 
-	private void start() {
+	public void start() {
 		try {
 			initiator.start();
+			try {
+	            shutdown_latch.await();
+	        } catch (InterruptedException e) {
+	            Thread.currentThread().interrupt();
+	        }
 		} catch (RuntimeError | ConfigError e) {
 			throw new FixException(e);
 		}
 	}
 
+    public void stop() {
+        //shutdown_latch.countDown();
+        initiator.stop();
+    }
+	
 	public static void main(String[] args) {
 		ClientApp clientApp = new ClientApp();
 		clientApp.start();
-		try {
-			shutdown_latch.await();
-		} catch (InterruptedException e) {
-			Thread.currentThread().interrupt();
-		}
 	}
+
 }
