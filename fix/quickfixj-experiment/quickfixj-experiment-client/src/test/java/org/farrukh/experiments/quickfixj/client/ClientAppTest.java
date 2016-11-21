@@ -7,12 +7,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Unit test for simple App.
+ * Unit test for simple Application
  */
 public class ClientAppTest {
     
     /**
-     * Server.
+     * Server stub.
      */
     private ServerAppSub serverSub;
     
