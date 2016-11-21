@@ -11,8 +11,14 @@ import org.junit.Test;
  */
 public class ClientAppTest {
     
+    /**
+     * Server.
+     */
     private ServerAppSub serverSub;
     
+    /**
+     * Subject under test.
+     */
     private ClientApp sut;
     
     public ClientAppTest() {
