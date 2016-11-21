@@ -13,6 +13,9 @@ public class ClientAppTest {
     
     private ServerAppSub serverSub;
     
+    /**
+     * Subject under test.
+     */
     private ClientApp sut;
     
     public ClientAppTest() {
