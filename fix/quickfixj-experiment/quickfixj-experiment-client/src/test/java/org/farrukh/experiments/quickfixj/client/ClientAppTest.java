@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Unit test for simple Application
+ * Unit test for simple Application.
  */
 public class ClientAppTest {
     
