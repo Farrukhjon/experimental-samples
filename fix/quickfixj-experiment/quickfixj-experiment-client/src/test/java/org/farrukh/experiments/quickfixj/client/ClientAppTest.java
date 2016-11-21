@@ -12,7 +12,7 @@ import org.junit.Test;
 public class ClientAppTest {
     
     /**
-     * Server.
+     * Server stub.
      */
     private ServerAppSub serverSub;
     
