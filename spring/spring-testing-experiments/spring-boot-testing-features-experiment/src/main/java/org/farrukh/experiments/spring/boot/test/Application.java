@@ -1,4 +1,4 @@
-package org.farrukh.example.sprin;
+package org.farrukh.experiments.spring.boot.test;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

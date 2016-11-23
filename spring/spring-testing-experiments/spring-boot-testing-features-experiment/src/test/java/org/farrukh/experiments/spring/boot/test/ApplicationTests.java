@@ -1,4 +1,4 @@
-package org.farrukh.example.sprin;
+package org.farrukh.experiments.spring.boot.test;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

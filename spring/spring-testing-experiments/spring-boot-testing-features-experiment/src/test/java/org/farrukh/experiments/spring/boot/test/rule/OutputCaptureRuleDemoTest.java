@@ -1,4 +1,4 @@
-package org.farrukh.example.sprin;
+package org.farrukh.experiments.spring.boot.test.rule;
 
 import static org.junit.Assert.assertThat;
 
