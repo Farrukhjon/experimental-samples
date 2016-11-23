@@ -19,12 +19,12 @@ import quickfix.LogFactory;
 import quickfix.Message;
 import quickfix.MessageFactory;
 import quickfix.MessageStoreFactory;
+import quickfix.RejectLogon;
 import quickfix.RuntimeError;
 import quickfix.SLF4JLogFactory;
 import quickfix.SessionID;
 import quickfix.SessionSettings;
 import quickfix.SocketAcceptor;
-import quickfix.UnsupportedMessageType;
 
 public class ServerAppSub extends ApplicationAdapter {
     
@@ -68,8 +68,9 @@ public class ServerAppSub extends ApplicationAdapter {
     }
     
     @Override
-    public void fromApp(Message message, SessionID sessionId) throws FieldNotFound, IncorrectDataFormat, IncorrectTagValue, UnsupportedMessageType {
-        msgHandler.crack(message, sessionId);
+    public void fromAdmin(Message message, SessionID sessionId) throws FieldNotFound, IncorrectDataFormat, IncorrectTagValue, RejectLogon {
+          msgHandler.handle(message, sessionId);
     }
+
 
 }

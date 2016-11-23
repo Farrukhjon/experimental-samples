@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import quickfix.FieldNotFound;
 import quickfix.IncorrectTagValue;
+import quickfix.Message;
 import quickfix.MessageCracker;
 import quickfix.SessionID;
 import quickfix.UnsupportedMessageType;
@@ -17,8 +18,20 @@ public class ServerStubMsgHandler extends MessageCracker {
         super();
     }
     
-    public void onMessage(quickfix.fixt11.Logon message, SessionID sessionID) throws FieldNotFound, UnsupportedMessageType, IncorrectTagValue {
-        logger.info("logon is colled");
+    public void handle(Message message, SessionID sessionId) {
+        try {
+            crack(message, sessionId);
+        } catch (UnsupportedMessageType | FieldNotFound | IncorrectTagValue e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public void onMessage(Message message, SessionID sessionID) throws FieldNotFound, UnsupportedMessageType, IncorrectTagValue {
+   /*     if(!message.isSetField(Username.FIELD) || !message.isSetField(Password.FIELD)) {
+            Session.lookupSession(sessionID).send(new Reject());
+            logger.info("Logon has been rejected");
+        }*/
+        logger.info("Logon message is come to the msg handler: {}", message);
     }
     
 }
