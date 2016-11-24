@@ -1,4 +1,4 @@
-package org.farrukh.experiments.quickfixj.client;
+package org.farrukh.experiments.quickfixj.client.processor;
 
 public interface MarketOperation {
     

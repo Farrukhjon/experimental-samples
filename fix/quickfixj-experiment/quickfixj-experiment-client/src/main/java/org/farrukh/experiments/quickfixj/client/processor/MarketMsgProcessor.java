@@ -1,4 +1,4 @@
-package org.farrukh.experiments.quickfixj.client;
+package org.farrukh.experiments.quickfixj.client.processor;
 
 import edu.emory.mathcs.backport.java.util.concurrent.ExecutorService;
 import edu.emory.mathcs.backport.java.util.concurrent.Executors;
