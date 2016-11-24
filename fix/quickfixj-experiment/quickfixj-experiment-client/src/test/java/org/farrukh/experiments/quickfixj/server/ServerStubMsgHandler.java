@@ -6,11 +6,15 @@ import org.slf4j.LoggerFactory;
 import quickfix.FieldNotFound;
 import quickfix.IncorrectTagValue;
 import quickfix.Message;
-import quickfix.MessageCracker;
+import quickfix.Session;
 import quickfix.SessionID;
+import quickfix.SessionNotFound;
 import quickfix.UnsupportedMessageType;
+import quickfix.field.Username;
+import quickfix.fixt11.Logon;
+import quickfix.fixt11.Reject;
 
-public class ServerStubMsgHandler extends MessageCracker {
+public class ServerStubMsgHandler extends quickfix.fixt11.MessageCracker {
     
     private static final Logger logger = LoggerFactory.getLogger(ServerStubMsgHandler.class);
     
@@ -26,12 +30,21 @@ public class ServerStubMsgHandler extends MessageCracker {
         }
     }
     
-    public void onMessage(Message message, SessionID sessionID) throws FieldNotFound, UnsupportedMessageType, IncorrectTagValue {
-   /*     if(!message.isSetField(Username.FIELD) || !message.isSetField(Password.FIELD)) {
-            Session.lookupSession(sessionID).send(new Reject());
-            logger.info("Logon has been rejected");
-        }*/
+    @Override
+    public void onMessage(Logon message, SessionID sessionID) throws FieldNotFound, UnsupportedMessageType, IncorrectTagValue {
         logger.info("Logon message is come to the msg handler: {}", message);
+        Username userName = new Username();
+        message.get(userName);
+        if(!userName.valueEquals("root")) {
+            logger.info("Username is not set: {}", userName.getValue());
+            try {
+                Session.sendToTarget(new Reject(), sessionID);
+                logger.info("REJECTED!");
+            } catch (SessionNotFound e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
     }
     
 }

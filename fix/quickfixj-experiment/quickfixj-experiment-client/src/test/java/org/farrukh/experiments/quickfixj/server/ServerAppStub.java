@@ -25,25 +25,26 @@ import quickfix.SLF4JLogFactory;
 import quickfix.SessionID;
 import quickfix.SessionSettings;
 import quickfix.SocketAcceptor;
+import quickfix.fixt11.Logon;
 
-public class ServerAppSub extends ApplicationAdapter {
+public class ServerAppStub extends ApplicationAdapter {
     
-    private static final Logger logger = LoggerFactory.getLogger(ServerAppSub.class);
+    private static final Logger logger = LoggerFactory.getLogger(ServerAppStub.class);
 
     private static final String CONFIG_FILE = "server.cfg";
 
     private final Acceptor acceptor;
     
-    private ServerStubMsgHandler msgHandler;
+    private ServerStubMsgHandler serverMsgHandler;
     
-    public ServerAppSub() {
+    public ServerAppStub() {
         try {
             SessionSettings settings = new FixSettingsProvider().loadSettings(CONFIG_FILE);
             MessageStoreFactory messageStoreFactory = new FileStoreFactory(settings);
             LogFactory logFactory = new CompositeLogFactory(new LogFactory[]{new SLF4JLogFactory(settings), new FileLogFactory(settings)});
             MessageFactory messageFactory = new DefaultMessageFactory();
             acceptor = new SocketAcceptor(this, messageStoreFactory, settings, logFactory, messageFactory);
-            msgHandler = new ServerStubMsgHandler();
+            serverMsgHandler = new ServerStubMsgHandler();
         } catch (ConfigError e) {
             throw new FixException(e);
         }
@@ -68,8 +69,14 @@ public class ServerAppSub extends ApplicationAdapter {
     }
     
     @Override
-    public void fromAdmin(Message message, SessionID sessionId) throws FieldNotFound, IncorrectDataFormat, IncorrectTagValue, RejectLogon {
-          msgHandler.handle(message, sessionId);
+    public void fromAdmin(Message message, SessionID sessionId) {
+          serverMsgHandler.handle(message, sessionId);
+          logger.info("From admin: Message: {}, session: {}", message, sessionId);
+    }
+    
+    @Override
+    public void toAdmin(Message message, SessionID sessionId) {
+        logger.info("To admin: Message: {}, session: {}", message, sessionId);
     }
 
 

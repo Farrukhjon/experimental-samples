@@ -1,25 +1,37 @@
 <?xml version="1.0"?>
 <project
-   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-   xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-   <modelVersion>4.0.0</modelVersion>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+    xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
 
-   <parent>
-      <groupId>quickfixj-experiment</groupId>
-      <artifactId>quickfixj-experiment</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
-   </parent>
+    <parent>
+        <groupId>quickfixj-experiment</groupId>
+        <artifactId>quickfixj-experiment</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
 
-   <artifactId>quickfixj-experiment-server</artifactId>
-   
-   <name>quickfixj-experiment-server</name>
-   
-   <dependencies>
-      <dependency>
-         <groupId>quickfixj-experiment</groupId>
-         <artifactId>quickfixj-experiment-shared</artifactId>
-         <version>0.0.1-SNAPSHOT</version>
-      </dependency>
-   </dependencies>
-  
+    <artifactId>quickfixj-experiment-server</artifactId>
+
+    <name>quickfixj-experiment-server</name>
+
+    <properties>
+        <mainClass>org.farrukh.experiments.quickfixj.server.ServerApp</mainClass>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>quickfixj-experiment</groupId>
+            <artifactId>quickfixj-experiment-shared</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-shade-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

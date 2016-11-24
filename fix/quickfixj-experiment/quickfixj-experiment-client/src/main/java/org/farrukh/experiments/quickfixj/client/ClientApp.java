@@ -1,5 +1,6 @@
 package org.farrukh.experiments.quickfixj.client;
 
+import java.util.ArrayList;
 import java.util.concurrent.CountDownLatch;
 
 import org.farrukh.experiments.quickfixj.client.data.MarketDataMessageHandler;
@@ -24,9 +25,11 @@ import quickfix.Message;
 import quickfix.RejectLogon;
 import quickfix.RuntimeError;
 import quickfix.SLF4JLogFactory;
+import quickfix.Session;
 import quickfix.SessionID;
 import quickfix.SessionSettings;
 import quickfix.SocketInitiator;
+import quickfix.fixt11.Logout;
 
 /**
  * Fix Client Engine App.
@@ -42,38 +45,34 @@ public class ClientApp extends ApplicationAdapter {
 
     private final Initiator initiator;
 
-    private final RefDataMessageHandler refDataMessageHandler;
+    private final RefDataMessageHandler refDataMsgHandler;
 
-    private final MarketDataMessageHandler marketDataMessageHandler;
+    private final MarketDataMessageHandler marketDataMsgHandler;
 
     public ClientApp() {
         SessionSettings settings = new FixSettingsProvider().loadSettings(CONFIG_FILE);
-        LogFactory logFactory = new CompositeLogFactory(new LogFactory[] { new FileLogFactory(settings), new SLF4JLogFactory(settings) });
+        LogFactory logFactory = new CompositeLogFactory(
+                new LogFactory[] { new FileLogFactory(settings), new SLF4JLogFactory(settings) });
         try {
-            initiator = new SocketInitiator(this, new FileStoreFactory(settings), settings, logFactory, new DefaultMessageFactory());
+            initiator = new SocketInitiator(this, new FileStoreFactory(settings), settings, logFactory,
+                    new DefaultMessageFactory());
         } catch (ConfigError e) {
             throw new FixException(e);
         }
-        refDataMessageHandler = new RefDataMessageHandler();
-        marketDataMessageHandler = new MarketDataMessageHandler();
-    }
-
-    @Override
-    public void onCreate(SessionID sessionId) {
-        logger.warn(sessionId.toString());
+        refDataMsgHandler = new RefDataMessageHandler();
+        marketDataMsgHandler = new MarketDataMessageHandler();
     }
 
     @Override
     public void toAdmin(Message message, SessionID sessionId) {
-        logger.warn(message.toString());
-        refDataMessageHandler.handle(message, sessionId);
+        refDataMsgHandler.handle(message, sessionId);
     }
-    
+
     @Override
-    public void fromAdmin(Message message, SessionID sessionId) throws FieldNotFound, IncorrectDataFormat, IncorrectTagValue, RejectLogon {
-        refDataMessageHandler.handle(message, sessionId);
+    public void fromAdmin(Message message, SessionID sessionId)
+            throws FieldNotFound, IncorrectDataFormat, IncorrectTagValue, RejectLogon {
     }
-    
+
     public void start() {
         try {
             initiator.start();
@@ -86,13 +85,31 @@ public class ClientApp extends ApplicationAdapter {
         }
     }
 
+    protected void sendLogoff() {
+        ArrayList<SessionID> sessions = initiator.getSessions();
+        for (SessionID sessionID : sessions) {
+            if (sessionID.getBeginString().equals("FIXT.1.1")) {
+                Session.lookupSession(sessionID).send(new Logout());
+                logger.info("Logout message is sent");
+            }
+        }
+    }
+
     public void stop() {
-        initiator.stop();
+        shutdown_latch.countDown();
+        logger.info("Count down is invoked so that shutding down is called");
     }
 
     public static void main(String[] args) {
         ClientApp clientApp = new ClientApp();
         clientApp.start();
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            @Override
+            public void run() {
+                clientApp.sendLogoff();
+                clientApp.stop();
+            }
+        });
     }
 
 }

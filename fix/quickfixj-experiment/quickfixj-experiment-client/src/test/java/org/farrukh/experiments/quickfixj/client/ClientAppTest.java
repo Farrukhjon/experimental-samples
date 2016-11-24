@@ -1,6 +1,6 @@
 package org.farrukh.experiments.quickfixj.client;
 
-import org.farrukh.experiments.quickfixj.server.ServerAppSub;
+import org.farrukh.experiments.quickfixj.server.ServerAppStub;
 import org.junit.After;
 import org.junit.Test;
 
@@ -12,7 +12,7 @@ public class ClientAppTest {
     /**
      * Server app stub.
      */
-    private ServerAppSub serverSub;
+    private ServerAppStub serverStub;
     
     /**
      * Subject under test.
@@ -20,8 +20,8 @@ public class ClientAppTest {
     private ClientApp sut;
     
     public ClientAppTest() {
-        serverSub = new ServerAppSub();
-        serverSub.start();
+        serverStub = new ServerAppStub();
+        serverStub.start();
         sut = new ClientApp();
     }
 
