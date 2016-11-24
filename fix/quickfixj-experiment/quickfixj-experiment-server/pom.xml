@@ -15,7 +15,7 @@
     <name>quickfixj-experiment-server</name>
 
     <properties>
-        <mainClass>org.farrukh.experiments.quickfixj.server.ServerApp</mainClass>
+        <mainClass>org.farrukh.experiments.quickfixj.server.ServerMain</mainClass>
     </properties>
 
     <dependencies>

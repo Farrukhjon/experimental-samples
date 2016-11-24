@@ -11,8 +11,8 @@ import quickfix.ConfigError;
 import quickfix.DefaultMessageFactory;
 import quickfix.FileLogFactory;
 import quickfix.FileStoreFactory;
+import quickfix.FixVersions;
 import quickfix.LogFactory;
-import quickfix.MessageFactory;
 import quickfix.MessageStoreFactory;
 import quickfix.RuntimeError;
 import quickfix.SLF4JLogFactory;
@@ -37,8 +37,9 @@ public class ServerMessageAcceptor {
             MessageStoreFactory messageStoreFactory = new FileStoreFactory(settings);
             LogFactory logFactory = new CompositeLogFactory(
                     new LogFactory[] { new SLF4JLogFactory(settings), new FileLogFactory(settings) });
-            MessageFactory messageFactory = new DefaultMessageFactory();
-            acceptor = new SocketAcceptor(new ServerApp(), messageStoreFactory, settings, logFactory, messageFactory);
+            final DefaultMessageFactory defaultMessageFactory = new DefaultMessageFactory();
+            defaultMessageFactory.addFactory(FixVersions.FIX50, quickfix.fix50sp2.MessageFactory.class);
+            acceptor = new SocketAcceptor(new ServerApp(), messageStoreFactory, settings, logFactory, defaultMessageFactory);
         } catch (ConfigError e) {
             throw new FixException(e);
         }

@@ -3,6 +3,7 @@ package org.farrukh.experiments.quickfixj.client;
 import java.util.ArrayList;
 import java.util.concurrent.CountDownLatch;
 
+import org.farrukh.experiments.quickfixj.client.processor.MarketMsgProcessor;
 import org.farrukh.experiments.quickfixj.shared.FixSettingsProvider;
 import org.farrukh.experiments.quickfixj.shared.exception.FixException;
 import org.slf4j.Logger;
@@ -13,6 +14,7 @@ import quickfix.ConfigError;
 import quickfix.DefaultMessageFactory;
 import quickfix.FileLogFactory;
 import quickfix.FileStoreFactory;
+import quickfix.FixVersions;
 import quickfix.Initiator;
 import quickfix.LogFactory;
 import quickfix.RuntimeError;
@@ -37,8 +39,11 @@ public final class ClientMessageConnector {
         ClientApp clientApp = new ClientApp();
         SessionSettings settings = new FixSettingsProvider().loadSettings(CONFIG_FILE);
         LogFactory logFactory = new CompositeLogFactory(new LogFactory[] { new FileLogFactory(settings), new SLF4JLogFactory(settings) });
+        final DefaultMessageFactory defaultMessageFactory = new DefaultMessageFactory();
+        defaultMessageFactory.addFactory(FixVersions.FIX50, quickfix.fix50sp2.MessageFactory.class);
         try {
-            initiator = new SocketInitiator(clientApp, new FileStoreFactory(settings), settings, logFactory, new DefaultMessageFactory());
+            initiator = new SocketInitiator(clientApp, new FileStoreFactory(settings), settings, logFactory, defaultMessageFactory);
+            new MarketMsgProcessor(initiator);
         } catch (ConfigError e) {
             throw new FixException(e);
         }

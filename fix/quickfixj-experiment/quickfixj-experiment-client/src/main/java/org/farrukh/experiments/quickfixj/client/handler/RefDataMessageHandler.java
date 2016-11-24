@@ -15,7 +15,6 @@ import quickfix.field.Username;
 import quickfix.fixt11.Heartbeat;
 import quickfix.fixt11.Logon;
 import quickfix.fixt11.MessageCracker;
-import quickfix.fixt11.Reject;
 
 public class RefDataMessageHandler extends MessageCracker {
 
@@ -40,15 +39,11 @@ public class RefDataMessageHandler extends MessageCracker {
             message.setField(new Password("super_password"));
             logger.info("Custom Login is made");
         }
-    }
-
-    @Override
-    public void onMessage(Reject message, SessionID sessionID) throws FieldNotFound, UnsupportedMessageType, IncorrectTagValue {
-        logger.info("Handling reject message...");
+        logger.info("Clinet Logon handling message: {}", message);
     }
 
     @Override
     public void onMessage(Heartbeat message, SessionID sessionID) throws FieldNotFound, UnsupportedMessageType, IncorrectTagValue {
-        logger.info("Test request id: {}");
+        logger.info("Clinet Heartbeat handling message: {}", message);
     }
 }

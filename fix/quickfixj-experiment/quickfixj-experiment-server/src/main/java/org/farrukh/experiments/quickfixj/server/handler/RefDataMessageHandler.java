@@ -8,6 +8,7 @@ import quickfix.IncorrectTagValue;
 import quickfix.Message;
 import quickfix.SessionID;
 import quickfix.UnsupportedMessageType;
+import quickfix.fixt11.Heartbeat;
 import quickfix.fixt11.Logon;
 import quickfix.fixt11.MessageCracker;
 
@@ -26,6 +27,11 @@ public class RefDataMessageHandler extends MessageCracker {
     @Override
     public void onMessage(Logon message, SessionID sessionID) throws FieldNotFound, UnsupportedMessageType, IncorrectTagValue {
         logger.info("This logon message has been received via session: {} and message: {}", sessionID, message.toString());
+    }
+    
+    @Override
+    public void onMessage(Heartbeat message, SessionID sessionID) throws FieldNotFound, UnsupportedMessageType, IncorrectTagValue {
+        logger.info("This heartbeat message has been received via session: {} and message: {}", sessionID, message.toString());
     }
 
   

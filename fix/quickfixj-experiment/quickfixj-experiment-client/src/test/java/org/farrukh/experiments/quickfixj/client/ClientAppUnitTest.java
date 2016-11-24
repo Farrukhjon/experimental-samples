@@ -35,7 +35,7 @@ public class ClientAppUnitTest {
 
         new Verifications() {
             {
-                marketDataMsgHandler.handle(message, sessionId); times = 1;
+                marketDataMsgHandler.handle((quickfix.fix50sp2.Message) message, sessionId); times = 1;
             }
         };
     }

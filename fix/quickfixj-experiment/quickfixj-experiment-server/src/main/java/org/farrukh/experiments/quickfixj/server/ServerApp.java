@@ -6,9 +6,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import quickfix.ApplicationAdapter;
-import quickfix.FixVersions;
+import quickfix.FieldNotFound;
+import quickfix.IncorrectDataFormat;
+import quickfix.IncorrectTagValue;
 import quickfix.Message;
 import quickfix.SessionID;
+import quickfix.UnsupportedMessageType;
 
 /**
  * Fix Engine Server App.
@@ -36,12 +39,16 @@ public class ServerApp extends ApplicationAdapter {
     public void fromAdmin(Message message, SessionID sessionId) {
         handle(message, sessionId);
     }
+    
+    @Override
+    public void fromApp(Message message, SessionID sessionId) throws FieldNotFound, IncorrectDataFormat, IncorrectTagValue, UnsupportedMessageType {
+        marketDataMsgHandler.handle(message, sessionId);
+    }
+    
 
     private void handle(Message message, SessionID sessionId) {
         if (sessionId.isFIXT()) {
             refDataMsgHandler.handle(message, sessionId);
-        } else if (sessionId.getBeginString().equals(FixVersions.FIX50SP2)) {
-            marketDataMsgHandler.handle(message, sessionId);
         }
     }
 

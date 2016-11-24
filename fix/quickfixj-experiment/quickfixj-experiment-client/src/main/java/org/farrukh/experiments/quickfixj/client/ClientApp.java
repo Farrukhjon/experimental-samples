@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import quickfix.ApplicationAdapter;
-import quickfix.FixVersions;
 import quickfix.Message;
 import quickfix.SessionID;
 
@@ -38,11 +37,8 @@ public class ClientApp extends ApplicationAdapter {
     }
 
     private void handle(Message message, SessionID sessionId) {
-        if (sessionId.isFIXT()) {
+        if (sessionId.isFIXT())
             refDataMsgHandler.handle(message, sessionId);
-        } else if (sessionId.getBeginString().equals(FixVersions.FIX50SP2)) {
-            marketDataMsgHandler.handle(message, sessionId);
-        }
     }
 
 }

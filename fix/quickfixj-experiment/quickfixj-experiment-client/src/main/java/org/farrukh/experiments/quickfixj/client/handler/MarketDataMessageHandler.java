@@ -21,5 +21,5 @@ public class MarketDataMessageHandler extends MessageCracker {
             throw new RuntimeException(e);
         }
     }
-
+    
 }
