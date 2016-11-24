@@ -7,7 +7,7 @@ import org.junit.Test;
 /**
  * Unit test for simple Application.
  */
-public class ClientAppTest {
+public class ClientMessageConnectorTest {
     
     /**
      * Server app stub.
@@ -17,12 +17,12 @@ public class ClientAppTest {
     /**
      * Subject under test.
      */
-    private ClientApp sut;
+    private ClientMessageConnector sut;
     
-    public ClientAppTest() {
+    public ClientMessageConnectorTest() {
         serverStub = new ServerAppStub();
         serverStub.start();
-        sut = new ClientApp();
+        sut = new ClientMessageConnector();
     }
 
     @After

@@ -8,8 +8,7 @@ import quickfix.IncorrectTagValue;
 import quickfix.Message;
 import quickfix.SessionID;
 import quickfix.UnsupportedMessageType;
-import quickfix.fixt11.Logon;
-import quickfix.fixt11.MessageCracker;
+import quickfix.fix50sp2.MessageCracker;
 
 public class MarketDataMessageHandler extends MessageCracker {
     
@@ -22,24 +21,5 @@ public class MarketDataMessageHandler extends MessageCracker {
             throw new RuntimeException(e);
         }
     }
-
-    @Override
-    public void onMessage(Message message, SessionID sessionID) throws FieldNotFound, UnsupportedMessageType, IncorrectTagValue {
-        if (message instanceof Logon && message.isAdmin()) {
-            if (((Logon) message).isSetDefaultApplVerID()) {
-                //new SecDefReqMessageOutboudGateway().send(sessionID);
-            }
-        }
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
 }

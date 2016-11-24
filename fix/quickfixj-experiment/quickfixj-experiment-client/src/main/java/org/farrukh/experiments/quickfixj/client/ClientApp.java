@@ -1,35 +1,17 @@
 package org.farrukh.experiments.quickfixj.client;
 
-import java.util.ArrayList;
-import java.util.concurrent.CountDownLatch;
-
 import org.farrukh.experiments.quickfixj.client.data.MarketDataMessageHandler;
 import org.farrukh.experiments.quickfixj.client.data.RefDataMessageHandler;
-import org.farrukh.experiments.quickfixj.shared.FixSettingsProvider;
-import org.farrukh.experiments.quickfixj.shared.exception.FixException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import quickfix.ApplicationAdapter;
-import quickfix.CompositeLogFactory;
-import quickfix.ConfigError;
-import quickfix.DefaultMessageFactory;
 import quickfix.FieldNotFound;
-import quickfix.FileLogFactory;
-import quickfix.FileStoreFactory;
 import quickfix.IncorrectDataFormat;
 import quickfix.IncorrectTagValue;
-import quickfix.Initiator;
-import quickfix.LogFactory;
 import quickfix.Message;
 import quickfix.RejectLogon;
-import quickfix.RuntimeError;
-import quickfix.SLF4JLogFactory;
-import quickfix.Session;
 import quickfix.SessionID;
-import quickfix.SessionSettings;
-import quickfix.SocketInitiator;
-import quickfix.fixt11.Logout;
 
 /**
  * Fix Client Engine App.
@@ -37,28 +19,13 @@ import quickfix.fixt11.Logout;
  */
 public class ClientApp extends ApplicationAdapter {
 
-    private static final Logger logger = LoggerFactory.getLogger(ClientApp.class);
-
-    private static final String CONFIG_FILE = "client.cfg";
-
-    private final CountDownLatch shutdown_latch = new CountDownLatch(1);
-
-    private final Initiator initiator;
+    public static final Logger logger = LoggerFactory.getLogger(ClientApp.class);
 
     private final RefDataMessageHandler refDataMsgHandler;
 
     private final MarketDataMessageHandler marketDataMsgHandler;
 
     public ClientApp() {
-        SessionSettings settings = new FixSettingsProvider().loadSettings(CONFIG_FILE);
-        LogFactory logFactory = new CompositeLogFactory(
-                new LogFactory[] { new FileLogFactory(settings), new SLF4JLogFactory(settings) });
-        try {
-            initiator = new SocketInitiator(this, new FileStoreFactory(settings), settings, logFactory,
-                    new DefaultMessageFactory());
-        } catch (ConfigError e) {
-            throw new FixException(e);
-        }
         refDataMsgHandler = new RefDataMessageHandler();
         marketDataMsgHandler = new MarketDataMessageHandler();
     }
@@ -69,47 +36,8 @@ public class ClientApp extends ApplicationAdapter {
     }
 
     @Override
-    public void fromAdmin(Message message, SessionID sessionId)
-            throws FieldNotFound, IncorrectDataFormat, IncorrectTagValue, RejectLogon {
+    public void fromAdmin(Message message, SessionID sessionId) throws FieldNotFound, IncorrectDataFormat, IncorrectTagValue, RejectLogon {
     }
 
-    public void start() {
-        try {
-            initiator.start();
-            logger.info("The Client is started");
-            shutdown_latch.await();
-        } catch (RuntimeError | ConfigError e) {
-            throw new FixException(e);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-    }
-
-    protected void sendLogoff() {
-        ArrayList<SessionID> sessions = initiator.getSessions();
-        for (SessionID sessionID : sessions) {
-            if (sessionID.getBeginString().equals("FIXT.1.1")) {
-                Session.lookupSession(sessionID).send(new Logout());
-                logger.info("Logout message is sent");
-            }
-        }
-    }
-
-    public void stop() {
-        shutdown_latch.countDown();
-        logger.info("Count down is invoked so that shutding down is called");
-    }
-
-    public static void main(String[] args) {
-        ClientApp clientApp = new ClientApp();
-        clientApp.start();
-        Runtime.getRuntime().addShutdownHook(new Thread() {
-            @Override
-            public void run() {
-                clientApp.sendLogoff();
-                clientApp.stop();
-            }
-        });
-    }
 
 }

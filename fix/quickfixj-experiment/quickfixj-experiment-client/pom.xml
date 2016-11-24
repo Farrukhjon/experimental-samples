@@ -14,7 +14,7 @@
     <name>quickfixj-experiment-client</name>
 
     <properties>
-        <mainClass>org.farrukh.experiments.quickfixj.client.ClientApp</mainClass>
+        <mainClass>org.farrukh.experiments.quickfixj.client.ClientMain</mainClass>
     </properties>
 
     <dependencies>
