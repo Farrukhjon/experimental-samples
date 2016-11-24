@@ -7,18 +7,15 @@ import quickfix.FieldNotFound;
 import quickfix.IncorrectTagValue;
 import quickfix.Message;
 import quickfix.Message.Header;
-import quickfix.Session;
 import quickfix.SessionID;
 import quickfix.UnsupportedMessageType;
 import quickfix.field.Password;
 import quickfix.field.SenderCompID;
-import quickfix.field.TestReqID;
 import quickfix.field.Username;
 import quickfix.fixt11.Heartbeat;
 import quickfix.fixt11.Logon;
 import quickfix.fixt11.MessageCracker;
 import quickfix.fixt11.Reject;
-import quickfix.fixt11.TestRequest;
 
 public class RefDataMessageHandler extends MessageCracker {
 
@@ -44,22 +41,14 @@ public class RefDataMessageHandler extends MessageCracker {
             logger.info("Custom Login is made");
         }
     }
-    
+
     @Override
     public void onMessage(Reject message, SessionID sessionID) throws FieldNotFound, UnsupportedMessageType, IncorrectTagValue {
         logger.info("Handling reject message...");
     }
 
-    public void sendTestRequest(SessionID sessionID) {
-        Session.lookupSession(sessionID).send(new TestRequest());
-        logger.info("Test request is made");
-    }
-
     @Override
     public void onMessage(Heartbeat message, SessionID sessionID) throws FieldNotFound, UnsupportedMessageType, IncorrectTagValue {
-        String senderCompId = message.getHeader().getString(SenderCompID.FIELD);
-        if (senderCompId.equals("SERVER")) {
-            logger.info("Test request id: {}", message.getInt(TestReqID.FIELD));
-        }
+        logger.info("Test request id: {}");
     }
 }
