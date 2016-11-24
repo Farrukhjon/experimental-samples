@@ -1,4 +1,4 @@
-package org.farrukh.experiments.quickfixj.client.data;
+package org.farrukh.experiments.quickfixj.client.handler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

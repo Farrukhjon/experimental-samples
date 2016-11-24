@@ -1,16 +1,13 @@
 package org.farrukh.experiments.quickfixj.client;
 
-import org.farrukh.experiments.quickfixj.client.data.MarketDataMessageHandler;
-import org.farrukh.experiments.quickfixj.client.data.RefDataMessageHandler;
+import org.farrukh.experiments.quickfixj.client.handler.MarketDataMessageHandler;
+import org.farrukh.experiments.quickfixj.client.handler.RefDataMessageHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import quickfix.ApplicationAdapter;
-import quickfix.FieldNotFound;
-import quickfix.IncorrectDataFormat;
-import quickfix.IncorrectTagValue;
+import quickfix.FixVersions;
 import quickfix.Message;
-import quickfix.RejectLogon;
 import quickfix.SessionID;
 
 /**
@@ -32,12 +29,20 @@ public class ClientApp extends ApplicationAdapter {
 
     @Override
     public void toAdmin(Message message, SessionID sessionId) {
-        refDataMsgHandler.handle(message, sessionId);
+        handle(message, sessionId);
     }
 
     @Override
-    public void fromAdmin(Message message, SessionID sessionId) throws FieldNotFound, IncorrectDataFormat, IncorrectTagValue, RejectLogon {
+    public void fromAdmin(Message message, SessionID sessionId) {
+        handle(message, sessionId);
     }
 
+    private void handle(Message message, SessionID sessionId) {
+        if (sessionId.isFIXT()) {
+            refDataMsgHandler.handle(message, sessionId);
+        } else if (sessionId.getBeginString().equals(FixVersions.FIX50SP2)) {
+            marketDataMsgHandler.handle(message, sessionId);
+        }
+    }
 
 }
