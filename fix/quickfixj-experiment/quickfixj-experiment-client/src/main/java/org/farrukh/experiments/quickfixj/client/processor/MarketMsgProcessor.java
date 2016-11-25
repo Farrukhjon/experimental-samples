@@ -35,7 +35,7 @@ public class MarketMsgProcessor {
         for (SessionID sessionId : sessions) {
             //if (sessionId.getBeginString().equals(FixVersions.FIX50SP2)) {
                 Session.lookupSession(sessionId).send(new SecurityDefinitionRequest());
-                logger.info("Security definition is sent...");
+                logger.info("Client: Security definition request is sent...");
             //}
         }
     }

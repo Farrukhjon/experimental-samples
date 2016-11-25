@@ -12,15 +12,12 @@ import quickfix.SessionNotFound;
 import quickfix.UnsupportedMessageType;
 import quickfix.field.Username;
 import quickfix.fixt11.Logon;
+import quickfix.fixt11.MessageCracker;
 import quickfix.fixt11.Reject;
 
-public class ServerStubMsgHandler extends quickfix.fixt11.MessageCracker {
+public class RefDataMessageHandlerStub extends MessageCracker {
     
-    private static final Logger logger = LoggerFactory.getLogger(ServerStubMsgHandler.class);
-    
-    public ServerStubMsgHandler() {
-        super();
-    }
+    private static final Logger logger = LoggerFactory.getLogger(RefDataMessageHandlerStub.class);
     
     public void handle(Message message, SessionID sessionId) {
         try {

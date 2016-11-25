@@ -9,6 +9,7 @@ import quickfix.Message;
 import quickfix.SessionID;
 import quickfix.UnsupportedMessageType;
 import quickfix.fix50sp2.MessageCracker;
+import quickfix.fix50sp2.SecurityDefinition;
 
 public class MarketDataMessageHandler extends MessageCracker {
     
@@ -20,6 +21,11 @@ public class MarketDataMessageHandler extends MessageCracker {
         } catch (UnsupportedMessageType | FieldNotFound | IncorrectTagValue e) {
             throw new RuntimeException(e);
         }
+    }
+    
+    @Override
+    public void onMessage(SecurityDefinition message, SessionID sessionID) throws FieldNotFound, UnsupportedMessageType, IncorrectTagValue {
+        logger.info("Client: Security definition response is received");
     }
     
 }
