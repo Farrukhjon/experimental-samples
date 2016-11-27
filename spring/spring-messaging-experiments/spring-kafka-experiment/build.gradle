@@ -1,5 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'eclipse'
 
 repositories {
     jcenter()
@@ -7,6 +8,6 @@ repositories {
 
 dependencies {
     compile 'org.slf4j:slf4j-api:1.7.21'
-    compile 'org.springframework.kafka:spring-kafka:1.0.1.RELEASE'
+    compile 'org.springframework.kafka:spring-kafka:1.1.1.RELEASE'
     testCompile 'junit:junit:4.12'
 }
