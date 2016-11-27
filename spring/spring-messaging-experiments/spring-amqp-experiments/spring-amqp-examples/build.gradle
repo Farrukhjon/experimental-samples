@@ -1,0 +1,31 @@
+buildscript{
+	repositories {
+		mavenLocal()
+		mavenCentral()
+	}
+	dependencies{ classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.1.RELEASE") }
+}
+
+defaultTasks 'clean', 'build'
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+
+
+dependencies {
+	compile "org.springframework.amqp:spring-rabbit:1.4.2.RELEASE"
+	compile 'com.fasterxml.jackson.core:jackson-databind:2.5.1'
+	compile 'org.slf4j:slf4j-api:1.7.7'
+	testCompile "junit:junit:4.11"
+}
+
+eclipse {
+	classpath { downloadJavadoc = true }
+}
