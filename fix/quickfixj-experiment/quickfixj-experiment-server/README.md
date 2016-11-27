@@ -19,8 +19,15 @@ Messages by Layers
    - StandardTrailer
    - HopGrp 
 
- - Application Level
-  - 
+ - Application Level Messages
+  - PreTrade
+   - Indication
+   - EventCommunication
+   - QuotationNegotiation
+   - MarketData
+  - Trade
+  - PostTrade
+  - Infrastructure
 FIX message Sections:
   - Session
   - Infrastructure
