@@ -54,4 +54,9 @@ public class ServerMessageAcceptor {
         }
     }
 
+    public void stop() {
+        acceptor.stop();
+        logger.info("Server is stopping...");
+    }
+
 }

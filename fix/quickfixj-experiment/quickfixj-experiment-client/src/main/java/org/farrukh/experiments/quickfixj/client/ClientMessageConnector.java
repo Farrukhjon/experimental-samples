@@ -3,7 +3,7 @@ package org.farrukh.experiments.quickfixj.client;
 import java.util.ArrayList;
 import java.util.concurrent.CountDownLatch;
 
-import org.farrukh.experiments.quickfixj.client.processor.MarketMsgProcessor;
+import org.farrukh.experiments.quickfixj.client.processor.MarketMessageProcessor;
 import org.farrukh.experiments.quickfixj.shared.FixSettingsProvider;
 import org.farrukh.experiments.quickfixj.shared.exception.FixException;
 import org.slf4j.Logger;
@@ -43,7 +43,7 @@ public final class ClientMessageConnector {
         defaultMessageFactory.addFactory(FixVersions.FIX50, quickfix.fix50sp2.MessageFactory.class);
         try {
             initiator = new SocketInitiator(clientApp, new FileStoreFactory(settings), settings, logFactory, defaultMessageFactory);
-            new MarketMsgProcessor(initiator);
+            new MarketMessageProcessor(initiator);
         } catch (ConfigError e) {
             throw new FixException(e);
         }

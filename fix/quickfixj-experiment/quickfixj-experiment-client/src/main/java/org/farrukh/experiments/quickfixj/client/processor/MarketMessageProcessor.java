@@ -10,11 +10,11 @@ import quickfix.Session;
 import quickfix.SessionID;
 import quickfix.fix50sp2.SecurityDefinitionRequest;
 
-public class MarketMsgProcessor {
+public class MarketMessageProcessor {
 
-    private static final Logger logger = LoggerFactory.getLogger(MarketMsgProcessor.class);
+    private static final Logger logger = LoggerFactory.getLogger(MarketMessageProcessor.class);
 
-    public MarketMsgProcessor(Initiator initiator) {
+    public MarketMessageProcessor(Initiator initiator) {
 
         Thread thread = new Thread() {
             @Override
