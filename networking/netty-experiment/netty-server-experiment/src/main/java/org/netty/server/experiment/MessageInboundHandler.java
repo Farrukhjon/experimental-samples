@@ -17,9 +17,9 @@ import io.netty.util.CharsetUtil;
  *
  */
 @Sharable // Can be shared by multiple channels.
-public class MessageInboundAdapter extends ChannelInboundHandlerAdapter {
+public class MessageInboundHandler extends ChannelInboundHandlerAdapter {
     
-    private static final Logger logger = LoggerFactory.getLogger(MessageInboundAdapter.class);
+    private static final Logger logger = LoggerFactory.getLogger(MessageInboundHandler.class);
     
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {

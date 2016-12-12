@@ -14,9 +14,9 @@ import io.netty.channel.ChannelPromise;
  *   The class is - a Channel
  *   The class's methods are  - Callbacks
  */
-public class MessageOutboundAdapter extends ChannelOutboundHandlerAdapter {
+public class MessageOutboundHandler extends ChannelOutboundHandlerAdapter {
 
-    public MessageOutboundAdapter() {
+    public MessageOutboundHandler() {
     }
     
     @Override
