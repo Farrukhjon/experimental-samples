@@ -1,4 +1,4 @@
-package org.farrukh.experiments.java.net;
+package org.farrukh.experiments.java.net.completion;
 
 import java.io.IOException;
 import java.nio.channels.AsynchronousChannelGroup;
