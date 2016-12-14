@@ -16,4 +16,4 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = 'design-patterns-examples'
+rootProject.name = 'design-patterns'
