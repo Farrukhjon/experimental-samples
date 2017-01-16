@@ -1,10 +1,11 @@
-package org.farrukh.experiments.old.tech;
+package org.farrukh.experiments.old.tech.service;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import org.farrukh.experiments.old.tech.AppContextConfigTests;
 import org.farrukh.experiments.old.tech.model.Country;
 import org.farrukh.experiments.old.tech.service.CountryService;
 import org.junit.Test;
