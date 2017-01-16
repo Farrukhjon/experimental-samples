@@ -18,6 +18,20 @@ public class CountryService {
     public List<Country> findAll() {
         return countryDao.findAll();
     }
+
+    public void save(Country aCountry) {
+        countryDao.create(aCountry);
+        
+        countryDao.update(aCountry);
+    }
+
+    public void update(Country aCountry) {
+        countryDao.update(aCountry);
+    }
+
+    public Country retrieve(String id) {
+        return countryDao.findOne(id);
+    }
     
     
 }

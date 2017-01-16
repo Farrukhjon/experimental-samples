@@ -7,6 +7,8 @@ public interface IOperations<T extends Serializable> {
     
     T findOne(final long id);
 
+    T findOne(final Serializable id);
+
     List<T> findAll();
 
     void create(final T entity);

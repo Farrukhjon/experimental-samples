@@ -27,6 +27,11 @@ public abstract class AbstractHibernateDao<T extends Serializable> implements IO
     public final T findOne(final long id) {
         return ((T) getCurrentSession().get(clazz, id));
     }
+    
+    @Override
+    public T findOne(Serializable id) {
+        return ((T) getCurrentSession().get(clazz, id));
+    }
 
     @Override
     public final List<T> findAll() {

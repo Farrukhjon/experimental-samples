@@ -2,7 +2,6 @@ package org.farrukh.experiments.old.tech.model;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -16,20 +15,20 @@ public class Country implements Serializable {
 
     @Id
     @Column(name = "COUNTRY_ID")
-    private char id;
+    private String id;
 
     @Column(name = "COUNTRY_NAME")
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "REGION_ID")
     private Region region;
 
-    public char getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(char id) {
+    public void setId(String id) {
         this.id = id;
     }
 
