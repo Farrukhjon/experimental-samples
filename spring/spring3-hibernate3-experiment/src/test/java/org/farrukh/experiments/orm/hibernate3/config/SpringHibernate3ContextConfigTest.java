@@ -19,7 +19,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = SpringHibernateJavaConfig.class, loader = AnnotationConfigContextLoader.class)
-public class AppContextConfigTests {
+public class SpringHibernate3ContextConfigTest {
     
     @Autowired
     DataSource oracleDataSource;

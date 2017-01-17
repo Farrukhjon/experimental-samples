@@ -5,13 +5,13 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import org.farrukh.experiments.orm.hibernate3.config.AppContextConfigTests;
+import org.farrukh.experiments.orm.hibernate3.config.SpringHibernate3ContextConfigTest;
 import org.farrukh.experiments.spring.orm.model.Employee;
 import org.farrukh.experiments.spring.orm.service.EmployeeService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class EmployeeServiceTest extends AppContextConfigTests {
+public class EmployeeServiceTest extends SpringHibernate3ContextConfigTest {
     
     @Autowired
     private EmployeeService service;

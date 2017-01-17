@@ -6,14 +6,14 @@ import static org.junit.Assert.assertTrue;
 import java.math.BigDecimal;
 import java.util.List;
 
-import org.farrukh.experiments.orm.hibernate3.config.AppContextConfigTests;
+import org.farrukh.experiments.orm.hibernate3.config.SpringHibernate3ContextConfigTest;
 import org.farrukh.experiments.spring.orm.model.Country;
 import org.farrukh.experiments.spring.orm.model.Region;
 import org.farrukh.experiments.spring.orm.service.CountryService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class CountryServiceTest extends AppContextConfigTests {
+public class CountryServiceTest extends SpringHibernate3ContextConfigTest {
 
     @Autowired
     private CountryService service;
