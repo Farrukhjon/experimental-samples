@@ -1,4 +1,7 @@
-Oracle + Hibernate3 + Spring3
+In this project I've implemented some practices for Data Access using Spring ORM for JPA and Hibernate.
+Oracle is used as underlying DBMS. 
+Third versions are chosen for both Spring and Hibernate.
+
 The "HR" sample data is used for the persistence side.
 
 Hibernate3:
@@ -7,7 +10,10 @@ Hibernate3:
     - Session Cache
     - Second Level Cache
     - Query Cache
-    
+JPA
+  - EntityManager
+
+
 Common/General interfaces and classes
  - org.farrukh.experiments.spring.orm // Root package
  - org.farrukh.experiments.spring.orm.model
