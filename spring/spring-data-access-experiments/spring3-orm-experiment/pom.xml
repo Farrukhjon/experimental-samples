@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.farrukh.experiments</groupId>
-    <artifactId>spring3-hibernate3-experiment</artifactId>
+    <artifactId>spring3-orm-experiment</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>spring3-hibernate3-experiment</name>
+    <name>spring3-orm-experiment</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

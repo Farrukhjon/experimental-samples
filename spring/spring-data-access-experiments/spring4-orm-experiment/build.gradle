@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'idea'
 
 jar {
-    baseName = 'spring-data-access-jpa-experiment'
+    baseName = 'spring4-orm-experiment'
     version = '0.0.1-SNAPSHOT'
 }
 sourceCompatibility = 1.8
