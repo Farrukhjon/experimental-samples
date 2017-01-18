@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.farrukh.experiments.spring.orm.dao.IOperations;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,12 +41,15 @@ public abstract class AbstractHibernateDao<T extends Serializable> implements IO
     @Override
     public List<T> findByName(String name) {
         waitQuery();
-        return getCurrentSession().createQuery("from Employee where firstName = :name").setParameter("name", name).list();
+        Query namedQuery = getCurrentSession().createQuery("from Employee where firstName = :name").setParameter("name", name);
+        Query cacheableQuery = namedQuery.setCacheable(true);
+        List<T> result = cacheableQuery.list();
+        return result;
     }
     
     private void waitQuery() {
         try {
-            TimeUnit.SECONDS.sleep(2);
+            TimeUnit.SECONDS.sleep(7);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -72,6 +72,31 @@ public class JobHistory implements Serializable {
     public void setDepartament(Department departament) {
         this.departament = departament;
     }
+    
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((jobs == null) ? 0 : jobs.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (!(obj instanceof JobHistory))
+            return false;
+        JobHistory other = (JobHistory) obj;
+        if (jobs == null) {
+            if (other.jobs != null)
+                return false;
+        } else if (!jobs.equals(other.jobs))
+            return false;
+        return true;
+    }
 
     @Override
     public String toString() {

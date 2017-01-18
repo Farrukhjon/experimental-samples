@@ -46,7 +46,7 @@ public class SpringJPAContextJavaConfig {
             oracle.setDriverType(env.getProperty("oracle.driver.type"));
             return oracle;
         } catch (SQLException e) {
-            throw new RuntimeException();
+            throw new RuntimeException(e);
         }
     }
 

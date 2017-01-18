@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import javax.sql.DataSource;
 
 import org.farrukh.experiments.spring.orm.hibernate3.config.SpringHibernateJavaConfig;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.Assert;
 import org.junit.Test;
@@ -59,6 +60,10 @@ public class SpringHibernate3ContextConfigTest {
     @Test
     public void ShouldTestPersistenceExceptionTranslationPostProcessorInstantiation() throws Exception {
         assertNotNull(persistenceExceptionTranslationPostProcessor);
+    }
+    
+    public Session currentSession() {
+        return sessionFactory.getCurrentSession();
     }
 
 }
