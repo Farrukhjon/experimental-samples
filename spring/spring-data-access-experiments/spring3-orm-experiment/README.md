@@ -88,7 +88,30 @@ Querying
   Parameters
     Bind Parameters
      Named parameters
-     Number (order) parameters
+     Positional (number) parameters
+Batch Processing
+  Insert
+  Update
+  StatelessSession
+  DML-style operations (Bulk operators, or Bulk Update/Delete)
+HQL
+  CRUD operators
+  Clauses
+    from 
+    select
+    where
+    order by
+    group by
+  association and joins
+  identifier
+  functions for aggregating
+  Polymorphism in querying
+  Expressions
+  Subqueries
+  Bulk operators 
+  
+  
+  
         
         
  
