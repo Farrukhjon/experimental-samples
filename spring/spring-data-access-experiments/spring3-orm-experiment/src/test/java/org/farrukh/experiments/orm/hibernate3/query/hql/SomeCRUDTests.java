@@ -21,5 +21,7 @@ public class SomeCRUDTests extends SpringHibernate3ContextConfigTest {
         return object;
     }
     
+    
+    
 
 }
