@@ -55,6 +55,10 @@ Object States and State Transitions
   Detached
     has been persistent
     a session has been closed
+
+Mapping approaches
+  XML-based object/table mapping
+  Annotation-based object/table mapping
     
 Querying approaches:
   Static
@@ -94,24 +98,56 @@ Batch Processing
   Update
   StatelessSession
   DML-style operations (Bulk operators, or Bulk Update/Delete)
-HQL
+HQL. Writing queries
   CRUD operators
   Clauses
-    from 
+    from
+      "from <class name>"
     select
+      "select <atributes..,> from <class name>"        
+      "select new list(<atributes..,>) from <class name>" result set returned as List        
+      "select new map(<atributes..,>) from <class name>"  result set returned as Map      
+      "select new <some_type>(<atributes..,>) from <class name>" result set returned as List of <some_type>        
     where
     order by
     group by
   association and joins
   identifier
   functions for aggregating
+  Pagination result
+    Query.setFirstResult(int startPosition)
+    Query.setMaxResults(int maxResult)
   Polymorphism in querying
   Expressions
   Subqueries
   Bulk operators 
+Criteria Queries
+  Typed Criteria queries  
   
-  
-  
+Spring Transaction Support for Hibernate
+Core classes, interfaces and Annotations
+  TransactionFactory
+    SpringTransactionFactory implementation 
+  HibernateTransactionManager
+  @Transactional
+    Attributes (Properties) and their Values
+      propagation
+        REQUIRED
+        SUPPORTS
+        MANDATORY
+        REQUIRES_NEW
+        NOT_SUPPORTED
+        NEVER
+        NESTED
+      isolation
+        DEFAULT
+        READ_UNCOMMITTED
+        READ_COMMITTED
+        REPEATABLE_READ
+        SERIALIZABLE
+      timeout
+        
+      
         
         
  
