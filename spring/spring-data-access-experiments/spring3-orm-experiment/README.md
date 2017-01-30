@@ -3,6 +3,21 @@ Oracle is used as underlying DBMS.
 Third versions are chosen for both Spring and Hibernate.
 
 The "HR" sample data is used for the persistence side.
+
+Common/General interfaces and classes
+ - org.farrukh.experiments.spring.orm // Root package
+ - org.farrukh.experiments.spring.orm.model
+ - org.farrukh.experiments.spring.orm.dao
+ - org.farrukh.experiments.spring.orm.service
+ 
+Hibernate3 specific interfaces and classes
+ - org.farrukh.experiments.spring.orm.hibernate3.config
+ - org.farrukh.experiments.spring.orm.hibernate3.dao
+ 
+JPA specific interfaces and classes
+ - org.farrukh.experiments.spring.orm.jpa.config
+ - org.farrukh.experiments.spring.orm.jpa.dao
+
 Main Dependencies
   group: org.hibernate
     artifact: hibernate-core.jar
@@ -26,21 +41,17 @@ Hibernate EntityManager (JPA 2.0 specification implementation)
   Persistence unit
   JTA entity manager
 
-Common/General interfaces and classes
- - org.farrukh.experiments.spring.orm // Root package
- - org.farrukh.experiments.spring.orm.model
- - org.farrukh.experiments.spring.orm.dao
- - org.farrukh.experiments.spring.orm.service
- 
-Hibernate3 specific interfaces and classes
- - org.farrukh.experiments.spring.orm.hibernate3.config
- - org.farrukh.experiments.spring.orm.hibernate3.dao
- 
-JPA specific interfaces and classes
- - org.farrukh.experiments.spring.orm.jpa.config
- - org.farrukh.experiments.spring.orm.jpa.dao
-
-
+Configuration
+  Connection by
+    DriverManager
+    DataSource
+  SessionFactory
+  EntityManager
+  TransactionManager
+    By Spring approach
+      HibernateTransactionManager
+      DataSourceTransactionManager
+    
 Object States and State Transitions
   Transient
     created by 'new' keyword
@@ -114,7 +125,7 @@ HQL. Writing queries
   association and joins
   identifier
   functions for aggregating
-  Pagination result
+  Pagination of result set
     Query.setFirstResult(int startPosition)
     Query.setMaxResults(int maxResult)
   Polymorphism in querying
@@ -122,7 +133,24 @@ HQL. Writing queries
   Subqueries
   Bulk operators 
 Criteria Queries
-  Typed Criteria queries  
+  are type-safe
+  in essence are Object-Graph
+  Criteria by Hibernate Core (By Session)
+    Interface: org.hibernate.Criteria
+    Creation:
+      Session (SessionFactory.openSession() or SessionFactory.getCurrentSession())
+        createCriteria(Class persistentClass) //Criteria
+        createCriteria(Class persistentClass, String alias) //Criteria
+        createCriteria(String entityName) // Criteria
+  Criteria API by JPA (By EntityManager)
+    interface: javax.persistence.criteria.CriteriaQuery<T>
+    Creation:
+      CriteriaBuilder (EntityManager.getCriteriaBuilder())
+        .createQuery() // returns CriteriaQuery<Object>
+        .createQuery(Class<T> resultClass) // returns <T> CriteriaQuery<T>, Typed Criteria
+        .createTupleQuery() // returns CriteriaQuery<Tuple>, Tuple criteria
+    Typed Criteria queries
+    Tuple Criteria queries
   
 Spring Transaction Support for Hibernate
 Core classes, interfaces and Annotations
@@ -146,8 +174,4 @@ Core classes, interfaces and Annotations
         REPEATABLE_READ
         SERIALIZABLE
       timeout
-        
-      
-        
-        
  
