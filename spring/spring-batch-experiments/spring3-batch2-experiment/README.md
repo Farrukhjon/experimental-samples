@@ -159,7 +159,14 @@ Job Conditional Flow
       FAILED
       ABANDONED
       UNKNOWN
-Spring Batch Framework Dependencies
-  spring-batch-core
-  spring-batch-infrastructure
-  spring-batch-test
+Spring Batch Dependencies
+  Spring Core
+    Dependency Injection
+    SpEL
+    Bean Factory
+    Transaction Platform
+    AOP
+  Batch libraries
+    spring-batch-core
+    spring-batch-infrastructure
+    spring-batch-test
