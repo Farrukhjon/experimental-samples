@@ -11,7 +11,7 @@
 	<job id="simple-chunk-io">
 	  <step id="chunkiostep">
 	    <tasklet>
-	      <chunk reader="itemReader" writer="itemWriter" commit-interval="5" />
+	      <chunk reader="itemReader" writer="itemWriter" commit-interval="#{jobParameters['commit.interval']}" />
 	    </tasklet>
 	  </step>
 	</job>

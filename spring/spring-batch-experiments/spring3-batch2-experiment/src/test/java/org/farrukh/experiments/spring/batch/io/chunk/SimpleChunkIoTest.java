@@ -1,10 +1,15 @@
 package org.farrukh.experiments.spring.batch.io.chunk;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.JobExecution;
+import org.springframework.batch.core.JobParameter;
+import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -19,7 +24,10 @@ public class SimpleChunkIoTest {
     
     @Test
     public void testSimpleChunkIO() throws Exception {
-        JobExecution jobExecution = jobLauncher.launchJob();
+        Map<String, JobParameter> parameters = new HashMap<String, JobParameter>();
+        parameters.put("commit.interval", new JobParameter("5"));
+        
+        JobExecution jobExecution = jobLauncher.launchJob(new JobParameters(parameters));
         
         Assert.assertEquals(BatchStatus.COMPLETED, jobExecution.getStatus());
     }

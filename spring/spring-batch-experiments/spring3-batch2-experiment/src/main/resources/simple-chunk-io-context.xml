@@ -8,7 +8,7 @@
    <import resource="batch-context-config.xml" />
    <bean
       id="itemReader"
-      class="org.farrukh.experiments.spring.batch.io.chunk.WordItemReader"
+      class="org.farrukh.experiments.spring.batch.io.chunk.WordItemReader" scope="step"
    >
       <constructor-arg name="sentence">
          <list>
@@ -82,5 +82,5 @@
    </bean>
    <bean
       id="itemWriter"
-      class="org.farrukh.experiments.spring.batch.io.chunk.WordItemWriter" />
+      class="org.farrukh.experiments.spring.batch.io.chunk.WordItemWriter" scope="step"/>
 </beans>
