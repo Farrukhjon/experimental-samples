@@ -18,7 +18,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({ "jobs/extract-calculate-store-job.xml", "job-launcher-test-config.xml" })
+@ContextConfiguration({ "/jobs/extract-calculate-store-job.xml", "job-launcher-test-config.xml" })
 public class ExtractCalculateStoreTest {
 
     @Autowired

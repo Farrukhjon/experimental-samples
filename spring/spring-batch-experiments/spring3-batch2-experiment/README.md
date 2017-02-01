@@ -170,3 +170,19 @@ Spring Batch Dependencies
     spring-batch-core
     spring-batch-infrastructure
     spring-batch-test
+Use Cases and Approches
+  Input/Process/Output
+    Databse
+    Flat file
+    Multi Flat files
+    XML file
+    Multi XML files
+  Tasklet vs Chunk-oriented
+  Multi-threaded Steps
+  Partitioning
+    Loca
+    Remote
+  Decisioning
+  Listeners
+    
+      
