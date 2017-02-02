@@ -14,5 +14,9 @@ public class Employee {
     public Employee(final String firstName) {
         this.firstName = firstName;
     }
+    
+    public String getFirstName() {
+        return firstName;
+    }
 
 }

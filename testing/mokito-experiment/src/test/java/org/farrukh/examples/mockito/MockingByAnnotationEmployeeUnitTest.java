@@ -9,24 +9,16 @@ package org.farrukh.examples.mockito;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
-public class EmployeeUnitTests {
+public class MockingByAnnotationEmployeeUnitTest {
 
-    @Mock
-    EmployeeRepository mockEmployeeRepo;// = mock(EmployeeRepository.class); 
-    
-    @Before
-    public void setup() {
-        MockitoAnnotations.initMocks(this);
-    }
+    EmployeeRepository mockEmployeeRepo = mock(EmployeeRepository.class); // mocking by interface
 
     @Test
     public void shouldTestStoringAnEmployeeToTheDataBase() {
@@ -34,7 +26,7 @@ public class EmployeeUnitTests {
         //given
         Employee ali = new Employee("Ali");
 
-        when(mockEmployeeRepo.insert(ali)).thenReturn(ali); // stub method call before all dependent calls.
+        when(mockEmployeeRepo.insert(ali)).thenReturn(ali); // stub method call
 
         //when
         EmployeeService service = new EmployeeServiceImpl(mockEmployeeRepo);
