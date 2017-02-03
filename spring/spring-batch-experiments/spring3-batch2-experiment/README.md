@@ -1,3 +1,5 @@
+Why batch processing
+What is batch processing
 Batch processing
   Books and learning resources:
     Spring Batch - Reference Documentation
@@ -184,5 +186,8 @@ Use Cases and Approches
     Remote
   Decisioning
   Listeners
-    
+Testing Spring Batch Application
+  Unit testing
+  Integration testing
+      
       
