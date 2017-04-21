@@ -13,6 +13,8 @@ import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.message.BasicHeader;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.URI;
@@ -20,33 +22,23 @@ import java.net.URISyntaxException;
 
 public class WebClientUtil {
 
+    private final static Logger LOGGER = LoggerFactory.getLogger(WebClientUtil.class);
+
     private static final int MAX = 30;
     CloseableHttpClient httpClient = null;
-    private HttpHost target;
     private HttpContext context = new BasicHttpContext();
     public static final String URL = "";
     private String host = "localhost";
     private String path = "books";
-    private int port = 8080;
+    private int port = 8989;
 
-    public WebClientUtil() throws IOException {
-        CloseableHttpResponse response = null;
-        try {
-            PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager();
-            connectionManager.setMaxTotal(MAX);
-            httpClient = HttpClients.custom()
-                    .setConnectionManager(connectionManager)
-                    .build();
-            String host = "";
-            HttpHost target = HttpHost.create(host);
-            String url = "";
-            HttpRequest request = new HttpGet(url);
+    public WebClientUtil() {
+        PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager();
+        connectionManager.setMaxTotal(MAX);
+        httpClient = HttpClients.custom()
+                .setConnectionManager(connectionManager)
+                .build();
 
-
-        } finally {
-            httpClient.close();
-            response.close();
-        }
     }
 
     public CloseableHttpResponse request(String id) throws IOException {
@@ -54,14 +46,18 @@ public class WebClientUtil {
         try {
             URI uri = createUriByPath(id);
             HttpGet request = new HttpGet(uri);
-            request.addHeader(new BasicHeader("accept", "application/json"));
-            response = httpClient.execute(target, request, context);
+            request.addHeader(new BasicHeader("accept", "application/json; charset=utf-8"));
+            LOGGER.info("Executing request to url: {}", uri);
+            response = httpClient.execute(request);
             StatusLine statusLine = response.getStatusLine();
-            if (statusLine.getStatusCode() != 200) {
+            int statusCode = statusLine.getStatusCode();
+            /*if (statusCode != 200) {
                 throw new RuntimeException("Error response");
-            }
+            }*/
+            LOGGER.info("The response status code is: {}", statusCode);
             return response;
-        } catch (IOException e) {
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage());
             throw new RuntimeException(e);
         } finally {
             response.close();
@@ -75,7 +71,7 @@ public class WebClientUtil {
                     .setHost(host)
                     .setPort(port)
                     .setPath(path)
-                    .setPath(id)
+                    .addParameter("bookId", id)
                     .build();
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);

@@ -1,11 +1,18 @@
 package org.farrukh.experiments;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class Book {
 
+    @JsonProperty
     private String id;
+
+    @JsonProperty
     private String name;
+
+    @JsonProperty
     private List<Author> authors;
 
     public String getId() {

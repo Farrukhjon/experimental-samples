@@ -3,11 +3,14 @@ package org.farrukh.experiments;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
 import java.io.InputStream;
 
 public class BookService {
+
+    private static final Logger logger = LoggerFactory.getLogger(BookService.class);
 
     private static BookService instance;
 
@@ -17,25 +20,30 @@ public class BookService {
 
     public BookService() {
         mapper = new ObjectMapper();
+        webClientUtil = new WebClientUtil();
     }
 
     public Book getBookById(String id) {
         CloseableHttpResponse response = null;
         try {
             response = webClientUtil.request(id);
-        } catch (IOException e) {
+            HttpEntity entity = response.getEntity();
+            long contentLength = entity.getContentLength();
+            Book book = null;
+            if (contentLength > 0) {
+                InputStream content = entity.getContent();
+                book = mapper.readValue(content, Book.class);
+            }
+            return book;
+        } catch (Exception e) {
+            logger.error(e.getMessage());
             throw new RuntimeException(e);
-        }
-        return mapToBook(response);
-    }
-
-    private Book mapToBook(CloseableHttpResponse response) {
-        HttpEntity entity = response.getEntity();
-        try {
-            InputStream content = entity.getContent();
-            return mapper.readValue(content, Book.class);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        } finally {
+            try {
+                response.close();
+            } catch (Exception e) {
+                logger.error(e.getMessage());
+            }
         }
     }
 
