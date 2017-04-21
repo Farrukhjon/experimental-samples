@@ -14,19 +14,19 @@ public class BookService {
 
     private static BookService instance;
 
-    private WebClientUtil webClientUtil;
+    private PooledConcurrentWebClientUtil pooledConcurrentWebClientUtil;
 
     private ObjectMapper mapper;
 
     public BookService() {
         mapper = new ObjectMapper();
-        webClientUtil = new WebClientUtil();
+        pooledConcurrentWebClientUtil = new PooledConcurrentWebClientUtil();
     }
 
     public Book getBookById(String id) {
         CloseableHttpResponse response = null;
         try {
-            response = webClientUtil.request(id);
+            response = pooledConcurrentWebClientUtil.request(id);
             HttpEntity entity = response.getEntity();
             long contentLength = entity.getContentLength();
             Book book = null;

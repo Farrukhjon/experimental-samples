@@ -1,5 +1,6 @@
 package org.farrukh.experiments;
 
+import org.apache.http.client.methods.HttpGet;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -13,21 +14,31 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+import static org.apache.http.HttpHeaders.ACCEPT;
+import static org.apache.http.entity.ContentType.APPLICATION_JSON;
 import static org.mockserver.model.HttpCallback.callback;
 import static org.mockserver.model.HttpRequest.request;
 
 public class AppTest {
 
     private ClientAndServer mockServer;
-    private Integer port = 8989;
+
+    @Before
+    public void setUpEnv() throws Exception {
+        System.setProperty("connection.host", "localhost");
+        System.setProperty("connection.port", "8989");
+    }
 
     @Before
     public void startHttpServer() throws Exception {
-        mockServer = ClientAndServer.startClientAndServer(port);
+        Integer port = Integer.valueOf(System.getProperty("connection.port"));
+        mockServer = ClientAndServer.
+                startClientAndServer(port);
         mockServer
                 .when(
                         request()
-                                .withMethod("GET")
+                                .withMethod(HttpGet.METHOD_NAME)
+                                .withHeader(ACCEPT, APPLICATION_JSON.toString())
                 )
                 .callback(
                         callback()

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-    <contextName>DEV</contextName>
+    <contextName>Development</contextName>
 
-    <property name="MESSAGE_FORMAT" value="[%contextName] %-5level %class{36}.%M %L [%thread]: %message%n"/>
+    <property name="MESSAGE_FORMAT" value="%level [%thread] [%L] %class{0}.%M: %message%n"/>
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>

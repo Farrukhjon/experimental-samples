@@ -1,18 +1,12 @@
 package org.farrukh.experiments;
 
-import org.apache.http.HttpHost;
-import org.apache.http.HttpRequest;
 import org.apache.http.StatusLine;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.apache.http.message.BasicHeader;
-import org.apache.http.protocol.BasicHttpContext;
-import org.apache.http.protocol.HttpContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,25 +14,23 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-public class WebClientUtil {
+import static org.apache.http.HttpHeaders.ACCEPT;
+import static org.apache.http.entity.ContentType.APPLICATION_JSON;
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(WebClientUtil.class);
+public class PooledConcurrentWebClientUtil {
+
+    private final static Logger LOGGER = LoggerFactory.getLogger(PooledConcurrentWebClientUtil.class);
 
     private static final int MAX = 30;
-    CloseableHttpClient httpClient = null;
-    private HttpContext context = new BasicHttpContext();
-    public static final String URL = "";
-    private String host = "localhost";
+    private CloseableHttpClient httpClient = null;
     private String path = "books";
-    private int port = 8989;
 
-    public WebClientUtil() {
+    public PooledConcurrentWebClientUtil() {
         PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager();
         connectionManager.setMaxTotal(MAX);
         httpClient = HttpClients.custom()
                 .setConnectionManager(connectionManager)
                 .build();
-
     }
 
     public CloseableHttpResponse request(String id) throws IOException {
@@ -46,7 +38,7 @@ public class WebClientUtil {
         try {
             URI uri = createUriByPath(id);
             HttpGet request = new HttpGet(uri);
-            request.addHeader(new BasicHeader("accept", "application/json; charset=utf-8"));
+            request.addHeader(ACCEPT, APPLICATION_JSON.toString());
             LOGGER.info("Executing request to url: {}", uri);
             response = httpClient.execute(request);
             StatusLine statusLine = response.getStatusLine();
@@ -66,6 +58,8 @@ public class WebClientUtil {
 
     private URI createUriByPath(String id) {
         try {
+            String host = System.getProperty("connection.host");
+            Integer port = Integer.valueOf(System.getProperty("connection.port"));
             return new URIBuilder()
                     .setScheme("http")
                     .setHost(host)
