@@ -23,17 +23,15 @@ public class PooledConcurrentWebClientUtil {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(PooledConcurrentWebClientUtil.class);
 
-    private static final int MAX_CONN_TOTAL = 30;
-    private static final int MAX_CONN_PER_ROUTE = 30;
+    private static final int MAX_CONN_TOTAL = 20;
+    private static final int MAX_CONN_PER_ROUTE = 20;
 
     private CloseableHttpClient httpClient = null;
     private String path = "books";
 
     public PooledConcurrentWebClientUtil() {
-        PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager();
-        connectionManager.setMaxTotal(MAX_CONN_TOTAL);
         httpClient = HttpClients.custom()
-                .setConnectionManager(connectionManager)
+                .setConnectionManager(new PoolingHttpClientConnectionManager())
                 .setMaxConnPerRoute(MAX_CONN_PER_ROUTE)
                 .setMaxConnTotal(MAX_CONN_TOTAL)
                 .build();
