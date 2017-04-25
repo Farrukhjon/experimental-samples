@@ -3,13 +3,14 @@ package org.farrukh.experiments;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.mockserver.matchers.HttpRequestMatcher;
 import org.mockserver.mock.action.ExpectationCallback;
-import org.mockserver.model.Header;
-import org.mockserver.model.HttpRequest;
-import org.mockserver.model.HttpResponse;
+import org.mockserver.model.*;
 
 import java.util.Arrays;
+import java.util.List;
 
+import static org.mockserver.model.Header.header;
 import static org.mockserver.model.HttpResponse.response;
 
 public class MockServerResponseCallback implements ExpectationCallback {
@@ -17,14 +18,14 @@ public class MockServerResponseCallback implements ExpectationCallback {
     private ObjectMapper mapper = new ObjectMapper();
 
     public HttpResponse handle(HttpRequest httpRequest) {
-        String bookId = httpRequest.getQueryStringParameters().get(0).getValues().get(0).getValue();
-        HttpResponse httpResponse = response()
+        List<Parameter> parameters = httpRequest.getQueryStringParameters();
+        String bookId = parameters.get(0).getValues().get(0).getValue();
+        return response()
                 .withHeaders(
-                        new Header("Content-Type", "application/json; charset=utf-8")
+                        header("Content-Type", "application/json; charset=utf-8")
                 )
                 .withStatusCode(200)
                 .withBody(generateJsonBook(bookId));
-        return httpResponse;
     }
 
     private String generateJsonBook(String bookId) {
@@ -35,8 +36,7 @@ public class MockServerResponseCallback implements ExpectationCallback {
         book.setId(bookId);
         book.setName("Book " + bookId);
         try {
-            String jsonBook = mapper.writeValueAsString(book);
-            return jsonBook;
+            return mapper.writeValueAsString(book);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }

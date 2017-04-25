@@ -1,9 +1,11 @@
 package org.farrukh.experiments;
 
 import org.apache.http.StatusLine;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.impl.NoConnectionReuseStrategy;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
@@ -30,6 +32,7 @@ public class PooledConcurrentWebClientUtil {
         connectionManager.setMaxTotal(MAX);
         httpClient = HttpClients.custom()
                 .setConnectionManager(connectionManager)
+                .setConnectionReuseStrategy(NoConnectionReuseStrategy.INSTANCE)
                 .build();
     }
 

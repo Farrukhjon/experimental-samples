@@ -1,36 +1,33 @@
 package org.farrukh.experiments;
 
 import org.apache.http.client.methods.HttpGet;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.mockserver.integration.ClientAndServer;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.Set;
+import java.util.concurrent.*;
 
 import static org.apache.http.HttpHeaders.ACCEPT;
 import static org.apache.http.entity.ContentType.APPLICATION_JSON;
+import static org.junit.Assert.assertNotNull;
 import static org.mockserver.model.HttpCallback.callback;
 import static org.mockserver.model.HttpRequest.request;
 
 public class AppTest {
 
-    private ClientAndServer mockServer;
+    private static ClientAndServer mockServer;
 
-    @Before
-    public void setUpEnv() throws Exception {
+    @BeforeClass
+    public static void setUpEnv() throws Exception {
         System.setProperty("connection.host", "localhost");
         System.setProperty("connection.port", "8989");
     }
 
-    @Before
-    public void startHttpServer() throws Exception {
+    @BeforeClass
+    public static void startHttpServer() throws Exception {
         Integer port = Integer.valueOf(System.getProperty("connection.port"));
         mockServer = ClientAndServer.
                 startClientAndServer(port);
@@ -39,6 +36,7 @@ public class AppTest {
                         request()
                                 .withMethod(HttpGet.METHOD_NAME)
                                 .withHeader(ACCEPT, APPLICATION_JSON.toString())
+                                .withPath("")
                 )
                 .callback(
                         callback()
@@ -49,35 +47,33 @@ public class AppTest {
     @After
     public void stopHttpServer() throws Exception {
         mockServer.stop();
-
     }
 
     @Test
     public void testConcurrentThreadSafeRequesting() throws Exception {
-        List<Future<Book>> futures = new ArrayList<Future<Book>>();
+        Set<Future<Book>> futures = new HashSet<Future<Book>>();
         List<String> ids = new ArrayList<String>();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 9; i++) {
             ids.add(String.valueOf(i));
         }
 
-        ExecutorService executorService = Executors.newFixedThreadPool(17);
+        ExecutorService executorService = Executors.newFixedThreadPool(3);
+        CompletionService<Book> completionService = new ExecutorCompletionService<Book>(executorService);
         for (String id : ids) {
             Callable<Book> requestTask = new RequestBookTask(id);
-            Future<Book> bookFuture = executorService.submit(requestTask);
+            Future<Book> bookFuture = completionService.submit(requestTask);
             futures.add(bookFuture);
         }
-        Thread.sleep(7000);
-        for (Future<Book> future : futures) {
+        while (!futures.isEmpty()) {
+            Future<Book> future = completionService.take();
             if (future.isDone()) {
                 Book book = future.get();
-
-                Assert.assertNotNull(book);
-                Assert.assertNotNull(book.getId());
-                Assert.assertNotNull(book.getName());
+                assertNotNull(book);
+                assertNotNull(book.getId());
+                assertNotNull(book.getName());
+                futures.remove(future);
             }
         }
-        Thread.sleep(7000);
-        executorService.shutdown();
     }
 
 }
