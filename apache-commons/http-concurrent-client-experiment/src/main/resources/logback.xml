@@ -3,7 +3,7 @@
 
     <contextName>Development</contextName>
 
-    <property name="MESSAGE_FORMAT" value="%level [%thread] [%L] %class{0}.%M: %message%n"/>
+    <property name="MESSAGE_FORMAT" value="%d{HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"/>
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>

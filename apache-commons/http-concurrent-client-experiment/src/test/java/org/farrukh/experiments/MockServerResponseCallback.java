@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.mockserver.matchers.HttpRequestMatcher;
 import org.mockserver.mock.action.ExpectationCallback;
 import org.mockserver.model.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,11 +17,14 @@ import static org.mockserver.model.HttpResponse.response;
 
 public class MockServerResponseCallback implements ExpectationCallback {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(MockServerResponseCallback.class);
+
     private ObjectMapper mapper = new ObjectMapper();
 
     public HttpResponse handle(HttpRequest httpRequest) {
         List<Parameter> parameters = httpRequest.getQueryStringParameters();
         String bookId = parameters.get(0).getValues().get(0).getValue();
+        LOGGER.info("Responding to the client with asset id: {}", bookId);
         return response()
                 .withHeaders(
                         header("Content-Type", "application/json; charset=utf-8")

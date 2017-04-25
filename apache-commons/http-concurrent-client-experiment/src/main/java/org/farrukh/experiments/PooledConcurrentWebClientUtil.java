@@ -23,27 +23,29 @@ public class PooledConcurrentWebClientUtil {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(PooledConcurrentWebClientUtil.class);
 
-    private static final int MAX = 30;
+    private static final int MAX_CONN_TOTAL = 30;
+    private static final int MAX_CONN_PER_ROUTE = 30;
+
     private CloseableHttpClient httpClient = null;
     private String path = "books";
 
     public PooledConcurrentWebClientUtil() {
         PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager();
-        connectionManager.setMaxTotal(MAX);
+        connectionManager.setMaxTotal(MAX_CONN_TOTAL);
         httpClient = HttpClients.custom()
                 .setConnectionManager(connectionManager)
-                .setConnectionReuseStrategy(NoConnectionReuseStrategy.INSTANCE)
+                .setMaxConnPerRoute(MAX_CONN_PER_ROUTE)
+                .setMaxConnTotal(MAX_CONN_TOTAL)
                 .build();
     }
 
     public CloseableHttpResponse request(String id) throws IOException {
-        CloseableHttpResponse response = null;
         try {
             URI uri = createUriByPath(id);
             HttpGet request = new HttpGet(uri);
             request.addHeader(ACCEPT, APPLICATION_JSON.toString());
             LOGGER.info("Executing request to url: {}", uri);
-            response = httpClient.execute(request);
+            CloseableHttpResponse response = httpClient.execute(request);
             StatusLine statusLine = response.getStatusLine();
             int statusCode = statusLine.getStatusCode();
             /*if (statusCode != 200) {
@@ -54,8 +56,6 @@ public class PooledConcurrentWebClientUtil {
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
             throw new RuntimeException(e);
-        } finally {
-            response.close();
         }
     }
 
