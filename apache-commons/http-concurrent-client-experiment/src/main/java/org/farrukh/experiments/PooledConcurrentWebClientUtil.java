@@ -27,7 +27,7 @@ public class PooledConcurrentWebClientUtil {
     private static final int MAX_CONN_PER_ROUTE = 20;
 
     private CloseableHttpClient httpClient = null;
-    private String path = "books";
+
 
     public PooledConcurrentWebClientUtil() {
         httpClient = HttpClients.custom()
@@ -39,7 +39,7 @@ public class PooledConcurrentWebClientUtil {
 
     public CloseableHttpResponse request(String id) throws IOException {
         try {
-            URI uri = createUriByPath(id);
+            URI uri = UrlUtil.createUriByPath(id);
             HttpGet request = new HttpGet(uri);
             request.addHeader(ACCEPT, APPLICATION_JSON.toString());
             LOGGER.info("Executing request to url: {}", uri);
@@ -57,19 +57,4 @@ public class PooledConcurrentWebClientUtil {
         }
     }
 
-    private URI createUriByPath(String id) {
-        try {
-            String host = System.getProperty("connection.host");
-            Integer port = Integer.valueOf(System.getProperty("connection.port"));
-            return new URIBuilder()
-                    .setScheme("http")
-                    .setHost(host)
-                    .setPort(port)
-                    .setPath(path)
-                    .addParameter("bookId", id)
-                    .build();
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
-    }
 }

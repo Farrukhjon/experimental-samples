@@ -1,12 +1,9 @@
 package org.farrukh.experiments;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.InputStream;
 
 public class BookService {
 
@@ -16,11 +13,11 @@ public class BookService {
 
     private PooledConcurrentWebClientUtil pooledConcurrentWebClientUtil;
 
-    private ObjectMapper mapper;
+    private BookMapper bookMapper;
 
     public BookService() {
-        mapper = new ObjectMapper();
         pooledConcurrentWebClientUtil = new PooledConcurrentWebClientUtil();
+        bookMapper = new BookMapper();
     }
 
     public Book getBookById(String id) {
@@ -31,8 +28,7 @@ public class BookService {
             long contentLength = entity.getContentLength();
             Book book = null;
             if (contentLength > 0) {
-                InputStream content = entity.getContent();
-                book = mapper.readValue(content, Book.class);
+                book = bookMapper.mapToBook(entity);
             }
             return book;
         } catch (Exception e) {
@@ -46,6 +42,7 @@ public class BookService {
             }
         }
     }
+
 
     public static BookService getInstance() {
         if (instance == null) {
