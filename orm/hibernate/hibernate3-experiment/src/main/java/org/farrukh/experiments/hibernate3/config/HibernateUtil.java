@@ -10,7 +10,8 @@ public class HibernateUtil {
 
     private SessionFactory buildSessionFactory() {
         Configuration configuration = new Configuration();
-        return configuration.configure().buildSessionFactory();
+        String configResource = "";
+        return configuration.configure(configResource).buildSessionFactory();
     }
 
     public SessionFactory getSessionFactory() {
