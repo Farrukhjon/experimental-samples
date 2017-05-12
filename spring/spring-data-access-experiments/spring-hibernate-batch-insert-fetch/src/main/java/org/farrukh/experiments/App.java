@@ -1,0 +1,13 @@
+package org.farrukh.experiments;
+
+/**
+ * Hello world!
+ */
+public class App {
+
+    public static void main(String[] args) {
+
+
+    }
+
+}
