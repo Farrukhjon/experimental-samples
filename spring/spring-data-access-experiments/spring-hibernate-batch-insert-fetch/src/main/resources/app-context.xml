@@ -8,8 +8,6 @@
                http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
                http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
-    <util:properties id="hibernateProperties" location="classpath:hibernate.properties"/>
-
     <context:property-placeholder location="classpath:oracle.properties"/>
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
@@ -21,19 +19,33 @@
         <property name="maxActive" value="${oracle.jdbc.maxActive}" />
         <property name="maxIdle" value="${oracle.jdbc.maxIdle}" />
     </bean>
+    
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="annotatedClasses">
+            <list>
+                <value>org.farrukh.experiments.model.Book</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <map>
+                <entry key="hibernate.show_sql" value="true"/>
+                <entry key="hibernate.hbm2ddl.auto" value="none"/>
+                <entry key="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
+                <entry key="hibernate.jdbc.batch_size" value="${batch_size}"/>
+                <entry key="hibernate.jdbc.fetch_size" value="${batch_size}"/>
+                <entry key="hibernate.order_inserts" value="true"/>
+                <entry key="hibernate.order_updates" value="true"/>
+            </map>
+        </property>
+    </bean>
 
-<!--    <bean id="dataSource" class="oracle.jdbc.pool.OracleDataSource">
-        <property name="serverName" value="${oracle.server.name}" />
-        <property name="portNumber" value="${oracle.port.number}" />
-        <property name="databaseName" value="${oracle.database.name}" />
-        <property name="user" value="${oracle.user}" />
-        <property name="password" value="${oracle.password}" />
-        <property name="serviceName" value="${oracle.service.name}" />
-        <property name="driverType" value="${oracle.driver.type}" />
-    </bean>-->
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+        <constructor-arg ref="sessionFactory"/>
+    </bean>
 
-    <context:component-scan base-package="org.farrukh.experiments"/>
-
-    <bean class="org.farrukh.experiments.JavaApplicationContext"/>
+    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <constructor-arg ref="sessionFactory"/>
+    </bean>
 
 </beans>

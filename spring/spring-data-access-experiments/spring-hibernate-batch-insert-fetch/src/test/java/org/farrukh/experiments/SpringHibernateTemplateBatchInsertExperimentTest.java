@@ -4,10 +4,10 @@ import org.farrukh.experiments.model.Book;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -18,8 +18,13 @@ import java.util.List;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:base-app-context.xml")
-public class AppTest {
+@ContextConfiguration("classpath:app-context.xml")
+public class SpringHibernateTemplateBatchInsertExperimentTest {
+
+    private static final int BIG_COUNT = 10000;
+
+    @Value("${batch_size}")
+    private int batch_size;
 
     @Autowired
     private HibernateTemplate hibernateTemplate;
@@ -29,20 +34,21 @@ public class AppTest {
         assertNotNull(hibernateTemplate);
     }
 
+    // Slow
     @Test
-    @Ignore
-    public void shouldBatchInsertUsingHibernateTemplateSaveMethod() throws Exception {
-        for (int i = 0; i < 10000; i++) {
+    public void testNaiveApproachOfBatchInsertingUsingHibernateTemplateSave() throws Exception {
+        for (int i = 0; i < BIG_COUNT; i++) {
             Book book = new Book();
             book.setName(String.valueOf(i));
             hibernateTemplate.save(book);
         }
     }
 
+    // Fast
     @Test
     public void shouldBatchInsertUsingHibernateTemplateSaveOrUpdateAllMethod() throws Exception {
         List<Book> books = new ArrayList<Book>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < BIG_COUNT; i++) {
             Book book = new Book();
             book.setName(String.valueOf(i));
             books.add(book);
@@ -50,16 +56,16 @@ public class AppTest {
         hibernateTemplate.saveOrUpdateAll(books);
     }
 
+    // Faster ?
     @Test
-    @Ignore
     public void shouldBatchInsertUsingSessionSaveWithManualFlushAndClearMethods() throws Exception {
         Session session = hibernateTemplate.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < BIG_COUNT; i++) {
             Book book = new Book();
             book.setName(String.valueOf(i));
             session.save(book);
-            if(i % 100 == 0) {
+            if(i % batch_size == 0) {
                 session.flush();
                 session.clear();
             }
