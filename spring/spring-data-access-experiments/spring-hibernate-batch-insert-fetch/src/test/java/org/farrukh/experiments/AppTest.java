@@ -4,6 +4,7 @@ import org.farrukh.experiments.model.Book;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ public class AppTest {
     }
 
     @Test
+    @Ignore
     public void shouldBatchInsertUsingHibernateTemplateSaveMethod() throws Exception {
         for (int i = 0; i < 10000; i++) {
             Book book = new Book();
@@ -40,7 +42,7 @@ public class AppTest {
     @Test
     public void shouldBatchInsertUsingHibernateTemplateSaveOrUpdateAllMethod() throws Exception {
         List<Book> books = new ArrayList<Book>();
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 10; i++) {
             Book book = new Book();
             book.setName(String.valueOf(i));
             books.add(book);
@@ -49,6 +51,7 @@ public class AppTest {
     }
 
     @Test
+    @Ignore
     public void shouldBatchInsertUsingSessionSaveWithManualFlushAndClearMethods() throws Exception {
         Session session = hibernateTemplate.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
