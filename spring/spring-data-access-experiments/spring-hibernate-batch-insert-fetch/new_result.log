@@ -1,0 +1,628 @@
+21:53:13.666 [main] DEBUG o.s.t.c.j.SpringJUnit4ClassRunner.<init>(106) - SpringJUnit4ClassRunner constructor called with [class org.farrukh.experiments.AppTest]. 
+21:53:13.681 [main] TRACE o.s.test.context.TestContext.<init>(117) - Retrieved @ContextConfiguration [@org.springframework.test.context.ContextConfiguration(locations=[], loader=interface org.springframework.test.context.ContextLoader, value=[classpath:base-app-context.xml], inheritLocations=true)] for class [class org.farrukh.experiments.AppTest] 
+21:53:13.681 [main] TRACE o.s.test.context.TestContext.retrieveContextLoaderClass(173) - Processing ContextLoader for @ContextConfiguration [@org.springframework.test.context.ContextConfiguration(locations=[], loader=interface org.springframework.test.context.ContextLoader, value=[classpath:base-app-context.xml], inheritLocations=true)] and declaring class [class org.farrukh.experiments.AppTest] 
+21:53:13.681 [main] TRACE o.s.test.context.TestContext.retrieveContextLoaderClass(194) - Using default ContextLoader class [org.springframework.test.context.support.GenericXmlContextLoader] for @ContextConfiguration [@org.springframework.test.context.ContextConfiguration(locations=[], loader=interface org.springframework.test.context.ContextLoader, value=[classpath:base-app-context.xml], inheritLocations=true)] and class [class org.farrukh.experiments.AppTest] 
+21:53:13.712 [main] TRACE o.s.test.context.TestContext.retrieveContextLocations(241) - Retrieved @ContextConfiguration [@org.springframework.test.context.ContextConfiguration(locations=[], loader=interface org.springframework.test.context.ContextLoader, value=[classpath:base-app-context.xml], inheritLocations=true)] for declaring class [class org.farrukh.experiments.AppTest] 
+21:53:13.712 [main] INFO  o.s.test.context.TestContextManager.retrieveTestExecutionListeners(185) - @TestExecutionListeners is not present for class [class org.farrukh.experiments.AppTest]: using defaults. 
+21:53:13.744 [main] TRACE o.s.test.context.TestContextManager.registerTestExecutionListeners(137) - Registering TestExecutionListener: org.springframework.test.context.support.DependencyInjectionTestExecutionListener@7dc05ffd 
+21:53:13.744 [main] TRACE o.s.test.context.TestContextManager.registerTestExecutionListeners(137) - Registering TestExecutionListener: org.springframework.test.context.support.DirtiesContextTestExecutionListener@60de1b8a 
+21:53:13.744 [main] TRACE o.s.test.context.TestContextManager.registerTestExecutionListeners(137) - Registering TestExecutionListener: org.springframework.test.context.transaction.TransactionalTestExecutionListener@15e232b5 
+21:53:13.744 [main] DEBUG o.s.t.annotation.ProfileValueUtils.retrieveProfileValueSource(68) - Retrieved @ProfileValueSourceConfiguration [null] for test class [org.farrukh.experiments.AppTest] 
+21:53:13.744 [main] DEBUG o.s.t.annotation.ProfileValueUtils.retrieveProfileValueSource(80) - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [org.farrukh.experiments.AppTest] 
+21:53:13.775 [main] DEBUG o.s.t.annotation.ProfileValueUtils.retrieveProfileValueSource(68) - Retrieved @ProfileValueSourceConfiguration [null] for test class [org.farrukh.experiments.AppTest] 
+21:53:13.775 [main] DEBUG o.s.t.annotation.ProfileValueUtils.retrieveProfileValueSource(80) - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [org.farrukh.experiments.AppTest] 
+21:53:13.775 [main] DEBUG o.s.t.annotation.ProfileValueUtils.retrieveProfileValueSource(68) - Retrieved @ProfileValueSourceConfiguration [null] for test class [org.farrukh.experiments.AppTest] 
+21:53:13.775 [main] DEBUG o.s.t.annotation.ProfileValueUtils.retrieveProfileValueSource(80) - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [org.farrukh.experiments.AppTest] 
+21:53:13.775 [main] DEBUG o.s.t.annotation.ProfileValueUtils.retrieveProfileValueSource(68) - Retrieved @ProfileValueSourceConfiguration [null] for test class [org.farrukh.experiments.AppTest] 
+21:53:13.775 [main] DEBUG o.s.t.annotation.ProfileValueUtils.retrieveProfileValueSource(80) - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [org.farrukh.experiments.AppTest] 
+21:53:13.775 [main] TRACE o.s.test.context.TestContextManager.beforeTestClass(282) - beforeTestClass(): class [class org.farrukh.experiments.AppTest] 
+21:53:13.790 [main] DEBUG o.s.t.annotation.ProfileValueUtils.retrieveProfileValueSource(68) - Retrieved @ProfileValueSourceConfiguration [null] for test class [org.farrukh.experiments.AppTest] 
+21:53:13.790 [main] DEBUG o.s.t.annotation.ProfileValueUtils.retrieveProfileValueSource(80) - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [org.farrukh.experiments.AppTest] 
+21:53:13.790 [main] TRACE o.s.test.context.TestContextManager.prepareTestInstance(315) - prepareTestInstance(): instance [org.farrukh.experiments.AppTest@4bd53f5b] 
+21:53:13.790 [main] DEBUG o.s.t.c.s.DependencyInjectionTestExecutionListener.prepareTestInstance(73) - Performing dependency injection for test context [[TestContext@276a38b5 testClass = AppTest, locations = array<String>['classpath:base-app-context.xml'], testInstance = org.farrukh.experiments.AppTest@4bd53f5b, testMethod = [null], testException = [null]]]. 
+21:53:13.790 [main] DEBUG o.s.t.c.s.AbstractGenericContextLoader.loadContext(75) - Loading ApplicationContext for locations [classpath:base-app-context.xml]. 
+21:53:13.900 [main] INFO  o.s.b.f.xml.XmlBeanDefinitionReader.loadBeanDefinitions(315) - Loading XML bean definitions from class path resource [base-app-context.xml] 
+21:53:13.915 [main] DEBUG o.s.b.f.xml.DefaultDocumentLoader.loadDocument(72) - Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl] 
+21:53:13.962 [main] TRACE o.s.b.f.xml.PluggableSchemaResolver.resolveEntity(105) - Trying to resolve XML entity with public id [null] and system id [http://www.springframework.org/schema/beans/spring-beans-3.0.xsd] 
+21:53:13.962 [main] DEBUG o.s.b.f.xml.PluggableSchemaResolver.getSchemaMappings(140) - Loading schema mappings from [META-INF/spring.schemas] 
+21:53:13.962 [main] DEBUG o.s.b.f.xml.PluggableSchemaResolver.getSchemaMappings(146) - Loaded schema mappings: {http://www.springframework.org/schema/lang/spring-lang.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.5.xsd=org/springframework/scripting/config/spring-lang-2.5.xsd, http://www.springframework.org/schema/context/spring-context-2.5.xsd=org/springframework/context/config/spring-context-2.5.xsd, http://www.springframework.org/schema/aop/spring-aop.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/context/spring-context.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/util/spring-util-3.0.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.0.xsd=org/springframework/beans/factory/xml/spring-util-2.0.xsd, http://www.springframework.org/schema/task/spring-task-3.0.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.5.xsd=org/springframework/beans/factory/xml/spring-util-2.5.xsd, http://www.springframework.org/schema/tool/spring-tool-3.0.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.0.xsd=org/springframework/transaction/config/spring-tx-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.0.xsd=org/springframework/beans/factory/xml/spring-tool-2.0.xsd, http://www.springframework.org/schema/task/spring-task.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/context/spring-context-3.0.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.5.xsd=org/springframework/transaction/config/spring-tx-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-2.0.xsd=org/springframework/beans/factory/xml/spring-beans-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.5.xsd=org/springframework/beans/factory/xml/spring-tool-2.5.xsd, http://www.springframework.org/schema/jee/spring-jee.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/beans/spring-beans-2.5.xsd=org/springframework/beans/factory/xml/spring-beans-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/tool/spring-tool.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop-3.0.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.0.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop-2.0.xsd=org/springframework/aop/config/spring-aop-2.0.xsd, http://www.springframework.org/schema/jee/spring-jee-2.0.xsd=org/springframework/ejb/config/spring-jee-2.0.xsd, http://www.springframework.org/schema/tx/spring-tx-3.0.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop-2.5.xsd=org/springframework/aop/config/spring-aop-2.5.xsd, http://www.springframework.org/schema/jee/spring-jee-2.5.xsd=org/springframework/ejb/config/spring-jee-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-3.0.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-3.0.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.0.xsd=org/springframework/scripting/config/spring-lang-2.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/util/spring-util.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd} 
+21:53:13.978 [main] DEBUG o.s.b.f.xml.PluggableSchemaResolver.resolveEntity(118) - Found XML schema [http://www.springframework.org/schema/beans/spring-beans-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-3.0.xsd 
+21:53:14.071 [main] TRACE o.s.b.f.xml.PluggableSchemaResolver.resolveEntity(105) - Trying to resolve XML entity with public id [null] and system id [http://www.springframework.org/schema/util/spring-util-3.0.xsd] 
+21:53:14.071 [main] DEBUG o.s.b.f.xml.PluggableSchemaResolver.resolveEntity(118) - Found XML schema [http://www.springframework.org/schema/util/spring-util-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-util-3.0.xsd 
+21:53:14.087 [main] TRACE o.s.b.f.xml.PluggableSchemaResolver.resolveEntity(105) - Trying to resolve XML entity with public id [null] and system id [http://www.springframework.org/schema/tool/spring-tool-3.0.xsd] 
+21:53:14.087 [main] DEBUG o.s.b.f.xml.PluggableSchemaResolver.resolveEntity(118) - Found XML schema [http://www.springframework.org/schema/tool/spring-tool-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-tool-3.0.xsd 
+21:53:14.087 [main] TRACE o.s.b.f.xml.PluggableSchemaResolver.resolveEntity(105) - Trying to resolve XML entity with public id [null] and system id [http://www.springframework.org/schema/context/spring-context-3.0.xsd] 
+21:53:14.087 [main] DEBUG o.s.b.f.xml.PluggableSchemaResolver.resolveEntity(118) - Found XML schema [http://www.springframework.org/schema/context/spring-context-3.0.xsd] in classpath: org/springframework/context/config/spring-context-3.0.xsd 
+21:53:14.118 [main] DEBUG o.s.b.f.x.DefaultBeanDefinitionDocumentReader.registerBeanDefinitions(87) - Loading bean definitions 
+21:53:14.134 [main] DEBUG o.s.b.f.x.DefaultNamespaceHandlerResolver.getHandlerMappings(156) - Loaded NamespaceHandler mappings: {http://www.springframework.org/schema/p=org.springframework.beans.factory.xml.SimplePropertyNamespaceHandler, http://www.springframework.org/schema/util=org.springframework.beans.factory.xml.UtilNamespaceHandler, http://www.springframework.org/schema/jee=org.springframework.ejb.config.JeeNamespaceHandler, http://www.springframework.org/schema/aop=org.springframework.aop.config.AopNamespaceHandler, http://www.springframework.org/schema/jdbc=org.springframework.jdbc.config.JdbcNamespaceHandler, http://www.springframework.org/schema/tx=org.springframework.transaction.config.TxNamespaceHandler, http://www.springframework.org/schema/task=org.springframework.scheduling.config.TaskNamespaceHandler, http://www.springframework.org/schema/lang=org.springframework.scripting.config.LangNamespaceHandler, http://www.springframework.org/schema/context=org.springframework.context.config.ContextNamespaceHandler} 
+21:53:14.212 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver.doFindMatchingFileSystemResources(552) - Looking for matching resources in directory tree [C:\Users\FSattorov.SPB\Experimentals\spring\spring-data-access-experiments\spring-hibernate-batch-insert-fetch\target\test-classes\org\farrukh\experiments] 
+21:53:14.212 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver.doRetrieveMatchingFiles(614) - Searching directory [C:\Users\FSattorov.SPB\Experimentals\spring\spring-data-access-experiments\spring-hibernate-batch-insert-fetch\target\test-classes\org\farrukh\experiments] for files matching pattern [C:/Users/FSattorov.SPB/Experimentals/spring/spring-data-access-experiments/spring-hibernate-batch-insert-fetch/target/test-classes/org/farrukh/experiments/**/*.class] 
+21:53:14.212 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver.doFindMatchingFileSystemResources(552) - Looking for matching resources in directory tree [C:\Users\FSattorov.SPB\Experimentals\spring\spring-data-access-experiments\spring-hibernate-batch-insert-fetch\target\classes\org\farrukh\experiments] 
+21:53:14.212 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver.doRetrieveMatchingFiles(614) - Searching directory [C:\Users\FSattorov.SPB\Experimentals\spring\spring-data-access-experiments\spring-hibernate-batch-insert-fetch\target\classes\org\farrukh\experiments] for files matching pattern [C:/Users/FSattorov.SPB/Experimentals/spring/spring-data-access-experiments/spring-hibernate-batch-insert-fetch/target/classes/org/farrukh/experiments/**/*.class] 
+21:53:14.227 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver.doRetrieveMatchingFiles(614) - Searching directory [C:\Users\FSattorov.SPB\Experimentals\spring\spring-data-access-experiments\spring-hibernate-batch-insert-fetch\target\classes\org\farrukh\experiments\model] for files matching pattern [C:/Users/FSattorov.SPB/Experimentals/spring/spring-data-access-experiments/spring-hibernate-batch-insert-fetch/target/classes/org/farrukh/experiments/**/*.class] 
+21:53:14.227 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver.findPathMatchingResources(353) - Resolved location pattern [classpath*:org/farrukh/experiments/**/*.class] to resources [file [C:\Users\FSattorov.SPB\Experimentals\spring\spring-data-access-experiments\spring-hibernate-batch-insert-fetch\target\test-classes\org\farrukh\experiments\AppTest.class], file [C:\Users\FSattorov.SPB\Experimentals\spring\spring-data-access-experiments\spring-hibernate-batch-insert-fetch\target\classes\org\farrukh\experiments\App.class], file [C:\Users\FSattorov.SPB\Experimentals\spring\spring-data-access-experiments\spring-hibernate-batch-insert-fetch\target\classes\org\farrukh\experiments\JavaApplicationContext.class], file [C:\Users\FSattorov.SPB\Experimentals\spring\spring-data-access-experiments\spring-hibernate-batch-insert-fetch\target\classes\org\farrukh\experiments\model\Book.class]] 
+21:53:14.227 [main] TRACE o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents(209) - Scanning file [C:\Users\FSattorov.SPB\Experimentals\spring\spring-data-access-experiments\spring-hibernate-batch-insert-fetch\target\test-classes\org\farrukh\experiments\AppTest.class] 
+21:53:14.290 [main] TRACE o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents(232) - Ignored because not matching any filter: file [C:\Users\FSattorov.SPB\Experimentals\spring\spring-data-access-experiments\spring-hibernate-batch-insert-fetch\target\test-classes\org\farrukh\experiments\AppTest.class] 
+21:53:14.290 [main] TRACE o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents(209) - Scanning file [C:\Users\FSattorov.SPB\Experimentals\spring\spring-data-access-experiments\spring-hibernate-batch-insert-fetch\target\classes\org\farrukh\experiments\App.class] 
+21:53:14.290 [main] TRACE o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents(232) - Ignored because not matching any filter: file [C:\Users\FSattorov.SPB\Experimentals\spring\spring-data-access-experiments\spring-hibernate-batch-insert-fetch\target\classes\org\farrukh\experiments\App.class] 
+21:53:14.290 [main] TRACE o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents(209) - Scanning file [C:\Users\FSattorov.SPB\Experimentals\spring\spring-data-access-experiments\spring-hibernate-batch-insert-fetch\target\classes\org\farrukh\experiments\JavaApplicationContext.class] 
+21:53:14.305 [main] DEBUG o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents(220) - Identified candidate component class: file [C:\Users\FSattorov.SPB\Experimentals\spring\spring-data-access-experiments\spring-hibernate-batch-insert-fetch\target\classes\org\farrukh\experiments\JavaApplicationContext.class] 
+21:53:14.305 [main] TRACE o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents(209) - Scanning file [C:\Users\FSattorov.SPB\Experimentals\spring\spring-data-access-experiments\spring-hibernate-batch-insert-fetch\target\classes\org\farrukh\experiments\model\Book.class] 
+21:53:14.305 [main] TRACE o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents(232) - Ignored because not matching any filter: file [C:\Users\FSattorov.SPB\Experimentals\spring\spring-data-access-experiments\spring-hibernate-batch-insert-fetch\target\classes\org\farrukh\experiments\model\Book.class] 
+21:53:14.336 [main] DEBUG o.s.b.f.x.BeanDefinitionParserDelegate.parseBeanDefinitionElement(417) - Neither XML 'id' nor 'name' specified - using generated bean name [org.farrukh.experiments.JavaApplicationContext#0] 
+21:53:14.336 [main] DEBUG o.s.b.f.xml.XmlBeanDefinitionReader.loadBeanDefinitions(185) - Loaded 10 bean definitions from location pattern [classpath:base-app-context.xml] 
+21:53:14.336 [main] INFO  o.s.c.s.GenericApplicationContext.prepareRefresh(456) - Refreshing org.springframework.context.support.GenericApplicationContext@2a8ceeea: startup date [Fri May 12 21:53:14 MSK 2017]; root of context hierarchy 
+21:53:14.336 [main] DEBUG o.s.c.s.GenericApplicationContext.obtainFreshBeanFactory(470) - Bean factory for org.springframework.context.support.GenericApplicationContext@2a8ceeea: org.springframework.beans.factory.support.DefaultListableBeanFactory@58df0438: defining beans [hibernateProperties,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,javaApplicationContext,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,org.farrukh.experiments.JavaApplicationContext#0]; root of factory hierarchy 
+21:53:14.368 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.getSingleton(214) - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor' 
+21:53:14.368 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createBean(430) - Creating instance of bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor' 
+21:53:14.414 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doCreateBean(504) - Eagerly caching bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor' to allow for resolving potential circular references 
+21:53:14.430 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createBean(458) - Finished creating instance of bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor' 
+21:53:14.461 [main] DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsForModelMethod(253) - Registering bean definition for @Bean method org.farrukh.experiments.JavaApplicationContext.sessionFactoryBean() 
+21:53:14.461 [main] DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsForModelMethod(253) - Registering bean definition for @Bean method org.farrukh.experiments.JavaApplicationContext.transactionManager() 
+21:53:14.461 [main] DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsForModelMethod(253) - Registering bean definition for @Bean method org.farrukh.experiments.JavaApplicationContext.hibernateTemplate() 
+21:53:14.617 [main] DEBUG o.s.c.a.ConfigurationClassEnhancer.enhance(91) - Successfully enhanced org.farrukh.experiments.JavaApplicationContext; enhanced class name is: org.farrukh.experiments.JavaApplicationContext$$EnhancerByCGLIB$$e20cfe44 
+21:53:14.617 [main] DEBUG o.s.c.a.ConfigurationClassPostProcessor.enhanceConfigurationClasses(240) - Replacing bean definition 'javaApplicationContext' existing class name 'org.farrukh.experiments.JavaApplicationContext' with enhanced class name 'org.farrukh.experiments.JavaApplicationContext$$EnhancerByCGLIB$$e20cfe44' 
+21:53:14.617 [main] DEBUG o.s.c.a.ConfigurationClassEnhancer.enhance(91) - Successfully enhanced org.farrukh.experiments.JavaApplicationContext; enhanced class name is: org.farrukh.experiments.JavaApplicationContext$$EnhancerByCGLIB$$e20cfe44_2 
+21:53:14.617 [main] DEBUG o.s.c.a.ConfigurationClassPostProcessor.enhanceConfigurationClasses(240) - Replacing bean definition 'org.farrukh.experiments.JavaApplicationContext#0' existing class name 'org.farrukh.experiments.JavaApplicationContext' with enhanced class name 'org.farrukh.experiments.JavaApplicationContext$$EnhancerByCGLIB$$e20cfe44_2' 
+21:53:14.617 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.getSingleton(214) - Creating shared instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0' 
+21:53:14.617 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createBean(430) - Creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0' 
+21:53:14.617 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doCreateBean(504) - Eagerly caching bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0' to allow for resolving potential circular references 
+21:53:14.633 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(222) - Getting BeanInfo for class [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer] 
+21:53:14.633 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(238) - Caching PropertyDescriptors for class [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer] 
+21:53:14.633 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'beanFactory' of type [org.springframework.beans.factory.BeanFactory] 
+21:53:14.648 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'beanName' of type [java.lang.String] 
+21:53:14.648 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'class' of type [java.lang.Class] 
+21:53:14.648 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'fileEncoding' of type [java.lang.String] 
+21:53:14.648 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'ignoreResourceNotFound' of type [boolean] 
+21:53:14.648 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'ignoreUnresolvablePlaceholders' of type [boolean] 
+21:53:14.648 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'localOverride' of type [boolean] 
+21:53:14.648 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'location' of type [org.springframework.core.io.Resource] 
+21:53:14.648 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'locations' of type [[Lorg.springframework.core.io.Resource;] 
+21:53:14.648 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'nullValue' of type [java.lang.String] 
+21:53:14.648 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'order' of type [int] 
+21:53:14.648 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'placeholderPrefix' of type [java.lang.String] 
+21:53:14.648 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'placeholderSuffix' of type [java.lang.String] 
+21:53:14.648 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'properties' of type [java.util.Properties] 
+21:53:14.648 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'propertiesArray' of type [[Ljava.util.Properties;] 
+21:53:14.648 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'propertiesPersister' of type [org.springframework.util.PropertiesPersister] 
+21:53:14.648 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'searchSystemEnvironment' of type [boolean] 
+21:53:14.648 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'systemPropertiesMode' of type [int] 
+21:53:14.648 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'systemPropertiesModeName' of type [java.lang.String] 
+21:53:14.648 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'valueSeparator' of type [java.lang.String] 
+21:53:14.664 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createBean(458) - Finished creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0' 
+21:53:14.680 [main] INFO  o.s.b.f.c.PropertyPlaceholderConfigurer.loadProperties(177) - Loading properties file from class path resource [oracle.properties] 
+21:53:14.680 [main] TRACE o.s.util.PropertyPlaceholderHelper.parseStringValue(164) - Resolved placeholder 'oracle.jdbc.driver' 
+21:53:14.680 [main] TRACE o.s.util.PropertyPlaceholderHelper.parseStringValue(164) - Resolved placeholder 'oracle.jdbc.url' 
+21:53:14.680 [main] TRACE o.s.util.PropertyPlaceholderHelper.parseStringValue(164) - Resolved placeholder 'oracle.jdbc.user' 
+21:53:14.680 [main] TRACE o.s.util.PropertyPlaceholderHelper.parseStringValue(164) - Resolved placeholder 'oracle.jdbc.password' 
+21:53:14.680 [main] TRACE o.s.util.PropertyPlaceholderHelper.parseStringValue(164) - Resolved placeholder 'oracle.jdbc.initialSize' 
+21:53:14.680 [main] TRACE o.s.util.PropertyPlaceholderHelper.parseStringValue(164) - Resolved placeholder 'oracle.jdbc.maxActive' 
+21:53:14.680 [main] TRACE o.s.util.PropertyPlaceholderHelper.parseStringValue(164) - Resolved placeholder 'oracle.jdbc.maxIdle' 
+21:53:14.680 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.getSingleton(214) - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor' 
+21:53:14.680 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createBean(430) - Creating instance of bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor' 
+21:53:14.695 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doCreateBean(504) - Eagerly caching bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor' to allow for resolving potential circular references 
+21:53:14.695 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createBean(458) - Finished creating instance of bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor' 
+21:53:14.695 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.getSingleton(214) - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor' 
+21:53:14.695 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createBean(430) - Creating instance of bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor' 
+21:53:14.695 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doCreateBean(504) - Eagerly caching bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor' to allow for resolving potential circular references 
+21:53:14.695 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createBean(458) - Finished creating instance of bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor' 
+21:53:14.695 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.getSingleton(214) - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor' 
+21:53:14.695 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createBean(430) - Creating instance of bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor' 
+21:53:14.695 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doCreateBean(504) - Eagerly caching bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor' to allow for resolving potential circular references 
+21:53:14.695 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createBean(458) - Finished creating instance of bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor' 
+21:53:14.695 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.getSingleton(214) - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalPersistenceAnnotationProcessor' 
+21:53:14.695 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createBean(430) - Creating instance of bean 'org.springframework.context.annotation.internalPersistenceAnnotationProcessor' 
+21:53:14.695 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doCreateBean(504) - Eagerly caching bean 'org.springframework.context.annotation.internalPersistenceAnnotationProcessor' to allow for resolving potential circular references 
+21:53:14.711 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createBean(458) - Finished creating instance of bean 'org.springframework.context.annotation.internalPersistenceAnnotationProcessor' 
+21:53:14.711 [main] DEBUG o.s.c.s.GenericApplicationContext.initMessageSource(776) - Unable to locate MessageSource with name 'messageSource': using default [org.springframework.context.support.DelegatingMessageSource@2a313170] 
+21:53:14.711 [main] DEBUG o.s.c.s.GenericApplicationContext.initApplicationEventMulticaster(800) - Unable to locate ApplicationEventMulticaster with name 'applicationEventMulticaster': using default [org.springframework.context.event.SimpleApplicationEventMulticaster@4c6504bc] 
+21:53:14.711 [main] INFO  o.s.b.f.s.DefaultListableBeanFactory.preInstantiateSingletons(555) - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@58df0438: defining beans [hibernateProperties,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,javaApplicationContext,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,org.farrukh.experiments.JavaApplicationContext#0,sessionFactoryBean,transactionManager,hibernateTemplate]; root of factory hierarchy 
+21:53:14.726 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.getSingleton(214) - Creating shared instance of singleton bean 'hibernateProperties' 
+21:53:14.726 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createBean(430) - Creating instance of bean 'hibernateProperties' 
+21:53:14.726 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doCreateBean(504) - Eagerly caching bean 'hibernateProperties' to allow for resolving potential circular references 
+21:53:14.726 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(222) - Getting BeanInfo for class [org.springframework.beans.factory.config.PropertiesFactoryBean] 
+21:53:14.726 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(238) - Caching PropertyDescriptors for class [org.springframework.beans.factory.config.PropertiesFactoryBean] 
+21:53:14.726 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'class' of type [java.lang.Class] 
+21:53:14.726 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'fileEncoding' of type [java.lang.String] 
+21:53:14.726 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'ignoreResourceNotFound' of type [boolean] 
+21:53:14.726 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'localOverride' of type [boolean] 
+21:53:14.726 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'location' of type [org.springframework.core.io.Resource] 
+21:53:14.726 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'locations' of type [[Lorg.springframework.core.io.Resource;] 
+21:53:14.726 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'object' of type [java.lang.Object] 
+21:53:14.726 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'objectType' of type [java.lang.Class] 
+21:53:14.742 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'properties' of type [java.util.Properties] 
+21:53:14.742 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'propertiesArray' of type [[Ljava.util.Properties;] 
+21:53:14.742 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'propertiesPersister' of type [org.springframework.util.PropertiesPersister] 
+21:53:14.742 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'singleton' of type [boolean] 
+21:53:14.742 [main] TRACE o.s.beans.TypeConverterDelegate.doConvertValue(377) - Converting String to [interface org.springframework.core.io.Resource] using property editor [org.springframework.core.io.ResourceEditor@7433b121] 
+21:53:14.742 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.invokeInitMethods(1461) - Invoking afterPropertiesSet() on bean with name 'hibernateProperties' 
+21:53:14.742 [main] INFO  o.s.b.f.c.PropertiesFactoryBean.loadProperties(177) - Loading properties file from class path resource [hibernate.properties] 
+21:53:14.742 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createBean(458) - Finished creating instance of bean 'hibernateProperties' 
+21:53:14.742 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doGetBean(242) - Returning cached instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0' 
+21:53:14.742 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.getSingleton(214) - Creating shared instance of singleton bean 'dataSource' 
+21:53:14.742 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createBean(430) - Creating instance of bean 'dataSource' 
+21:53:14.867 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doCreateBean(504) - Eagerly caching bean 'dataSource' to allow for resolving potential circular references 
+21:53:14.867 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(222) - Getting BeanInfo for class [org.apache.commons.dbcp.BasicDataSource] 
+21:53:14.867 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(238) - Caching PropertyDescriptors for class [org.apache.commons.dbcp.BasicDataSource] 
+21:53:14.867 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'accessToUnderlyingConnectionAllowed' of type [boolean] 
+21:53:14.867 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'class' of type [java.lang.Class] 
+21:53:14.867 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'closed' of type [boolean] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'connection' of type [java.sql.Connection] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'connectionInitSqls' of type [java.util.Collection] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'connectionProperties' of type [java.lang.String] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'defaultAutoCommit' of type [boolean] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'defaultCatalog' of type [java.lang.String] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'defaultReadOnly' of type [boolean] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'defaultTransactionIsolation' of type [int] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'driverClassLoader' of type [java.lang.ClassLoader] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'driverClassName' of type [java.lang.String] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'initialSize' of type [int] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'logAbandoned' of type [boolean] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'logWriter' of type [java.io.PrintWriter] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'loginTimeout' of type [int] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'maxActive' of type [int] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'maxIdle' of type [int] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'maxOpenPreparedStatements' of type [int] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'maxWait' of type [long] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'minEvictableIdleTimeMillis' of type [long] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'minIdle' of type [int] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'numActive' of type [int] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'numIdle' of type [int] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'numTestsPerEvictionRun' of type [int] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'password' of type [java.lang.String] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'poolPreparedStatements' of type [boolean] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'removeAbandoned' of type [boolean] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'removeAbandonedTimeout' of type [int] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'testOnBorrow' of type [boolean] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'testOnReturn' of type [boolean] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'testWhileIdle' of type [boolean] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'timeBetweenEvictionRunsMillis' of type [long] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'url' of type [java.lang.String] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'username' of type [java.lang.String] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'validationQuery' of type [java.lang.String] 
+21:53:14.882 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'validationQueryTimeout' of type [int] 
+21:53:14.898 [main] TRACE o.s.beans.TypeConverterDelegate.doConvertValue(377) - Converting String to [int] using property editor [org.springframework.beans.propertyeditors.CustomNumberEditor@2dc0435] 
+21:53:14.898 [main] TRACE o.s.beans.TypeConverterDelegate.doConvertValue(377) - Converting String to [int] using property editor [org.springframework.beans.propertyeditors.CustomNumberEditor@2dc0435] 
+21:53:14.898 [main] TRACE o.s.beans.TypeConverterDelegate.doConvertValue(377) - Converting String to [int] using property editor [org.springframework.beans.propertyeditors.CustomNumberEditor@2dc0435] 
+21:53:14.898 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createBean(458) - Finished creating instance of bean 'dataSource' 
+21:53:14.898 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.getSingleton(214) - Creating shared instance of singleton bean 'javaApplicationContext' 
+21:53:14.898 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createBean(430) - Creating instance of bean 'javaApplicationContext' 
+21:53:14.914 [main] DEBUG o.s.b.f.a.InjectionMetadata.<init>(59) - Found injected element on class [org.farrukh.experiments.JavaApplicationContext$$EnhancerByCGLIB$$e20cfe44]: AutowiredFieldElement for public java.util.Properties org.farrukh.experiments.JavaApplicationContext.hibernateProperties 
+21:53:14.914 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doCreateBean(504) - Eagerly caching bean 'javaApplicationContext' to allow for resolving potential circular references 
+21:53:14.914 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(222) - Getting BeanInfo for class [org.farrukh.experiments.JavaApplicationContext$$EnhancerByCGLIB$$e20cfe44] 
+21:53:14.914 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(238) - Caching PropertyDescriptors for class [org.farrukh.experiments.JavaApplicationContext$$EnhancerByCGLIB$$e20cfe44] 
+21:53:14.914 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'class' of type [java.lang.Class] 
+21:53:14.914 [main] DEBUG o.s.b.f.a.InjectionMetadata.inject(82) - Processing injected method of bean 'javaApplicationContext': AutowiredFieldElement for public java.util.Properties org.farrukh.experiments.JavaApplicationContext.hibernateProperties 
+21:53:14.914 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.getSingleton(214) - Creating shared instance of singleton bean 'org.farrukh.experiments.JavaApplicationContext#0' 
+21:53:14.914 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createBean(430) - Creating instance of bean 'org.farrukh.experiments.JavaApplicationContext#0' 
+21:53:14.914 [main] DEBUG o.s.b.f.a.InjectionMetadata.<init>(59) - Found injected element on class [org.farrukh.experiments.JavaApplicationContext$$EnhancerByCGLIB$$e20cfe44_2]: AutowiredFieldElement for public java.util.Properties org.farrukh.experiments.JavaApplicationContext.hibernateProperties 
+21:53:14.914 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doCreateBean(504) - Eagerly caching bean 'org.farrukh.experiments.JavaApplicationContext#0' to allow for resolving potential circular references 
+21:53:14.914 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(222) - Getting BeanInfo for class [org.farrukh.experiments.JavaApplicationContext$$EnhancerByCGLIB$$e20cfe44_2] 
+21:53:14.914 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(238) - Caching PropertyDescriptors for class [org.farrukh.experiments.JavaApplicationContext$$EnhancerByCGLIB$$e20cfe44_2] 
+21:53:14.914 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'class' of type [java.lang.Class] 
+21:53:14.914 [main] DEBUG o.s.b.f.a.InjectionMetadata.inject(82) - Processing injected method of bean 'org.farrukh.experiments.JavaApplicationContext#0': AutowiredFieldElement for public java.util.Properties org.farrukh.experiments.JavaApplicationContext.hibernateProperties 
+21:53:14.914 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.getSingleton(214) - Creating shared instance of singleton bean 'sessionFactoryBean' 
+21:53:14.914 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.getTypeForFactoryBean(1349) - Ignoring bean creation exception on FactoryBean type check: org.springframework.beans.factory.BeanCurrentlyInCreationException: Error creating bean with name 'sessionFactoryBean': Requested bean is currently in creation: Is there an unresolvable circular reference? 
+21:53:14.914 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doGetBean(242) - Returning cached instance of singleton bean 'hibernateProperties' 
+21:53:14.914 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doGetBean(242) - Returning cached instance of singleton bean 'systemProperties' 
+21:53:14.914 [main] DEBUG o.s.b.f.a.AutowiredAnnotationBeanPostProcessor.registerDependentBeans(420) - Autowiring by type from bean name 'org.farrukh.experiments.JavaApplicationContext#0' to bean named 'hibernateProperties' 
+21:53:14.914 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createBean(458) - Finished creating instance of bean 'org.farrukh.experiments.JavaApplicationContext#0' 
+21:53:14.929 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.getSingleton(214) - Creating shared instance of singleton bean 'sessionFactoryBean' 
+21:53:14.929 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.getTypeForFactoryBean(1349) - Ignoring bean creation exception on FactoryBean type check: org.springframework.beans.factory.BeanCurrentlyInCreationException: Error creating bean with name 'sessionFactoryBean': Requested bean is currently in creation: Is there an unresolvable circular reference? 
+21:53:14.929 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doGetBean(242) - Returning cached instance of singleton bean 'dataSource' 
+21:53:14.929 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createArgumentArray(739) - Autowiring by type from bean name 'sessionFactoryBean' via factory method to bean named 'dataSource' 
+21:53:14.976 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doGetBean(242) - Returning cached instance of singleton bean 'hibernateProperties' 
+21:53:14.976 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doGetBean(242) - Returning cached instance of singleton bean 'systemProperties' 
+21:53:14.976 [main] DEBUG o.s.b.f.a.AutowiredAnnotationBeanPostProcessor.registerDependentBeans(420) - Autowiring by type from bean name 'javaApplicationContext' to bean named 'hibernateProperties' 
+21:53:14.976 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createBean(458) - Finished creating instance of bean 'javaApplicationContext' 
+21:53:14.976 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doGetBean(242) - Returning cached instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor' 
+21:53:14.976 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doGetBean(242) - Returning cached instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor' 
+21:53:14.976 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doGetBean(242) - Returning cached instance of singleton bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor' 
+21:53:14.976 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doGetBean(242) - Returning cached instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor' 
+21:53:14.976 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doGetBean(242) - Returning cached instance of singleton bean 'org.springframework.context.annotation.internalPersistenceAnnotationProcessor' 
+21:53:14.976 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doGetBean(242) - Returning cached instance of singleton bean 'org.farrukh.experiments.JavaApplicationContext#0' 
+21:53:14.976 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.getSingleton(214) - Creating shared instance of singleton bean 'sessionFactoryBean' 
+21:53:14.976 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createBean(430) - Creating instance of bean 'sessionFactoryBean' 
+21:53:14.992 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doCreateBean(504) - Eagerly caching bean 'sessionFactoryBean' to allow for resolving potential circular references 
+21:53:14.992 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(222) - Getting BeanInfo for class [org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean] 
+21:53:14.992 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(238) - Caching PropertyDescriptors for class [org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean] 
+21:53:14.992 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'annotatedClasses' of type [[Ljava.lang.Class;] 
+21:53:14.992 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'annotatedPackages' of type [[Ljava.lang.String;] 
+21:53:14.992 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'beanClassLoader' of type [java.lang.ClassLoader] 
+21:53:14.992 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'cacheProvider' of type [org.hibernate.cache.CacheProvider] 
+21:53:14.992 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'cacheRegionFactory' of type [java.lang.Object] 
+21:53:14.992 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'cacheableMappingLocations' of type [[Lorg.springframework.core.io.Resource;] 
+21:53:14.992 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'class' of type [java.lang.Class] 
+21:53:14.992 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'collectionCacheStrategies' of type [java.util.Properties] 
+21:53:14.992 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'configLocation' of type [org.springframework.core.io.Resource] 
+21:53:14.992 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'configLocations' of type [[Lorg.springframework.core.io.Resource;] 
+21:53:15.007 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'configuration' of type [org.hibernate.cfg.Configuration] 
+21:53:15.007 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'configurationClass' of type [java.lang.Class] 
+21:53:15.007 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'dataSource' of type [javax.sql.DataSource] 
+21:53:15.007 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'entityCacheStrategies' of type [java.util.Properties] 
+21:53:15.007 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'entityInterceptor' of type [org.hibernate.Interceptor] 
+21:53:15.007 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'entityTypeFilters' of type [[Lorg.springframework.core.type.filter.TypeFilter;] 
+21:53:15.007 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'eventListeners' of type [java.util.Map] 
+21:53:15.007 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'exposeTransactionAwareSessionFactory' of type [boolean] 
+21:53:15.007 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'filterDefinitions' of type [[Lorg.hibernate.engine.FilterDefinition;] 
+21:53:15.007 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'hibernateProperties' of type [java.util.Properties] 
+21:53:15.007 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'jdbcExceptionTranslator' of type [org.springframework.jdbc.support.SQLExceptionTranslator] 
+21:53:15.007 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'jtaTransactionManager' of type [javax.transaction.TransactionManager] 
+21:53:15.007 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'lobHandler' of type [org.springframework.jdbc.support.lob.LobHandler] 
+21:53:15.007 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'mappingDirectoryLocations' of type [[Lorg.springframework.core.io.Resource;] 
+21:53:15.007 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'mappingJarLocations' of type [[Lorg.springframework.core.io.Resource;] 
+21:53:15.007 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'mappingLocations' of type [[Lorg.springframework.core.io.Resource;] 
+21:53:15.007 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'mappingResources' of type [[Ljava.lang.String;] 
+21:53:15.007 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'namingStrategy' of type [org.hibernate.cfg.NamingStrategy] 
+21:53:15.007 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'object' of type [java.lang.Object] 
+21:53:15.007 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'objectType' of type [java.lang.Class] 
+21:53:15.007 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'packagesToScan' of type [[Ljava.lang.String;] 
+21:53:15.007 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'resourceLoader' of type [org.springframework.core.io.ResourceLoader] 
+21:53:15.007 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'schemaUpdate' of type [boolean] 
+21:53:15.007 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'singleton' of type [boolean] 
+21:53:15.007 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'typeDefinitions' of type [[Lorg.springframework.orm.hibernate3.TypeDefinitionBean;] 
+21:53:15.007 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'useTransactionAwareDataSource' of type [boolean] 
+21:53:15.007 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.invokeInitMethods(1461) - Invoking afterPropertiesSet() on bean with name 'sessionFactoryBean' 
+21:53:15.038 [main] INFO  o.hibernate.cfg.annotations.Version.<clinit>(15) - Hibernate Annotations 3.3.1.GA 
+21:53:15.054 [main] INFO  org.hibernate.cfg.Environment.<clinit>(560) - Hibernate 3.3.2.GA 
+21:53:15.070 [main] INFO  org.hibernate.cfg.Environment.<clinit>(578) - loaded properties from resource hibernate.properties: {hibernate.order_inserts=true, hibernate.order_updates=true, hibernate.dialect=org.hibernate.dialect.Oracle10gDialect, hibernate.show_sql=true, hibernate.jdbc.batch_size=5, hibernate.bytecode.use_reflection_optimizer=false, hibernate.jdbc.fetch_size=5, hibernate.hbm2ddl.auto=none} 
+21:53:15.070 [main] INFO  org.hibernate.cfg.Environment.buildBytecodeProvider(771) - Bytecode provider name : javassist 
+21:53:15.070 [main] INFO  org.hibernate.cfg.Environment.<clinit>(652) - using JDK 1.4 java.sql.Timestamp handling 
+21:53:15.163 [main] DEBUG o.h.cfg.AnnotationConfiguration.secondPassCompile(253) - Execute first pass mapping processing 
+21:53:15.210 [main] DEBUG o.h.cfg.AnnotationConfiguration.processArtifactsOfType(517) - Process hbm files 
+21:53:15.210 [main] DEBUG o.h.cfg.AnnotationConfiguration.processArtifactsOfType(525) - Process annotated classes 
+21:53:15.210 [main] INFO  org.hibernate.cfg.AnnotationBinder.bindClass(418) - Binding entity from annotated class: org.farrukh.experiments.model.Book 
+21:53:15.241 [main] DEBUG org.hibernate.cfg.Ejb3Column.bind(161) - Binding column DTYPE unique false 
+21:53:15.257 [main] DEBUG o.h.cfg.annotations.EntityBinder.bindEntity(296) - Import with entity name=Book 
+21:53:15.257 [main] INFO  o.h.cfg.annotations.EntityBinder.bindTable(424) - Bind entity org.farrukh.experiments.model.Book on table BOOKS 
+21:53:15.272 [main] DEBUG org.hibernate.cfg.AnnotationBinder.addElementsOfAClass(1022) - Processing org.farrukh.experiments.model.Book property annotation 
+21:53:15.288 [main] DEBUG org.hibernate.cfg.AnnotationBinder.addElementsOfAClass(1022) - Processing org.farrukh.experiments.model.Book field annotation 
+21:53:15.304 [main] DEBUG org.hibernate.cfg.AnnotationBinder.processElementAnnotations(1134) - Processing annotations of org.farrukh.experiments.model.Book.id 
+21:53:15.304 [main] DEBUG org.hibernate.cfg.Ejb3Column.bind(161) - Binding column id unique false 
+21:53:15.304 [main] DEBUG org.hibernate.cfg.AnnotationBinder.processElementAnnotations(1259) - id is an id 
+21:53:15.304 [main] DEBUG org.hibernate.cfg.AnnotationBinder.buildIdGenerator(381) - Add generic generator with name: generator 
+21:53:15.304 [main] DEBUG o.h.c.annotations.SimpleValueBinder.make(220) - building SimpleValue for id 
+21:53:15.319 [main] DEBUG o.h.cfg.annotations.PropertyBinder.make(129) - Building property id 
+21:53:15.319 [main] TRACE o.h.cfg.annotations.PropertyBinder.make(182) - Cascading id with null 
+21:53:15.319 [main] DEBUG org.hibernate.cfg.AnnotationBinder.processElementAnnotations(1296) - Bind @Id on id 
+21:53:15.319 [main] DEBUG org.hibernate.cfg.AnnotationBinder.processElementAnnotations(1134) - Processing annotations of org.farrukh.experiments.model.Book.name 
+21:53:15.319 [main] DEBUG org.hibernate.cfg.Ejb3Column.bind(161) - Binding column name unique false 
+21:53:15.335 [main] DEBUG o.h.cfg.annotations.PropertyBinder.bind(107) - binding property name with lazy=false 
+21:53:15.335 [main] DEBUG o.h.c.annotations.SimpleValueBinder.make(220) - building SimpleValue for name 
+21:53:15.335 [main] DEBUG o.h.cfg.annotations.PropertyBinder.make(129) - Building property name 
+21:53:15.335 [main] TRACE o.h.cfg.annotations.PropertyBinder.make(182) - Cascading name with null 
+21:53:15.335 [main] DEBUG o.h.cfg.AnnotationConfiguration.processFkSecondPassInOrder(392) - processing fk mappings (*ToOne and JoinedSubclass) 
+21:53:15.335 [main] DEBUG org.hibernate.cfg.Configuration.secondPassCompile(1167) - processing extends queue 
+21:53:15.335 [main] DEBUG org.hibernate.cfg.Configuration.secondPassCompile(1171) - processing collection mappings 
+21:53:15.335 [main] DEBUG org.hibernate.cfg.Configuration.secondPassCompile(1182) - processing native query and ResultSetMapping mappings 
+21:53:15.335 [main] DEBUG org.hibernate.cfg.Configuration.secondPassCompile(1190) - processing association property references 
+21:53:15.335 [main] DEBUG org.hibernate.cfg.Configuration.secondPassCompile(1212) - processing foreign key constraints 
+21:53:15.350 [main] INFO  o.h.cfg.AnnotationConfiguration.secondPassCompile(365) - Hibernate Validator not found: ignoring 
+21:53:15.350 [main] INFO  o.s.o.h.a.AnnotationSessionFactoryBean.buildSessionFactory(777) - Building new Hibernate SessionFactory 
+21:53:15.350 [main] DEBUG o.h.cfg.AnnotationConfiguration.buildSessionFactory(794) - Validator not present in classpath, ignoring event listener registration 
+21:53:15.350 [main] DEBUG o.h.cfg.search.SearchConfiguration.enableHibernateSearch(56) - Search not present in classpath, ignoring event listener registration 
+21:53:15.350 [main] DEBUG org.hibernate.cfg.Configuration.buildSessionFactory(1332) - Preparing to build session factory with filters : {} 
+21:53:15.350 [main] DEBUG o.h.cfg.AnnotationConfiguration.secondPassCompile(253) - Execute first pass mapping processing 
+21:53:15.350 [main] DEBUG o.h.cfg.AnnotationConfiguration.processArtifactsOfType(517) - Process hbm files 
+21:53:15.350 [main] DEBUG o.h.cfg.AnnotationConfiguration.processArtifactsOfType(525) - Process annotated classes 
+21:53:15.350 [main] DEBUG o.h.cfg.AnnotationConfiguration.processFkSecondPassInOrder(392) - processing fk mappings (*ToOne and JoinedSubclass) 
+21:53:15.350 [main] DEBUG org.hibernate.cfg.Configuration.secondPassCompile(1167) - processing extends queue 
+21:53:15.350 [main] DEBUG org.hibernate.cfg.Configuration.secondPassCompile(1171) - processing collection mappings 
+21:53:15.350 [main] DEBUG org.hibernate.cfg.Configuration.secondPassCompile(1182) - processing native query and ResultSetMapping mappings 
+21:53:15.350 [main] DEBUG org.hibernate.cfg.Configuration.secondPassCompile(1190) - processing association property references 
+21:53:15.350 [main] DEBUG org.hibernate.cfg.Configuration.secondPassCompile(1212) - processing foreign key constraints 
+21:53:15.382 [main] INFO  o.h.c.ConnectionProviderFactory.newConnectionProvider(95) - Initializing connection provider: org.springframework.orm.hibernate3.LocalDataSourceConnectionProvider 
+21:53:15.928 [main] INFO  org.hibernate.cfg.SettingsFactory.buildSettings(114) - RDBMS: Oracle, version: Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production 
+21:53:15.928 [main] INFO  org.hibernate.cfg.SettingsFactory.buildSettings(115) - JDBC driver: Oracle JDBC driver, version: 11.2.0.2.0 
+21:53:15.943 [main] INFO  org.hibernate.dialect.Dialect.<init>(175) - Using dialect: org.hibernate.dialect.Oracle10gDialect 
+21:53:15.943 [main] INFO  o.h.t.TransactionFactoryFactory.buildTransactionFactory(62) - Transaction strategy: org.springframework.orm.hibernate3.SpringTransactionFactory 
+21:53:15.943 [main] INFO  o.h.t.TransactionManagerLookupFactory.getTransactionManagerLookup(80) - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended) 
+21:53:15.943 [main] INFO  org.hibernate.cfg.SettingsFactory.buildSettings(161) - Automatic flush during beforeCompletion(): disabled 
+21:53:15.943 [main] INFO  org.hibernate.cfg.SettingsFactory.buildSettings(165) - Automatic session close at end of transaction: disabled 
+21:53:15.943 [main] INFO  org.hibernate.cfg.SettingsFactory.buildSettings(172) - JDBC batch size: 5 
+21:53:15.943 [main] INFO  org.hibernate.cfg.SettingsFactory.buildSettings(175) - JDBC batch updates for versioned data: disabled 
+21:53:15.943 [main] INFO  org.hibernate.cfg.SettingsFactory.buildSettings(180) - Scrollable result sets: enabled 
+21:53:15.943 [main] DEBUG org.hibernate.cfg.SettingsFactory.buildSettings(184) - Wrap result sets: disabled 
+21:53:15.943 [main] INFO  org.hibernate.cfg.SettingsFactory.buildSettings(188) - JDBC3 getGeneratedKeys(): disabled 
+21:53:15.943 [main] INFO  org.hibernate.cfg.SettingsFactory.buildSettings(192) - JDBC result set fetch size: 5 
+21:53:15.943 [main] INFO  org.hibernate.cfg.SettingsFactory.buildSettings(196) - Connection release mode: auto 
+21:53:15.943 [main] INFO  org.hibernate.cfg.SettingsFactory.buildSettings(223) - Default batch fetch size: 1 
+21:53:15.943 [main] INFO  org.hibernate.cfg.SettingsFactory.buildSettings(227) - Generate SQL with comments: disabled 
+21:53:15.943 [main] INFO  org.hibernate.cfg.SettingsFactory.buildSettings(231) - Order SQL updates by primary key: enabled 
+21:53:15.943 [main] INFO  org.hibernate.cfg.SettingsFactory.buildSettings(235) - Order SQL inserts for batching: enabled 
+21:53:15.943 [main] INFO  org.hibernate.cfg.SettingsFactory.createQueryTranslatorFactory(397) - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory 
+21:53:15.943 [main] INFO  o.h.h.ast.ASTQueryTranslatorFactory.<init>(47) - Using ASTQueryTranslatorFactory 
+21:53:15.943 [main] INFO  org.hibernate.cfg.SettingsFactory.buildSettings(243) - Query language substitutions: {} 
+21:53:15.959 [main] INFO  org.hibernate.cfg.SettingsFactory.buildSettings(248) - JPA-QL strict compliance: disabled 
+21:53:15.959 [main] INFO  org.hibernate.cfg.SettingsFactory.buildSettings(253) - Second-level cache: enabled 
+21:53:15.959 [main] INFO  org.hibernate.cfg.SettingsFactory.buildSettings(257) - Query cache: disabled 
+21:53:15.959 [main] INFO  org.hibernate.cfg.SettingsFactory.createRegionFactory(382) - Cache region factory : org.hibernate.cache.impl.NoCachingRegionFactory 
+21:53:15.959 [main] INFO  org.hibernate.cfg.SettingsFactory.buildSettings(267) - Optimize cache for minimal puts: disabled 
+21:53:15.959 [main] INFO  org.hibernate.cfg.SettingsFactory.buildSettings(276) - Structured second-level cache entries: disabled 
+21:53:15.959 [main] TRACE o.h.e.SQLExceptionConverterFactory.buildSQLExceptionConverter(75) - Using dialect defined converter 
+21:53:15.959 [main] INFO  org.hibernate.cfg.SettingsFactory.buildSettings(296) - Echoing all SQL to stdout 
+21:53:15.959 [main] INFO  org.hibernate.cfg.SettingsFactory.buildSettings(305) - Statistics: disabled 
+21:53:15.959 [main] INFO  org.hibernate.cfg.SettingsFactory.buildSettings(309) - Deleted entity synthetic identifier rollback: disabled 
+21:53:15.959 [main] INFO  org.hibernate.cfg.SettingsFactory.buildSettings(324) - Default entity-mode: pojo 
+21:53:15.959 [main] INFO  org.hibernate.cfg.SettingsFactory.buildSettings(328) - Named query checking : enabled 
+21:53:15.990 [main] INFO  o.hibernate.impl.SessionFactoryImpl.<init>(193) - building session factory 
+21:53:15.990 [main] DEBUG o.hibernate.impl.SessionFactoryImpl.<init>(211) - Session factory constructed with filter configurations : {} 
+21:53:15.990 [main] DEBUG o.hibernate.impl.SessionFactoryImpl.<init>(215) - instantiating session factory with properties: {java.runtime.name=Java(TM) SE Runtime Environment, sun.boot.library.path=C:\Program Files\Java\jdk1.6.0_45\jre\bin, java.vm.version=20.45-b01, java.vm.vendor=Sun Microsystems Inc., java.vendor.url=http://java.sun.com/, path.separator=;, java.vm.name=Java HotSpot(TM) 64-Bit Server VM, file.encoding.pkg=sun.io, hibernate.order_inserts=true, user.country=RU, sun.java.launcher=SUN_STANDARD, sun.os.patch.level=Service Pack 1, java.vm.specification.name=Java Virtual Machine Specification, user.dir=C:\Users\FSattorov.SPB\Experimentals\spring\spring-data-access-experiments\spring-hibernate-batch-insert-fetch, java.runtime.version=1.6.0_45-b06, java.awt.graphicsenv=sun.awt.Win32GraphicsEnvironment, hibernate.current_session_context_class=org.springframework.orm.hibernate3.SpringSessionContext, java.endorsed.dirs=C:\Program Files\Java\jdk1.6.0_45\jre\lib\endorsed, os.arch=amd64, java.io.tmpdir=C:\Users\FSATTO~1.SPB\AppData\Local\Temp\, line.separator=
+, java.vm.specification.vendor=Sun Microsystems Inc., user.variant=, os.name=Windows 7, hibernate.order_updates=true, sun.jnu.encoding=Cp1251, hibernate.jdbc.fetch_size=5, java.library.path=C:\Program Files\Java\jdk1.6.0_45\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\oraclexe\app\oracle\product\11.2.0\server\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\Far Manager;C:\Users\FSattorov\Software\maven\bin;C:\Users\FSattorov\Software\gradle\bin;C:\Users\FSattorov\Software\sts\sts;C:\Users\FSattorov\Software\putty;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Java\jdk1.8.0_101\bin;., java.specification.name=Java Platform API Specification, java.class.version=50.0, sun.management.compiler=HotSpot 64-Bit Tiered Compilers, hibernate.transaction.factory_class=org.springframework.orm.hibernate3.SpringTransactionFactory, os.version=6.1, user.home=C:\Users\FSattorov.SPB, user.timezone=Europe/Moscow, java.awt.printerjob=sun.awt.windows.WPrinterJob, java.specification.version=1.6, file.encoding=UTF-8, user.name=fsattorov, java.class.path=C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2017.1.1\lib\idea_rt.jar;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2017.1.1\plugins\junit\lib\junit-rt.jar;C:\Program Files\Java\jdk1.6.0_45\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.6.0_45\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.6.0_45\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.6.0_45\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.6.0_45\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.6.0_45\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.6.0_45\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.6.0_45\jre\lib\jce.jar;C:\Program Files\Java\jdk1.6.0_45\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.6.0_45\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.6.0_45\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.6.0_45\jre\lib\resources.jar;C:\Program Files\Java\jdk1.6.0_45\jre\lib\rt.jar;C:\Users\FSattorov.SPB\Experimentals\spring\spring-data-access-experiments\spring-hibernate-batch-insert-fetch\target\test-classes;C:\Users\FSattorov.SPB\Experimentals\spring\spring-data-access-experiments\spring-hibernate-batch-insert-fetch\target\classes;C:\Users\FSattorov.SPB\.m2\repository\org\springframework\spring-core\3.0.5.RELEASE\spring-core-3.0.5.RELEASE.jar;C:\Users\FSattorov.SPB\.m2\repository\org\springframework\spring-asm\3.0.5.RELEASE\spring-asm-3.0.5.RELEASE.jar;C:\Users\FSattorov.SPB\.m2\repository\commons-logging\commons-logging\1.1.1\commons-logging-1.1.1.jar;C:\Users\FSattorov.SPB\.m2\repository\org\springframework\spring-beans\3.0.5.RELEASE\spring-beans-3.0.5.RELEASE.jar;C:\Users\FSattorov.SPB\.m2\repository\org\springframework\spring-context\3.0.5.RELEASE\spring-context-3.0.5.RELEASE.jar;C:\Users\FSattorov.SPB\.m2\repository\org\springframework\spring-aop\3.0.5.RELEASE\spring-aop-3.0.5.RELEASE.jar;C:\Users\FSattorov.SPB\.m2\repository\org\springframework\spring-expression\3.0.5.RELEASE\spring-expression-3.0.5.RELEASE.jar;C:\Users\FSattorov.SPB\.m2\repository\org\springframework\spring-context-support\3.0.5.RELEASE\spring-context-support-3.0.5.RELEASE.jar;C:\Users\FSattorov.SPB\.m2\repository\org\springframework\spring-tx\3.0.5.RELEASE\spring-tx-3.0.5.RELEASE.jar;C:\Users\FSattorov.SPB\.m2\repository\aopalliance\aopalliance\1.0\aopalliance-1.0.jar;C:\Users\FSattorov.SPB\.m2\repository\org\springframework\spring-orm\3.0.5.RELEASE\spring-orm-3.0.5.RELEASE.jar;C:\Users\FSattorov.SPB\.m2\repository\org\springframework\spring-jdbc\3.0.5.RELEASE\spring-jdbc-3.0.5.RELEASE.jar;C:\Users\FSattorov.SPB\.m2\repository\cglib\cglib\2.2.2\cglib-2.2.2.jar;C:\Users\FSattorov.SPB\.m2\repository\asm\asm\3.3.1\asm-3.3.1.jar;C:\Users\FSattorov.SPB\.m2\repository\org\springframework\spring-test\3.0.5.RELEASE\spring-test-3.0.5.RELEASE.jar;C:\Users\FSattorov.SPB\.m2\repository\org\hibernate\hibernate-core\3.3.2.GA\hibernate-core-3.3.2.GA.jar;C:\Users\FSattorov.SPB\.m2\repository\antlr\antlr\2.7.6\antlr-2.7.6.jar;C:\Users\FSattorov.SPB\.m2\repository\commons-collections\commons-collections\3.1\commons-collections-3.1.jar;C:\Users\FSattorov.SPB\.m2\repository\dom4j\dom4j\1.6.1\dom4j-1.6.1.jar;C:\Users\FSattorov.SPB\.m2\repository\xml-apis\xml-apis\1.0.b2\xml-apis-1.0.b2.jar;C:\Users\FSattorov.SPB\.m2\repository\javax\transaction\jta\1.1\jta-1.1.jar;C:\Users\FSattorov.SPB\.m2\repository\org\hibernate\hibernate-entitymanager\3.3.2.GA\hibernate-entitymanager-3.3.2.GA.jar;C:\Users\FSattorov.SPB\.m2\repository\org\hibernate\hibernate\3.2.6.ga\hibernate-3.2.6.ga.jar;C:\Users\FSattorov.SPB\.m2\repository\net\sf\ehcache\ehcache\1.2.3\ehcache-1.2.3.jar;C:\Users\FSattorov.SPB\.m2\repository\asm\asm-attrs\1.5.3\asm-attrs-1.5.3.jar;C:\Users\FSattorov.SPB\.m2\repository\org\hibernate\hibernate-annotations\3.3.1.GA\hibernate-annotations-3.3.1.GA.jar;C:\Users\FSattorov.SPB\.m2\repository\org\hibernate\hibernate-commons-annotations\3.0.0.ga\hibernate-commons-annotations-3.0.0.ga.jar;C:\Users\FSattorov.SPB\.m2\repository\org\hibernate\ejb3-persistence\1.0.1.GA\ejb3-persistence-1.0.1.GA.jar;C:\Users\FSattorov.SPB\.m2\repository\javassist\javassist\3.4.GA\javassist-3.4.GA.jar;C:\Users\FSattorov.SPB\.m2\repository\com\oracle\ojdbc6\11.2.0\ojdbc6-11.2.0.jar;C:\Users\FSattorov.SPB\.m2\repository\commons-dbcp\commons-dbcp\1.4\commons-dbcp-1.4.jar;C:\Users\FSattorov.SPB\.m2\repository\commons-pool\commons-pool\1.5.4\commons-pool-1.5.4.jar;C:\Users\FSattorov.SPB\.m2\repository\ch\qos\logback\logback-classic\1.0.0\logback-classic-1.0.0.jar;C:\Users\FSattorov.SPB\.m2\repository\ch\qos\logback\logback-core\1.0.0\logback-core-1.0.0.jar;C:\Users\FSattorov.SPB\.m2\repository\org\slf4j\slf4j-api\1.6.4\slf4j-api-1.6.4.jar;C:\Users\FSattorov.SPB\.m2\repository\org\slf4j\jcl-over-slf4j\1.6.4\jcl-over-slf4j-1.6.4.jar;C:\Users\FSattorov.SPB\.m2\repository\org\apache\commons\commons-lang3\3.5\commons-lang3-3.5.jar;C:\Users\FSattorov.SPB\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\FSattorov.SPB\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2017.1.1\lib\idea_rt.jar, hibernate.bytecode.use_reflection_optimizer=false, hibernate.show_sql=true, java.vm.specification.version=1.0, sun.arch.data.model=64, java.home=C:\Program Files\Java\jdk1.6.0_45\jre, sun.java.command=com.intellij.rt.execution.junit.JUnitStarter -ideVersion5 org.farrukh.experiments.AppTest, hibernate.dialect=org.hibernate.dialect.Oracle10gDialect, java.specification.vendor=Sun Microsystems Inc., user.language=en, awt.toolkit=sun.awt.windows.WToolkit, java.vm.info=mixed mode, java.version=1.6.0_45, java.ext.dirs=C:\Program Files\Java\jdk1.6.0_45\jre\lib\ext;C:\Windows\Sun\Java\lib\ext, sun.boot.class.path=C:\Program Files\Java\jdk1.6.0_45\jre\lib\resources.jar;C:\Program Files\Java\jdk1.6.0_45\jre\lib\rt.jar;C:\Program Files\Java\jdk1.6.0_45\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.6.0_45\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.6.0_45\jre\lib\jce.jar;C:\Program Files\Java\jdk1.6.0_45\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.6.0_45\jre\lib\modules\jdk.boot.jar;C:\Program Files\Java\jdk1.6.0_45\jre\classes, java.vendor=Sun Microsystems Inc., hibernate.jdbc.batch_size=5, file.separator=\, java.vendor.url.bug=http://java.sun.com/cgi-bin/bugreport.cgi, hibernate.hbm2ddl.auto=none, hibernate.connection.provider_class=org.springframework.orm.hibernate3.LocalDataSourceConnectionProvider, idea.test.cyclic.buffer.size=1048576, sun.cpu.endian=little, sun.io.unicode.encoding=UnicodeLittle, sun.desktop=windows, user.region=us, sun.cpu.isalist=amd64} 
+21:53:16.115 [main] DEBUG o.h.p.e.AbstractEntityPersister.logStaticSQL(2756) - Static SQL for entity: org.farrukh.experiments.model.Book 
+21:53:16.115 [main] DEBUG o.h.p.e.AbstractEntityPersister.logStaticSQL(2761) -  Version select: select id from BOOKS where id =? 
+21:53:16.115 [main] DEBUG o.h.p.e.AbstractEntityPersister.logStaticSQL(2764) -  Snapshot select: select book_.id, book_.name as name0_ from BOOKS book_ where book_.id=? 
+21:53:16.115 [main] DEBUG o.h.p.e.AbstractEntityPersister.logStaticSQL(2767) -  Insert 0: insert into BOOKS (name, id) values (?, ?) 
+21:53:16.115 [main] DEBUG o.h.p.e.AbstractEntityPersister.logStaticSQL(2768) -  Update 0: update BOOKS set name=? where id=? 
+21:53:16.115 [main] DEBUG o.h.p.e.AbstractEntityPersister.logStaticSQL(2769) -  Delete 0: delete from BOOKS where id=? 
+21:53:16.115 [main] DEBUG o.h.p.e.AbstractEntityPersister.logStaticSQL(2773) -  Identity insert: insert into BOOKS (id, name) values (BOOK_SEQ.nextval, ?) 
+21:53:16.130 [main] DEBUG o.h.loader.entity.EntityLoader.<init>(102) - Static select for entity org.farrukh.experiments.model.Book: select book0_.id as id0_0_, book0_.name as name0_0_ from BOOKS book0_ where book0_.id=? 
+21:53:16.130 [main] DEBUG o.h.loader.entity.EntityLoader.<init>(102) - Static select for entity org.farrukh.experiments.model.Book: select book0_.id as id0_0_, book0_.name as name0_0_ from BOOKS book0_ where book0_.id=? 
+21:53:16.130 [main] DEBUG o.h.loader.entity.EntityLoader.<init>(102) - Static select for entity org.farrukh.experiments.model.Book: select book0_.id as id0_0_, book0_.name as name0_0_ from BOOKS book0_ where book0_.id=? for update 
+21:53:16.130 [main] DEBUG o.h.loader.entity.EntityLoader.<init>(102) - Static select for entity org.farrukh.experiments.model.Book: select book0_.id as id0_0_, book0_.name as name0_0_ from BOOKS book0_ where book0_.id=? for update nowait 
+21:53:16.130 [main] DEBUG o.h.loader.entity.EntityLoader.<init>(102) - Static select for entity org.farrukh.experiments.model.Book: select book0_.id as id0_0_, book0_.name as name0_0_ from BOOKS book0_ where book0_.id=? for update nowait 
+21:53:16.146 [main] DEBUG o.h.loader.entity.EntityLoader.<init>(57) - Static select for action ACTION_MERGE on entity org.farrukh.experiments.model.Book: select book0_.id as id0_0_, book0_.name as name0_0_ from BOOKS book0_ where book0_.id=? 
+21:53:16.146 [main] DEBUG o.h.loader.entity.EntityLoader.<init>(57) - Static select for action ACTION_REFRESH on entity org.farrukh.experiments.model.Book: select book0_.id as id0_0_, book0_.name as name0_0_ from BOOKS book0_ where book0_.id=? 
+21:53:16.162 [main] DEBUG o.h.i.SessionFactoryObjectFactory.<clinit>(62) - initializing class SessionFactoryObjectFactory 
+21:53:16.162 [main] DEBUG o.h.i.SessionFactoryObjectFactory.addInstance(99) - registered: 2c9f8d195bfdcb12015bfdcb13720000 (unnamed) 
+21:53:16.162 [main] INFO  o.h.i.SessionFactoryObjectFactory.addInstance(105) - Not binding factory to JNDI, no JNDI name configured 
+21:53:16.162 [main] DEBUG o.hibernate.impl.SessionFactoryImpl.<init>(350) - instantiated session factory 
+21:53:16.162 [main] DEBUG o.hibernate.impl.SessionFactoryImpl.checkNamedQueries(474) - Checking 0 named HQL queries 
+21:53:16.162 [main] DEBUG o.hibernate.impl.SessionFactoryImpl.checkNamedQueries(494) - Checking 0 named SQL queries 
+21:53:16.162 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createBean(458) - Finished creating instance of bean 'sessionFactoryBean' 
+21:53:16.162 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.getSingleton(214) - Creating shared instance of singleton bean 'transactionManager' 
+21:53:16.162 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createBean(430) - Creating instance of bean 'transactionManager' 
+21:53:16.162 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doGetBean(242) - Returning cached instance of singleton bean 'org.farrukh.experiments.JavaApplicationContext#0' 
+21:53:16.162 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doGetBean(242) - Returning cached instance of singleton bean 'sessionFactoryBean' 
+21:53:16.162 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createArgumentArray(739) - Autowiring by type from bean name 'transactionManager' via factory method to bean named 'sessionFactoryBean' 
+21:53:16.177 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doCreateBean(504) - Eagerly caching bean 'transactionManager' to allow for resolving potential circular references 
+21:53:16.177 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(222) - Getting BeanInfo for class [org.springframework.orm.hibernate3.HibernateTransactionManager] 
+21:53:16.177 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(238) - Caching PropertyDescriptors for class [org.springframework.orm.hibernate3.HibernateTransactionManager] 
+21:53:16.193 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'autodetectDataSource' of type [boolean] 
+21:53:16.193 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'beanFactory' of type [org.springframework.beans.factory.BeanFactory] 
+21:53:16.193 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'class' of type [java.lang.Class] 
+21:53:16.193 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'dataSource' of type [javax.sql.DataSource] 
+21:53:16.193 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'defaultTimeout' of type [int] 
+21:53:16.193 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'earlyFlushBeforeCommit' of type [boolean] 
+21:53:16.193 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'entityInterceptor' of type [org.hibernate.Interceptor] 
+21:53:16.193 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'entityInterceptorBeanName' of type [java.lang.String] 
+21:53:16.193 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'failEarlyOnGlobalRollbackOnly' of type [boolean] 
+21:53:16.193 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'globalRollbackOnParticipationFailure' of type [boolean] 
+21:53:16.193 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'hibernateManagedSession' of type [boolean] 
+21:53:16.193 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'jdbcExceptionTranslator' of type [org.springframework.jdbc.support.SQLExceptionTranslator] 
+21:53:16.193 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'nestedTransactionAllowed' of type [boolean] 
+21:53:16.193 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'prepareConnection' of type [boolean] 
+21:53:16.193 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'resourceFactory' of type [java.lang.Object] 
+21:53:16.193 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'rollbackOnCommitFailure' of type [boolean] 
+21:53:16.193 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'sessionFactory' of type [org.hibernate.SessionFactory] 
+21:53:16.193 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'transactionSynchronization' of type [int] 
+21:53:16.193 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'transactionSynchronizationName' of type [java.lang.String] 
+21:53:16.193 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'validateExistingTransaction' of type [boolean] 
+21:53:16.193 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.invokeInitMethods(1461) - Invoking afterPropertiesSet() on bean with name 'transactionManager' 
+21:53:16.208 [main] INFO  o.s.o.h.HibernateTransactionManager.afterPropertiesSet(415) - Using DataSource [org.apache.commons.dbcp.BasicDataSource@7a5388b5] of Hibernate SessionFactory for HibernateTransactionManager 
+21:53:16.208 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createBean(458) - Finished creating instance of bean 'transactionManager' 
+21:53:16.208 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.getSingleton(214) - Creating shared instance of singleton bean 'hibernateTemplate' 
+21:53:16.208 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createBean(430) - Creating instance of bean 'hibernateTemplate' 
+21:53:16.208 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doGetBean(242) - Returning cached instance of singleton bean 'org.farrukh.experiments.JavaApplicationContext#0' 
+21:53:16.208 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doGetBean(242) - Returning cached instance of singleton bean 'sessionFactoryBean' 
+21:53:16.208 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createArgumentArray(739) - Autowiring by type from bean name 'hibernateTemplate' via factory method to bean named 'sessionFactoryBean' 
+21:53:16.224 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doCreateBean(504) - Eagerly caching bean 'hibernateTemplate' to allow for resolving potential circular references 
+21:53:16.224 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(222) - Getting BeanInfo for class [org.springframework.orm.hibernate3.HibernateTemplate] 
+21:53:16.240 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(238) - Caching PropertyDescriptors for class [org.springframework.orm.hibernate3.HibernateTemplate] 
+21:53:16.240 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'allowCreate' of type [boolean] 
+21:53:16.240 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'alwaysUseNewSession' of type [boolean] 
+21:53:16.240 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'beanFactory' of type [org.springframework.beans.factory.BeanFactory] 
+21:53:16.240 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'cacheQueries' of type [boolean] 
+21:53:16.240 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'checkWriteOperations' of type [boolean] 
+21:53:16.240 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'class' of type [java.lang.Class] 
+21:53:16.240 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'entityInterceptor' of type [org.hibernate.Interceptor] 
+21:53:16.240 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'entityInterceptorBeanName' of type [java.lang.String] 
+21:53:16.240 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'exposeNativeSession' of type [boolean] 
+21:53:16.240 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'fetchSize' of type [int] 
+21:53:16.240 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'filterName' of type [java.lang.String] 
+21:53:16.240 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'filterNames' of type [[Ljava.lang.String;] 
+21:53:16.240 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'flushMode' of type [int] 
+21:53:16.240 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'flushModeName' of type [java.lang.String] 
+21:53:16.240 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'jdbcExceptionTranslator' of type [org.springframework.jdbc.support.SQLExceptionTranslator] 
+21:53:16.240 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'maxResults' of type [int] 
+21:53:16.240 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'queryCacheRegion' of type [java.lang.String] 
+21:53:16.240 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'sessionFactory' of type [org.hibernate.SessionFactory] 
+21:53:16.240 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.invokeInitMethods(1461) - Invoking afterPropertiesSet() on bean with name 'hibernateTemplate' 
+21:53:16.240 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.createBean(458) - Finished creating instance of bean 'hibernateTemplate' 
+21:53:16.240 [main] DEBUG o.s.c.s.GenericApplicationContext.initLifecycleProcessor(827) - Unable to locate LifecycleProcessor with name 'lifecycleProcessor': using default [org.springframework.context.support.DefaultLifecycleProcessor@78482bad] 
+21:53:16.240 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doGetBean(242) - Returning cached instance of singleton bean 'lifecycleProcessor' 
+21:53:16.240 [main] TRACE o.s.c.s.GenericApplicationContext.publishEvent(301) - Publishing event in org.springframework.context.support.GenericApplicationContext@2a8ceeea: org.springframework.context.event.ContextRefreshedEvent[source=org.springframework.context.support.GenericApplicationContext@2a8ceeea: startup date [Fri May 12 21:53:14 MSK 2017]; root of context hierarchy] 
+21:53:16.255 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(222) - Getting BeanInfo for class [org.farrukh.experiments.AppTest] 
+21:53:16.255 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(238) - Caching PropertyDescriptors for class [org.farrukh.experiments.AppTest] 
+21:53:16.255 [main] TRACE o.s.b.CachedIntrospectionResults.<init>(250) - Found bean property 'class' of type [java.lang.Class] 
+21:53:16.255 [main] DEBUG o.s.b.f.a.InjectionMetadata.<init>(59) - Found injected element on class [org.farrukh.experiments.AppTest]: AutowiredFieldElement for private org.springframework.orm.hibernate3.HibernateTemplate org.farrukh.experiments.AppTest.hibernateTemplate 
+21:53:16.255 [main] DEBUG o.s.b.f.a.InjectionMetadata.inject(82) - Processing injected method of bean 'org.farrukh.experiments.AppTest': AutowiredFieldElement for private org.springframework.orm.hibernate3.HibernateTemplate org.farrukh.experiments.AppTest.hibernateTemplate 
+21:53:16.255 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doGetBean(242) - Returning cached instance of singleton bean 'hibernateTemplate' 
+21:53:16.255 [main] DEBUG o.s.b.f.a.AutowiredAnnotationBeanPostProcessor.registerDependentBeans(420) - Autowiring by type from bean name 'org.farrukh.experiments.AppTest' to bean named 'hibernateTemplate' 
+21:53:16.271 [main] TRACE o.s.test.context.TestContextManager.beforeTestMethod(352) - beforeTestMethod(): instance [org.farrukh.experiments.AppTest@4bd53f5b], method [public void org.farrukh.experiments.AppTest.shouldBatchInsertUsingHibernateTemplateSaveOrUpdateAllMethod() throws java.lang.Exception] 
+21:53:16.271 [main] DEBUG o.s.o.h.SessionFactoryUtils.doGetSession(316) - Opening Hibernate Session 
+21:53:16.318 [main] DEBUG org.hibernate.impl.SessionImpl.<init>(248) - opened session at timestamp: 14946115962 
+21:53:16.318 [main] TRACE o.h.e.def.AbstractSaveEventListener.getEntityState(537) - transient instance of: org.farrukh.experiments.model.Book 
+21:53:16.318 [main] TRACE o.h.e.d.DefaultSaveOrUpdateEventListener.entityIsTransient(181) - saving transient instance 
+21:53:16.318 [main] TRACE o.h.e.def.AbstractSaveEventListener.performSave(176) - saving [org.farrukh.experiments.model.Book#<null>] 
+21:53:16.318 [main] TRACE o.h.e.def.AbstractSaveEventListener.performSaveOrReplicate(267) - executing insertions 
+21:53:16.333 [main] DEBUG o.h.e.def.AbstractSaveEventListener.performSaveOrReplicate(320) - executing identity-insert immediately 
+21:53:16.333 [main] TRACE o.h.p.e.AbstractEntityPersister.insert(2162) - Inserting entity: org.farrukh.experiments.model.Book (native id) 
+21:53:16.333 [main] DEBUG org.hibernate.jdbc.AbstractBatcher.logOpenPreparedStatement(410) - about to open PreparedStatement (open PreparedStatements: 0, globally: 0) 
+21:53:16.333 [main] DEBUG o.hibernate.jdbc.ConnectionManager.openConnection(444) - opening JDBC connection 
+21:53:16.333 [main] DEBUG org.hibernate.SQL.logStatement(111) - insert into BOOKS (id, name) values (BOOK_SEQ.nextval, ?) 
+21:53:16.333 [main] TRACE org.hibernate.jdbc.AbstractBatcher.getPreparedStatement(513) - preparing statement 
+21:53:16.474 [main] TRACE o.h.p.e.AbstractEntityPersister.dehydrate(2010) - Dehydrating entity: [org.farrukh.experiments.model.Book#<null>] 
+21:53:16.474 [main] TRACE org.hibernate.type.StringType.nullSafeSet(151) - binding '0' to parameter: 1 
+21:53:16.536 [main] DEBUG o.h.id.IdentifierGeneratorFactory.getGeneratedIdentity(95) - Natively generated identity: 190432 
+21:53:16.536 [main] DEBUG org.hibernate.jdbc.AbstractBatcher.logClosePreparedStatement(418) - about to close PreparedStatement (open PreparedStatements: 1, globally: 1) 
+21:53:16.536 [main] TRACE org.hibernate.jdbc.AbstractBatcher.closePreparedStatement(562) - closing statement 
+21:53:16.536 [main] TRACE o.h.e.def.AbstractSaveEventListener.getEntityState(537) - transient instance of: org.farrukh.experiments.model.Book 
+21:53:16.536 [main] TRACE o.h.e.d.DefaultSaveOrUpdateEventListener.entityIsTransient(181) - saving transient instance 
+21:53:16.536 [main] TRACE o.h.e.def.AbstractSaveEventListener.performSave(176) - saving [org.farrukh.experiments.model.Book#<null>] 
+21:53:16.536 [main] TRACE o.h.e.def.AbstractSaveEventListener.performSaveOrReplicate(267) - executing insertions 
+21:53:16.536 [main] DEBUG o.h.e.def.AbstractSaveEventListener.performSaveOrReplicate(320) - executing identity-insert immediately 
+21:53:16.536 [main] TRACE o.h.p.e.AbstractEntityPersister.insert(2162) - Inserting entity: org.farrukh.experiments.model.Book (native id) 
+21:53:16.536 [main] DEBUG org.hibernate.jdbc.AbstractBatcher.logOpenPreparedStatement(410) - about to open PreparedStatement (open PreparedStatements: 0, globally: 0) 
+21:53:16.536 [main] DEBUG org.hibernate.SQL.logStatement(111) - insert into BOOKS (id, name) values (BOOK_SEQ.nextval, ?) 
+21:53:16.536 [main] TRACE org.hibernate.jdbc.AbstractBatcher.getPreparedStatement(513) - preparing statement 
+21:53:16.536 [main] TRACE o.h.p.e.AbstractEntityPersister.dehydrate(2010) - Dehydrating entity: [org.farrukh.experiments.model.Book#<null>] 
+21:53:16.536 [main] TRACE org.hibernate.type.StringType.nullSafeSet(151) - binding '1' to parameter: 1 
+21:53:16.552 [main] DEBUG o.h.id.IdentifierGeneratorFactory.getGeneratedIdentity(95) - Natively generated identity: 190433 
+21:53:16.552 [main] DEBUG org.hibernate.jdbc.AbstractBatcher.logClosePreparedStatement(418) - about to close PreparedStatement (open PreparedStatements: 1, globally: 1) 
+21:53:16.552 [main] TRACE org.hibernate.jdbc.AbstractBatcher.closePreparedStatement(562) - closing statement 
+21:53:16.552 [main] TRACE o.h.e.def.AbstractSaveEventListener.getEntityState(537) - transient instance of: org.farrukh.experiments.model.Book 
+21:53:16.552 [main] TRACE o.h.e.d.DefaultSaveOrUpdateEventListener.entityIsTransient(181) - saving transient instance 
+21:53:16.552 [main] TRACE o.h.e.def.AbstractSaveEventListener.performSave(176) - saving [org.farrukh.experiments.model.Book#<null>] 
+21:53:16.552 [main] TRACE o.h.e.def.AbstractSaveEventListener.performSaveOrReplicate(267) - executing insertions 
+21:53:16.552 [main] DEBUG o.h.e.def.AbstractSaveEventListener.performSaveOrReplicate(320) - executing identity-insert immediately 
+21:53:16.552 [main] TRACE o.h.p.e.AbstractEntityPersister.insert(2162) - Inserting entity: org.farrukh.experiments.model.Book (native id) 
+21:53:16.552 [main] DEBUG org.hibernate.jdbc.AbstractBatcher.logOpenPreparedStatement(410) - about to open PreparedStatement (open PreparedStatements: 0, globally: 0) 
+21:53:16.552 [main] DEBUG org.hibernate.SQL.logStatement(111) - insert into BOOKS (id, name) values (BOOK_SEQ.nextval, ?) 
+21:53:16.552 [main] TRACE org.hibernate.jdbc.AbstractBatcher.getPreparedStatement(513) - preparing statement 
+21:53:16.552 [main] TRACE o.h.p.e.AbstractEntityPersister.dehydrate(2010) - Dehydrating entity: [org.farrukh.experiments.model.Book#<null>] 
+21:53:16.552 [main] TRACE org.hibernate.type.StringType.nullSafeSet(151) - binding '2' to parameter: 1 
+21:53:16.552 [main] DEBUG o.h.id.IdentifierGeneratorFactory.getGeneratedIdentity(95) - Natively generated identity: 190434 
+21:53:16.552 [main] DEBUG org.hibernate.jdbc.AbstractBatcher.logClosePreparedStatement(418) - about to close PreparedStatement (open PreparedStatements: 1, globally: 1) 
+21:53:16.552 [main] TRACE org.hibernate.jdbc.AbstractBatcher.closePreparedStatement(562) - closing statement 
+21:53:16.552 [main] TRACE o.h.e.def.AbstractSaveEventListener.getEntityState(537) - transient instance of: org.farrukh.experiments.model.Book 
+21:53:16.552 [main] TRACE o.h.e.d.DefaultSaveOrUpdateEventListener.entityIsTransient(181) - saving transient instance 
+21:53:16.552 [main] TRACE o.h.e.def.AbstractSaveEventListener.performSave(176) - saving [org.farrukh.experiments.model.Book#<null>] 
+21:53:16.552 [main] TRACE o.h.e.def.AbstractSaveEventListener.performSaveOrReplicate(267) - executing insertions 
+21:53:16.552 [main] DEBUG o.h.e.def.AbstractSaveEventListener.performSaveOrReplicate(320) - executing identity-insert immediately 
+21:53:16.552 [main] TRACE o.h.p.e.AbstractEntityPersister.insert(2162) - Inserting entity: org.farrukh.experiments.model.Book (native id) 
+21:53:16.552 [main] DEBUG org.hibernate.jdbc.AbstractBatcher.logOpenPreparedStatement(410) - about to open PreparedStatement (open PreparedStatements: 0, globally: 0) 
+21:53:16.552 [main] DEBUG org.hibernate.SQL.logStatement(111) - insert into BOOKS (id, name) values (BOOK_SEQ.nextval, ?) 
+21:53:16.552 [main] TRACE org.hibernate.jdbc.AbstractBatcher.getPreparedStatement(513) - preparing statement 
+21:53:16.552 [main] TRACE o.h.p.e.AbstractEntityPersister.dehydrate(2010) - Dehydrating entity: [org.farrukh.experiments.model.Book#<null>] 
+21:53:16.552 [main] TRACE org.hibernate.type.StringType.nullSafeSet(151) - binding '3' to parameter: 1 
+21:53:16.552 [main] DEBUG o.h.id.IdentifierGeneratorFactory.getGeneratedIdentity(95) - Natively generated identity: 190435 
+21:53:16.552 [main] DEBUG org.hibernate.jdbc.AbstractBatcher.logClosePreparedStatement(418) - about to close PreparedStatement (open PreparedStatements: 1, globally: 1) 
+21:53:16.567 [main] TRACE org.hibernate.jdbc.AbstractBatcher.closePreparedStatement(562) - closing statement 
+21:53:16.567 [main] TRACE o.h.e.def.AbstractSaveEventListener.getEntityState(537) - transient instance of: org.farrukh.experiments.model.Book 
+21:53:16.567 [main] TRACE o.h.e.d.DefaultSaveOrUpdateEventListener.entityIsTransient(181) - saving transient instance 
+21:53:16.567 [main] TRACE o.h.e.def.AbstractSaveEventListener.performSave(176) - saving [org.farrukh.experiments.model.Book#<null>] 
+21:53:16.567 [main] TRACE o.h.e.def.AbstractSaveEventListener.performSaveOrReplicate(267) - executing insertions 
+21:53:16.567 [main] DEBUG o.h.e.def.AbstractSaveEventListener.performSaveOrReplicate(320) - executing identity-insert immediately 
+21:53:16.567 [main] TRACE o.h.p.e.AbstractEntityPersister.insert(2162) - Inserting entity: org.farrukh.experiments.model.Book (native id) 
+21:53:16.567 [main] DEBUG org.hibernate.jdbc.AbstractBatcher.logOpenPreparedStatement(410) - about to open PreparedStatement (open PreparedStatements: 0, globally: 0) 
+21:53:16.567 [main] DEBUG org.hibernate.SQL.logStatement(111) - insert into BOOKS (id, name) values (BOOK_SEQ.nextval, ?) 
+21:53:16.567 [main] TRACE org.hibernate.jdbc.AbstractBatcher.getPreparedStatement(513) - preparing statement 
+21:53:16.567 [main] TRACE o.h.p.e.AbstractEntityPersister.dehydrate(2010) - Dehydrating entity: [org.farrukh.experiments.model.Book#<null>] 
+21:53:16.567 [main] TRACE org.hibernate.type.StringType.nullSafeSet(151) - binding '4' to parameter: 1 
+21:53:16.567 [main] DEBUG o.h.id.IdentifierGeneratorFactory.getGeneratedIdentity(95) - Natively generated identity: 190436 
+21:53:16.567 [main] DEBUG org.hibernate.jdbc.AbstractBatcher.logClosePreparedStatement(418) - about to close PreparedStatement (open PreparedStatements: 1, globally: 1) 
+21:53:16.567 [main] TRACE org.hibernate.jdbc.AbstractBatcher.closePreparedStatement(562) - closing statement 
+21:53:16.567 [main] TRACE o.h.e.def.AbstractSaveEventListener.getEntityState(537) - transient instance of: org.farrukh.experiments.model.Book 
+21:53:16.567 [main] TRACE o.h.e.d.DefaultSaveOrUpdateEventListener.entityIsTransient(181) - saving transient instance 
+21:53:16.567 [main] TRACE o.h.e.def.AbstractSaveEventListener.performSave(176) - saving [org.farrukh.experiments.model.Book#<null>] 
+21:53:16.567 [main] TRACE o.h.e.def.AbstractSaveEventListener.performSaveOrReplicate(267) - executing insertions 
+21:53:16.567 [main] DEBUG o.h.e.def.AbstractSaveEventListener.performSaveOrReplicate(320) - executing identity-insert immediately 
+21:53:16.567 [main] TRACE o.h.p.e.AbstractEntityPersister.insert(2162) - Inserting entity: org.farrukh.experiments.model.Book (native id) 
+21:53:16.567 [main] DEBUG org.hibernate.jdbc.AbstractBatcher.logOpenPreparedStatement(410) - about to open PreparedStatement (open PreparedStatements: 0, globally: 0) 
+21:53:16.567 [main] DEBUG org.hibernate.SQL.logStatement(111) - insert into BOOKS (id, name) values (BOOK_SEQ.nextval, ?) 
+21:53:16.567 [main] TRACE org.hibernate.jdbc.AbstractBatcher.getPreparedStatement(513) - preparing statement 
+21:53:16.567 [main] TRACE o.h.p.e.AbstractEntityPersister.dehydrate(2010) - Dehydrating entity: [org.farrukh.experiments.model.Book#<null>] 
+21:53:16.567 [main] TRACE org.hibernate.type.StringType.nullSafeSet(151) - binding '5' to parameter: 1 
+21:53:16.567 [main] DEBUG o.h.id.IdentifierGeneratorFactory.getGeneratedIdentity(95) - Natively generated identity: 190437 
+21:53:16.567 [main] DEBUG org.hibernate.jdbc.AbstractBatcher.logClosePreparedStatement(418) - about to close PreparedStatement (open PreparedStatements: 1, globally: 1) 
+21:53:16.567 [main] TRACE org.hibernate.jdbc.AbstractBatcher.closePreparedStatement(562) - closing statement 
+21:53:16.567 [main] TRACE o.h.e.def.AbstractSaveEventListener.getEntityState(537) - transient instance of: org.farrukh.experiments.model.Book 
+21:53:16.567 [main] TRACE o.h.e.d.DefaultSaveOrUpdateEventListener.entityIsTransient(181) - saving transient instance 
+21:53:16.583 [main] TRACE o.h.e.def.AbstractSaveEventListener.performSave(176) - saving [org.farrukh.experiments.model.Book#<null>] 
+21:53:16.583 [main] TRACE o.h.e.def.AbstractSaveEventListener.performSaveOrReplicate(267) - executing insertions 
+21:53:16.583 [main] DEBUG o.h.e.def.AbstractSaveEventListener.performSaveOrReplicate(320) - executing identity-insert immediately 
+21:53:16.583 [main] TRACE o.h.p.e.AbstractEntityPersister.insert(2162) - Inserting entity: org.farrukh.experiments.model.Book (native id) 
+21:53:16.583 [main] DEBUG org.hibernate.jdbc.AbstractBatcher.logOpenPreparedStatement(410) - about to open PreparedStatement (open PreparedStatements: 0, globally: 0) 
+21:53:16.583 [main] DEBUG org.hibernate.SQL.logStatement(111) - insert into BOOKS (id, name) values (BOOK_SEQ.nextval, ?) 
+21:53:16.583 [main] TRACE org.hibernate.jdbc.AbstractBatcher.getPreparedStatement(513) - preparing statement 
+21:53:16.583 [main] TRACE o.h.p.e.AbstractEntityPersister.dehydrate(2010) - Dehydrating entity: [org.farrukh.experiments.model.Book#<null>] 
+21:53:16.583 [main] TRACE org.hibernate.type.StringType.nullSafeSet(151) - binding '6' to parameter: 1 
+21:53:16.598 [main] DEBUG o.h.id.IdentifierGeneratorFactory.getGeneratedIdentity(95) - Natively generated identity: 190438 
+21:53:16.598 [main] DEBUG org.hibernate.jdbc.AbstractBatcher.logClosePreparedStatement(418) - about to close PreparedStatement (open PreparedStatements: 1, globally: 1) 
+21:53:16.598 [main] TRACE org.hibernate.jdbc.AbstractBatcher.closePreparedStatement(562) - closing statement 
+21:53:16.598 [main] TRACE o.h.e.def.AbstractSaveEventListener.getEntityState(537) - transient instance of: org.farrukh.experiments.model.Book 
+21:53:16.598 [main] TRACE o.h.e.d.DefaultSaveOrUpdateEventListener.entityIsTransient(181) - saving transient instance 
+21:53:16.598 [main] TRACE o.h.e.def.AbstractSaveEventListener.performSave(176) - saving [org.farrukh.experiments.model.Book#<null>] 
+21:53:16.598 [main] TRACE o.h.e.def.AbstractSaveEventListener.performSaveOrReplicate(267) - executing insertions 
+21:53:16.598 [main] DEBUG o.h.e.def.AbstractSaveEventListener.performSaveOrReplicate(320) - executing identity-insert immediately 
+21:53:16.598 [main] TRACE o.h.p.e.AbstractEntityPersister.insert(2162) - Inserting entity: org.farrukh.experiments.model.Book (native id) 
+21:53:16.598 [main] DEBUG org.hibernate.jdbc.AbstractBatcher.logOpenPreparedStatement(410) - about to open PreparedStatement (open PreparedStatements: 0, globally: 0) 
+21:53:16.598 [main] DEBUG org.hibernate.SQL.logStatement(111) - insert into BOOKS (id, name) values (BOOK_SEQ.nextval, ?) 
+21:53:16.598 [main] TRACE org.hibernate.jdbc.AbstractBatcher.getPreparedStatement(513) - preparing statement 
+21:53:16.598 [main] TRACE o.h.p.e.AbstractEntityPersister.dehydrate(2010) - Dehydrating entity: [org.farrukh.experiments.model.Book#<null>] 
+21:53:16.598 [main] TRACE org.hibernate.type.StringType.nullSafeSet(151) - binding '7' to parameter: 1 
+21:53:16.598 [main] DEBUG o.h.id.IdentifierGeneratorFactory.getGeneratedIdentity(95) - Natively generated identity: 190439 
+21:53:16.598 [main] DEBUG org.hibernate.jdbc.AbstractBatcher.logClosePreparedStatement(418) - about to close PreparedStatement (open PreparedStatements: 1, globally: 1) 
+21:53:16.598 [main] TRACE org.hibernate.jdbc.AbstractBatcher.closePreparedStatement(562) - closing statement 
+21:53:16.598 [main] TRACE o.h.e.def.AbstractSaveEventListener.getEntityState(537) - transient instance of: org.farrukh.experiments.model.Book 
+21:53:16.598 [main] TRACE o.h.e.d.DefaultSaveOrUpdateEventListener.entityIsTransient(181) - saving transient instance 
+21:53:16.598 [main] TRACE o.h.e.def.AbstractSaveEventListener.performSave(176) - saving [org.farrukh.experiments.model.Book#<null>] 
+21:53:16.598 [main] TRACE o.h.e.def.AbstractSaveEventListener.performSaveOrReplicate(267) - executing insertions 
+21:53:16.598 [main] DEBUG o.h.e.def.AbstractSaveEventListener.performSaveOrReplicate(320) - executing identity-insert immediately 
+21:53:16.598 [main] TRACE o.h.p.e.AbstractEntityPersister.insert(2162) - Inserting entity: org.farrukh.experiments.model.Book (native id) 
+21:53:16.598 [main] DEBUG org.hibernate.jdbc.AbstractBatcher.logOpenPreparedStatement(410) - about to open PreparedStatement (open PreparedStatements: 0, globally: 0) 
+21:53:16.598 [main] DEBUG org.hibernate.SQL.logStatement(111) - insert into BOOKS (id, name) values (BOOK_SEQ.nextval, ?) 
+21:53:16.598 [main] TRACE org.hibernate.jdbc.AbstractBatcher.getPreparedStatement(513) - preparing statement 
+21:53:16.614 [main] TRACE o.h.p.e.AbstractEntityPersister.dehydrate(2010) - Dehydrating entity: [org.farrukh.experiments.model.Book#<null>] 
+21:53:16.614 [main] TRACE org.hibernate.type.StringType.nullSafeSet(151) - binding '8' to parameter: 1 
+21:53:16.614 [main] DEBUG o.h.id.IdentifierGeneratorFactory.getGeneratedIdentity(95) - Natively generated identity: 190440 
+21:53:16.614 [main] DEBUG org.hibernate.jdbc.AbstractBatcher.logClosePreparedStatement(418) - about to close PreparedStatement (open PreparedStatements: 1, globally: 1) 
+21:53:16.614 [main] TRACE org.hibernate.jdbc.AbstractBatcher.closePreparedStatement(562) - closing statement 
+21:53:16.614 [main] TRACE o.h.e.def.AbstractSaveEventListener.getEntityState(537) - transient instance of: org.farrukh.experiments.model.Book 
+21:53:16.614 [main] TRACE o.h.e.d.DefaultSaveOrUpdateEventListener.entityIsTransient(181) - saving transient instance 
+21:53:16.614 [main] TRACE o.h.e.def.AbstractSaveEventListener.performSave(176) - saving [org.farrukh.experiments.model.Book#<null>] 
+21:53:16.614 [main] TRACE o.h.e.def.AbstractSaveEventListener.performSaveOrReplicate(267) - executing insertions 
+21:53:16.614 [main] DEBUG o.h.e.def.AbstractSaveEventListener.performSaveOrReplicate(320) - executing identity-insert immediately 
+21:53:16.614 [main] TRACE o.h.p.e.AbstractEntityPersister.insert(2162) - Inserting entity: org.farrukh.experiments.model.Book (native id) 
+21:53:16.614 [main] DEBUG org.hibernate.jdbc.AbstractBatcher.logOpenPreparedStatement(410) - about to open PreparedStatement (open PreparedStatements: 0, globally: 0) 
+21:53:16.614 [main] DEBUG org.hibernate.SQL.logStatement(111) - insert into BOOKS (id, name) values (BOOK_SEQ.nextval, ?) 
+21:53:16.614 [main] TRACE org.hibernate.jdbc.AbstractBatcher.getPreparedStatement(513) - preparing statement 
+21:53:16.630 [main] TRACE o.h.p.e.AbstractEntityPersister.dehydrate(2010) - Dehydrating entity: [org.farrukh.experiments.model.Book#<null>] 
+21:53:16.630 [main] TRACE org.hibernate.type.StringType.nullSafeSet(151) - binding '9' to parameter: 1 
+21:53:16.630 [main] DEBUG o.h.id.IdentifierGeneratorFactory.getGeneratedIdentity(95) - Natively generated identity: 190441 
+21:53:16.630 [main] DEBUG org.hibernate.jdbc.AbstractBatcher.logClosePreparedStatement(418) - about to close PreparedStatement (open PreparedStatements: 1, globally: 1) 
+21:53:16.630 [main] TRACE org.hibernate.jdbc.AbstractBatcher.closePreparedStatement(562) - closing statement 
+21:53:16.630 [main] DEBUG o.s.o.hibernate3.HibernateTemplate.flushIfNecessary(389) - Eagerly flushing Hibernate session 
+21:53:16.630 [main] TRACE o.h.e.d.AbstractFlushingEventListener.flushEverythingToExecutions(81) - flushing session 
+21:53:16.630 [main] DEBUG o.h.e.d.AbstractFlushingEventListener.prepareEntityFlushes(134) - processing flush-time cascades 
+21:53:16.630 [main] DEBUG o.h.e.d.AbstractFlushingEventListener.prepareCollectionFlushes(177) - dirty checking collections 
+21:53:16.630 [main] TRACE o.h.e.d.AbstractFlushingEventListener.flushEntities(194) - Flushing entities and processing referenced collections 
+21:53:16.630 [main] TRACE o.h.e.d.AbstractFlushingEventListener.flushCollections(233) - Processing unreferenced collections 
+21:53:16.630 [main] TRACE o.h.e.d.AbstractFlushingEventListener.flushCollections(247) - Scheduling collection removes/(re)creates/updates 
+21:53:16.630 [main] DEBUG o.h.e.d.AbstractFlushingEventListener.flushEverythingToExecutions(108) - Flushed: 0 insertions, 0 updates, 0 deletions to 10 objects 
+21:53:16.630 [main] DEBUG o.h.e.d.AbstractFlushingEventListener.flushEverythingToExecutions(114) - Flushed: 0 (re)creations, 0 updates, 0 removals to 0 collections 
+21:53:16.630 [main] DEBUG org.hibernate.pretty.Printer.toString(106) - listing entities: 
+21:53:16.630 [main] DEBUG org.hibernate.pretty.Printer.toString(113) - org.farrukh.experiments.model.Book{id=190437, name=5} 
+21:53:16.630 [main] DEBUG org.hibernate.pretty.Printer.toString(113) - org.farrukh.experiments.model.Book{id=190436, name=4} 
+21:53:16.630 [main] DEBUG org.hibernate.pretty.Printer.toString(113) - org.farrukh.experiments.model.Book{id=190439, name=7} 
+21:53:16.630 [main] DEBUG org.hibernate.pretty.Printer.toString(113) - org.farrukh.experiments.model.Book{id=190438, name=6} 
+21:53:16.630 [main] DEBUG org.hibernate.pretty.Printer.toString(113) - org.farrukh.experiments.model.Book{id=190441, name=9} 
+21:53:16.630 [main] DEBUG org.hibernate.pretty.Printer.toString(113) - org.farrukh.experiments.model.Book{id=190440, name=8} 
+21:53:16.630 [main] DEBUG org.hibernate.pretty.Printer.toString(113) - org.farrukh.experiments.model.Book{id=190432, name=0} 
+21:53:16.630 [main] DEBUG org.hibernate.pretty.Printer.toString(113) - org.farrukh.experiments.model.Book{id=190433, name=1} 
+21:53:16.630 [main] DEBUG org.hibernate.pretty.Printer.toString(113) - org.farrukh.experiments.model.Book{id=190434, name=2} 
+21:53:16.630 [main] DEBUG org.hibernate.pretty.Printer.toString(113) - org.farrukh.experiments.model.Book{id=190435, name=3} 
+21:53:16.630 [main] TRACE o.h.e.d.AbstractFlushingEventListener.performExecutions(313) - executing flush 
+21:53:16.630 [main] TRACE o.hibernate.jdbc.ConnectionManager.flushBeginning(492) - registering flush begin 
+21:53:16.630 [main] TRACE o.hibernate.jdbc.ConnectionManager.flushEnding(501) - registering flush end 
+21:53:16.630 [main] TRACE o.h.e.d.AbstractFlushingEventListener.postFlush(344) - post flush 
+21:53:16.630 [main] DEBUG o.s.o.h.SessionFactoryUtils.closeSession(789) - Closing Hibernate Session 
+21:53:16.630 [main] TRACE org.hibernate.impl.SessionImpl.close(301) - closing session 
+21:53:16.630 [main] TRACE o.hibernate.jdbc.ConnectionManager.cleanup(403) - performing cleanup 
+21:53:16.630 [main] DEBUG o.hibernate.jdbc.ConnectionManager.closeConnection(464) - releasing JDBC connection [ (open PreparedStatements: 0, globally: 0) (open ResultSets: 0, globally: 0)] 
+21:53:16.645 [main] TRACE org.hibernate.jdbc.JDBCContext.afterTransactionCompletion(242) - after transaction completion 
+21:53:16.645 [main] DEBUG o.hibernate.jdbc.ConnectionManager.afterTransaction(325) - transaction completed on session with on_close connection release mode; be sure to close the session to release JDBC resources! 
+21:53:16.645 [main] TRACE org.hibernate.impl.SessionImpl.afterTransactionCompletion(450) - after transaction completion 
+21:53:16.645 [main] TRACE o.s.test.context.TestContextManager.afterTestMethod(396) - afterTestMethod(): instance [org.farrukh.experiments.AppTest@4bd53f5b], method [public void org.farrukh.experiments.AppTest.shouldBatchInsertUsingHibernateTemplateSaveOrUpdateAllMethod() throws java.lang.Exception], exception [null] 
+21:53:16.645 [main] DEBUG o.s.t.c.s.DirtiesContextTestExecutionListener.afterTestMethod(86) - After test method: context [[TestContext@276a38b5 testClass = AppTest, locations = array<String>['classpath:base-app-context.xml'], testInstance = org.farrukh.experiments.AppTest@4bd53f5b, testMethod = shouldBatchInsertUsingHibernateTemplateSaveOrUpdateAllMethod@AppTest, testException = [null]]], class dirties context [false], class mode [null], method dirties context [false]. 
+21:53:16.645 [main] TRACE o.s.test.context.TestContextManager.afterTestClass(439) - afterTestClass(): class [class org.farrukh.experiments.AppTest] 
+21:53:16.645 [main] DEBUG o.s.t.c.s.DirtiesContextTestExecutionListener.afterTestClass(113) - After test class: context [[TestContext@276a38b5 testClass = AppTest, locations = array<String>['classpath:base-app-context.xml'], testInstance = [null], testMethod = [null], testException = [null]]], dirtiesContext [false]. 
+21:53:16.645 [Thread-1] INFO  o.s.c.s.GenericApplicationContext.doClose(1002) - Closing org.springframework.context.support.GenericApplicationContext@2a8ceeea: startup date [Fri May 12 21:53:14 MSK 2017]; root of context hierarchy 
+21:53:16.645 [Thread-1] TRACE o.s.c.s.GenericApplicationContext.publishEvent(301) - Publishing event in org.springframework.context.support.GenericApplicationContext@2a8ceeea: org.springframework.context.event.ContextClosedEvent[source=org.springframework.context.support.GenericApplicationContext@2a8ceeea: startup date [Fri May 12 21:53:14 MSK 2017]; root of context hierarchy] 
+21:53:16.645 [Thread-1] DEBUG o.s.b.f.s.DefaultListableBeanFactory.doGetBean(242) - Returning cached instance of singleton bean 'lifecycleProcessor' 
+21:53:16.645 [Thread-1] INFO  o.s.b.f.s.DefaultListableBeanFactory.destroySingletons(422) - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@58df0438: defining beans [hibernateProperties,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,javaApplicationContext,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,org.farrukh.experiments.JavaApplicationContext#0,sessionFactoryBean,transactionManager,hibernateTemplate]; root of factory hierarchy 
+21:53:16.645 [Thread-1] DEBUG o.s.b.f.s.DefaultListableBeanFactory.destroyBean(477) - Retrieved dependent beans for bean 'hibernateTemplate': [org.farrukh.experiments.AppTest] 
+21:53:16.645 [Thread-1] DEBUG o.s.b.f.s.DisposableBeanAdapter.destroy(172) - Invoking destroy() on bean with name 'sessionFactoryBean' 
+21:53:16.645 [Thread-1] INFO  o.s.o.h.a.AnnotationSessionFactoryBean.destroy(246) - Closing Hibernate SessionFactory 
+21:53:16.645 [Thread-1] INFO  o.hibernate.impl.SessionFactoryImpl.close(853) - closing 
