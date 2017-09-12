@@ -21,5 +21,21 @@ public class AppTest {
         System.out.printf("Execution time in %s seconds", elapsedTime);
         System.out.printf("Execution time in %s seconds", stopwatch);
 
+
+        Stopwatch start = new Stopwatch().start();
+
+        Thread.sleep(7 * 1000);
+
+        start.stop();
+
+        long elapsedTime1 = start.elapsedTime(TimeUnit.SECONDS);
+
+        System.out.println();
+
+        System.out.printf("Execution time in %s seconds", elapsedTime1);
+        System.out.printf("Execution time in %s seconds", start);
+
+
+
     }
 }
