@@ -21,3 +21,5 @@
 **/fileStore
 
 **/.springBeans
+
+**/*.pyc

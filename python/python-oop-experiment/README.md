@@ -1,0 +1,17 @@
+OOP Concepts in Python:
+  - Classes and Object
+   - Variables:
+    - Levels (Scopes):
+      - Class, data member & instance
+   - Data Hiding
+     - Getters/Setters (accessor & mutator) and Encapsulation   
+  - Properties (Filed, Attributes, States) & Methods (Behaviors)
+   - Constructors,  Methods and Multiple Constructors
+    - Alternative constrictor & @classmethod
+    - Static methods & @staticmethod  
+  - Inheritance & Composition
+  - Overloading & Overriding
+  - Packages & Modules
+   - Standard, Third-party & Own modules
+  - Errors & Exceptions
+  - OOP Design patterns
