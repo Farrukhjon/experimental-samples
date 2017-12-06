@@ -8,9 +8,18 @@ public class HibernateUtil {
     
     private final SessionFactory sessionFactory = buildSessionFactory();
 
+    private final String configResource;
+
+    public HibernateUtil(String configResource) {
+        this.configResource = configResource;
+    }
+
+    public HibernateUtil() {
+        this("hibernate.cfg.xml");
+    }
+
     private SessionFactory buildSessionFactory() {
         Configuration configuration = new Configuration();
-        String configResource = "";
         return configuration.configure(configResource).buildSessionFactory();
     }
 

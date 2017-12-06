@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">${CONNECTION_DRIVER_CLASS}</property>
+        <property name="connection.url">${CONNECTION_URL}</property>
+        <property name="connection.username">${CONNECTION_USERNAME}</property>
+        <property name="connection.password">${CONNECTION_PASSWORD}</property>
+
+        <property name="hibernate.default_schema">PUBLIC</property>
+
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">1</property>
+
+        <!-- SQL dialect -->
+        <property name="dialect">${HIBERNATE_DIALECT}</property>
+
+        <!-- Disable the second-level cache  -->
+        <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+
+        <!-- Drop and re-create the database schema on startup -->
+        <property name="hbm2ddl.auto">create</property>
+
+        <mapping class="org.farrukh.experiments.hibernate3.model.Employee"/>
+        <mapping class="org.farrukh.experiments.hibernate3.model.Departament"/>
+        <mapping class="org.farrukh.experiments.hibernate3.model.Address"/>
+
+    </session-factory>
+
+</hibernate-configuration>
