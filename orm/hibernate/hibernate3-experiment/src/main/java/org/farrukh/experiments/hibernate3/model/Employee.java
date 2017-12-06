@@ -1,9 +1,6 @@
 package org.farrukh.experiments.hibernate3.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Employee {
@@ -14,6 +11,10 @@ public class Employee {
 
     @Column
     private String firstName;
+
+    @JoinColumn(name = "addressId")
+    @OneToOne(cascade = CascadeType.ALL)
+    private Address address;
 
     public Long getId() {
         return id;
@@ -30,4 +31,13 @@ public class Employee {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
 }

@@ -1,9 +1,12 @@
 package org.farrukh.experiments.hibernate3;
 
+import org.farrukh.experiments.hibernate3.model.Address;
+import org.farrukh.experiments.hibernate3.model.Departament;
 import org.farrukh.experiments.hibernate3.model.Employee;
 import org.hibernate.classic.Session;
-import org.junit.Assert;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class SaveSaveOrUpdateMergeDelete extends AbstractBaseTest {
 
@@ -13,24 +16,38 @@ public class SaveSaveOrUpdateMergeDelete extends AbstractBaseTest {
 
         session.getTransaction().begin();
 
-        Employee employee = generateRandomEmployee();
-        Long expectedId = (Long) session.save(employee);
+        Departament it = generateRandomEmployee();
+        Long expectedId = (Long) session.save(it);
 
         session.getTransaction().commit();
 
-        Employee ali = (Employee) session.get(Employee.class, expectedId);
+        Departament storedDep = (Departament) session.get(Departament.class, expectedId);
 
-        Assert.assertEquals(ali.getId(), expectedId);
-        Assert.assertEquals(ali.getFirstName(), "Ali");
+        assertEquals(expectedId, storedDep.getId());
+        assertEquals("IT", storedDep.getName());
+        assertEquals("Ali", storedDep.getEmployee().getFirstName());
+        assertEquals("Switzerland", storedDep.getEmployee().getAddress().getCountry());
 
         session.close();
 
     }
 
-    private Employee generateRandomEmployee() {
-        Employee employee = new Employee();
-        employee.setFirstName("Ali");
-        return employee;
+    private Departament generateRandomEmployee() {
+        Employee ali = new Employee();
+        ali.setFirstName("Ali");
+
+        Address aliAddress = new Address();
+        aliAddress.setCountry("Switzerland");
+        aliAddress.setCiti("Geneva");
+
+        ali.setAddress(aliAddress);
+
+        Departament it = new Departament();
+        it.setName("IT");
+
+        it.setEmployee(ali);
+
+        return it;
 
     }
 }
