@@ -1,14 +1,15 @@
-package org.farrukh.experiments.hibernate3;
+package org.farrukh.experiments.hibernate3.session;
 
-import org.farrukh.experiments.hibernate3.model.Address;
-import org.farrukh.experiments.hibernate3.model.Departament;
-import org.farrukh.experiments.hibernate3.model.Employee;
+import org.farrukh.experiments.hibernate3.AbstractBaseTest;
+import org.farrukh.experiments.hibernate3.model.hr.Address;
+import org.farrukh.experiments.hibernate3.model.hr.Departament;
+import org.farrukh.experiments.hibernate3.model.hr.Employee;
 import org.hibernate.classic.Session;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class SaveSaveOrUpdateMergeDelete extends AbstractBaseTest {
+public class SaveSaveOrUpdateMergeDeleteTest extends AbstractBaseTest {
 
     @Test
     public void testSessionSaveOperation() {
@@ -49,5 +50,10 @@ public class SaveSaveOrUpdateMergeDelete extends AbstractBaseTest {
 
         return it;
 
+    }
+
+    @Override
+    protected String getUnitTestProperties() {
+        return "unittest.properties";
     }
 }

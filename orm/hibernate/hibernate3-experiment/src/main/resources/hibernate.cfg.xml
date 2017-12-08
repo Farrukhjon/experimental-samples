@@ -14,7 +14,7 @@
         <property name="connection.username">${CONNECTION_USERNAME}</property>
         <property name="connection.password">${CONNECTION_PASSWORD}</property>
 
-        <property name="hibernate.default_schema">PUBLIC</property>
+        <!--<property name="hibernate.default_schema">PUBLIC</property>-->
 
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">1</property>
@@ -29,11 +29,14 @@
         <property name="show_sql">true</property>
 
         <!-- Drop and re-create the database schema on startup -->
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hbm2ddl.auto">update</property>
 
-        <mapping class="org.farrukh.experiments.hibernate3.model.Employee"/>
-        <mapping class="org.farrukh.experiments.hibernate3.model.Departament"/>
-        <mapping class="org.farrukh.experiments.hibernate3.model.Address"/>
+        <mapping class="org.farrukh.experiments.hibernate3.model.hr.Employee"/>
+        <mapping class="org.farrukh.experiments.hibernate3.model.hr.Departament"/>
+        <mapping class="org.farrukh.experiments.hibernate3.model.hr.Address"/>
+
+        <mapping class="org.farrukh.experiments.hibernate3.model.trading.Trade"/>
+        <mapping class="org.farrukh.experiments.hibernate3.model.trading.TradeStatus"/>
 
     </session-factory>
 

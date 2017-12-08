@@ -1,16 +1,17 @@
 package org.farrukh.experiments.hibernate3;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.junit.Before;
 
 import java.io.IOException;
 import java.util.Properties;
 import java.util.Set;
+import java.util.function.Consumer;
 
 public abstract class AbstractBaseTest {
-
-    private static final String unittestProperties = "unittest.properties";
 
     private SessionFactory sessionFactory;
 
@@ -25,16 +26,36 @@ public abstract class AbstractBaseTest {
 
     private void loadSystemProperties() throws IOException {
         Properties properties = new Properties();
-        properties.load(ClassLoader.getSystemResourceAsStream(unittestProperties));
+        properties.load(ClassLoader.getSystemResourceAsStream(getUnitTestProperties()));
         Set<Object> keys = properties.keySet();
         for (Object key : keys) {
             System.setProperty((String) key, (String) properties.get(key));
         }
     }
 
+    protected abstract String getUnitTestProperties();
 
-    final SessionFactory getSessionFactory() {
+
+    protected final SessionFactory getSessionFactory() {
         return sessionFactory;
+    }
+
+
+    public void doInHibernate(Consumer<Session> callable) {
+        Session session = null;
+        Transaction tx = null;
+        try {
+            session = getSessionFactory().openSession();
+            tx = session.beginTransaction();
+
+            callable.accept(session);
+            tx.commit();
+            session.close();
+        } catch (Exception e) {
+            tx.rollback();
+            session.close();
+            e.printStackTrace();
+        }
     }
 
 }

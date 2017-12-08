@@ -1,4 +1,4 @@
-package org.farrukh.experiments.hibernate3.model;
+package org.farrukh.experiments.hibernate3.model.hr;
 
 import javax.persistence.*;
 
