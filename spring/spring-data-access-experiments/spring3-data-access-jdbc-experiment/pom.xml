@@ -54,13 +54,13 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
-        
+
         <dependency>
-         <groupId>com.oracle</groupId>
-         <artifactId>ojdbc6</artifactId>
-         <version>${oracle.version}</version>
-      </dependency>
-        
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>${oracle.version}</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -78,9 +78,12 @@
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
         </dependency>
-
-
-
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
     <properties>
@@ -89,6 +92,7 @@
         <slf4j.version>1.7.22</slf4j.version>
         <apache.commons.version>2.1.1</apache.commons.version>
         <oracle.version>11.2.0</oracle.version>
+        <junit.version>4.12</junit.version>
     </properties>
 
 
