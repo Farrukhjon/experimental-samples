@@ -39,7 +39,7 @@ public class TradingTest extends AbstractBaseTest {
                 TradeStatus newTradeStatus = getNewTradeStatus();
 
                 TradeId id = new TradeId();
-                id.setDeal("123426721");
+                id.setDeal("132");
                 id.setTransactionId("1");
                 id.setSeqNo(1L);
 

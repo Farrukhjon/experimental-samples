@@ -38,6 +38,9 @@
         <mapping class="org.farrukh.experiments.hibernate3.model.trading.Trade"/>
         <mapping class="org.farrukh.experiments.hibernate3.model.trading.TradeStatus"/>
 
+        <mapping class="org.farrukh.experiments.hibernate3.model.library.Author"/>
+        <mapping class="org.farrukh.experiments.hibernate3.model.library.Book"/>
+
     </session-factory>
 
 </hibernate-configuration>

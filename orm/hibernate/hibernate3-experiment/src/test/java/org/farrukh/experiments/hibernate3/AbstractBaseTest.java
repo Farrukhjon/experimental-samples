@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.Set;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 public abstract class AbstractBaseTest {
 
@@ -56,6 +57,25 @@ public abstract class AbstractBaseTest {
             session.close();
             e.printStackTrace();
         }
+    }
+
+    public <T> T doInHibernate(Function<Session, T> callable) {
+        Session session = null;
+        Transaction tx = null;
+        T result = null;
+        try {
+            session = getSessionFactory().openSession();
+            tx = session.beginTransaction();
+
+            result = callable.apply(session);
+            tx.commit();
+            session.close();
+        } catch (Exception e) {
+            tx.rollback();
+            session.close();
+            e.printStackTrace();
+        }
+        return result;
     }
 
 }

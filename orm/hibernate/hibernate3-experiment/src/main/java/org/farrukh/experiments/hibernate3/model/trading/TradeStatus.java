@@ -8,7 +8,7 @@ import java.util.Date;
 public class TradeStatus {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "TRADE_STATUS_ID_GEN")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRADE_STATUS_ID_GEN")
     private Long id;
 
     @Column
