@@ -1,0 +1,36 @@
+Principles of OO Design
+ - SOLID
+    - Single Responsibility
+    - Open for extension, Close for Modification
+    - Liskov's Substitution
+    - Dependency Inversion
+Classification
+    - Creational
+        - Singleton 
+        - Prototype
+        - Abstract factory
+        - Builder
+        - Factory method
+        - Dependency Injection
+        - Object pool
+    - Behavioral
+        - Chain of responsibility
+        - Command
+        - Interpreter
+        - Iterator
+        - Mediator
+        - Memento
+        - Null object
+        - Observer
+        - State
+        - Strategy
+        - Template method
+        - Visitor
+    - Structural
+        - Adapter
+        - Bridge
+        - Composite
+        - Decorator
+        - Facade
+        - Flyweight
+        - Proxy
