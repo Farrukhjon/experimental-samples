@@ -1,10 +1,12 @@
-Principles of OO Design
+Principles of Object-Oriented Software Design
  - SOLID
     - Single Responsibility
     - Open for extension, Close for Modification
     - Liskov's Substitution
     - Dependency Inversion
-Classification
+ - Reusability
+ - 
+Classification of Software Design Patterns
     - Creational
         - Singleton 
         - Prototype

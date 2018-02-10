@@ -2,29 +2,30 @@ package org.farrukh.experiments.dp.behavioral.strategy.ch2;
 
 public abstract class Duck {
 
-	private FlyBehavior		flyBehavior;
-	private QuackBehavior	quackBehavior;
+    private FlyBehavior flyBehavior;
 
-	public abstract void display();
+    private QuackBehavior quackBehavior;
 
-	public void performFly() {
-		flyBehavior.fly();
-	}
+    public abstract void display();
 
-	public void performQuack() {
-		quackBehavior.quack();
-	}
+    public void performFly() {
+        flyBehavior.fly();
+    }
 
-	public void swim() {
-		System.out.println("Swimming");
-	}
+    public void performQuack() {
+        quackBehavior.quack();
+    }
 
-	public void setFlyBehavior(FlyBehavior flyBehavior) {
-		this.flyBehavior = flyBehavior;
-	}
+    public void swim() {
+        System.out.println("Swimming");
+    }
 
-	public void setQuackBehavior(QuackBehavior quackBehavior) {
-		this.quackBehavior = quackBehavior;
-	}
+    public void setFlyBehavior(FlyBehavior flyBehavior) {
+        this.flyBehavior = flyBehavior;
+    }
+
+    public void setQuackBehavior(QuackBehavior quackBehavior) {
+        this.quackBehavior = quackBehavior;
+    }
 
 }

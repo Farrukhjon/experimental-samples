@@ -1,4 +1,0 @@
-Fearure of strategy design pattern
- - incapsulate algorithms (behaviors);
- - use has-a mechanism (composition) over is-a (inheritance);
- - allow dynamical change behavior (by setter method);

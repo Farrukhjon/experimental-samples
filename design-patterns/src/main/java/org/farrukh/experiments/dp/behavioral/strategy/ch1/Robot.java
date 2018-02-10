@@ -5,32 +5,32 @@ package org.farrukh.experiments.dp.behavioral.strategy.ch1;
  */
 public class Robot {
 
-	private IBehavior	startegy;
-	private String		name;
+    private IBehavior strategy;
+    private String name;
 
-	public Robot(String name) {
-		this.name = name;
-	}
+    public Robot(String name) {
+        this.name = name;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public IBehavior getStartegy() {
-		return startegy;
-	}
+    public IBehavior getStrategy() {
+        return strategy;
+    }
 
-	public void move() {
-		System.out.print(this.name + " ");
-		int command = startegy.moveCommand();
-		System.out.println(this.name + " " + String.valueOf(command));
-	}
+    public void move() {
+        System.out.print(this.name + " ");
+        int command = strategy.moveCommand();
+        System.out.println(this.name + " " + String.valueOf(command));
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setStartegy(IBehavior startegy) {
-		this.startegy = startegy;
-	}
+    public void setStrategy(IBehavior strategy) {
+        this.strategy = strategy;
+    }
 }

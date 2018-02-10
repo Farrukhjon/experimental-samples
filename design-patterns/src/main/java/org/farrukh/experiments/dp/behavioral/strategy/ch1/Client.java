@@ -8,9 +8,9 @@ public class Client {
 		Robot r2 = new Robot("R2");
 		Robot r3 = new Robot("R3");
 
-		r1.setStartegy(new NormalBehavior());
-		r2.setStartegy(new AgressiveBehavior());
-		r3.setStartegy(new DefensiveBehavior());
+		r1.setStrategy(new NormalBehavior());
+		r2.setStrategy(new AgressiveBehavior());
+		r3.setStrategy(new DefensiveBehavior());
 
 		r1.move();
 		r2.move();

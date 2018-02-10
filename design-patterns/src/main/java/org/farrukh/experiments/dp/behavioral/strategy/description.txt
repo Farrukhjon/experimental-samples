@@ -1,0 +1,8 @@
+Design pattern
+    - Behavioral
+        - Strategy
+            - Features:
+                - encapsulate algorithms (behaviors);
+                - use has-a mechanism (composition) over is-a (inheritance);
+                - allow dynamical (on-run-time) change behaviors (by setter method);
+                - interchangeable algorithms
