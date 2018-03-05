@@ -5,7 +5,7 @@
  * Written by F.D. Sattorov <farrukhjon.sattorov@gmail.com>, May 2016.
  */
 
-package org.farrukh.examples.java.collections;
+package org.farrukh.examples.java.collection.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;

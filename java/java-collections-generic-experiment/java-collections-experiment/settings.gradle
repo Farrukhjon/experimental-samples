@@ -16,4 +16,4 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = 'java-collection-generic-examples'
+rootProject.name = 'java-collections-experiment'
