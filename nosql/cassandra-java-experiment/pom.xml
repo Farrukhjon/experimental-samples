@@ -15,10 +15,8 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <cassandra.version>3.4.0</cassandra.version>
-        <guava.version>19.0</guava.version>
         <logback.version>0.9.21</logback.version>
         <junit.version>4.12</junit.version>
-        <astyanax.version>1.56.49</astyanax.version>
     </properties>
 
     <dependencies>
@@ -26,36 +24,6 @@
             <groupId>com.datastax.cassandra</groupId>
             <artifactId>cassandra-driver-core</artifactId>
             <version>${cassandra.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.netflix.astyanax</groupId>
-            <artifactId>astyanax-cassandra</artifactId>
-            <version>${astyanax.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.netflix.astyanax</groupId>
-            <artifactId>astyanax-core</artifactId>
-            <version>${astyanax.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.netflix.astyanax</groupId>
-            <artifactId>astyanax-queue</artifactId>
-            <version>${astyanax.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.netflix.astyanax</groupId>
-            <artifactId>astyanax-recipes</artifactId>
-            <version>${astyanax.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.netflix.astyanax</groupId>
-            <artifactId>astyanax-thrift</artifactId>
-            <version>${astyanax.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
