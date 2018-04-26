@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations" value="classpath:beans.properties"/>
+        <property name="valueSeparator" value="?"/>
+    </bean>
+
+    <bean id="bean.A" class="org.farrukh.experiment.ClassA">
+    </bean>
+
+    <bean id="bean.B" class="org.farrukh.experiment.ClassB">
+    </bean>
+
+    <bean id="beanC" class="org.farrukh.experiment.ClassC">
+        <property name="injectedBean">
+            <ref bean="bean.${beanNameSuffix?A}"/>
+        </property>
+    </bean>
+
+
+</beans>
