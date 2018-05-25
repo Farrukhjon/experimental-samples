@@ -14,7 +14,7 @@
 
     <logger name="org.farrukh" level="ALL"/>
 
-    <root level="DEBUG">
+    <root level="ALL">
         <appender-ref ref="CONSOLE"/>
     </root>
 
