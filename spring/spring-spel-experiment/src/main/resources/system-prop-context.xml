@@ -14,6 +14,11 @@
         <property name="authors" value="#{systemProperties['book.authors']?.split(',')}"/>
     </bean>
 
+    <!--Without systemProperties keyword-->
+    <bean id="book2" class="org.farrukh.experiment.Book">
+        <property name="authors" value="#{'${book2.authors}'.split(',')}"/>
+    </bean>
+
 
 
 
