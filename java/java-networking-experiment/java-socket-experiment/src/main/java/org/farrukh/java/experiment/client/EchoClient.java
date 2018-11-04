@@ -1,26 +1,45 @@
 package org.farrukh.java.experiment.client;
 
+import org.farrukh.java.experiment.App;
+
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 public class EchoClient {
 
+    private final String host;
+    private final int serverPort;
 
-    private final Socket clientSocket;
-
-    public EchoClient(String host, int serverPort) throws IOException {
-        clientSocket = new Socket(host, serverPort);
+    public EchoClient(String host, int serverPort) {
+        this.host = host;
+        this.serverPort = serverPort;
     }
 
-    public void sendMessage(final String message) throws IOException {
-        byte[] bytes = message.getBytes();
-        OutputStream outStream = clientSocket.getOutputStream();
-        outStream.write(bytes);
-        outStream.flush();
-        outStream.close();
-        clientSocket.close();
+    public void start(final String message) {
+        try (Socket clientSocket = new Socket(host, serverPort);
+             PrintWriter outStream = new PrintWriter(clientSocket.getOutputStream(), true);
+             BufferedReader inStream = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()))) {
+
+            outStream.println(message);
+            String dataFromServer;
+            while ((dataFromServer = inStream.readLine()) != null) {
+                System.out.println("Server replayed:" + dataFromServer);
+                if ("Fine".equals(dataFromServer)) {
+                    break;
+                }
+                outStream.println("How are u?");
+            }
+        } catch (IOException e) {
+            e.fillInStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        new EchoClient(App.HOST, App.SERVER_PORT)
+                .start("Hello World!");
     }
 
 }

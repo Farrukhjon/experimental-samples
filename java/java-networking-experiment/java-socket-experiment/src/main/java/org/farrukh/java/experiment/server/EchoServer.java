@@ -1,41 +1,46 @@
 package org.farrukh.java.experiment.server;
 
+import org.farrukh.java.experiment.App;
+
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 public class EchoServer {
 
-    private final ServerSocket serverSocket;
-    private Socket clientSocket;
+    private final int port;
 
-    public EchoServer(int port) throws IOException {
-        serverSocket = new ServerSocket(port);
+    public EchoServer(int port) {
+        this.port = port;
     }
 
     public void start() {
         System.out.println("Starting server...");
-        Thread thread = new Thread(() -> {
-            try {
-                clientSocket = serverSocket.accept();
-                System.out.println("Accepted connection from a client");
-                InputStream inStream = clientSocket.getInputStream();
-                int data;
-                StringBuilder result = new StringBuilder();
-                while ((data = inStream.read()) != -1) {
-                    result.append(String.valueOf((char) data));
+        try (ServerSocket serverSocket = new ServerSocket(port);
+             Socket clientSocket = serverSocket.accept();
+             BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true)) {
+            System.out.println("Accepted connection from a client");
+            String dataFromClient;
+            while ((dataFromClient = input.readLine()) != null) {
+                System.out.println("Server received: " + dataFromClient);
+                if ("Bay".equals(dataFromClient)) {
+                    break;
                 }
-                System.out.println(result.toString());
-                inStream.close();
-                clientSocket.close();
-            } catch (IOException e) {
-                System.err.println(e);
+                out.println("Hi there");
+                out.println("Fine");
+                out.println("Bay");
             }
-
-        });
-        thread.start();
+        } catch (IOException e) {
+            System.err.println(e);
+        }
     }
 
+    public static void main(String[] args) {
+        new EchoServer(App.SERVER_PORT)
+                .start();
+    }
 }
