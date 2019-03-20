@@ -10,6 +10,9 @@ public class Client {
 
     private String address;
 
+    public Client() {
+    }
+
     public Client(String firstName, String lastName) {
         this(firstName, lastName, null);
     }

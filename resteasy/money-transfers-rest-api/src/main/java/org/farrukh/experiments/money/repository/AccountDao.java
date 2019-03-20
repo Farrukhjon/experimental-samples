@@ -1,16 +1,19 @@
 package org.farrukh.experiments.money.repository;
 
+import org.farrukh.experiments.money.exception.MoneyTransferException;
 import org.farrukh.experiments.money.model.Account;
+import org.farrukh.experiments.money.model.Transaction;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface AccountDao {
 
-    int createAccount(Account account);
+    Account createAccount(Account account);
 
     Account getAccountById(int accountId);
 
-    List<Account> getAllAccounts();
+    Collection<Account> getAllAccounts();
 
-    void updateAccounts(Account fromAccount, Account toAccount);
+    Transaction updateBalance(Transaction transaction) throws MoneyTransferException;
+
 }

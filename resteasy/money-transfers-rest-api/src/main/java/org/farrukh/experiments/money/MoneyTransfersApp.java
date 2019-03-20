@@ -1,10 +1,9 @@
 package org.farrukh.experiments.money;
 
-import org.farrukh.experiments.money.controller.MoneyTransfersController;
-import org.farrukh.experiments.money.service.AccountService;
-import org.farrukh.experiments.money.service.AccountServiceImpl;
-import org.farrukh.experiments.money.service.MoneyTransactionService;
-import org.farrukh.experiments.money.service.MoneyTransactionServiceImpl;
+import org.farrukh.experiments.money.controller.TransfersController;
+import org.farrukh.experiments.money.repository.InMemoryAccountDaoImpl;
+import org.farrukh.experiments.money.service.TransfersService;
+import org.farrukh.experiments.money.service.TransfersServiceImpl;
 
 import javax.ws.rs.core.Application;
 import java.util.HashSet;
@@ -15,11 +14,12 @@ public class MoneyTransfersApp extends Application {
     private Set<Object> singletons;
 
     public MoneyTransfersApp() {
-        AccountService accountService = new AccountServiceImpl();
-        MoneyTransactionService transactionService = new MoneyTransactionServiceImpl(accountService);
-        MoneyTransfersController moneyTransfersController = new MoneyTransfersController(accountService, transactionService);
+        InMemoryAccountDaoImpl accountDao = new InMemoryAccountDaoImpl();
+        TransfersService transactionService = new TransfersServiceImpl(accountDao);
+        TransfersController transfersController = new TransfersController();
+        transfersController.setTransfersService(transactionService);
         singletons = new HashSet<>();
-        singletons.add(moneyTransfersController);
+        singletons.add(transfersController);
     }
 
     @Override

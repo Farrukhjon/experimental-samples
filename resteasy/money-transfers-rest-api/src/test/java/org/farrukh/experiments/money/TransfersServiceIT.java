@@ -1,12 +1,7 @@
 package org.farrukh.experiments.money;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.client.entity.EntityBuilder;
 import org.farrukh.experiments.money.model.Account;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -15,12 +10,14 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 
-public class MoneyTransactionServiceIT {
+public class TransfersServiceIT {
 
-    static MainApp app = new MainApp();
 
-    @BeforeClass
-    public static void init() throws Exception {
+    private MainApp app;
+
+    @Before
+    public void initWebServer() throws Exception {
+        app = new MainApp(8481);
         app.startServer();
     }
 
@@ -40,8 +37,8 @@ public class MoneyTransactionServiceIT {
         Assert.assertEquals(response.getStatus(), 201);
     }
 
-    @AfterClass
-    public static void tearDown() throws Exception {
+    @After
+    public  void tearDown() throws Exception {
         app.stopServer();
     }
 

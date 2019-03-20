@@ -2,27 +2,46 @@ package org.farrukh.experiments.money.repository;
 
 import org.farrukh.experiments.money.model.Account;
 import org.farrukh.experiments.money.model.Client;
-import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import java.util.*;
+import java.util.concurrent.*;
+
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 public class InMemoryAccountDaoImplTest {
 
-    AccountDao accountDao = new InMemoryAccountDaoImpl();
+    AccountDao accountDao;
 
-    @Test
-    public void createAccount() {
-        Client payer = new Client("Vali", "Valiev");
-        Account newAccount = new Account(payer, "RUR", 1_000_000.0);
-        newAccount.setId(1);
-        int accountId = accountDao.createAccount(newAccount);
-        assertEquals(1, accountId);
+    @Before
+    public void setUp() {
+        accountDao = new InMemoryAccountDaoImpl();
     }
 
+    @Test
+    public void testCreateAccountsByMultipleThreadsConcurrently() throws InterruptedException {
+        int nWorkers = 7;
+        CountDownLatch latcher = new CountDownLatch(nWorkers);
+        List<Integer> createdAccountIdList = new CopyOnWriteArrayList<>();
+        Runnable newAccountTask = () -> {
+            Account account = new Account(new Client("Vali", "Valiev"), "RUR", 1_000_000.0);
+            int accountId = accountDao.createAccount(account).getId();
+            createdAccountIdList.add(accountId);
+            latcher.countDown();
+        };
+        ExecutorService threadPool = Executors.newFixedThreadPool(nWorkers);
+        for (int i = 0; i < nWorkers; i++)
+            threadPool.submit(newAccountTask);
+        latcher.await();
+        List<Integer> expectedIds = Arrays.asList(1, 2, 3, 4, 5, 6, 7);
+        Collections.sort(createdAccountIdList);
+        assertArrayEquals(expectedIds.toArray(), createdAccountIdList.toArray());
+    }
 
     @Test
-    public void updateAccounts() {
+    public void testUpdateAccountBalance() {
         Client payer = new Client("Vali", "Valiev");
         Account newPayerAccount = new Account(payer, "RUR", 1_000_000.0);
         newPayerAccount.setId(1);
@@ -40,12 +59,12 @@ public class InMemoryAccountDaoImplTest {
         payerAccount.setBalance(payerAccount.getBalance() - 500_000.0);
         recipientAccount.setBalance(payerAccount.getBalance() + 500_000.0);
 
-        accountDao.updateAccounts(payerAccount, recipientAccount);
+        //accountDao.updateBalance(payerAccount, recipientAccount);
 
         Account payerAccount1 = accountDao.getAccountById(newPayerAccount.getId());
         Account recipientAccount1 = accountDao.getAccountById(newRecipientAccount.getId());
 
-        Assert.assertEquals(500_000.0, payerAccount1.getBalance(), 1);
-        Assert.assertEquals(1_000_000.0, recipientAccount1.getBalance(), 1);
+        assertEquals(500_000.0, payerAccount1.getBalance(), 1);
+        assertEquals(1_000_000.0, recipientAccount1.getBalance(), 1);
     }
 }

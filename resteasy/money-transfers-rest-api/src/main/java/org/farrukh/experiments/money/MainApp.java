@@ -15,25 +15,25 @@ public class MainApp {
 
     private Server server;
 
-    public MainApp() {
-        server = new Server(8080);
+    public MainApp(int port) {
+        server = new Server(8181);
         ServletContextHandler servletContext = new ServletContextHandler(server, CONTEXT_ROOT_PATH);
         ServletHolder apiServlet = new ServletHolder(new HttpServletDispatcher());
         apiServlet.setInitParameter(RESTEASY_SERVLET_MAPPING_PREFIX, API_PATH);
         apiServlet.setInitParameter("javax.ws.rs.Application", "org.farrukh.experiments.money.MoneyTransfersApp");
         servletContext.addServlet(apiServlet, API_PATH + "/*");
         servletContext.addServlet(new ServletHolder(new DefaultServlet()), CONTEXT_ROOT_PATH);
+        server.setStopAtShutdown(Boolean.TRUE);
     }
 
     public static void main(String[] args) throws Exception {
-        MainApp app = new MainApp();
+        MainApp app = new MainApp(8181);
         app.startServer();
     }
 
     public void startServer() throws Exception {
         try {
             server.start();
-            server.join();
         } catch (Exception e) {
             throw e;
 
@@ -43,6 +43,7 @@ public class MainApp {
     public void stopServer() throws Exception {
         try {
             server.stop();
+            server.destroy();
         } catch (Exception e) {
             throw e;
         }

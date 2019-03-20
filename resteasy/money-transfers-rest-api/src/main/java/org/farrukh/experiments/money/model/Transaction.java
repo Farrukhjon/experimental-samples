@@ -1,7 +1,12 @@
 package org.farrukh.experiments.money.model;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Transaction {
 
     private int id;
@@ -14,23 +19,9 @@ public class Transaction {
 
     private double amount;
 
+    private boolean committed;
+
     private String description;
-
-    public Transaction(Account fromAccount, Account toAccount, double amount) {
-        this(new Date(), fromAccount, toAccount, amount);
-    }
-
-    public Transaction(Date date, Account fromAccount, Account toAccount, double amount, String description) {
-        this.date = date;
-        this.fromAccount = fromAccount;
-        this.toAccount = toAccount;
-        this.amount = amount;
-        this.description = description;
-    }
-
-    public Transaction(Date date, Account from, Account to, double amount) {
-        this(date, from, to, amount, null);
-    }
 
     public int getId() {
         return id;
@@ -70,6 +61,14 @@ public class Transaction {
 
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    public boolean isCommitted() {
+        return committed;
+    }
+
+    public void setCommitted(boolean committed) {
+        this.committed = committed;
     }
 
     public String getDescription() {
