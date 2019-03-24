@@ -24,6 +24,11 @@ public class TransfersServiceImpl implements TransfersService {
         return accountDao.createAccount(request);
     }
 
+    @Override
+    public Account getAccountById(int id) {
+        return accountDao.findAccountById(id);
+    }
+
     private void validate(Transaction transaction) throws MoneyTransferException {
         Account fromAccount = transaction.getFromAccount();
         Account toAccount = transaction.getToAccount();

@@ -10,7 +10,7 @@ public interface AccountDao {
 
     Account createAccount(Account account);
 
-    Account getAccountById(int accountId);
+    Account findAccountById(int accountId);
 
     Collection<Account> getAllAccounts();
 

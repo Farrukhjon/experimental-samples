@@ -14,7 +14,7 @@ public class JdbcAccountDaoImpl implements AccountDao {
     }
 
     @Override
-    public Account getAccountById(int accountId) {
+    public Account findAccountById(int accountId) {
         throw new UnsupportedOperationException();
     }
 
@@ -27,4 +27,5 @@ public class JdbcAccountDaoImpl implements AccountDao {
     public Transaction updateBalance(Transaction transaction) throws MoneyTransferException {
         throw new UnsupportedOperationException();
     }
+
 }

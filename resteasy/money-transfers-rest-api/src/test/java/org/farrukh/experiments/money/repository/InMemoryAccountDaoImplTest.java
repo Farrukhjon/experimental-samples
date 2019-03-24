@@ -53,16 +53,16 @@ public class InMemoryAccountDaoImplTest {
         accountDao.createAccount(newPayerAccount);
         accountDao.createAccount(newRecipientAccount);
 
-        Account payerAccount = accountDao.getAccountById(newPayerAccount.getId());
-        Account recipientAccount = accountDao.getAccountById(newRecipientAccount.getId());
+        Account payerAccount = accountDao.findAccountById(newPayerAccount.getId());
+        Account recipientAccount = accountDao.findAccountById(newRecipientAccount.getId());
 
         payerAccount.setBalance(payerAccount.getBalance() - 500_000.0);
         recipientAccount.setBalance(payerAccount.getBalance() + 500_000.0);
 
         //accountDao.updateBalance(payerAccount, recipientAccount);
 
-        Account payerAccount1 = accountDao.getAccountById(newPayerAccount.getId());
-        Account recipientAccount1 = accountDao.getAccountById(newRecipientAccount.getId());
+        Account payerAccount1 = accountDao.findAccountById(newPayerAccount.getId());
+        Account recipientAccount1 = accountDao.findAccountById(newRecipientAccount.getId());
 
         assertEquals(500_000.0, payerAccount1.getBalance(), 1);
         assertEquals(1_000_000.0, recipientAccount1.getBalance(), 1);

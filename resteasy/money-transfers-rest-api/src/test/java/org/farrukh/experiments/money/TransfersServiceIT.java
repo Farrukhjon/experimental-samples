@@ -17,7 +17,7 @@ public class TransfersServiceIT {
 
     @Before
     public void initWebServer() throws Exception {
-        app = new MainApp(8481);
+        app = new MainApp(8481, "localhost");
         app.startServer();
     }
 

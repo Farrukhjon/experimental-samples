@@ -7,6 +7,7 @@ import org.farrukh.experiments.money.service.TransfersService;
 import org.jboss.resteasy.links.AddLinks;
 import org.jboss.resteasy.links.LinkResource;
 
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -14,15 +15,20 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.net.URI;
 
+import static java.lang.String.format;
+
 @Path("/")
-public class TransfersController {
+public class TransfersResource {
 
     private TransfersService transfersService;
 
     @GET
     @Path("/accounts/{id}")
-    public String getAccount(@PathParam("id") String id) {
-        return "account" + id;
+    public Account getAccount(@PathParam("id") int id) throws MoneyTransferException {
+        Account account = transfersService.getAccountById(id);
+        if (account != null)
+            return account;
+        throw new MoneyTransferException(format("Account by %s id not found", id));
     }
 
     @AddLinks
@@ -31,7 +37,7 @@ public class TransfersController {
     @Consumes(MediaType.APPLICATION_XML)
     @Produces(MediaType.APPLICATION_XML)
     @Path("/accounts/create")
-    public Response createAccount(Account request, @Context UriInfo uriInfo) {
+    public Response createAccount(@Valid Account request, @Context UriInfo uriInfo) {
         Account newAccount = transfersService.createAccount(request);
         URI location = uriInfo
                 .getAbsolutePathBuilder()

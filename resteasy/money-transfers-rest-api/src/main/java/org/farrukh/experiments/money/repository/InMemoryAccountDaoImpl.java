@@ -1,6 +1,5 @@
 package org.farrukh.experiments.money.repository;
 
-import org.farrukh.experiments.money.exception.MoneyTransferException;
 import org.farrukh.experiments.money.model.Account;
 import org.farrukh.experiments.money.model.Transaction;
 
@@ -25,7 +24,7 @@ public class InMemoryAccountDaoImpl implements AccountDao {
     }
 
     @Override
-    public Account getAccountById(int accountId) {
+    public Account findAccountById(int accountId) {
         return db.get(accountId);
     }
 

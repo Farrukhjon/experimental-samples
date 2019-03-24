@@ -1,17 +1,15 @@
 package org.farrukh.experiments.money.model;
 
-import org.jboss.resteasy.links.RESTServiceDiscovery;
-
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Account {
 
-    private RESTServiceDiscovery restServiceDiscovery;
-
     private int id;
 
-    private int accountNumber;
+    @NotNull(message = "account number must not be null or empty")
+    private String accountNumber;
 
     private Client client;
 
@@ -36,11 +34,11 @@ public class Account {
         this.id = id;
     }
 
-    public int getAccountNumber() {
+    public String getAccountNumber() {
         return accountNumber;
     }
 
-    public void setAccountNumber(int accountNumber) {
+    public void setAccountNumber(String accountNumber) {
         this.accountNumber = accountNumber;
     }
 
@@ -62,14 +60,6 @@ public class Account {
 
     public double getBalance() {
         return balance;
-    }
-
-    public RESTServiceDiscovery getRestServiceDiscovery() {
-        return restServiceDiscovery;
-    }
-
-    public void setRestServiceDiscovery(RESTServiceDiscovery restServiceDiscovery) {
-        this.restServiceDiscovery = restServiceDiscovery;
     }
 
     public void setBalance(double balance) {

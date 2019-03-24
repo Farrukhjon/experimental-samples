@@ -4,14 +4,17 @@ import org.farrukh.experiments.money.BaseUnitTest;
 import org.farrukh.experiments.money.model.Account;
 import org.farrukh.experiments.money.model.Client;
 import org.farrukh.experiments.money.model.Transaction;
-import org.farrukh.experiments.money.repository.AccountDao;
 import org.farrukh.experiments.money.service.TransfersService;
+import org.jboss.resteasy.api.validation.ResteasyViolationExceptionMapper;
 import org.jboss.resteasy.core.Dispatcher;
 import org.jboss.resteasy.mock.MockDispatcherFactory;
 import org.jboss.resteasy.mock.MockHttpRequest;
 import org.jboss.resteasy.mock.MockHttpResponse;
+import org.jboss.resteasy.spi.ResteasyProviderFactory;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -23,30 +26,60 @@ import static javax.ws.rs.core.MediaType.APPLICATION_XML_TYPE;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
-public class TransfersControllerUnitTest extends BaseUnitTest {
+public class TransfersResourceUnitTest extends BaseUnitTest {
 
     @Mock
     private TransfersService transfersService;
 
     @InjectMocks
-    private TransfersController transfersController;
+    private TransfersResource transfersResource;
 
     private Dispatcher dispatcher;
+
+    /*@Rule
+    public ExpectedException rule = ExpectedException.none();*/
 
     @Before
     public void initMockService() {
         dispatcher = MockDispatcherFactory.createDispatcher();
-        dispatcher.getRegistry().addSingletonResource(transfersController);
+        dispatcher.getRegistry().addSingletonResource(transfersResource);
+        ResteasyViolationExceptionMapper exceptionMapper = new ResteasyViolationExceptionMapper();
+        dispatcher.getProviderFactory().getExceptionMappers().put(ResteasyViolationExceptionMapper.class, exceptionMapper);
+    }
+
+    @Test
+    public void testCreateNewInvalidAccount() throws  Exception{
+        //given:
+
+        Account account = new Account();
+        account.setBalance(10);
+        account.setClient(new Client());
+        String strAccount = convertToStrXml(account, Account.class);
+
+        //when:
+        when(transfersService.createAccount(Mockito.any()))
+                .thenReturn(new Account());
+
+        MockHttpRequest request = MockHttpRequest
+                .post("/accounts/create")
+                .content(strAccount.getBytes())
+                .contentType(APPLICATION_XML_TYPE);
+        MockHttpResponse response = new MockHttpResponse();
+        dispatcher.invoke(request, response);
+
+        //then:
+        assertEquals("account number must not be null or empty", response.getErrorMessage());
     }
 
     @Test
     public void testCreateNewAccount() throws Exception {
+        //given:
         Account newAcc = new Account();
         newAcc.setId(1);
-        when(transfersService.createAccount(Mockito.any()))
-                .thenReturn(newAcc);
         Client client = new Client("Ali", "Valiev");
         Account account = new Account(client, "RUR", 1_000_000_000.0);
+        when(transfersService.createAccount(Mockito.any()))
+                .thenReturn(newAcc);
         String strXml = convertToStrXml(account, Account.class);
         MockHttpRequest createAccountRequest = MockHttpRequest
                 .post("/accounts/create")
@@ -54,12 +87,29 @@ public class TransfersControllerUnitTest extends BaseUnitTest {
                 .contentType(APPLICATION_XML_TYPE)
                 .accept(APPLICATION_XML_TYPE);
         MockHttpResponse response = new MockHttpResponse();
+
+        //when:
         dispatcher.invoke(createAccountRequest, response);
         int responseStatusCode = response.getStatus();
         String contentAsString = response.getContentAsString();
         Account newAccount = convertStrXmlToEntity(contentAsString, Account.class);
+
+        //then:
         assertEquals(1, newAccount.getId());
         assertEquals(HttpServletResponse.SC_CREATED, responseStatusCode);
+    }
+
+    @Test
+    public void testGetAccountByAccountNumber() throws Exception {
+        String accountNumber = "0202020203030505";
+        Account account = new Account();
+        account.setAccountNumber(accountNumber);
+        when(transfersService.getAccountById(Mockito.anyInt())).thenReturn(account);
+        MockHttpResponse response = new MockHttpResponse();
+        MockHttpRequest request = MockHttpRequest.get("accounts/1");
+        dispatcher.invoke(request, response);
+
+        assertEquals(HttpServletResponse.SC_OK, response.getStatus());
     }
 
     @Test

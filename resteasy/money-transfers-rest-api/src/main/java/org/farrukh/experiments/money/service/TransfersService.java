@@ -9,4 +9,6 @@ public interface TransfersService {
     Transaction transfer(Transaction transaction) throws MoneyTransferException;
 
     Account createAccount(Account request);
+
+    Account getAccountById(int accountNumber);
 }
