@@ -59,11 +59,11 @@ public class TransfersResourceIT {
     public void testTransferMoneyBetweenTwoAccounts() {
         //given: accounts for money transaction.
         Account fromAccount = new Account();
-        fromAccount.setBalance(1_000_000_000d);
+        fromAccount.setBalance(100);
         fromAccount.setAccountNumber("123456789");
 
         Account toAccount = new Account();
-        toAccount.setBalance(500_000_000d);
+        toAccount.setBalance(50);
         toAccount.setAccountNumber("987654321");
 
         //and: a transaction is formed.
@@ -71,7 +71,9 @@ public class TransfersResourceIT {
         transaction.setDate(new Date());
         transaction.setFromAccount(fromAccount);
         transaction.setToAccount(toAccount);
-        transaction.setAmount(500_000_000d);
+
+        transaction.setAmount(50);
+
         transaction.setDescription("Transfer for services");
 
         //when: response sent to the api
@@ -80,11 +82,13 @@ public class TransfersResourceIT {
                 .request(acceptXmlMimeType)
                 .put(entity(transaction, contentXmlMimType));
 
-        //then: below expected result should be returned
-        Object transferredTransaction = response.getEntity();
+        //then: expected result should be returned
+        Transaction transferredTransaction = response.readEntity(Transaction.class);
 
         assertEquals(SC_OK, response.getStatus());
-        //assertEquals(TRUE, transferredTransaction.isCommitted());
+        assertEquals(TRUE, transferredTransaction.isCommitted());
+        assertEquals(50, transferredTransaction.getFromAccount().getBalance(), 1);
+        assertEquals(100, transferredTransaction.getToAccount().getBalance(), 1);
     }
 
     @Test

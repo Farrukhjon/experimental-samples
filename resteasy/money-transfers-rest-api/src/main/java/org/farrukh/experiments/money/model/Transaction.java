@@ -1,5 +1,6 @@
 package org.farrukh.experiments.money.model;
 
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -11,12 +12,17 @@ public class Transaction {
 
     private int id;
 
+    @NotNull
     private Date date;
 
+    @NotNull
     private Account fromAccount;
+
+    @NotNull
 
     private Account toAccount;
 
+    @NotNull
     private double amount;
 
     private boolean committed;
