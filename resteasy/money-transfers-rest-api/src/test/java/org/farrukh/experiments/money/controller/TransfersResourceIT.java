@@ -38,21 +38,29 @@ public class TransfersResourceIT {
         appServer = new MainApp(port, "localhost");
         appServer.startServer();
         client = ClientBuilder.newClient();
+        TimeUnit.SECONDS.sleep(1); // give the serer to be initialized
     }
 
 
     @Test
     public void testCreateNewAccount() throws Exception {
-        TimeUnit.SECONDS.sleep(1);
+        //given: a new account to be created.
         Client c = new Client("Ali", "Valiev");
-        Account account = new Account(c, "RUR", 1_000_000_000.0);
+        Account account = new Account(c, "RUR", 100);
         UriBuilder uriBuilder = fromPath(format("http://localhost:%s/money/accounts/create", port));
+
+        //when: create account requites posted.
         Response response = client
                 .target(uriBuilder)
                 .request(acceptXmlMimeType)
                 .post(entity(account, contentXmlMimType));
 
+        //then: expected result should be returned.
+        Account createdAccount = response.readEntity(Account.class);
         assertEquals(HttpServletResponse.SC_CREATED, response.getStatus());
+        assertEquals("RUR", createdAccount.getCurrency());
+        assertEquals(100, createdAccount.getBalance(), 1);
+        assertEquals("Ali", createdAccount.getClient().getFirstName());
     }
 
     @Test
@@ -93,9 +101,8 @@ public class TransfersResourceIT {
 
     @Test
     public void testCreateInvalidAccount() throws Exception {
-        TimeUnit.SECONDS.sleep(1);
         Client c = new Client("Ali", "Valiev");
-        Account account = new Account(c, "RUR", 1_000_000_000.0);
+        Account account = new Account(c, "RUR", 100);
         UriBuilder uriBuilder = fromPath(format("http://localhost:%s/money/accounts/create", port));
         Response response = client
                 .target(uriBuilder)
