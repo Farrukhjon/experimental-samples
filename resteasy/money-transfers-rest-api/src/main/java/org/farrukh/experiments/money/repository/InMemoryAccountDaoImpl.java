@@ -7,6 +7,8 @@ import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import static java.lang.Boolean.TRUE;
+
 public class InMemoryAccountDaoImpl implements AccountDao {
 
     private ConcurrentHashMap<Integer, Account> db = new ConcurrentHashMap<>();
@@ -44,6 +46,7 @@ public class InMemoryAccountDaoImpl implements AccountDao {
             fromAccount.setBalance(fromAccount.getBalance() - amount);
             db.put(fromAccount.getId(), fromAccount);
             db.put(toAccount.getId(), toAccount);
+            tx.setCommitted(TRUE);
             return tx;
         });
     }

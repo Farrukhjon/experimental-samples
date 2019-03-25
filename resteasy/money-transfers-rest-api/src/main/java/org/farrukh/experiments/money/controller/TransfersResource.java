@@ -50,15 +50,18 @@ public class TransfersResource {
     }
 
     @PUT
-    @Consumes
-    @Produces
+    @Consumes(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_XML)
     @Path("/accounts/transfer")
-    public Response transfer(Transaction tx) {
+    public Response transfer(@Valid Transaction tx) throws MoneyTransferException  {
         try {
             Transaction transfer = transfersService.transfer(tx);
-            return Response.ok(transfer).build();
+            return Response
+                    .ok()
+                    .entity(transfer)
+                    .build();
         } catch (MoneyTransferException e) {
-            throw new WebApplicationException(e);
+            throw new MoneyTransferException("Error");
         }
     }
 
