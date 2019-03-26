@@ -15,14 +15,14 @@ public class BaseUnitTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    protected final <T> String convertToStrXml(T account, Class<T> clazz) throws JAXBException {
+    protected final <T> String convertToStrXml(T entity, Class<T> clazz) throws JAXBException {
         StringWriter writer = new StringWriter();
-        JAXBContext.newInstance(clazz).createMarshaller().marshal(account, writer);
+        JAXBContext.newInstance(clazz).createMarshaller().marshal(entity, writer);
         return writer.toString();
     }
 
-    protected final <T> T convertStrXmlToEntity(String account, Class<T> clazz) throws JAXBException {
-        Object entity = JAXBContext.newInstance(clazz).createUnmarshaller().unmarshal(new StringReader(account));
+    protected final <T> T convertStrXmlToEntity(String strXmlEntity, Class<T> clazz) throws JAXBException {
+        Object entity = JAXBContext.newInstance(clazz).createUnmarshaller().unmarshal(new StringReader(strXmlEntity));
         return clazz.cast(entity);
     }
 }
