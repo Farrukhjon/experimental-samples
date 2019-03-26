@@ -2,23 +2,22 @@ package org.farrukh.experiments.money.repository;
 
 import org.farrukh.experiments.money.model.Account;
 import org.farrukh.experiments.money.model.Client;
-import org.junit.Before;
 import org.junit.Test;
 
-import java.util.*;
-import java.util.concurrent.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class InMemoryAccountDaoImplTest {
 
-    AccountDao accountDao;
-
-    @Before
-    public void setUp() {
-        accountDao = new InMemoryAccountDaoImpl();
-    }
+    private AccountDao accountDao = new InMemoryAccountDaoImpl();
 
     @Test
     public void testCreateAccountsByMultipleThreadsConcurrently() throws InterruptedException {

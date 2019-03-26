@@ -22,8 +22,8 @@ public class TransfersServiceImpl implements TransfersService {
     }
 
     @Override
-    public Account createAccount(Account request) {
-        return accountDao.createAccount(request);
+    public Account createAccount(Account account) {
+        return accountDao.createAccount(account);
     }
 
     @Override
