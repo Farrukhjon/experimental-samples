@@ -36,8 +36,6 @@ public class TransfersResourceUnitTest extends BaseUnitTest {
 
     private Dispatcher dispatcher;
 
-    /*@Rule
-    public ExpectedException rule = ExpectedException.none();*/
 
     @Before
     public void initMockService() {
@@ -45,30 +43,6 @@ public class TransfersResourceUnitTest extends BaseUnitTest {
         dispatcher.getRegistry().addSingletonResource(transfersResource);
         ResteasyViolationExceptionMapper exceptionMapper = new ResteasyViolationExceptionMapper();
         dispatcher.getProviderFactory().getExceptionMappers().put(ResteasyViolationExceptionMapper.class, exceptionMapper);
-    }
-
-    @Test
-    public void testCreateNewInvalidAccount() throws  Exception{
-        //given:
-
-        Account account = new Account();
-        account.setBalance(10);
-        account.setClient(new Client());
-        String strAccount = convertToStrXml(account, Account.class);
-
-        //when:
-        when(transfersService.createAccount(Mockito.any()))
-                .thenReturn(new Account());
-
-        MockHttpRequest request = MockHttpRequest
-                .post("/accounts/create")
-                .content(strAccount.getBytes())
-                .contentType(APPLICATION_XML_TYPE);
-        MockHttpResponse response = new MockHttpResponse();
-        dispatcher.invoke(request, response);
-
-        //then:
-        assertEquals("account number must not be null or empty", response.getErrorMessage());
     }
 
     @Test
