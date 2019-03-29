@@ -5,6 +5,7 @@ import org.farrukh.experiments.money.model.Account;
 import org.farrukh.experiments.money.model.Transaction;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 public interface TransfersService {
 
@@ -13,4 +14,6 @@ public interface TransfersService {
     Account createAccount(Account account);
 
     Account getAccountById(int accountNumber);
+
+    List<Account> findAccountsOf(int size, String sortedBy);
 }

@@ -5,6 +5,7 @@ import org.farrukh.experiments.money.model.Account;
 import org.farrukh.experiments.money.model.Transaction;
 
 import java.util.Collection;
+import java.util.List;
 
 public class JdbcAccountDaoImpl implements AccountDao {
 
@@ -19,7 +20,13 @@ public class JdbcAccountDaoImpl implements AccountDao {
     }
 
     @Override
-    public Collection<Account> getAllAccounts() {
+    public List<Account> getAllAccounts() {
+        throw new UnsupportedOperationException();
+    }
+
+
+    @Override
+    public List<Account> getAllAccountsOf(int size, String sortBy) {
         throw new UnsupportedOperationException();
     }
 

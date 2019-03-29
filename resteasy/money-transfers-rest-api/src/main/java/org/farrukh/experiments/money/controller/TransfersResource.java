@@ -14,10 +14,13 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.net.URI;
+import java.util.List;
 
 import static java.lang.String.format;
 
 @Path("/")
+@Consumes(MediaType.APPLICATION_XML)
+@Produces(MediaType.APPLICATION_XML)
 public class TransfersResource {
 
     private TransfersService transfersService;
@@ -34,8 +37,6 @@ public class TransfersResource {
     @AddLinks
     @LinkResource(Account.class)
     @POST
-    @Consumes(MediaType.APPLICATION_XML)
-    @Produces(MediaType.APPLICATION_XML)
     @Path("/accounts/create")
     public Response createAccount(@Valid Account request, @Context UriInfo uriInfo) {
         Account newAccount = transfersService.createAccount(request);
@@ -50,10 +51,8 @@ public class TransfersResource {
     }
 
     @PUT
-    @Consumes(MediaType.APPLICATION_XML)
-    @Produces(MediaType.APPLICATION_XML)
     @Path("/accounts/transfer")
-    public Response transfer(@Valid Transaction tx) throws MoneyTransferException  {
+    public Response transfer(@Valid Transaction tx) throws MoneyTransferException {
         try {
             Transaction transfer = transfersService.transfer(tx);
             return Response
@@ -63,6 +62,13 @@ public class TransfersResource {
         } catch (MoneyTransferException e) {
             throw new MoneyTransferException("Error");
         }
+    }
+
+    @GET
+    @Path("/accounts")
+    public List<Account> getAllAccounts(@QueryParam("size") int size, @QueryParam("sortedBy") String sortedBy) {
+
+        return transfersService.findAccountsOf(size, sortedBy);
     }
 
     public TransfersService getTransfersService() {

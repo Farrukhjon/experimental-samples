@@ -3,11 +3,17 @@ package org.farrukh.experiments.money.repository;
 import org.farrukh.experiments.money.model.Account;
 import org.farrukh.experiments.money.model.Transaction;
 
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import static java.lang.Boolean.TRUE;
+import static java.util.Comparator.comparing;
 
 public class InMemoryAccountDaoImpl implements AccountDao {
 
@@ -31,8 +37,29 @@ public class InMemoryAccountDaoImpl implements AccountDao {
     }
 
     @Override
-    public Collection<Account> getAllAccounts() {
-        return db.values();
+    public List<Account> getAllAccounts() {
+        return new ArrayList<>(db.values());
+    }
+
+    @Override
+    public List<Account> getAllAccountsOf(int size, String sortBy) {
+        return db
+                .values()
+                .stream()
+                .limit(size)
+                .sorted(mapComparator(sortBy))
+                .collect(Collectors.toList());
+    }
+
+    private Comparator<? super Account> mapComparator(String sortBy) {
+        switch (sortBy) {
+            case "sortById":
+                return comparing(Account::getId);
+            case "sortByClientName":
+                return comparing(a -> a.getClient().getFirstName());
+            default:
+                return comparing(Account::getAccountNumber);
+        }
     }
 
     @Override

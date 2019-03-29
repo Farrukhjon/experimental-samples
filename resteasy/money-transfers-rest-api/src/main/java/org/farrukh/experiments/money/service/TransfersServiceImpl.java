@@ -5,6 +5,8 @@ import org.farrukh.experiments.money.model.Account;
 import org.farrukh.experiments.money.model.Transaction;
 import org.farrukh.experiments.money.repository.AccountDao;
 
+import java.util.List;
+
 import static java.lang.String.format;
 
 public class TransfersServiceImpl implements TransfersService {
@@ -29,6 +31,11 @@ public class TransfersServiceImpl implements TransfersService {
     @Override
     public Account getAccountById(int id) {
         return accountDao.findAccountById(id);
+    }
+
+    @Override
+    public List<Account> findAccountsOf(int size, String sortedBy) {
+        return accountDao.getAllAccountsOf(size, sortedBy);
     }
 
     private void validate(Transaction transaction) throws MoneyTransferException {
