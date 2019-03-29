@@ -4,6 +4,9 @@ import org.farrukh.experiments.money.MainApp;
 import org.farrukh.experiments.money.model.Account;
 import org.farrukh.experiments.money.model.Client;
 import org.farrukh.experiments.money.model.Transaction;
+import org.jboss.resteasy.api.validation.ResteasyConstraintViolation;
+import org.jboss.resteasy.api.validation.Validation;
+import org.jboss.resteasy.api.validation.ViolationReport;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -14,15 +17,18 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static java.lang.Boolean.TRUE;
 import static java.lang.String.format;
+import static java.lang.String.valueOf;
 import static javax.servlet.http.HttpServletResponse.SC_OK;
 import static javax.ws.rs.client.Entity.entity;
 import static javax.ws.rs.core.MediaType.APPLICATION_XML_TYPE;
 import static javax.ws.rs.core.UriBuilder.fromPath;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class TransfersResourceIT {
 
@@ -101,15 +107,30 @@ public class TransfersResourceIT {
 
     @Test
     public void testCreateInvalidAccount() throws Exception {
-        Client c = new Client("Ali", "Valiev");
-        Account account = new Account(c, "RUR", 100);
-        UriBuilder uriBuilder = fromPath(format("http://localhost:%s/money/accounts/create", port));
+        Account entity = new Account();
+        entity.setBalance(100);
         Response response = client
-                .target(uriBuilder)
+                .target(fromPath(format("http://localhost:%s/money/accounts/create", port)))
                 .request(acceptXmlMimeType)
-                .post(entity(account, contentXmlMimType));
+                .post(entity(entity, contentXmlMimType));
 
-        assertEquals(HttpServletResponse.SC_CREATED, response.getStatus());
+        assertTrue(Boolean.valueOf(valueOf(response.getHeaders().getFirst(Validation.VALIDATION_HEADER))));
+        List<ResteasyConstraintViolation> paramViolations = response.readEntity(ViolationReport.class).getParameterViolations();
+        /*assertEquals("client details should be provided", paramViolations.get(0).getMessage());
+        assertEquals("currency must not be null or empty", paramViolations.get(1).getMessage());
+        assertEquals("account number must not be null or empty", paramViolations.get(2).getMessage());*/
+        assertEquals(HttpServletResponse.SC_BAD_REQUEST, response.getStatus());
+    }
+
+    @Test
+    public void testGetAllNFirstSortedAccounts() {
+        Response response = client
+                .target(fromPath(format("http://localhost:%s/money/accounts", port)))
+                .queryParam("size", 7)
+                .queryParam("sortedBy", "clientName")
+                .request(acceptXmlMimeType)
+                .get();
+        assertEquals(SC_OK, response.getStatus());
     }
 
     @AfterClass

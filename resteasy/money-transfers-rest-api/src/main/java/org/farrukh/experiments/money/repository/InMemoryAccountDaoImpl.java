@@ -53,9 +53,9 @@ public class InMemoryAccountDaoImpl implements AccountDao {
 
     private Comparator<? super Account> mapComparator(String sortBy) {
         switch (sortBy) {
-            case "sortById":
+            case "id":
                 return comparing(Account::getId);
-            case "sortByClientName":
+            case "clientName":
                 return comparing(a -> a.getClient().getFirstName());
             default:
                 return comparing(Account::getAccountNumber);

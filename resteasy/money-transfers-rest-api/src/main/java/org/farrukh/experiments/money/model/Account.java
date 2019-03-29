@@ -11,8 +11,10 @@ public class Account {
     @NotNull(message = "account number must not be null or empty")
     private String accountNumber;
 
+    @NotNull(message = "client details should be provided")
     private Client client;
 
+    @NotNull(message = "currency must not be null or empty")
     private String currency;
 
     private double balance;

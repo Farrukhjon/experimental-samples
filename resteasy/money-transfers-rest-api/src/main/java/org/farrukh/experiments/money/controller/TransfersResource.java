@@ -67,7 +67,6 @@ public class TransfersResource {
     @GET
     @Path("/accounts")
     public List<Account> getAllAccounts(@QueryParam("size") int size, @QueryParam("sortedBy") String sortedBy) {
-
         return transfersService.findAccountsOf(size, sortedBy);
     }
 

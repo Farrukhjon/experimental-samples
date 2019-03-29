@@ -24,6 +24,7 @@
         <jetty.version>9.4.15.v20190215</jetty.version>
         <logback.version>1.2.3</logback.version>
         <cli.version>1.4</cli.version>
+        <hibernate.validator.version>6.0.16.Final</hibernate.validator.version>
     </properties>
 
     <dependencies>
@@ -57,6 +58,12 @@
 
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-validator-provider-11</artifactId>
+            <version>${resteasy.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-undertow</artifactId>
             <version>${resteasy.version}</version>
         </dependency>
@@ -80,6 +87,13 @@
             <artifactId>commons-cli</artifactId>
             <version>${cli.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate.validator.version}</version>
+        </dependency>
+
 
         <!-- Logging -->
         <dependency>
