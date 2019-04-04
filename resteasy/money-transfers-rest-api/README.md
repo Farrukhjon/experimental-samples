@@ -3,7 +3,7 @@
 ## Technical details
 ### Design and Implementation
  - Programming language: Java
- - Database: in-memory HSQL DB
+ - Database: in-memory Map
  - Controller: RestEasy
 
 
