@@ -1,0 +1,44 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:batch="http://www.springframework.org/schema/batch"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+
+">
+    <context:property-placeholder location="classpath:application.properties"/>
+
+    <batch:job id="appJob">
+        <batch:step id="step1">
+            <batch:tasklet>
+                <batch:chunk reader="accountReader" processor="accountProcessor" writer="accountWriter"
+                             commit-interval="7"/>
+            </batch:tasklet>
+        </batch:step>
+    </batch:job>
+
+
+    <bean id="accountReader" class="org.farrukh.experiments.AccountReader" scope="step"
+        p:dataSource-ref="dataSource"
+        p:rowMapper-ref="columnRoqMapper"
+        p:sql="#{sqlQueries['getAllAccounts']}"
+    />
+    <bean id="accountProcessor" class="org.farrukh.experiments.AccountProcessor" scope="step"/>
+
+    <bean id="accountWriter" class="org.farrukh.experiments.AccountWriter" scope="step"
+        p:lineAggregator-ref="delimitedLineAggregator"
+        p:resource="${results.output.path}"
+    />
+
+    <bean id="delimitedLineAggregator" class="org.springframework.batch.item.file.transform.DelimitedLineAggregator"/>
+
+    <bean id="columnRoqMapper" class="org.springframework.jdbc.core.ColumnMapRowMapper"/>
+
+    <bean id="sqlQueries" class="org.springframework.beans.factory.config.PropertiesFactoryBean"
+          p:location="classpath:scripts/sql-queries.xml"
+    />
+
+</beans>

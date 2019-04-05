@@ -1,0 +1,30 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="
+               http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+               http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+
+">
+
+
+
+
+
+    <import resource="classpath:baseContext.xml"/>
+    <import resource="classpath:jobs-context.xml"/>
+
+
+    <jdbc:initialize-database >
+        <jdbc:script location="classpath:scripts/schema-account-ddl.sql"/>
+        <!--<jdbc:script location="classpath:scripts/schema-account-dml.sql"/>-->
+    </jdbc:initialize-database>
+
+
+    <bean id="jobLauncherTest" class="org.springframework.batch.test.JobLauncherTestUtils"
+          p:jobRepository-ref="jobRepository"
+    />
+
+
+</beans>
