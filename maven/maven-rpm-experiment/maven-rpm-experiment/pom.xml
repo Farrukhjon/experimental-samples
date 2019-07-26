@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<modelVersion>4.0.0</modelVersion>
+
+<groupId>org.farrukh.experiment</groupId>
+<artifactId>maven-rpm-experiment</artifactId>
+<version>1.0-SNAPSHOT</version>
+
+<name>maven-rpm-experiment</name>
+
+<url>http://www.example.com</url>
+
+<properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+</properties>
+
+<dependencies>
+    <dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.12</version>
+    <scope>test</scope>
+    </dependency>
+</dependencies>
+
+<build>
+    <plugins> 
+<plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>rpm-maven-plugin</artifactId>
+        <version>2.2.0</version>
+        <executions>
+          <execution>
+            <id>generate-rpm</id>
+            <goals>
+              <goal>rpm</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <license>GPL (c) 2005, SWWDC</license>
+          <distribution>Trash 2005</distribution>
+          <group>Application/Collectors</group>
+          <packager>SWWDC</packager>
+          <prefix>/usr/local</prefix>
+          <changelogFile>src/changelog</changelogFile>
+          <defineStatements>
+            <defineStatement>_unpackaged_files_terminate_build 0</defineStatement>
+          </defineStatements>
+          <mappings>
+            <mapping>
+              <directory>/usr/local/bin/landfill</directory>
+              <filemode>440</filemode>
+              <username>dumper</username>
+              <groupname>dumpgroup</groupname>
+              <sources>
+                <source>
+                  <location>target/classes</location>
+                </source>
+              </sources>
+            </mapping>
+          </mappings>
+          <preinstallScriptlet>
+            <script>echo "installing ${project.name} now"</script>
+          </preinstallScriptlet>
+          <postinstallScriptlet>
+            <script>echo "installed ${project.name} now"</script>
+          </postinstallScriptlet>
+        </configuration>
+      </plugin>
+    </plugins>  
+</build>
+
+</project>
