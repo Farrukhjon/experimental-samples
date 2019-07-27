@@ -23,3 +23,7 @@
 **/.springBeans
 
 **/*.pyc
+**/*.class
+
+**/*.log
+
