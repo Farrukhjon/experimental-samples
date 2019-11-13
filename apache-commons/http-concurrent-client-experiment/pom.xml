@@ -16,7 +16,7 @@
         <maven.compiler.target>1.6</maven.compiler.target>
         <junit.version>4.12</junit.version>
         <httpclient.version>4.5.3</httpclient.version>
-        <jackson.version>2.5.3</jackson.version>
+        <jackson.version>2.10.1</jackson.version>
         <netty.version>4.1.9.Final</netty.version>
         <mockserver.version>3.10.4</mockserver.version>
         <logback.version>1.2.2</logback.version>
