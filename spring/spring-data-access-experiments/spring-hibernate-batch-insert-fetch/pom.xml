@@ -13,7 +13,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>4.12</junit.version>
-        <spring.version>3.0.5.RELEASE</spring.version>
+        <spring.version>5.2.7.RELEASE</spring.version>
         <hibernate.version>3.3.2.GA</hibernate.version>
         <commons.dbcp.version>1.4</commons.dbcp.version>
         <logback.version>1.0.0</logback.version>
