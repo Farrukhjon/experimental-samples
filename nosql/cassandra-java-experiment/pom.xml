@@ -16,7 +16,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <cassandra.version>3.5.0</cassandra.version>
         <logback.version>0.9.21</logback.version>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
     </properties>
 
     <dependencies>
