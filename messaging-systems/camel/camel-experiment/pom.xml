@@ -15,7 +15,7 @@
       <maven.compiler.source>1.8</maven.compiler.source>
       <maven.compiler.target>1.8</maven.compiler.target>
       <env.camel.version>2.18.0</env.camel.version>
-      <junit.version>4.12</junit.version>
+      <junit.version>4.13.1</junit.version>
    </properties>
 
    <dependencies>
