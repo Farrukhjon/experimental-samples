@@ -14,7 +14,7 @@
    <properties>
       <maven.compiler.source>1.8</maven.compiler.source>
       <maven.compiler.target>1.8</maven.compiler.target>
-      <junit.version>4.12</junit.version>
+      <junit.version>4.13.1</junit.version>
       <jacoco.version>0.7.7.201606060606</jacoco.version>
       <jacoco.ut.execution.data.file>${project.build.directory}/coverage-reports/jacoco-ut.exec</jacoco.ut.execution.data.file>
       <jacoco.it.execution.data.file>${project.build.directory}/coverage-reports/jacoco-it.exec</jacoco.it.execution.data.file>
