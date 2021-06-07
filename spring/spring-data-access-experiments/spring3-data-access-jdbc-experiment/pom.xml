@@ -88,7 +88,7 @@
     </dependencies>
     <properties>
         <spring.version>3.2.18.RELEASE</spring.version>
-        <logback.version>1.1.8</logback.version>
+        <logback.version>1.2.0</logback.version>
         <slf4j.version>1.7.22</slf4j.version>
         <apache.commons.version>2.1.1</apache.commons.version>
         <oracle.version>11.2.0</oracle.version>
